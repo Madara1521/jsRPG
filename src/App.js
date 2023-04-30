@@ -1,11 +1,18 @@
 import React from "react"
+import Header from './Components/Header/Header'
+import { Box, Stack } from '@mui/material'
+// import { useStyles } from "./Components/Styles"
 
-function App() {
+const App = () => {
+  // const classes = useStyles()
+
   return (
-    <div >
-
-    </div>
-  );
+    <Box>
+      <Header />
+      <Stack >
+      </Stack>
+    </Box>
+  )
 }
 
-export default App;
+export default App
