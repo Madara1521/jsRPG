@@ -1,15 +1,9 @@
-import { Toolbar, styled, AppBar, Button, Box } from '@mui/material'
+import { Toolbar, styled, AppBar, Box } from '@mui/material'
 
 export const StyledToolbar = styled(Toolbar) ({
   display: 'flex',
   justifyContent: 'center'
 })
-
-export const Icons = styled(Button)(({ theme }) => ({
-  color: 'grey',
-  border: '1px solid grey',
-
-}))
 
 export const AppBarComponent = styled(AppBar)({
   position:'fixed',
@@ -24,4 +18,11 @@ export const IconsHeader = styled(Box)({
   height: '100px',
   justifyContent: 'center',
   border: 'black 1px solid'
+})
+
+export const ContentContainer = styled(Box)({
+  display: 'flex',
+  justifyContent: 'center',
+  border: 'black 1px solid',
+  width: '600px',
 })
