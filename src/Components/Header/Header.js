@@ -1,15 +1,15 @@
 import React from "react"
-import { AppBarComponent, StyledToolbar } from "./StyledHeader"
 import ButtonsHeader from "./MenuButtons/ButtonsHeader"
+import { Box } from '@mui/material'
+import { useStyles } from "../Styles"
 
 const Header = () => {
+  const classes = useStyles()
 
   return (
-    <AppBarComponent>
-      <StyledToolbar>
-        <ButtonsHeader />
-      </StyledToolbar>
-    </AppBarComponent>
+    <Box className={classes.headerCss}>
+      <ButtonsHeader />
+    </Box>
   )
 }
 

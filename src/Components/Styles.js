@@ -2,13 +2,28 @@ import { makeStyles } from "@mui/styles"
 
 
 export const useStyles = makeStyles(() => ({
-  container: {
+  content: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    border: 'black 1px solid',
-    width: '610px',
-    direction: 'column'
+    height: '100vh',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      width: '0em',
+      height: '0em'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0,0,0,0)'
+    }
+  },
+  contentScr: {
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      width: '0em',
+      height: '0em'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0,0,0,0)'
+    }
   },
   titleComp: {
     display: 'flex',
@@ -17,17 +32,36 @@ export const useStyles = makeStyles(() => ({
     border: 'black 1px solid',
     width: '610px'
   },
-  imgComp: {
-    display: 'flex',
-    justifyContent: 'space-bettwen',
-    border: 'black 1px solid',
-    width: '610px'
-  },
   imgBorder: {
     display: 'flex',
-    border: '5px #424242 solid',
     justifyContent: 'center',
-    justifyItems: 'center'
+    border: 'black 1px solid'
+  },
+  charBorder: {
+    display: 'flex',
+    direction: 'column',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  genBorder: {
+    display: 'flex',
+    direction: 'column',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  lvlBorder: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+  },
+  headerCss: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    background: 'linear-gradient(0deg, rgba(190,190,190,1) 0%, rgba(214,214,214,1) 11%, rgba(242,241,241,1) 58%)'
   }
 
 }))

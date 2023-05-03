@@ -1,17 +1,16 @@
 import React from "react"
 import Header from './Components/Header/Header'
-import { Box, Stack } from '@mui/material'
 import ProfileContent from "./Components/Content/ProfileContent/ProfileContent"
+import AppBar from '@mui/material/AppBar'
+
 
 const App = () => {
 
   return (
-    <Box >
+    <AppBar position='fixed' style={{ height: '100vh' }} color="inherit">
       <Header />
-      <Stack direction='column' sx={{ marginTop: '102px' }}>
-        <ProfileContent />
-      </Stack>
-    </Box>
+      <ProfileContent />
+    </AppBar >
   )
 }
 
