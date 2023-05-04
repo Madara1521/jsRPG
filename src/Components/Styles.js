@@ -62,6 +62,39 @@ export const useStyles = makeStyles(() => ({
     alignItems: 'flex-start',
     justifyContent: 'center',
     background: 'linear-gradient(0deg, rgba(190,190,190,1) 0%, rgba(214,214,214,1) 11%, rgba(242,241,241,1) 58%)'
+  },
+  attribCont: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    width: '100px',
+    height: '30px'
+  },
+  attribBorder: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+    height: '100vh'
+  },
+  expLvlBor: {
+    display: 'flex',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  lvlHeight: {
+    display: 'flex',
+    height: '100px'
+  },
+  iconPluse: {
+    display: 'flex',
+    backgroundSize: 'cover',
+    width: '30px',
+    height: '30px',
+    justifyContent: 'center',
+    border: 'black 1px solid'
   }
 
 }))

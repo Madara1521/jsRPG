@@ -12,7 +12,8 @@ const PhotoAndLvl = () => {
         <img src={barbarian} alt='img' />
       </Box>
       <Stack direction='column' className={classes.lvlBorder} flex={1} spacing={1}>
-        <div>Lvl: 99</div>
+        <div>Class: Barbarian</div>
+        <div>Level: 99</div>
         <div>Rank: god</div>
         <div>Difficulty level: normal</div>
       </Stack>
