@@ -1,13 +1,16 @@
 import React from "react"
 import invertory from './invertory-removebg-preview.png'
 import { IconsHeader } from "../../StyledHeader"
+import { NavLink } from "react-router-dom"
 
 const InventoryComponent = () => {
 
-  return(
-    <IconsHeader>
-      <img src={invertory} alt='pentagram'/>
-    </IconsHeader>
+  return (
+    <NavLink to='invertory'>
+      <IconsHeader>
+        <img src={invertory} alt='pentagram' />
+      </IconsHeader>
+    </NavLink>
   )
 }
 

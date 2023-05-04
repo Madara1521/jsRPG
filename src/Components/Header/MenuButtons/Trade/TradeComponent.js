@@ -1,13 +1,16 @@
 import React from "react"
 import trade from './trade-removebg-preview.png'
 import { IconsHeader } from "../../StyledHeader"
+import { NavLink } from "react-router-dom"
 
 const TradeComponent = () => {
 
-  return(
-    <IconsHeader>
-      <img src={trade} alt='trade'/>
-    </IconsHeader>
+  return (
+    <NavLink to='trade'>
+      <IconsHeader>
+        <img src={trade} alt='trade' />
+      </IconsHeader>
+    </NavLink>
   )
 }
 

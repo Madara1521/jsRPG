@@ -1,13 +1,16 @@
 import React from "react"
 import pentagram from './Penta-removebg-preview.png'
 import { IconsHeader } from "../../StyledHeader"
+import { NavLink } from "react-router-dom"
 
 const Profile = () => {
 
-  return(
-    <IconsHeader >
-      <img src={pentagram} alt='pentagram'/>
-    </IconsHeader>
+  return (
+    <NavLink to='/'>
+      <IconsHeader >
+        <img src={pentagram} alt='pentagram' />
+      </IconsHeader>
+    </NavLink>
   )
 }
 

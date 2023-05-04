@@ -1,13 +1,16 @@
 import React from "react"
 import attribute from './attributes-removebg-preview.png'
 import { IconsHeader } from "../../StyledHeader"
+import { NavLink } from "react-router-dom"
 
 const AttributeComponent = () => {
 
-  return(
-    <IconsHeader>
-      <img src={attribute} alt='attribute'/>
-    </IconsHeader>
+  return (
+    <NavLink to='attributes'>
+      <IconsHeader>
+        <img src={attribute} alt='attribute' />
+      </IconsHeader>
+    </NavLink>
   )
 }
 
