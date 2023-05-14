@@ -1,4 +1,4 @@
-import { styled, Box } from '@mui/material'
+import { styled, Box, IconButton } from '@mui/material'
 
 export const IconsHeader = styled(Box)({
   display: 'flex',
@@ -8,3 +8,8 @@ export const IconsHeader = styled(Box)({
   justifyContent: 'center',
   border: 'black 1px solid'
 })
+
+export const AttributeButton = styled(IconButton)({
+  padding: 0
+})
+

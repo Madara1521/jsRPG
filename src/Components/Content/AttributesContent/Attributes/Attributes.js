@@ -1,7 +1,7 @@
 import React from "react"
 import { useStyles } from "../../../Styles"
 import { Stack } from '@mui/material'
-import Strength from "./Strength/Strtngth"
+import Strength from "./Strength/Strength"
 import Dexterity from "./Dexterity/Dexterity"
 import Vitality from "./Vitality/Vitality"
 import Energy from "./Energy/Energy"

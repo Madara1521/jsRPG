@@ -2,6 +2,7 @@ import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../../Styles"
 import IconsAttribute from "../IconsAttribute"
+import { AttributeButton } from "../../../../Header/StyledHeader"
 
 const Energy = () => {
   const classes = useStyles()
@@ -14,7 +15,9 @@ const Energy = () => {
       <div className={classes.attribCont}>
         250
       </div>
-      <IconsAttribute />
+      <AttributeButton >
+        <IconsAttribute />
+      </AttributeButton>
     </Stack>
   )
 }
