@@ -1,4 +1,4 @@
-import { INCREMENT_STRENGTH } from "./types"
+import { INCREMENT_DEXTERITY, INCREMENT_STRENGTH } from "./types"
 
 export function incrementStrength() {
   return {
@@ -6,3 +6,11 @@ export function incrementStrength() {
     strength: 1
   }
 }
+
+export function incrementDexterity() {
+  return {
+    type: INCREMENT_DEXTERITY,
+    dexterity: 1
+  }
+}
+

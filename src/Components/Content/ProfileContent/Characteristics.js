@@ -1,15 +1,18 @@
 import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../Styles"
+import { useSelector } from "react-redux"
 
 const Characteristics = () => {
   const classes = useStyles()
+  const dexterity = useSelector(state => state.attributeReducer.dexterity)
+  const strength = useSelector(state => state.attributeReducer.strength)
 
   return(
     <Stack direction='row'  flex={2}>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
-        <div>Strength: 250</div>
-        <div>Dexterity: 250</div>
+        <div>Strength: {strength}</div>
+        <div>Dexterity: {dexterity}</div>
         <div>Vitality: 250</div>
         <div>Energy: 250</div>
       </Stack>
