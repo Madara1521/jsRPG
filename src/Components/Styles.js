@@ -95,6 +95,14 @@ export const useStyles = makeStyles(() => ({
     height: '30px',
     justifyContent: 'center',
     border: 'black 1px solid'
+  },
+  pointsCont: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 3px solid',
+    width: '60px',
+    height: '30px'
   }
 
 }))

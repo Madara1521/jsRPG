@@ -4,15 +4,21 @@ import { useStyles } from "../../../../Styles"
 import IconsAttribute from "../IconsAttribute"
 import { AttributeButton } from "../../../../Header/StyledHeader"
 import { useDispatch, useSelector } from "react-redux"
-import { incrementStrength } from '../../../../../Redux/actions'
+import { disableButton, incrementStrength } from '../../../../../Redux/actions'
 
 const Strength = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const strength = useSelector(state => state.attributeReducer.strength)
+  const points = useSelector(state => state.attributeReducer.points)
+  const isButtonDisabled = useSelector(state => state.attributeReducer.isButtonDisabled)
 
   const addStrength = () => {
     dispatch(incrementStrength())
+    
+    if (points === 1 ){
+      dispatch(disableButton())
+    }
   }
 
   return (
@@ -24,7 +30,7 @@ const Strength = () => {
         {strength}
       </div>
       <div>
-        <AttributeButton onClick={() => addStrength()}>
+        <AttributeButton onClick={() => addStrength()} disabled={isButtonDisabled}>
           <IconsAttribute />
         </AttributeButton>
       </div>

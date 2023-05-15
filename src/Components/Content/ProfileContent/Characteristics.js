@@ -7,14 +7,16 @@ const Characteristics = () => {
   const classes = useStyles()
   const dexterity = useSelector(state => state.attributeReducer.dexterity)
   const strength = useSelector(state => state.attributeReducer.strength)
+  const vitality = useSelector(state => state.attributeReducer.vitality)
+  const energy = useSelector(state => state.attributeReducer.energy)
 
   return(
     <Stack direction='row'  flex={2}>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
         <div>Strength: {strength}</div>
         <div>Dexterity: {dexterity}</div>
-        <div>Vitality: 250</div>
-        <div>Energy: 250</div>
+        <div>Vitality: {vitality}</div>
+        <div>Energy: {energy}</div>
       </Stack>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
         <div>physical damage: 3000-1500</div>
