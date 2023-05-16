@@ -2,7 +2,7 @@ import { ACTIVE_BUTTON, DISABLE_BUTTON, INCREMENT_DEXTERITY, INCREMENT_ENERGY, I
 
 
 const initialState = {
-  points: 10,
+  points: 5,
   strength: 5,
   dexterity: 5,
   vitality: 5,

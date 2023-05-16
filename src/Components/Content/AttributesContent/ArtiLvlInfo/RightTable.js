@@ -1,9 +1,11 @@
 import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
+import { useSelector } from "react-redux"
 
 const RigthTable = () => {
   const classes = useStyles()
+  const nextLevel = useSelector(state => state.levelReducer.nextLevel)
 
   return (
     <Stack direction='column' flex={1} className={classes.lvlHeight}>
@@ -12,7 +14,7 @@ const RigthTable = () => {
       </div>
       <Stack direction='column' flex={4} className={classes.expLvlBor}>
         <div>Next Level</div>
-        <div>1500</div>
+        <div>{nextLevel}</div>
       </Stack>
     </Stack>
   )

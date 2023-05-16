@@ -1,21 +1,12 @@
 import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
-import { useDispatch, useSelector } from "react-redux"
-import { AttributeButton } from "../../../Header/StyledHeader"
-import IconsAttribute from "./IconsAttribute"
-import { incrementPoints } from "../../../../Redux/actions"
-
+import { useSelector } from "react-redux"
 
 
 const Points = () => {
   const classes = useStyles()
   const points = useSelector(state => state.attributeReducer.points)
-  const dispatch = useDispatch()
-
-  const addPoints = () => {
-    dispatch(incrementPoints())
-  }
 
   return (
     <Stack direction='column'>
@@ -26,9 +17,6 @@ const Points = () => {
         <div className={classes.pointsCont}>
           {points}
         </div>
-        <AttributeButton onClick={() => addPoints()} >
-          <IconsAttribute />
-        </AttributeButton>
       </div>
     </Stack>
   )

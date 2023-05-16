@@ -1,4 +1,4 @@
-import { ACTIVE_BUTTON, DISABLE_BUTTON, INCREMENT_DEXTERITY, INCREMENT_ENERGY, INCREMENT_POINTS, INCREMENT_STRENGTH, INCREMENT_VITALITY } from "./types"
+import { ACTIVE_BUTTON, DISABLE_BUTTON, INCREMENT_DEXTERITY, INCREMENT_ENERGY, INCREMENT_EXPERIENCE, INCREMENT_POINTS, INCREMENT_STRENGTH, INCREMENT_VITALITY, UPDATE_LEVEL } from "./types"
 
 export function incrementStrength() {
   return {
@@ -39,6 +39,19 @@ export function incrementPoints() {
 export function activeButton() {
   return {
     type: ACTIVE_BUTTON
+  }
+}
+
+export function updateLevel(points) {
+  return {
+    type: UPDATE_LEVEL,
+    points: points
+  }
+}
+
+export function incrementExperience() {
+  return {
+    type: INCREMENT_EXPERIENCE,
   }
 }
 
