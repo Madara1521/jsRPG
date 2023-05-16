@@ -1,4 +1,4 @@
-import { DISABLE_BUTTON, INCREMENT_DEXTERITY, INCREMENT_ENERGY, INCREMENT_STRENGTH, INCREMENT_VITALITY } from "../types"
+import { ACTIVE_BUTTON, DISABLE_BUTTON, INCREMENT_DEXTERITY, INCREMENT_ENERGY, INCREMENT_POINTS, INCREMENT_STRENGTH, INCREMENT_VITALITY } from "../types"
 
 
 const initialState = {
@@ -36,10 +36,20 @@ export const attributeReducer = (state = initialState, action) => {
         energy: state.energy + 1,
         points: state.points - 1
       }
+    case INCREMENT_POINTS:
+      return {
+        ...state,
+        points: state.points + 5
+      }
     case DISABLE_BUTTON:
       return {
         ...state,
         isButtonDisabled: true
+      }
+    case ACTIVE_BUTTON:
+      return {
+        ...state,
+        isButtonDisabled: false
       }
     default:
       return state

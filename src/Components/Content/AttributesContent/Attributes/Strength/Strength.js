@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../../Styles"
 import IconsAttribute from "../IconsAttribute"
 import { AttributeButton } from "../../../../Header/StyledHeader"
 import { useDispatch, useSelector } from "react-redux"
-import { disableButton, incrementStrength } from '../../../../../Redux/actions'
+import { activeButton, disableButton, incrementStrength } from '../../../../../Redux/actions'
 
 const Strength = () => {
   const classes = useStyles()
@@ -18,8 +18,17 @@ const Strength = () => {
     
     if (points === 1 ){
       dispatch(disableButton())
+      console.log('disable button')
     }
   }
+
+  useEffect(() => {
+    if (points > 0 ){
+      dispatch(activeButton())
+      console.log('active button')
+    }
+  },[dispatch,points])
+
 
   return (
     <Stack direction='row'>
