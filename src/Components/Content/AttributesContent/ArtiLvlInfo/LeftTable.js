@@ -18,8 +18,8 @@ const LeftTable = () => {
   }
 
   useEffect(() => {
-    if (experience === nextLevel ){
-      dispatch(updateLevel())
+    if (experience >= nextLevel ){
+      dispatch(updateLevel(experience))
       console.log('levelUP')
       dispatch(incrementPoints())
       console.log('experienceUP')

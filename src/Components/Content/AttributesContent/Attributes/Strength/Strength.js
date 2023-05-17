@@ -6,6 +6,8 @@ import { AttributeButton } from "../../../../Header/StyledHeader"
 import { useDispatch, useSelector } from "react-redux"
 import { activeButton, disableButton, incrementStrength } from '../../../../../Redux/actions'
 
+
+
 const Strength = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
@@ -18,14 +20,12 @@ const Strength = () => {
     
     if (points === 1 ){
       dispatch(disableButton())
-      console.log('disable button')
     }
   }
 
   useEffect(() => {
     if (points > 0 ){
       dispatch(activeButton())
-      console.log('active button')
     }
   },[dispatch,points])
 
