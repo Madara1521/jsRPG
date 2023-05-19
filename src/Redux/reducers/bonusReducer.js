@@ -3,10 +3,10 @@ import { ARMOR_BONUS } from "../types"
 
 const initialState = {
   armorBonus: {
-    strength: 3,
-    dexterity: 4,
-    vitality: 7,
-    energy: 1
+    strength: 0,
+    dexterity: 0,
+    vitality: 0,
+    energy: 0
   },
   amuletBonus: {
     strength: 4,

@@ -2,8 +2,8 @@ import React from "react"
 import { useStyles } from "../../Styles"
 import { Stack } from '@mui/material'
 import PhotoAndLvl from "./PhotoAndLvl"
-import Characteristics from "./Characteristics"
 import GenInfo from "./GenInfo"
+import Characteristics from "./characteristics/Characteristics"
 
 const ProfileContent = () => {
   const classes = useStyles()
