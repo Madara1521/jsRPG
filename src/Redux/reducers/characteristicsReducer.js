@@ -1,4 +1,4 @@
-import { TOTAL_DEXTERITY, TOTAL_STRENGTH } from "../types"
+import { TOTAL_DEXTERITY, TOTAL_ENERGY, TOTAL_STRENGTH, TOTAL_VITALITY } from "../types"
 
 
 const initialState = {
@@ -19,6 +19,16 @@ export const characteristicsReducer = (state = initialState, action) => {
       return {
         ...state,
         totalDexterity: action.dexterity
+      }
+    case TOTAL_VITALITY:
+      return {
+        ...state,
+        totalVitality: action.vitality
+      }
+    case TOTAL_ENERGY:
+      return {
+        ...state,
+        totalEnergy: action.energy
       }
     default:
       return state

@@ -5,6 +5,8 @@ const initialState = {
   armorBonus: {
     strength: 3,
     dexterity: 4,
+    vitality: 7,
+    energy: 1
   },
   amuletBonus: {
     strength: 4,
