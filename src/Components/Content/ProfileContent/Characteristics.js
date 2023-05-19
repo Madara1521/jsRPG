@@ -1,20 +1,37 @@
 import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../Styles"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { totalDexterity, totalStrength } from "../../../Redux/actions"
+
 
 const Characteristics = () => {
   const classes = useStyles()
-  const dexterity = useSelector(state => state.attributeReducer.dexterity)
-  const strength = useSelector(state => state.attributeReducer.strength)
+  const dispatch = useDispatch()
+
   const vitality = useSelector(state => state.attributeReducer.vitality)
   const energy = useSelector(state => state.attributeReducer.energy)
 
-  return(
-    <Stack direction='row'  flex={2}>
+  const strengthArmor = useSelector(state => state.bonusReducer.armorBonus.strength)
+  const strength = useSelector(state => state.attributeReducer.strength)
+  const allStrength = strength + strengthArmor
+  dispatch(totalStrength(allStrength))
+  const characteristicsStrength = useSelector(state => state.characteristicsReducer.totalStrength)
+
+  const dexterityArmor = useSelector(state => state.bonusReducer.armorBonus.dexterity)
+  const dexterity = useSelector(state => state.attributeReducer.dexterity)
+  const allDexterity = dexterity + dexterityArmor
+  dispatch(totalDexterity(allDexterity))
+  const characteristicsDexterity = useSelector(state => state.characteristicsReducer.totalDexterity)
+  
+
+
+
+  return (
+    <Stack direction='row' flex={2}>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
-        <div>Strength: {strength}</div>
-        <div>Dexterity: {dexterity}</div>
+        <div>Strength: {characteristicsStrength}</div>
+        <div>Dexterity: {characteristicsDexterity}</div>
         <div>Vitality: {vitality}</div>
         <div>Energy: {energy}</div>
       </Stack>

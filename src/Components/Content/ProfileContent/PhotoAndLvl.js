@@ -3,7 +3,8 @@ import { useStyles } from "../../Styles"
 import barbarian from './Barbarian.webp'
 import { Stack, Box } from '@mui/material'
 import { useDispatch, useSelector } from "react-redux"
-import { rankUpdate10, rankUpdate20 } from "../../../Redux/actions"
+import { rankUpdate10, rankUpdate20, rankUpdate40, rankUpdate60 } from "../../../Redux/actions"
+
 
 const PhotoAndLvl = () => {
   const classes = useStyles()
@@ -11,15 +12,20 @@ const PhotoAndLvl = () => {
   const level = useSelector(state => state.levelReducer.level)
   const rank = useSelector(state => state.levelReducer.rank)
 
+
   useEffect(() => {
-    if (level >= 20 ){
-      dispatch(rankUpdate20())
-      console.log('upRank20')
-    } else if (level >= 10 ){
-      dispatch(rankUpdate10())
-      console.log('upRank10')
-    }
-  },[dispatch,level])
+    const levelActions = [
+      { lvl: 10, action: rankUpdate10 },
+      { lvl: 20, action: rankUpdate20 },
+      { lvl: 40, action: rankUpdate40 },
+      { lvl: 60, action: rankUpdate60 },
+    ]
+    levelActions.forEach(({ lvl, action }) => {
+      if (level >= lvl) {
+        dispatch(action())
+      }
+    })
+  }, [dispatch, level])
 
 
   return (

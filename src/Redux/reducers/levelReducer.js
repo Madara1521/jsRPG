@@ -1,9 +1,9 @@
-import { INCREMENT_EXPERIENCE, RANK_UPDATE10, RANK_UPDATE20, UPDATE_LEVEL } from "../types"
+import { INCREMENT_EXPERIENCE, RANK_UPDATE10, RANK_UPDATE20, RANK_UPDATE40, RANK_UPDATE60, UPDATE_LEVEL } from "../types"
 
 const initialState = {
   level: 1,
-  experience: 1000,
-  nextLevel: 1500,
+  experience: 0,
+  nextLevel: 500,
   rank: 'Peasant'
 }
 
@@ -29,6 +29,16 @@ export const levelReducer = (state = initialState, action) => {
       return {
         ...state,
         rank: 'Guardian'
+      }
+    case RANK_UPDATE40:
+      return {
+        ...state,
+        rank: 'Warrior'
+      }
+    case RANK_UPDATE60:
+      return {
+        ...state,
+        rank: 'Knight'
       }
     default:
       return state
