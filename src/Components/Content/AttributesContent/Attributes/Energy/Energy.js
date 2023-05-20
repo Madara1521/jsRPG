@@ -4,20 +4,19 @@ import { useStyles } from "../../../../Styles"
 import IconsAttribute from "../IconsAttribute"
 import { AttributeButton } from "../../../../Header/StyledHeader"
 import { disableButton, incrementEnergy } from "../../../../../Redux/actions"
-import { useDispatch, useSelector } from "react-redux"
+import { connect, useSelector } from "react-redux"
 
-const Energy = () => {
+const Energy = ({ incrementEnergy, disableButton }) => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const energy = useSelector(state => state.attributeReducer.energy)
   const points = useSelector(state => state.attributeReducer.points)
   const isButtonDisabled = useSelector(state => state.attributeReducer.isButtonDisabled)
 
   const addEnergy = () => {
-    dispatch(incrementEnergy())
+    incrementEnergy()
 
     if (points === 1 ){
-      dispatch(disableButton())
+      disableButton()
     }
   }
 
@@ -36,4 +35,4 @@ const Energy = () => {
   )
 }
 
-export default Energy
+export default connect(null, { incrementEnergy, disableButton })(Energy)

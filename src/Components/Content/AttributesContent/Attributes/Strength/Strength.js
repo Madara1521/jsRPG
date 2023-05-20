@@ -1,33 +1,26 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../../Styles"
 import IconsAttribute from "../IconsAttribute"
 import { AttributeButton } from "../../../../Header/StyledHeader"
-import { useDispatch, useSelector } from "react-redux"
-import { activeButton, disableButton, incrementStrength } from '../../../../../Redux/actions'
+import { connect, useSelector } from "react-redux"
+import { disableButton, incrementStrength } from '../../../../../Redux/actions'
 
 
 
-const Strength = () => {
+const Strength = ({ disableButton, activeButton, incrementStrength }) => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const strength = useSelector(state => state.attributeReducer.strength)
   const points = useSelector(state => state.attributeReducer.points)
   const isButtonDisabled = useSelector(state => state.attributeReducer.isButtonDisabled)
 
   const addStrength = () => {
-    dispatch(incrementStrength())
-    
-    if (points === 1 ){
-      dispatch(disableButton())
+    incrementStrength()
+
+    if (points === 1) {
+      disableButton()
     }
   }
-
-  useEffect(() => {
-    if (points > 0 ){
-      dispatch(activeButton())
-    }
-  },[dispatch,points])
 
 
   return (
@@ -47,4 +40,4 @@ const Strength = () => {
   )
 }
 
-export default Strength
+export default connect(null, { disableButton, incrementStrength })(Strength)

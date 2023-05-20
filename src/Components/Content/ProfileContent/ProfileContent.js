@@ -2,8 +2,8 @@ import React from "react"
 import { useStyles } from "../../Styles"
 import { Stack } from '@mui/material'
 import PhotoAndLvl from "./PhotoAndLvl"
-import GenInfo from "./GenInfo"
 import Characteristics from "./characteristics/Characteristics"
+import GeneralInfo from "./GeneralInfo"
 
 const ProfileContent = () => {
   const classes = useStyles()
@@ -22,7 +22,7 @@ const ProfileContent = () => {
         <div className={classes.titleComp}>
           <h1>General information</h1>
         </div>
-        <GenInfo />
+        <GeneralInfo />
       </Stack>
     </div>
   )

@@ -1,7 +1,7 @@
 import { INCREMENT_EXPERIENCE, RANK_UPDATE10, RANK_UPDATE20, RANK_UPDATE40, RANK_UPDATE60, UPDATE_LEVEL } from "../types"
 
 const initialState = {
-  level: 1,
+  level: 9,
   experience: 0,
   nextLevel: 500,
   rank: 'Peasant'

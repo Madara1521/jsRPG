@@ -1,12 +1,19 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
-import { useSelector } from "react-redux"
+import { connect, useSelector } from "react-redux"
+import { activeButton } from "../../../../Redux/actions"
 
 
-const Points = () => {
+const Points = ({ activeButton }) => {
   const classes = useStyles()
   const points = useSelector(state => state.attributeReducer.points)
+
+  useEffect(() => {
+    if (points > 0) {
+      activeButton()
+    }
+  }, [points, activeButton])
 
   return (
     <Stack direction='column'>
@@ -22,4 +29,4 @@ const Points = () => {
   )
 }
 
-export default Points
+export default connect(null, { activeButton })(Points)

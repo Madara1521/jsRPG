@@ -3,22 +3,21 @@ import { Stack } from '@mui/material'
 import { useStyles } from "../../../../Styles"
 import IconsAttribute from "../IconsAttribute"
 import { AttributeButton } from "../../../../Header/StyledHeader"
-import { useDispatch, useSelector } from "react-redux"
+import { connect, useSelector } from "react-redux"
 import { disableButton, incrementDexterity } from "../../../../../Redux/actions"
 
 
-const Dexterity = () => {
+const Dexterity = ({ incrementDexterity, disableButton }) => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const dexterity = useSelector(state => state.attributeReducer.dexterity)
   const points = useSelector(state => state.attributeReducer.points)
   const isButtonDisabled = useSelector(state => state.attributeReducer.isButtonDisabled)
 
   const addDexterity = () => {
-    dispatch(incrementDexterity())
+    incrementDexterity()
 
     if (points === 1 ){
-      dispatch(disableButton())
+      disableButton()
     }
   }
 
@@ -37,4 +36,4 @@ const Dexterity = () => {
   )
 }
 
-export default Dexterity
+export default connect(null,{ incrementDexterity, disableButton })(Dexterity)

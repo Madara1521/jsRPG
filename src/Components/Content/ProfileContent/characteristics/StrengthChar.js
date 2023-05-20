@@ -1,15 +1,13 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { connect, useSelector } from "react-redux"
 import { totalStrength } from "../../../../Redux/actions"
 
 
-const StrengthChar = () => {
-  const dispatch = useDispatch()
-
+const StrengthChar = ({ totalStrength }) => {
   const strengthArmor = useSelector(state => state.bonusReducer.armorBonus.strength)
   const strength = useSelector(state => state.attributeReducer.strength)
   const allStrength = strength + strengthArmor
-  dispatch(totalStrength(allStrength))
+  totalStrength(allStrength)
   const characteristicsStrength = useSelector(state => state.characteristicsReducer.totalStrength)
 
   return (
@@ -17,4 +15,4 @@ const StrengthChar = () => {
   )
 }
 
-export default StrengthChar
+export default connect(null, { totalStrength })(StrengthChar)

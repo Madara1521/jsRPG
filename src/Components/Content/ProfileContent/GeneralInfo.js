@@ -2,7 +2,7 @@ import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../Styles"
 
-const GenInfo = () => {
+const GeneralInfo = () => {
   const classes = useStyles()
 
   return (
@@ -28,4 +28,4 @@ const GenInfo = () => {
   )
 }
 
-export default GenInfo
+export default GeneralInfo

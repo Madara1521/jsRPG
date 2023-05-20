@@ -2,16 +2,14 @@ import React, { useEffect } from "react"
 import { useStyles } from "../../Styles"
 import barbarian from './Barbarian.webp'
 import { Stack, Box } from '@mui/material'
-import { useDispatch, useSelector } from "react-redux"
+import { connect, useSelector } from "react-redux"
 import { rankUpdate10, rankUpdate20, rankUpdate40, rankUpdate60 } from "../../../Redux/actions"
 
 
-const PhotoAndLvl = () => {
+const PhotoAndLvl = ({ rankUpdate10, rankUpdate20, rankUpdate40, rankUpdate60 }) => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const level = useSelector(state => state.levelReducer.level)
   const rank = useSelector(state => state.levelReducer.rank)
-
 
   useEffect(() => {
     const levelActions = [
@@ -22,11 +20,11 @@ const PhotoAndLvl = () => {
     ]
     levelActions.forEach(({ lvl, action }) => {
       if (level >= lvl) {
-        dispatch(action())
+        action()
       }
     })
-  }, [dispatch, level])
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [level]) 
 
   return (
     <Stack direction='row' flex={2}>
@@ -43,4 +41,4 @@ const PhotoAndLvl = () => {
   )
 }
 
-export default PhotoAndLvl
+export default connect(null, { rankUpdate10, rankUpdate20, rankUpdate40, rankUpdate60 })(PhotoAndLvl)

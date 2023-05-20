@@ -1,15 +1,13 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { connect, useSelector } from "react-redux"
 import { totalDexterity } from "../../../../Redux/actions"
 
 
-const DexterityChar = () => {
-  const dispatch = useDispatch()
-
+const DexterityChar = ({ totalDexterity }) => {
   const dexterityArmor = useSelector(state => state.bonusReducer.armorBonus.dexterity)
   const dexterity = useSelector(state => state.attributeReducer.dexterity)
   const allDexterity = dexterity + dexterityArmor
-  dispatch(totalDexterity(allDexterity))
+  totalDexterity(allDexterity)
   const characteristicsDexterity = useSelector(state => state.characteristicsReducer.totalDexterity)
 
   return (
@@ -17,4 +15,4 @@ const DexterityChar = () => {
   )
 }
 
-export default DexterityChar
+export default connect(null, { totalDexterity })(DexterityChar)
