@@ -1,22 +1,29 @@
 import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
-import StrengthChar from "./StrengthChar"
-import DexterityChar from "./DexterityChar"
-import VitalityChar from "./VitalityChar"
-import EnergyChar from "./EnergyChar"
+import CharComp from "./CharComp"
+import { totalDexterity, totalEnergy, totalStrength, totalVitality } from "../../../../Redux/actions"
+import { connect } from "react-redux"
 
 
-const Characteristics = () => {
+
+const Characteristics = ({totalDexterity, totalEnergy, totalStrength, totalVitality}) => {
   const classes = useStyles()
+
+  const attribute = {
+    strength: {name:'strength', action: totalStrength },
+    dexterity: {name:'dexterity', action: totalDexterity },
+    vitality: {name:'vitality', action: totalVitality },
+    energy: {name:'energy', action: totalEnergy }
+  }
 
   return (
     <Stack direction='row' flex={2}>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
-        <StrengthChar />
-        <DexterityChar />
-        <VitalityChar />
-        <EnergyChar />
+        <CharComp name={attribute.strength.name} action={attribute.strength.action}/>
+        <CharComp name={attribute.dexterity.name} action={attribute.dexterity.action}/>
+        <CharComp name={attribute.vitality.name} action={attribute.vitality.action}/>
+        <CharComp name={attribute.energy.name} action={attribute.energy.action}/>
       </Stack>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
         <div>physical damage: 3000-1500</div>
@@ -29,4 +36,4 @@ const Characteristics = () => {
   )
 }
 
-export default Characteristics
+export default connect(null, {totalDexterity, totalEnergy, totalStrength, totalVitality})(Characteristics)

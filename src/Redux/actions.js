@@ -1,4 +1,26 @@
-import { ACTIVE_BUTTON, ARMOR_BONUS, DISABLE_BUTTON, INCREMENT_DEXTERITY, INCREMENT_ENERGY, INCREMENT_EXPERIENCE, INCREMENT_POINTS, INCREMENT_STRENGTH, INCREMENT_VITALITY, RANK_UPDATE10, RANK_UPDATE100, RANK_UPDATE20, RANK_UPDATE40, RANK_UPDATE60, RANK_UPDATE80, RANK_UPDATE90, TOTAL_DEXTERITY, TOTAL_ENERGY, TOTAL_STRENGTH, TOTAL_VITALITY, UPDATE_LEVEL } from "./types"
+import {
+  ACTIVE_BUTTON,
+  ARMOR_BONUS,
+  DISABLE_BUTTON,
+  INCREMENT_DEXTERITY,
+  INCREMENT_ENERGY,
+  INCREMENT_EXPERIENCE,
+  INCREMENT_POINTS,
+  INCREMENT_STRENGTH,
+  INCREMENT_VITALITY,
+  RANK_UPDATE10,
+  RANK_UPDATE100,
+  RANK_UPDATE20,
+  RANK_UPDATE40,
+  RANK_UPDATE60,
+  RANK_UPDATE80,
+  RANK_UPDATE90,
+  TOTAL_DEXTERITY,
+  TOTAL_ENERGY,
+  TOTAL_STRENGTH,
+  TOTAL_VITALITY,
+  UPDATE_LEVEL
+} from "./types"
 
 export function incrementStrength() {
   return {
@@ -93,30 +115,30 @@ export function rankUpdate100() {
   }
 }
 
-export function totalStrength(strength) {
+export function totalStrength(total) {
   return {
     type: TOTAL_STRENGTH,
-    strength
+    total
   }
 }
-export function totalDexterity(dexterity) {
+export function totalDexterity(total) {
   return {
     type: TOTAL_DEXTERITY,
-    dexterity
+    total
   }
 }
 
-export function totalVitality(vitality) {
+export function totalVitality(total) {
   return {
     type: TOTAL_VITALITY,
-    vitality
+    total
   }
 }
 
-export function totalEnergy(energy) {
+export function totalEnergy(total) {
   return {
     type: TOTAL_ENERGY,
-    energy
+    total
   }
 }
 
@@ -125,7 +147,6 @@ export function armorBonus() {
     type: ARMOR_BONUS,
   }
 }
-
 
 
 
