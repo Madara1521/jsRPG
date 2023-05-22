@@ -2,6 +2,10 @@ import { ARMOR_BONUS } from "../types"
 
 
 const initialState = {
+  weaponBonus: {
+    startPhyBonus: 44,
+    finalPhyBonus: 83
+  },
   armorBonus: {
     strength: 0,
     dexterity: 0,

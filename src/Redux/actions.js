@@ -8,6 +8,7 @@ import {
   INCREMENT_POINTS,
   INCREMENT_STRENGTH,
   INCREMENT_VITALITY,
+  PHYSICAL_DAMAGE,
   RANK_UPDATE10,
   RANK_UPDATE100,
   RANK_UPDATE20,
@@ -145,6 +146,14 @@ export function totalEnergy(total) {
 export function armorBonus() {
   return {
     type: ARMOR_BONUS,
+  }
+}
+
+export function physicalDamage(startPhyBonus, finalPhyBonus) {
+  return {
+    type: PHYSICAL_DAMAGE,
+    startPhyBonus,
+    finalPhyBonus
   }
 }
 

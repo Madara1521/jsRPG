@@ -1,4 +1,5 @@
 import {
+  PHYSICAL_DAMAGE,
   TOTAL_DEXTERITY,
   TOTAL_ENERGY,
   TOTAL_STRENGTH,
@@ -11,6 +12,11 @@ const initialState = {
   totalDexterity: 0,
   totalVitality: 0,
   totalEnergy: 0,
+
+  startPhyDamage: 5,
+  finalPhyDamage: 10,
+
+  
 }
 
 export const characteristicsReducer = (state = initialState, action) => {
@@ -18,7 +24,9 @@ export const characteristicsReducer = (state = initialState, action) => {
     case TOTAL_STRENGTH:
       return {
         ...state,
-        totalStrength: action.total
+        totalStrength: action.total,
+        startPhyDamage: action.total*4,
+        finalPhyDamage: action.total*6
       }
     case TOTAL_DEXTERITY:
       return {
@@ -34,6 +42,12 @@ export const characteristicsReducer = (state = initialState, action) => {
       return {
         ...state,
         totalEnergy: action.total
+      }
+    case PHYSICAL_DAMAGE:
+      return {
+        ...state,
+        startPhyDamage: state.startPhyDamage + action.startPhyBonus,
+        finalPhyDamage: state.finalPhyDamage + action.finalPhyBonus
       }
     default:
       return state
