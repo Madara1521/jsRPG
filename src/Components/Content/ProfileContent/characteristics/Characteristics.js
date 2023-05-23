@@ -1,23 +1,49 @@
 import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
-import CharComp from "./CharComp"
-import { totalDexterity, totalEnergy, totalStrength, totalVitality } from "../../../../Redux/actions"
-import { connect } from "react-redux"
 import DamageComp from "./DamageComp"
+import uniqid from 'uniqid'
+import CharacteristicsComp from "./CharacteristicsComp"
 
 
-
-const Characteristics = ({totalDexterity, totalEnergy, totalStrength, totalVitality}) => {
+const Characteristics = () => {
   const classes = useStyles()
+
+  const characteristicsFields = [
+    {
+      name: 'strength',
+      totalStatName: 'totalStrength',
+      id: uniqid()
+    },
+    {
+      name: 'dexterity',
+      totalStatName: 'totalDexterity',
+      id: uniqid()
+    },
+    {
+      name: 'vitality',
+      totalStatName: 'totalVitality',
+      id: uniqid()
+    },
+    {
+      name: 'energy',
+      totalStatName: 'totalEnergy',
+      id: uniqid()
+    }
+  ]
 
   return (
     <Stack direction='row' flex={2}>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
-        <CharComp name='strength' action={totalStrength}/>
-        <CharComp name='dexterity' action={totalDexterity}/>
-        <CharComp name='vitality' action={totalVitality}/>
-        <CharComp name='energy' action={totalEnergy}/>
+        {characteristicsFields.map(field => {
+          return (
+            <CharacteristicsComp
+              name={field.name}
+              totalStatName={field.totalStatName}
+              key={field.id}
+            />
+          )
+        })}
       </Stack>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
         <DamageComp />
@@ -30,4 +56,4 @@ const Characteristics = ({totalDexterity, totalEnergy, totalStrength, totalVital
   )
 }
 
-export default connect(null, {totalDexterity, totalEnergy, totalStrength, totalVitality})(Characteristics)
+export default Characteristics

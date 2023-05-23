@@ -19,7 +19,7 @@ const LeftTable = ({ incrementPoints, updateLevel, incrementExperience }) => {
       updateLevel(experience)
       incrementPoints()
     }
-  }, [updateLevel,incrementPoints,experience, nextLevel])
+  }, [experience, nextLevel, incrementPoints, updateLevel])
 
   return (
     <Stack direction='column' flex={1} className={classes.lvlHeight}>

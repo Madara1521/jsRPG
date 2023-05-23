@@ -3,26 +3,24 @@ import { Stack } from '@mui/material'
 import { connect, useSelector } from "react-redux"
 import { AttributeButton } from "../../../Header/StyledHeader"
 import IconsAttribute from "./IconsAttribute"
-import { disableButton } from '../../../../Redux/actions'
+import { disableButton, incrementStat, setTottalStat } from '../../../../Redux/actions'
 import { useStyles } from "../../../Styles"
 
 
-
-const AtribComp = ({ name, total, increment, disableButton }) => {
+const AttributeComp = ({ totalStatName, statName, incrementStat, disableButton, setTottalStat, current }) => {
   const classes = useStyles()
-  const attributeName = useSelector(state => state.attributeReducer[name])
   const points = useSelector(state => state.attributeReducer.points)
   const isButtonDisabled = useSelector(state => state.attributeReducer.isButtonDisabled)
 
-  const armor = useSelector(state => state.bonusReducer.armorBonus[name])
-  const all = attributeName + armor
+  const bonusAttribute = useSelector(state => state.bonusReducer.armorBonus[statName])
+
   useEffect(() => {
-    const totalAtrib = total
-    totalAtrib(all)
-  }, [total, all])
+    setTottalStat(totalStatName, current, bonusAttribute)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current, bonusAttribute])
 
   const addAttribute = () => {
-    increment()
+    incrementStat(statName)
 
     if (points === 1) {
       disableButton()
@@ -33,10 +31,10 @@ const AtribComp = ({ name, total, increment, disableButton }) => {
   return (
     <Stack direction='row'>
       <div className={classes.attribCont}>
-        {name.charAt(0).toUpperCase() + name.slice(1)}
+        {statName.charAt(0).toUpperCase() + statName.slice(1)}
       </div>
       <div className={classes.attribCont}>
-        {attributeName}
+        {current}
       </div>
       <div>
         <AttributeButton onClick={() => addAttribute()} disabled={isButtonDisabled}>
@@ -47,4 +45,8 @@ const AtribComp = ({ name, total, increment, disableButton }) => {
   )
 }
 
-export default connect(null, { disableButton })(AtribComp)
+export default connect((store, ownProps) => {
+  return {
+    current: store.attributeReducer[ownProps.statName]
+  }
+}, { disableButton, incrementStat, setTottalStat })(AttributeComp)

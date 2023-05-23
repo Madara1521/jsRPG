@@ -1,9 +1,6 @@
 import {
   PHYSICAL_DAMAGE,
-  TOTAL_DEXTERITY,
-  TOTAL_ENERGY,
-  TOTAL_STRENGTH,
-  TOTAL_VITALITY
+  SET_TOTAL_STAT,
 } from "../types"
 
 
@@ -16,32 +13,15 @@ const initialState = {
   startPhyDamage: 5,
   finalPhyDamage: 10,
 
-  
+
 }
 
 export const characteristicsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOTAL_STRENGTH:
+    case SET_TOTAL_STAT:
       return {
         ...state,
-        totalStrength: action.total,
-        startPhyDamage: action.total*4,
-        finalPhyDamage: action.total*6
-      }
-    case TOTAL_DEXTERITY:
-      return {
-        ...state,
-        totalDexterity: action.total
-      }
-    case TOTAL_VITALITY:
-      return {
-        ...state,
-        totalVitality: action.total
-      }
-    case TOTAL_ENERGY:
-      return {
-        ...state,
-        totalEnergy: action.total
+        [action.totalStatName]: action.current + action.bonusAttribute
       }
     case PHYSICAL_DAMAGE:
       return {

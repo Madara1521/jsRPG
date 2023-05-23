@@ -1,11 +1,8 @@
 import {
   ACTIVE_BUTTON,
   DISABLE_BUTTON,
-  INCREMENT_DEXTERITY,
-  INCREMENT_ENERGY,
   INCREMENT_POINTS,
-  INCREMENT_STRENGTH,
-  INCREMENT_VITALITY
+  INCREMENT_STAT,
 } from "../types"
 
 
@@ -20,28 +17,10 @@ const initialState = {
 
 export const attributeReducer = (state = initialState, action) => {
   switch (action.type) {
-    case INCREMENT_STRENGTH:
+    case INCREMENT_STAT:
       return {
         ...state,
-        strength: state.strength + 1,
-        points: state.points - 1
-      }
-    case INCREMENT_DEXTERITY:
-      return {
-        ...state,
-        dexterity: state.dexterity + 1,
-        points: state.points - 1
-      }
-    case INCREMENT_VITALITY:
-      return {
-        ...state,
-        vitality: state.vitality + 1,
-        points: state.points - 1
-      }
-    case INCREMENT_ENERGY:
-      return {
-        ...state,
-        energy: state.energy + 1,
+        [action.statName]: state[action.statName] + 1,
         points: state.points - 1
       }
     case INCREMENT_POINTS:

@@ -2,12 +2,9 @@ import {
   ACTIVE_BUTTON,
   ARMOR_BONUS,
   DISABLE_BUTTON,
-  INCREMENT_DEXTERITY,
-  INCREMENT_ENERGY,
   INCREMENT_EXPERIENCE,
   INCREMENT_POINTS,
-  INCREMENT_STRENGTH,
-  INCREMENT_VITALITY,
+  INCREMENT_STAT,
   PHYSICAL_DAMAGE,
   RANK_UPDATE10,
   RANK_UPDATE100,
@@ -16,34 +13,15 @@ import {
   RANK_UPDATE60,
   RANK_UPDATE80,
   RANK_UPDATE90,
-  TOTAL_DEXTERITY,
-  TOTAL_ENERGY,
-  TOTAL_STRENGTH,
-  TOTAL_VITALITY,
+  SET_TOTAL_STAT,
   UPDATE_LEVEL
 } from "./types"
 
-export function incrementStrength() {
+export function incrementStat(statName) {
+  //accepts the following props
   return {
-    type: INCREMENT_STRENGTH
-  }
-}
-
-export function incrementDexterity() {
-  return {
-    type: INCREMENT_DEXTERITY
-  }
-}
-
-export function incrementVitality() {
-  return {
-    type: INCREMENT_VITALITY
-  }
-}
-
-export function incrementEnergy() {
-  return {
-    type: INCREMENT_ENERGY
+    type: INCREMENT_STAT,
+    statName
   }
 }
 
@@ -110,36 +88,19 @@ export function rankUpdate90() {
     type: RANK_UPDATE90,
   }
 }
+
 export function rankUpdate100() {
   return {
     type: RANK_UPDATE100,
   }
 }
 
-export function totalStrength(total) {
+export function setTottalStat(totalStatName, current, bonusAttribute) {
   return {
-    type: TOTAL_STRENGTH,
-    total
-  }
-}
-export function totalDexterity(total) {
-  return {
-    type: TOTAL_DEXTERITY,
-    total
-  }
-}
-
-export function totalVitality(total) {
-  return {
-    type: TOTAL_VITALITY,
-    total
-  }
-}
-
-export function totalEnergy(total) {
-  return {
-    type: TOTAL_ENERGY,
-    total
+    type: SET_TOTAL_STAT,
+    totalStatName,
+    current,
+    bonusAttribute
   }
 }
 
