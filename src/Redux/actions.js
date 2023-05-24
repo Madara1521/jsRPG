@@ -1,18 +1,12 @@
 import {
   ACTIVE_BUTTON,
-  ARMOR_BONUS,
+  SET_ARMOR_BONUS,
   DISABLE_BUTTON,
   INCREMENT_EXPERIENCE,
   INCREMENT_POINTS,
   INCREMENT_STAT,
   PHYSICAL_DAMAGE,
-  RANK_UPDATE10,
-  RANK_UPDATE100,
-  RANK_UPDATE20,
-  RANK_UPDATE40,
-  RANK_UPDATE60,
-  RANK_UPDATE80,
-  RANK_UPDATE90,
+  RANK_UPDATE,
   SET_TOTAL_STAT,
   UPDATE_LEVEL
 } from "./types"
@@ -56,42 +50,10 @@ export function incrementExperience() {
   }
 }
 
-export function rankUpdate10() {
+export function rankUpdate(rank) {
   return {
-    type: RANK_UPDATE10,
-  }
-}
-
-export function rankUpdate20() {
-  return {
-    type: RANK_UPDATE20,
-  }
-}
-
-export function rankUpdate40() {
-  return {
-    type: RANK_UPDATE40,
-  }
-}
-export function rankUpdate60() {
-  return {
-    type: RANK_UPDATE60,
-  }
-}
-export function rankUpdate80() {
-  return {
-    type: RANK_UPDATE80,
-  }
-}
-export function rankUpdate90() {
-  return {
-    type: RANK_UPDATE90,
-  }
-}
-
-export function rankUpdate100() {
-  return {
-    type: RANK_UPDATE100,
+    type: RANK_UPDATE,
+    rank
   }
 }
 
@@ -104,9 +66,9 @@ export function setTottalStat(totalStatName, current, bonusAttribute) {
   }
 }
 
-export function armorBonus() {
+export function setArmorBonus() {
   return {
-    type: ARMOR_BONUS,
+    type: SET_ARMOR_BONUS,
   }
 }
 

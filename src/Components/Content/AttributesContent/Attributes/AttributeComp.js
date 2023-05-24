@@ -1,22 +1,29 @@
 import React, { useEffect } from "react"
 import { Stack } from '@mui/material'
-import { connect, useSelector } from "react-redux"
+import { connect } from "react-redux"
 import { AttributeButton } from "../../../Header/StyledHeader"
 import IconsAttribute from "./IconsAttribute"
 import { disableButton, incrementStat, setTottalStat } from '../../../../Redux/actions'
 import { useStyles } from "../../../Styles"
+import { PropTypes } from 'prop-types'
 
 
-const AttributeComp = ({ totalStatName, statName, incrementStat, disableButton, setTottalStat, current }) => {
+const AttributeComp = (props) => {
   const classes = useStyles()
-  const points = useSelector(state => state.attributeReducer.points)
-  const isButtonDisabled = useSelector(state => state.attributeReducer.isButtonDisabled)
-
-  const bonusAttribute = useSelector(state => state.bonusReducer.armorBonus[statName])
+  const {
+    totalStatName,
+    statName,
+    incrementStat,
+    disableButton,
+    setTottalStat,
+    current,
+    points,
+    isButtonDisabled,
+    bonusAttribute } = props
 
   useEffect(() => {
     setTottalStat(totalStatName, current, bonusAttribute)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current, bonusAttribute])
 
   const addAttribute = () => {
@@ -26,7 +33,6 @@ const AttributeComp = ({ totalStatName, statName, incrementStat, disableButton, 
       disableButton()
     }
   }
-
 
   return (
     <Stack direction='row'>
@@ -45,8 +51,23 @@ const AttributeComp = ({ totalStatName, statName, incrementStat, disableButton, 
   )
 }
 
+AttributeComp.propTypes = {
+  current: PropTypes.number.isRequired,
+  points: PropTypes.number.isRequired,
+  isButtonDisabled: PropTypes.bool,
+  bonusAttribute: PropTypes.number.isRequired,
+  totalStatName: PropTypes.string.isRequired,
+  statName: PropTypes.string.isRequired,
+  incrementStat: PropTypes.func.isRequired,
+  disableButton: PropTypes.func.isRequired,
+  setTottalStat: PropTypes.func.isRequired,
+}
+
 export default connect((store, ownProps) => {
   return {
-    current: store.attributeReducer[ownProps.statName]
+    bonusAttribute: store.bonusReducer.armorBonus[ownProps.statName],
+    current: store.attributeReducer[ownProps.statName],
+    points: store.attributeReducer.points,
+    isButtonDisabled: store.attributeReducer.isButtonDisabled
   }
 }, { disableButton, incrementStat, setTottalStat })(AttributeComp)

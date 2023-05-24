@@ -2,7 +2,7 @@ import React from "react"
 import { useStyles } from "../../Styles"
 import { Stack } from '@mui/material'
 import Attributes from "./Attributes/Attributes"
-import AtriLvlInf from './ArtiLvlInfo/AtriLvlInf'
+import AttributeLvlInfo from "./AttributeLvlInfo/AttributeLvlInfo"
 
 
 const AttributeContent = () => {
@@ -14,7 +14,7 @@ const AttributeContent = () => {
         <div className={classes.titleComp}>
           <h1>Attributes</h1>
         </div>
-        <AtriLvlInf/>
+        <AttributeLvlInfo/>
         <Attributes/>
       </Stack>
     </div>

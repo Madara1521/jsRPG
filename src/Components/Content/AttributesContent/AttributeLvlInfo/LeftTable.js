@@ -1,14 +1,14 @@
 import React, { useEffect } from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
-import { connect, useSelector } from "react-redux"
+import { connect } from "react-redux"
 import { incrementExperience, incrementPoints, updateLevel } from "../../../../Redux/actions"
+import PropTypes from 'prop-types'
 
-const LeftTable = ({ incrementPoints, updateLevel, incrementExperience }) => {
+const LeftTable = (props) => {
   const classes = useStyles()
-  const level = useSelector(state => state.levelReducer.level)
-  const experience = useSelector(state => state.levelReducer.experience)
-  const nextLevel = useSelector(state => state.levelReducer.nextLevel)
+
+  const { incrementPoints, updateLevel, incrementExperience, level, experience, nextLevel } = props
 
   const addExperience = () => {
     incrementExperience()
@@ -41,4 +41,16 @@ const LeftTable = ({ incrementPoints, updateLevel, incrementExperience }) => {
   )
 }
 
-export default connect(null, { incrementPoints, updateLevel, incrementExperience })(LeftTable)
+LeftTable.propTypes = {
+  level: PropTypes.number.isRequired,
+  experience: PropTypes.number.isRequired,
+  nextLevel: PropTypes.number.isRequired
+}
+
+export default connect(store => {
+  return {
+    level: store.levelReducer.level,
+    experience: store.levelReducer.experience,
+    nextLevel: store.levelReducer.nextLevel
+  }
+}, { incrementPoints, updateLevel, incrementExperience })(LeftTable)

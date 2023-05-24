@@ -1,19 +1,21 @@
 import React, { useEffect } from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
-import { connect, useSelector } from "react-redux"
+import { connect } from "react-redux"
 import { activeButton } from "../../../../Redux/actions"
+import { PropTypes } from 'prop-types'
 
 
-const Points = ({ activeButton }) => {
+const Points = (props) => {
+  const { activeButton,points } = props
   const classes = useStyles()
-  const points = useSelector(state => state.attributeReducer.points)
 
   useEffect(() => {
     if (points > 0) {
       activeButton()
     }
-  }, [points, activeButton])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [points])
 
   return (
     <Stack direction='column'>
@@ -29,4 +31,13 @@ const Points = ({ activeButton }) => {
   )
 }
 
-export default connect(null, { activeButton })(Points)
+Points.propTypes = {
+  points: PropTypes.number.isRequired,
+  activeButton: PropTypes.func.isRequired
+}
+
+export default connect(store => {
+  return{
+    points: store.attributeReducer.points
+  }
+}, { activeButton })(Points)

@@ -2,25 +2,26 @@ import React, { useEffect } from "react"
 import { useStyles } from "../../Styles"
 import barbarian from './Barbarian.webp'
 import { Stack, Box } from '@mui/material'
-import { connect, useSelector } from "react-redux"
-import { rankUpdate10, rankUpdate20, rankUpdate40, rankUpdate60 } from "../../../Redux/actions"
+import { connect } from "react-redux"
+import { rankUpdate } from "../../../Redux/actions"
+import { PropTypes } from 'prop-types'
 
 
-const PhotoAndLvl = ({ rankUpdate10, rankUpdate20, rankUpdate40, rankUpdate60 }) => {
+const PhotoAndLvl = (props) => {
+  const { rankUpdate, level, rank } = props
   const classes = useStyles()
-  const level = useSelector(state => state.levelReducer.level)
-  const rank = useSelector(state => state.levelReducer.rank)
+
+  const levelActions = [
+    { lvl: 10, rank: 'Recruit' },
+    { lvl: 20, rank: 'Guardian' },
+    { lvl: 40, rank: 'Warrior' },
+    { lvl: 60, rank: 'Knight' },
+  ]
 
   useEffect(() => {
-    const levelActions = [
-      { lvl: 10, action: rankUpdate10 },
-      { lvl: 20, action: rankUpdate20 },
-      { lvl: 40, action: rankUpdate40 },
-      { lvl: 60, action: rankUpdate60 },
-    ]
-    levelActions.forEach(({ lvl, action }) => {
+    levelActions.forEach(({ lvl, rank }) => {
       if (level >= lvl) {
-        action()
+        rankUpdate(rank)
       }
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,4 +42,15 @@ const PhotoAndLvl = ({ rankUpdate10, rankUpdate20, rankUpdate40, rankUpdate60 })
   )
 }
 
-export default connect(null, { rankUpdate10, rankUpdate20, rankUpdate40, rankUpdate60 })(PhotoAndLvl)
+PhotoAndLvl.propTypes = {
+  level: PropTypes.number.isRequired,
+  rank: PropTypes.string.isRequired,
+  rankUpdate: PropTypes.func.isRequired,
+}
+
+export default connect(store => {
+  return {
+    level: store.levelReducer.level,
+    rank: store.levelReducer.rank
+  }
+}, { rankUpdate })(PhotoAndLvl)

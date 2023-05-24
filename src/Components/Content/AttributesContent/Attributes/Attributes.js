@@ -26,7 +26,7 @@ const Attributes = () => {
       totalStatName: 'totalEnergy',
     },
   ]
-  
+
   return (
     <Stack direction='column' spacing={10} className={classes.attribBorder}>
       <Points />
@@ -41,10 +41,6 @@ const Attributes = () => {
       })}
     </Stack>
   )
-}
-
-Attributes.propTypes = {
-
 }
 
 export default Attributes

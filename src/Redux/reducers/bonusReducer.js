@@ -1,4 +1,4 @@
-import { ARMOR_BONUS } from "../types"
+import { SET_ARMOR_BONUS } from "../types"
 
 
 const initialState = {
@@ -20,7 +20,7 @@ const initialState = {
 
 export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ARMOR_BONUS:
+    case SET_ARMOR_BONUS:
       return {
         ...state,
         armorBonus: state.armorBonus.strength

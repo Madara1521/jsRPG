@@ -1,18 +1,40 @@
-import React from "react"
-import { connect, useSelector } from "react-redux"
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
 import { setTottalStat } from "../../../../Redux/actions"
+import { PropTypes } from 'prop-types'
 
-const CharacteristicsComp = ({ totalStatName, name, setTottalStat }) => {
-  const bonusAttribute = useSelector(state => state.bonusReducer.armorBonus[name])
-  const current = useSelector(state => state.attributeReducer[name])
+const CharacteristicsComp = (props) => {
+  const { 
+    totalStatName, 
+    name, 
+    setTottalStat, 
+    bonusAttribute, 
+    current, 
+    totalAttribute } = props
 
-  setTottalStat(totalStatName,current,bonusAttribute)
-
-  const totalAttribute = useSelector(state => state.characteristicsReducer[totalStatName])
+  useEffect(() => {
+    setTottalStat(totalStatName, current, bonusAttribute)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current, bonusAttribute])
 
   return (
     <div>{name.charAt(0).toUpperCase() + name.slice(1)}: {totalAttribute}</div>
   )
 }
 
-export default connect(null, {setTottalStat})(CharacteristicsComp)
+CharacteristicsComp.propTypes = {
+  totalStatName: PropTypes.string.isRequired, 
+  name: PropTypes.string.isRequired, 
+  setTottalStat: PropTypes.func.isRequired, 
+  bonusAttribute: PropTypes.number.isRequired, 
+  current: PropTypes.number.isRequired, 
+  totalAttribute: PropTypes.number.isRequired
+}
+
+export default connect((store, ownProps) => {
+  return {
+    bonusAttribute: store.bonusReducer.armorBonus[ownProps.name],
+    current: store.attributeReducer[ownProps.name],
+    totalAttribute: store.characteristicsReducer[ownProps.totalStatName]
+  }
+}, { setTottalStat })(CharacteristicsComp)

@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import LeftTable from "./LeftTable"
 import RigthTable from "./RightTable"
 
-const AtriLvlInf = () => {
+const AttributeLvlInfo = () => {
 
   return (
     <Stack direction='row' flex={2}>
@@ -13,4 +13,4 @@ const AtriLvlInf = () => {
   )
 }
 
-export default AtriLvlInf
+export default AttributeLvlInfo

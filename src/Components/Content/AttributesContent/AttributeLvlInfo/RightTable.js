@@ -1,11 +1,10 @@
 import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
-import { useSelector } from "react-redux"
+import { connect } from "react-redux"
 
-const RigthTable = () => {
+const RigthTable = ({ nextLevel }) => {
   const classes = useStyles()
-  const nextLevel = useSelector(state => state.levelReducer.nextLevel)
 
   return (
     <Stack direction='column' flex={1} className={classes.lvlHeight}>
@@ -20,4 +19,8 @@ const RigthTable = () => {
   )
 }
 
-export default RigthTable
+export default connect(store => {
+  return {
+    nextLevel: store.levelReducer.nextLevel
+  }
+})(RigthTable)
