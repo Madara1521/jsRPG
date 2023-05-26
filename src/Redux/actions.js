@@ -5,7 +5,7 @@ import {
   INCREMENT_EXPERIENCE,
   INCREMENT_POINTS,
   INCREMENT_STAT,
-  PHYSICAL_DAMAGE,
+  SET_PHYSICAL_DAMAGE,
   RANK_UPDATE,
   SET_TOTAL_STAT,
   UPDATE_LEVEL
@@ -57,11 +57,11 @@ export function rankUpdate(rank) {
   }
 }
 
-export function setTottalStat(totalStatName, current, bonusAttribute) {
+export function setTottalStat(totalStatName, attributeCurrent, bonusAttribute) {
   return {
     type: SET_TOTAL_STAT,
     totalStatName,
-    current,
+    attributeCurrent,
     bonusAttribute
   }
 }
@@ -72,9 +72,9 @@ export function setArmorBonus() {
   }
 }
 
-export function physicalDamage(startPhyBonus, finalPhyBonus) {
+export function setPhysicalDamage(startPhyBonus, finalPhyBonus) {
   return {
-    type: PHYSICAL_DAMAGE,
+    type: SET_PHYSICAL_DAMAGE,
     startPhyBonus,
     finalPhyBonus
   }

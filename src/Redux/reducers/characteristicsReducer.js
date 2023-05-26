@@ -1,5 +1,5 @@
 import {
-  PHYSICAL_DAMAGE,
+  SET_PHYSICAL_DAMAGE,
   SET_TOTAL_STAT,
 } from "../types"
 
@@ -10,8 +10,8 @@ const initialState = {
   totalVitality: 0,
   totalEnergy: 0,
 
-  startPhyDamage: 5,
-  finalPhyDamage: 10,
+  startPhyDamage: 0,
+  finalPhyDamage: 0,
 
 
 }
@@ -21,13 +21,13 @@ export const characteristicsReducer = (state = initialState, action) => {
     case SET_TOTAL_STAT:
       return {
         ...state,
-        [action.totalStatName]: action.current + action.bonusAttribute
+        [action.totalStatName]: action.attributeCurrent + action.bonusAttribute
       }
-    case PHYSICAL_DAMAGE:
+    case SET_PHYSICAL_DAMAGE:
       return {
         ...state,
-        startPhyDamage: state.startPhyDamage + action.startPhyBonus,
-        finalPhyDamage: state.finalPhyDamage + action.finalPhyBonus
+        startPhyDamage: (state.totalStrength * 4) + action.startPhyBonus,
+        finalPhyDamage: (state.totalStrength * 6) + action.finalPhyBonus,
       }
     default:
       return state

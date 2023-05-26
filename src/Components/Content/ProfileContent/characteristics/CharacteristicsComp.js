@@ -9,13 +9,13 @@ const CharacteristicsComp = (props) => {
     name, 
     setTottalStat, 
     bonusAttribute, 
-    current, 
+    attributeCurrent, 
     totalAttribute } = props
 
   useEffect(() => {
-    setTottalStat(totalStatName, current, bonusAttribute)
+    setTottalStat(totalStatName, attributeCurrent, bonusAttribute)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [current, bonusAttribute])
+  }, [attributeCurrent, bonusAttribute])
 
   return (
     <div>{name.charAt(0).toUpperCase() + name.slice(1)}: {totalAttribute}</div>
@@ -27,14 +27,14 @@ CharacteristicsComp.propTypes = {
   name: PropTypes.string.isRequired, 
   setTottalStat: PropTypes.func.isRequired, 
   bonusAttribute: PropTypes.number.isRequired, 
-  current: PropTypes.number.isRequired, 
+  attributeCurrent: PropTypes.number.isRequired, 
   totalAttribute: PropTypes.number.isRequired
 }
 
 export default connect((store, ownProps) => {
   return {
     bonusAttribute: store.bonusReducer.armorBonus[ownProps.name],
-    current: store.attributeReducer[ownProps.name],
+    attributeCurrent: store.attributeReducer[ownProps.name],
     totalAttribute: store.characteristicsReducer[ownProps.totalStatName]
   }
 }, { setTottalStat })(CharacteristicsComp)
