@@ -1,4 +1,5 @@
 import {
+  SET_ATTACK_RATING,
   SET_PHYSICAL_DAMAGE,
   SET_TOTAL_STAT,
 } from "../types"
@@ -10,9 +11,17 @@ const initialState = {
   totalVitality: 0,
   totalEnergy: 0,
 
-  startPhyDamage: 0,
+  startPhyDamage: 0, // strength
   finalPhyDamage: 0,
 
+  attackRating: 0, // dexterity
+  defense: 0,
+  blocking: 0, 
+
+  stamina: 0,// vitality
+  health: 0,
+
+  mana: 100// energy
 
 }
 
@@ -28,6 +37,11 @@ export const characteristicsReducer = (state = initialState, action) => {
         ...state,
         startPhyDamage: (state.totalStrength * 4) + action.startPhyBonus,
         finalPhyDamage: (state.totalStrength * 6) + action.finalPhyBonus,
+      }
+    case SET_ATTACK_RATING:
+      return {
+        ...state,
+        attackRating: (state.totalDexterity * 8 ) + action.attackRatingBonus
       }
     default:
       return state

@@ -8,7 +8,8 @@ import {
   SET_PHYSICAL_DAMAGE,
   RANK_UPDATE,
   SET_TOTAL_STAT,
-  UPDATE_LEVEL
+  UPDATE_LEVEL,
+  SET_ATTACK_RATING
 } from "./types"
 
 export function incrementStat(statName) {
@@ -77,6 +78,13 @@ export function setPhysicalDamage(startPhyBonus, finalPhyBonus) {
     type: SET_PHYSICAL_DAMAGE,
     startPhyBonus,
     finalPhyBonus
+  }
+}
+
+export function setAttackRating(attackRatingBonus) {
+  return {
+    type: SET_ATTACK_RATING,
+    attackRatingBonus
   }
 }
 

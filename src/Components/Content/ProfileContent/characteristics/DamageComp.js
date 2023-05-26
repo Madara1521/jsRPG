@@ -1,26 +1,39 @@
 import React, { useEffect } from "react"
-import { connect, useSelector } from "react-redux"
+import { connect } from "react-redux"
 import { setPhysicalDamage } from "../../../../Redux/actions"
+import { PropTypes } from 'prop-types'
 
 
-const DamageComp = ({ setPhysicalDamage, startPhyDamage, finalPhyDamage}) => {
-
-  const startPhyBonus = useSelector(state => state.bonusReducer.weaponBonus.startPhyBonus)
-  const finalPhyBonus = useSelector(state => state.bonusReducer.weaponBonus.finalPhyBonus)
+const DamageComp = (props) => {
+  const { setPhysicalDamage,
+    startPhyDamage,
+    finalPhyDamage,
+    startPhyBonus,
+    finalPhyBonus } = props
 
   useEffect(() => {
     setPhysicalDamage(startPhyBonus, finalPhyBonus)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[startPhyBonus, finalPhyBonus])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startPhyBonus, finalPhyBonus])
 
   return (
     <div>Physical damage: {startPhyDamage}-{finalPhyDamage}</div>
   )
 }
 
+DamageComp.propTypes = {
+  startPhyBonus: PropTypes.number.isRequired,
+  finalPhyBonus: PropTypes.number.isRequired,
+  startPhyDamage: PropTypes.number.isRequired,
+  finalPhyDamage: PropTypes.number.isRequired,
+  setPhysicalDamage: PropTypes.func.isRequired
+}
+
 export default connect(store => {
   return {
     startPhyDamage: store.characteristicsReducer.startPhyDamage,
-    finalPhyDamage: store.characteristicsReducer.finalPhyDamage
+    finalPhyDamage: store.characteristicsReducer.finalPhyDamage,
+    startPhyBonus: store.bonusReducer.weaponBonus.startPhyBonus,
+    finalPhyBonus: store.bonusReducer.weaponBonus.finalPhyBonus
   }
-}, {setPhysicalDamage})(DamageComp)
+}, { setPhysicalDamage })(DamageComp)

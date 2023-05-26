@@ -4,6 +4,8 @@ import { useStyles } from "../../../Styles"
 import DamageComp from "./DamageComp"
 import uniqid from 'uniqid'
 import CharacteristicsComp from "./CharacteristicsComp"
+import AttackRaitingAndDefenseComp from "./AttackRaitingAndDefenseComp"
+
 
 
 const Characteristics = () => {
@@ -47,9 +49,10 @@ const Characteristics = () => {
       </Stack>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
         <DamageComp />
-        <div>magic damage: 8000-11000</div>
+        <div>Magic damage: 1000-3000</div>
+        <AttackRaitingAndDefenseComp />
         <div>Mana: 1200</div>
-        <div>health: 2500</div>
+        <div>Health: 2500</div>
         <div>Stamina: 1000</div>
       </Stack>
     </Stack>
