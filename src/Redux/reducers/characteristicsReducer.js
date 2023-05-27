@@ -1,5 +1,7 @@
 import {
   SET_ATTACK_RATING,
+  SET_BLOCKING,
+  SET_DEFENSE,
   SET_PHYSICAL_DAMAGE,
   SET_TOTAL_STAT,
 } from "../types"
@@ -42,6 +44,16 @@ export const characteristicsReducer = (state = initialState, action) => {
       return {
         ...state,
         attackRating: (state.totalDexterity * 8 ) + action.attackRatingBonus
+      }
+    case SET_DEFENSE:
+      return {
+        ...state,
+        defense: (state.totalDexterity * 4 ) + action.defenseBonus
+      }
+    case SET_BLOCKING:
+      return {
+        ...state,
+        blocking: (state.totalDexterity * 2 ) + action.blockingBonus
       }
     default:
       return state

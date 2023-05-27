@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import { connect } from "react-redux"
 import { AttributeButton } from "../../../Header/StyledHeader"
 import IconsAttribute from "./IconsAttribute"
-import { disableButton, incrementStat, setTottalStat, setPhysicalDamage } from '../../../../Redux/actions'
+import { setDefense, disableButton, incrementStat, setTottalStat, setPhysicalDamage, setAttackRating, setBlocking } from '../../../../Redux/actions'
 import { useStyles } from "../../../Styles"
 import { PropTypes } from 'prop-types'
 
@@ -23,19 +23,31 @@ const AttributeComp = (props) => {
     setPhysicalDamage,
     startPhyBonus,
     finalPhyBonus,
-    totalStrength } = props
+    totalStrength,
+    setAttackRating,
+    attackRatingBonus, 
+    totalDexterity,
+    setDefense,
+    defenseBonus,
+    setBlocking,
+    blockingBonus } = props
 
   useEffect(() => {
     setTottalStat(totalStatName, current, bonusAttribute)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [current, bonusAttribute])
+  }, [current, bonusAttribute])  // counts all attributes and sends them to the store
 
   useEffect(() => {
     setPhysicalDamage(startPhyBonus, finalPhyBonus)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalStrength, bonusAttribute])
+  }, [totalStrength, bonusAttribute]) // monitors strength attribute changes to change physical damage
 
-
+  useEffect(() => {
+    setDefense(defenseBonus)
+    setBlocking(blockingBonus)
+    setAttackRating(attackRatingBonus)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [totalDexterity]) // tracks agility attribute changes to change defense, attack rating and blocking
 
   const addAttribute = () => {
     incrementStat(statName)
@@ -77,7 +89,14 @@ AttributeComp.propTypes = {
   disableButton: PropTypes.func.isRequired,
   setTottalStat: PropTypes.func.isRequired,
   setPhysicalDamage: PropTypes.func.isRequired,
+  setAttackRating: PropTypes.func.isRequired,
+  setDefense: PropTypes.func.isRequired,
+  setBlocking: PropTypes.func.isRequired,
   totalStrength: PropTypes.number.isRequired,
+  totalDexterity: PropTypes.number.isRequired,
+  attackRatingBonus: PropTypes.number.isRequired,
+  defenseBonus: PropTypes.number.isRequired,
+  blockingBonus: PropTypes.number.isRequired,
 }
 
 export default connect((store, ownProps) => {
@@ -88,11 +107,18 @@ export default connect((store, ownProps) => {
     isButtonDisabled: store.attributeReducer.isButtonDisabled,
     startPhyBonus: store.bonusReducer.weaponBonus.startPhyBonus,
     finalPhyBonus: store.bonusReducer.weaponBonus.finalPhyBonus,
-    totalStrength: store.characteristicsReducer.totalStrength
+    attackRatingBonus: store.bonusReducer.weaponBonus.attackRatingBonus,
+    blockingBonus: store.bonusReducer.shieldBonus.blockingBonus,
+    defenseBonus: store.bonusReducer.armorBonus.defenseBonus,
+    totalStrength: store.characteristicsReducer.totalStrength,
+    totalDexterity: store.characteristicsReducer.totalDexterity,
   }
 }, {
   disableButton,
   incrementStat,
   setTottalStat,
-  setPhysicalDamage
+  setPhysicalDamage,
+  setAttackRating,
+  setDefense,
+  setBlocking
 })(AttributeComp)

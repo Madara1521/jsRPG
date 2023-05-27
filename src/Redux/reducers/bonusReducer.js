@@ -1,5 +1,3 @@
-import { SET_ARMOR_BONUS } from "../types"
-
 
 const initialState = {
   weaponBonus: {
@@ -11,7 +9,15 @@ const initialState = {
     strength: 0,
     dexterity: 0,
     vitality: 0,
-    energy: 0
+    energy: 0,
+    defenseBonus: 50
+  },
+  shieldBonus: {
+    strength: 0,
+    dexterity: 0,
+    vitality: 0,
+    energy: 0,
+    blockingBonus: 25
   },
   amuletBonus: {
     strength: 4,
@@ -21,11 +27,11 @@ const initialState = {
 
 export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_ARMOR_BONUS:
-      return {
-        ...state,
-        armorBonus: state.armorBonus.strength
-      }
+    // case SET_ARMOR_BONUS:
+    //   return {
+    //     ...state,
+    //     armorBonus: state.armorBonus.strength
+    //   }
     default:
       return state
   }

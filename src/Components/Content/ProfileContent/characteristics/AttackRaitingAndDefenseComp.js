@@ -1,14 +1,40 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import { PropTypes } from 'prop-types'
+import {
+  setAttackRating,
+  setBlocking,
+  setDefense,
+} from "../../../../Redux/actions"
 
 
 const AttackRaitingAndDefenseComp = (props) => {
-  const { attackRating, defense, blocking } = props
+  const {
+    attackRating,
+    defense,
+    blocking,
+    attackRatingBonus,
+    setAttackRating,
+    totalDexterity,
+    defenseBonus,
+    setDefense,
+    setBlocking,
+    blockingBonus } = props
 
   useEffect(() => {
+    setAttackRating(attackRatingBonus)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [attackRatingBonus, totalDexterity])
+
+  useEffect(() => {
+    setDefense(defenseBonus)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defenseBonus, totalDexterity])
+
+  useEffect(() => {
+    setBlocking(blockingBonus)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blockingBonus, totalDexterity])
 
   return (
     <>
@@ -23,6 +49,12 @@ AttackRaitingAndDefenseComp.propTypes = {
   attackRating: PropTypes.number.isRequired,
   defense: PropTypes.number.isRequired,
   blocking: PropTypes.number.isRequired,
+  attackRatingBonus: PropTypes.number.isRequired,
+  defenseBonus: PropTypes.number.isRequired,
+  totalDexterity: PropTypes.number.isRequired,
+  setAttackRating: PropTypes.func.isRequired,
+  setDefense: PropTypes.func.isRequired,
+  setBlocking: PropTypes.func.isRequired,
 }
 
 export default connect(store => {
@@ -30,5 +62,13 @@ export default connect(store => {
     attackRating: store.characteristicsReducer.attackRating,
     defense: store.characteristicsReducer.defense,
     blocking: store.characteristicsReducer.blocking,
+    attackRatingBonus: store.bonusReducer.weaponBonus.attackRatingBonus,
+    defenseBonus: store.bonusReducer.armorBonus.defenseBonus,
+    blockingBonus: store.bonusReducer.shieldBonus.blockingBonus,
+    totalDexterity: store.characteristicsReducer.totalDexterity,
   }
-}, {})(AttackRaitingAndDefenseComp)
+}, {
+  setAttackRating,
+  setDefense,
+  setBlocking
+})(AttackRaitingAndDefenseComp)

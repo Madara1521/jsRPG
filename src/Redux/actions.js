@@ -1,6 +1,5 @@
 import {
   ACTIVE_BUTTON,
-  SET_ARMOR_BONUS,
   DISABLE_BUTTON,
   INCREMENT_EXPERIENCE,
   INCREMENT_POINTS,
@@ -9,7 +8,9 @@ import {
   RANK_UPDATE,
   SET_TOTAL_STAT,
   UPDATE_LEVEL,
-  SET_ATTACK_RATING
+  SET_ATTACK_RATING,
+  SET_DEFENSE,
+  SET_BLOCKING
 } from "./types"
 
 export function incrementStat(statName) {
@@ -52,6 +53,7 @@ export function incrementExperience() {
 }
 
 export function rankUpdate(rank) {
+  // when you increase to a certain level, the name of the rank changes
   return {
     type: RANK_UPDATE,
     rank
@@ -59,6 +61,7 @@ export function rankUpdate(rank) {
 }
 
 export function setTottalStat(totalStatName, attributeCurrent, bonusAttribute) {
+  // accepts the name of an attribute and sums the total value of this attribute
   return {
     type: SET_TOTAL_STAT,
     totalStatName,
@@ -67,13 +70,8 @@ export function setTottalStat(totalStatName, attributeCurrent, bonusAttribute) {
   }
 }
 
-export function setArmorBonus() {
-  return {
-    type: SET_ARMOR_BONUS,
-  }
-}
-
 export function setPhysicalDamage(startPhyBonus, finalPhyBonus) {
+  // sums up the total strength and adds a bonus to the minimum and maximum physical damage
   return {
     type: SET_PHYSICAL_DAMAGE,
     startPhyBonus,
@@ -82,9 +80,26 @@ export function setPhysicalDamage(startPhyBonus, finalPhyBonus) {
 }
 
 export function setAttackRating(attackRatingBonus) {
+  // sums up overall dexterity and adds a bonus attack rating
   return {
     type: SET_ATTACK_RATING,
     attackRatingBonus
+  }
+}
+
+export function setDefense(defenseBonus) {
+  // sums up overall dexterity and adds defense bonus
+  return {
+    type: SET_DEFENSE,
+    defenseBonus
+  }
+}
+
+export function setBlocking(blockingBonus) {
+  // sums up overall dexterity and adds blocking bonus
+  return {
+    type: SET_BLOCKING,
+    blockingBonus
   }
 }
 
