@@ -10,7 +10,9 @@ import {
   UPDATE_LEVEL,
   SET_ATTACK_RATING,
   SET_DEFENSE,
-  SET_BLOCKING
+  SET_BLOCKING,
+  SET_HEALTH_AND_STAMINA,
+  SET_MANA
 } from "./types"
 
 export function incrementStat(statName) {
@@ -100,6 +102,18 @@ export function setBlocking(blockingBonus) {
   return {
     type: SET_BLOCKING,
     blockingBonus
+  }
+}
+
+export function setHealthAndStamina() {
+  return {
+    type: SET_HEALTH_AND_STAMINA,
+  }
+}
+
+export function setMana() {
+  return {
+    type: SET_MANA,
   }
 }
 

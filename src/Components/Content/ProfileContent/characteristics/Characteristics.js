@@ -5,6 +5,8 @@ import DamageComp from "./DamageComp"
 import uniqid from 'uniqid'
 import CharacteristicsComp from "./CharacteristicsComp"
 import AttackRaitingAndDefenseComp from "./AttackRaitingAndDefenseComp"
+import HealthAndStaminaComp from "./HealthAndStaminaComp"
+import ManaComp from "./ManaComp"
 
 
 
@@ -51,9 +53,8 @@ const Characteristics = () => {
         <DamageComp />
         <div>Magic damage: 1000-3000</div>
         <AttackRaitingAndDefenseComp />
-        <div>Mana: 1200</div>
-        <div>Health: 2500</div>
-        <div>Stamina: 1000</div>
+        <HealthAndStaminaComp />
+        <ManaComp />
       </Stack>
     </Stack>
   )

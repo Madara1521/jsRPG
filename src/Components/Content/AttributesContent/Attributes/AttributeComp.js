@@ -3,7 +3,15 @@ import { Stack } from '@mui/material'
 import { connect } from "react-redux"
 import { AttributeButton } from "../../../Header/StyledHeader"
 import IconsAttribute from "./IconsAttribute"
-import { setDefense, disableButton, incrementStat, setTottalStat, setPhysicalDamage, setAttackRating, setBlocking } from '../../../../Redux/actions'
+import { setHealthAndStamina,
+  setDefense, 
+  disableButton, 
+  incrementStat, 
+  setTottalStat, 
+  setPhysicalDamage, 
+  setAttackRating, 
+  setBlocking,
+  setMana } from '../../../../Redux/actions'
 import { useStyles } from "../../../Styles"
 import { PropTypes } from 'prop-types'
 
@@ -30,7 +38,11 @@ const AttributeComp = (props) => {
     setDefense,
     defenseBonus,
     setBlocking,
-    blockingBonus } = props
+    blockingBonus,
+    setHealthAndStamina,
+    totalVitality,
+    setMana,
+    totalEnergy } = props
 
   useEffect(() => {
     setTottalStat(totalStatName, current, bonusAttribute)
@@ -48,6 +60,16 @@ const AttributeComp = (props) => {
     setAttackRating(attackRatingBonus)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalDexterity]) // tracks agility attribute changes to change defense, attack rating and blocking
+
+  useEffect(() => {
+    setHealthAndStamina()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [totalVitality])
+
+  useEffect(() => {
+    setMana()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [totalEnergy])
 
   const addAttribute = () => {
     incrementStat(statName)
@@ -92,8 +114,12 @@ AttributeComp.propTypes = {
   setAttackRating: PropTypes.func.isRequired,
   setDefense: PropTypes.func.isRequired,
   setBlocking: PropTypes.func.isRequired,
+  setHealthAndStamina: PropTypes.func.isRequired,
+  setMana: PropTypes.func.isRequired,
   totalStrength: PropTypes.number.isRequired,
   totalDexterity: PropTypes.number.isRequired,
+  totalVitality: PropTypes.number.isRequired,
+  totalEnergy: PropTypes.number.isRequired,
   attackRatingBonus: PropTypes.number.isRequired,
   defenseBonus: PropTypes.number.isRequired,
   blockingBonus: PropTypes.number.isRequired,
@@ -112,6 +138,8 @@ export default connect((store, ownProps) => {
     defenseBonus: store.bonusReducer.armorBonus.defenseBonus,
     totalStrength: store.characteristicsReducer.totalStrength,
     totalDexterity: store.characteristicsReducer.totalDexterity,
+    totalVitality: store.characteristicsReducer.totalVitality,
+    totalEnergy: store.characteristicsReducer.totalEnergy,
   }
 }, {
   disableButton,
@@ -120,5 +148,7 @@ export default connect((store, ownProps) => {
   setPhysicalDamage,
   setAttackRating,
   setDefense,
-  setBlocking
+  setBlocking,
+  setHealthAndStamina,
+  setMana
 })(AttributeComp)
