@@ -103,6 +103,27 @@ export const useStyles = makeStyles(() => ({
     border: 'black 3px solid',
     width: '60px',
     height: '30px'
+  },
+  invertoryCloth: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+  },
+  talismansCont: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    width: '49px',
+    height: '49px'
+  },
+  titleInvertory: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+    width: '304px'
   }
 
 }))

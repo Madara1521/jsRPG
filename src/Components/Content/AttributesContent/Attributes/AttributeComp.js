@@ -35,7 +35,7 @@ const AttributeComp = (props) => {
   useEffect(() => {
     action.forEach(action => action())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalAttribute]) 
+  }, [totalAttribute]) //accepts an action and performs the functions of the tracked attribute
 
   const addAttribute = () => {
     incrementStat(statName)

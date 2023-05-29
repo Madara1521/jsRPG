@@ -17,7 +17,6 @@ const GeneralInfo = () => {
         <div>Experience bonus: 10%</div>
       </Stack>
       <Stack className={classes.genBorder} flex={1} spacing={1}>
-        <div>Defense: 3000</div>
         <div>Fire Resistance: 25%</div>
         <div>Cold Resistance: 25%</div>
         <div>Lightning Resistance: 25%</div>
