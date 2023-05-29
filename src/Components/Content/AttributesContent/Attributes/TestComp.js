@@ -12,7 +12,7 @@ import { useStyles } from "../../../Styles"
 import { PropTypes } from 'prop-types'
 
 
-const AttributeComp = (props) => {
+const TestComp = (props) => {
   const classes = useStyles()
   const {
     totalStatName,
@@ -24,18 +24,42 @@ const AttributeComp = (props) => {
     points,
     isButtonDisabled,
     bonusAttribute,
-    totalAttribute,
-    action } = props
+    action,
+  } = props
+
+  useEffect(() => {
+    console.log(totalStatName)
+    action
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[totalStatName])
 
   useEffect(() => {
     setTottalStat(totalStatName, attributeCurrent, bonusAttribute)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attributeCurrent, bonusAttribute])  // counts all attributes and sends them to the store
 
-  useEffect(() => {
-    action.forEach(action => action())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalAttribute]) 
+
+  // useEffect(() => {
+  //   setPhysicalDamage(startPhyBonus, finalPhyBonus)
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [totalStrength]) // monitors strength attribute changes to change physical damage
+
+  // useEffect(() => {
+  //   setDefense(defenseBonus)
+  //   setBlocking(blockingBonus)
+  //   setAttackRating(attackRatingBonus)
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [totalDexterity]) // tracks agility attribute changes to change defense, attack rating and blocking
+
+  // useEffect(() => {
+  //   setHealthAndStamina()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [totalVitality])
+
+  // useEffect(() => {
+  //   setMana()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [totalEnergy])
 
   const addAttribute = () => {
     incrementStat(statName)
@@ -44,8 +68,6 @@ const AttributeComp = (props) => {
       disableButton()
     }
   }
-
-
 
   return (
     <Stack direction='row'>
@@ -64,7 +86,7 @@ const AttributeComp = (props) => {
   )
 }
 
-AttributeComp.propTypes = {
+TestComp.propTypes = {
   attributeCurrent: PropTypes.number.isRequired,
   points: PropTypes.number.isRequired,
   isButtonDisabled: PropTypes.bool,
@@ -74,7 +96,6 @@ AttributeComp.propTypes = {
   incrementStat: PropTypes.func.isRequired,
   disableButton: PropTypes.func.isRequired,
   setTottalStat: PropTypes.func.isRequired,
-  totalAttribute: PropTypes.number.isRequired
 }
 
 export default connect((store, ownProps) => {
@@ -83,11 +104,10 @@ export default connect((store, ownProps) => {
     attributeCurrent: store.attributeReducer[ownProps.statName],
     points: store.attributeReducer.points,
     isButtonDisabled: store.attributeReducer.isButtonDisabled,
-    totalAttribute: store.characteristicsReducer[ownProps.totalStatName],
-
+    totalStatName: store.characteristicsReducer[ownProps.totalStatName],
   }
 }, {
   disableButton,
   incrementStat,
-  setTottalStat
-})(AttributeComp)
+  setTottalStat,
+})(TestComp)
