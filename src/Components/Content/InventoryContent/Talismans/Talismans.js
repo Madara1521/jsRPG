@@ -1,5 +1,4 @@
 import React from "react"
-import { Stack } from '@mui/material'
 import TalismansComp from "./TalismansComp"
 import { useStyles } from "../../../Styles"
 
@@ -11,7 +10,7 @@ const Talismans = () => {
       <div className={classes.titleComp}>
         <h1>Talismans</h1>
       </div>
-      <Stack direction='row'>
+      <div className={classes.stackRow}>
         <TalismansComp />
         <TalismansComp />
         <TalismansComp />
@@ -24,7 +23,7 @@ const Talismans = () => {
         <TalismansComp />
         <TalismansComp />
         <TalismansComp />
-      </Stack>
+      </div>
     </div>
   )
 }

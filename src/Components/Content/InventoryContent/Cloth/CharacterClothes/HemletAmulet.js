@@ -9,16 +9,20 @@ const HemletAmulet = () => {
 
   return (
     <div className={classes.colthPadding}>
-      <div className={classes.amuletAndRing}>
+      <div className={classes.endAmulet}>
+        <div className={classes.amuletAndRing}>
 
+        </div>
       </div>
       <div className={classes.armorBeltHelmPading}>
         <div className={classes.helmet}>
 
         </div>
       </div>
-      <div className={classes.amuletAndRing}>
+      <div className={classes.endAmulet}>
+        <div className={classes.amuletAndRing}>
 
+        </div>
       </div>
     </div>
   )
