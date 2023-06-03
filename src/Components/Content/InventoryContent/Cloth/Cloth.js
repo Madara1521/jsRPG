@@ -1,20 +1,17 @@
 import React from "react"
-import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
+import CharacterClothes from "./CharacterClothes/CharacterClothes"
+import PartnerClothes from "./PartnerClothes/PartnerClothes"
 
 
 const Cloth = () => {
   const classes = useStyles()
 
   return (
-    <Stack direction='row' flex={2}>
-      <Stack className={classes.invertoryCloth} flex={1} direction='column'>
-        <h1>nickname</h1>
-      </Stack>
-      <Stack className={classes.invertoryCloth} flex={1} direction='column'>
-        <h1>nickname</h1>
-      </Stack>
-    </Stack>
+    <div className={classes.clothStyle}>
+      <CharacterClothes />
+      <PartnerClothes />
+    </div>
   )
 }
 

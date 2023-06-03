@@ -30,7 +30,8 @@ export const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     alignItems: 'center',
     border: 'black 1px solid',
-    width: '610px'
+    width: '610px',
+    height: '37px'
   },
   imgBorder: {
     display: 'flex',
@@ -104,8 +105,9 @@ export const useStyles = makeStyles(() => ({
     width: '60px',
     height: '30px'
   },
-  invertoryCloth: {
+  invertoryClothTitle: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     border: 'black 1px solid',
@@ -118,12 +120,94 @@ export const useStyles = makeStyles(() => ({
     width: '49px',
     height: '49px'
   },
-  titleInvertory: {
+  twoTitle: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     border: 'black 1px solid',
-    width: '304px'
+    width: '304px',
+    height: '50px'
+  },
+  characterClothes: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    padding: '5px'
+  },
+  helmet: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    height: '70px',
+    width: '70px'
+  },
+  amuletAndRing: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    height: '25px',
+    width: '25px'
+  },
+  weaponAndShield: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    height: '150px',
+    width: '80px'
+  },
+  colthPadding: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: '5px'
+  },
+  armor: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    height: '120px',
+    width: '80px'
+  },
+  clothStyle: {
+    display: 'flex',
+    flex: '2',
+    flexDirection: 'row'
+  },
+  clothPartnerAndCharacter: {
+    display: 'flex',
+    flex: '1',
+    flexDirection: 'column'
+  },
+  belt: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    height: '25px',
+    width: '80px'
+  },
+  glovesAndBoots: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    height: '80px',
+    width: '80px',
+  },
+  armorBeltHelmPading: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '5px'
+  },
+  paddingGloves: {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '40px'
   }
-
 }))

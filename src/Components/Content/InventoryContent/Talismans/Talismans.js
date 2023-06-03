@@ -1,109 +1,31 @@
 import React from "react"
 import { Stack } from '@mui/material'
+import TalismansComp from "./TalismansComp"
 import { useStyles } from "../../../Styles"
 
 const Talismans = () => {
   const classes = useStyles()
 
   return (
-    <Stack direction='row'>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
+    <div>
+      <div className={classes.titleComp}>
+        <h1>Talismans</h1>
+      </div>
+      <Stack direction='row'>
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
       </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-      <Stack direction='column'>
-        <div className={classes.talismansCont}>
-
-        </div>
-        <div className={classes.talismansCont}>
-
-        </div>
-      </Stack>
-    </Stack>
+    </div>
   )
 }
 
