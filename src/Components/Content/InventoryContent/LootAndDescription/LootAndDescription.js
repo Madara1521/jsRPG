@@ -1,7 +1,7 @@
 import React from "react"
 import { useStyles } from "../../../Styles"
-import Loot from "./Loot"
-import Description from "./Description"
+import Loot from "./Loot/Loot"
+import Description from "./Description/Description"
 
 const LootAndDescription = () => {
   const classes = useStyles()

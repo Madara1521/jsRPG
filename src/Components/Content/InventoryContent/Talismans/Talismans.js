@@ -7,9 +7,6 @@ const Talismans = () => {
 
   return (
     <div>
-      <div className={classes.titleComp}>
-        <h1>Talismans</h1>
-      </div>
       <div className={classes.stackRow}>
         <TalismansComp />
         <TalismansComp />
@@ -23,6 +20,9 @@ const Talismans = () => {
         <TalismansComp />
         <TalismansComp />
         <TalismansComp />
+      </div>
+      <div className={classes.titleComp}>
+        <h1>Talismans</h1>
       </div>
     </div>
   )

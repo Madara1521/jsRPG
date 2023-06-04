@@ -7,7 +7,7 @@ const PartnerClothes = () => {
   const classes = useStyles()
 
   return (
-    <div className={classes.clothPartnerAndPartner}>
+    <div className={classes.clothPartnerAndCharacter}>
       <div className={classes.invertoryClothTitle} >
         <div>nickname</div>
       </div>

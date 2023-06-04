@@ -1,14 +1,15 @@
 import React from "react"
-import { useStyles } from "../../../Styles"
+import { useStyles } from "../../../../Styles"
 
 
-const Loot = () => {
+
+const Description = () => {
   const classes = useStyles()
 
   return (
-    <div className={classes.loot}>
+    <div className={classes.description}>
       <div className={classes.twoTitle}>
-        <h1>Loot</h1>
+        <h1>Item description</h1>
       </div>
       <div className={classes.lootDescriptionComp}>
 
@@ -17,4 +18,4 @@ const Loot = () => {
   )
 }
 
-export default Loot
+export default Description

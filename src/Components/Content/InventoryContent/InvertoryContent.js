@@ -3,9 +3,11 @@ import { useStyles } from "../../Styles"
 import Talismans from "./Talismans/Talismans"
 import Cloth from "./Cloth/Cloth"
 import LootAndDescription from "./LootAndDescription/LootAndDescription"
+import { connect } from "react-redux"
 
-const InvertoryContent = () => {
+const InvertoryContent = (props) => {
   const classes = useStyles()
+  const {gold} = props
 
   return (
     <div className={classes.content} >
@@ -16,12 +18,16 @@ const InvertoryContent = () => {
         <Cloth />
         <Talismans />
         <LootAndDescription/>
-        <div className={classes.titleComp}>
-          gold
+        <div className={classes.goldComp}>
+          gold : {gold}
         </div>
       </div>
     </div>
   )
 }
 
-export default InvertoryContent
+export default connect(store => {
+  return {
+    gold: store.lootAndDescriptionReducer.gold
+  }
+},null)(InvertoryContent)

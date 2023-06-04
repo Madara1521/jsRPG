@@ -118,7 +118,7 @@ export const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     border: 'black 1px solid',
     width: '49px',
-    height: '49px'
+    height: '40px'
   },
   twoTitle: {
     display: 'flex',
@@ -133,14 +133,14 @@ export const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     justifyContent: 'center',
     border: 'black 1px solid',
-    padding: '5px',
-    height: '380px'
+    padding: '3px',
+    height: '370px'
   },
   helmet: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: 'black 2px solid',
     height: '70px',
     width: '70px'
   },
@@ -148,7 +148,7 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: 'black 2px solid',
     height: '25px',
     width: '25px'
   },
@@ -156,20 +156,20 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: 'black 2px solid',
     height: '150px',
     width: '80px'
   },
   colthPadding: {
     display: 'flex',
     flexDirection: 'row',
-    padding: '5px'
+    padding: '3px'
   },
   armor: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: 'black 2px solid',
     height: '120px',
     width: '80px'
   },
@@ -187,7 +187,7 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: 'black 2px solid',
     height: '25px',
     width: '80px'
   },
@@ -195,7 +195,7 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: 'black 2px solid',
     height: '80px',
     width: '80px',
   },
@@ -203,21 +203,16 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '5px'
+    padding: '3px'
   },
   paddingGloves: {
     display: 'flex',
     justifyContent: 'center',
-    padding: '45px'
+    padding: '40px'
   },
   endAmulet: {
     display: 'flex',
     alignItems: 'end'
-  },
-  clothPartnerAndPartner: {
-    display: 'flex',
-    flex: '1',
-    flexDirection: 'column',
   },
   stackColumn: {
     display: 'flex',
@@ -245,7 +240,38 @@ export const useStyles = makeStyles(() => ({
   },
   lootDescriptionComp: {
     display: 'flex',
-    border: 'black 1px solid',
+    border: 'rgba(0, 0, 0, 0.7) 1px solid',
     flexDirection: 'column',
+    maxHeight: '243px',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      width: '0em',
+      height: '0em'
+    }
+  },
+  lootCell: {
+    display: 'flex',
+    border: '1px solid #edebeb',
+    justifyContent: 'center',
+    background:'rgba(168, 3, 17, 0.7)',
+    alignItems: 'center',
+    minHeight: '25px',
+  },
+  goldComp: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+    width: '610px',
+    height: '25px'
+  },
+  typesOfLoot: {
+    display: 'flex',
+    justifyContent: 'center',
+    background: 'rgba(148, 146, 145)',
+    border: '1px solid #ed0000',
+    width: '49px',
+    height: '35px',
+
   },
 }))

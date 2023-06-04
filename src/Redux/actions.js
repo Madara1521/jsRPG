@@ -12,7 +12,8 @@ import {
   SET_DEFENSE,
   SET_BLOCKING,
   SET_HEALTH_AND_STAMINA,
-  SET_MANA
+  SET_MANA,
+  SET_VIEW_ITEM
 } from "./types"
 
 export function incrementStat(statName) {
@@ -114,6 +115,13 @@ export function setHealthAndStamina() {
 export function setMana() {
   return {
     type: SET_MANA,
+  }
+}
+
+export function setViewItem(typesLoot) {
+  return {
+    type: SET_VIEW_ITEM,
+    typesLoot
   }
 }
 
