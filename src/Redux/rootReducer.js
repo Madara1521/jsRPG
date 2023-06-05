@@ -6,6 +6,7 @@ import { levelReducer } from './reducers/levelReducer'
 import { characteristicsReducer } from './reducers/characteristicsReducer'
 import { bonusReducer } from './reducers/bonusReducer'
 import { lootAndDescriptionReducer } from './reducers/lootAndDescriptionReducer'
+import { lootOptionsReducer } from './reducers/lootOptionsReducer'
 
 
 
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   levelReducer,
   characteristicsReducer,
   bonusReducer,
-  lootAndDescriptionReducer
+  lootAndDescriptionReducer,
+  lootOptionsReducer
 })
 
 export const store = createStore(rootReducer, composeWithDevTools())

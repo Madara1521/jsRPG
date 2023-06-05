@@ -1,13 +1,20 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useStyles } from "../../Styles"
 import Talismans from "./Talismans/Talismans"
 import Cloth from "./Cloth/Cloth"
 import LootAndDescription from "./LootAndDescription/LootAndDescription"
 import { connect } from "react-redux"
+import { setViewItem } from "../../../Redux/actions"
 
 const InvertoryContent = (props) => {
   const classes = useStyles()
-  const {gold} = props
+  const {gold, setViewItem, helmetGlovesBootsBelt} = props
+
+  useEffect(() => {
+    setViewItem(helmetGlovesBootsBelt)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[setViewItem])
+
 
   return (
     <div className={classes.content} >
@@ -28,6 +35,7 @@ const InvertoryContent = (props) => {
 
 export default connect(store => {
   return {
-    gold: store.lootAndDescriptionReducer.gold
+    gold: store.lootAndDescriptionReducer.gold,
+    helmetGlovesBootsBelt: store.lootOptionsReducer.helmetGlovesBootsBelt,
   }
-},null)(InvertoryContent)
+},{setViewItem})(InvertoryContent)

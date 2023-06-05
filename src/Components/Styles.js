@@ -249,11 +249,35 @@ export const useStyles = makeStyles(() => ({
       height: '0em'
     }
   },
-  lootCell: {
+  lootCellStandart: {
     display: 'flex',
     border: '1px solid #edebeb',
     justifyContent: 'center',
-    background:'rgba(168, 3, 17, 0.7)',
+    background:'rgba(182, 200, 209, 0.7)',
+    alignItems: 'center',
+    minHeight: '25px',
+  },
+  lootCellMagic: {
+    display: 'flex',
+    border: '1px solid #edebeb',
+    justifyContent: 'center',
+    background:'rgba(10, 32, 199, 0.7)',
+    alignItems: 'center',
+    minHeight: '25px',
+  },
+  lootCellKit: {
+    display: 'flex',
+    border: '1px solid #edebeb',
+    justifyContent: 'center',
+    background:'rgba(17, 184, 61, 0.7)',
+    alignItems: 'center',
+    minHeight: '25px',
+  },
+  lootCellLegendary: {
+    display: 'flex',
+    border: '1px solid #edebeb',
+    justifyContent: 'center',
+    background:'rgba(235, 106, 7, 0.7)',
     alignItems: 'center',
     minHeight: '25px',
   },

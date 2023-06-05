@@ -5,10 +5,12 @@ import { useStyles } from "../../../../Styles"
 
 const LootComp = (props) => {
   const classes = useStyles()
-  const { nameLoot } = props
+  const {
+    nameLoot,
+    color} = props
 
   return (
-    <div className={classes.lootCell}>
+    <div className={`${classes[color]}`}>
       {nameLoot}
     </div>
   )

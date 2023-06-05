@@ -13,7 +13,8 @@ import {
   SET_BLOCKING,
   SET_HEALTH_AND_STAMINA,
   SET_MANA,
-  SET_VIEW_ITEM
+  SET_VIEW_ITEM,
+  PUSH_ITEM
 } from "./types"
 
 export function incrementStat(statName) {
@@ -122,6 +123,14 @@ export function setViewItem(selectedLoot) {
   return {
     type: SET_VIEW_ITEM,
     selectedLoot
+  }
+}
+
+export function pushItem( nameType, items) {
+  return {
+    type: PUSH_ITEM,
+    nameType,
+    items
   }
 }
 

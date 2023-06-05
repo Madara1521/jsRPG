@@ -1,31 +1,16 @@
-import { SET_VIEW_ITEM } from "../types"
+import { PUSH_ITEM, SET_VIEW_ITEM } from "../types"
 
 
 const initialState = {
-  helmetGlovesBootsBelt: [
-    { nameLoot: 'helmet' },
-    { nameLoot: 'gloves' },
-    { nameLoot: 'boots' },
-    { nameLoot: 'belt' },
-  ],
-  armor: [
-    { nameLoot: 'armor' },
-  ],
-  weapon: [
-    { nameLoot: 'weapon' }
-  ],
-  shield: [
-    { nameLoot: 'shield' }
-  ],
-  ringsAmulet: [
-    { nameLoot: 'rings' },
-    { nameLoot: 'amulet' }
-  ],
-  other: [
-    { nameLoot: 'cube' }
-  ],
+  
+  helmetGlovesBootsBelt: [],
+  armor: [],
+  weapon: [],
+  shield: [],
+  ringsAmulet: [],
+  other: [],
   gold: 4514,
-  selectedLoot: []
+  selectedLoot: [ 'inventory' ]
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {
@@ -34,6 +19,11 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedLoot: action.selectedLoot
+      }
+    case PUSH_ITEM:
+      return {
+        ...state,
+        [action.nameType]: [...action.items]
       }
     default:
       return state

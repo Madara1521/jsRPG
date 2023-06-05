@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useStyles } from "../../../../Styles"
 import helm from './helm.png'
 import armor from './armor.png'
@@ -6,7 +6,7 @@ import weapon from './weapon.png'
 import shield from './shield.png'
 import ring from './ring.png'
 import book from './book.png'
-import { setViewItem } from "../../../../../Redux/actions"
+import { pushItem, setViewItem } from "../../../../../Redux/actions"
 import { connect } from "react-redux"
 import LootComp from './LootComp'
 
@@ -21,7 +21,26 @@ const Loot = (props) => {
     weaponItems,
     shieldItems,
     ringsAmuletItems,
-    otherItems } = props
+    otherItems,
+    pushItem,
+
+    helmetGlovesBootsBelt,
+    armors,
+    weapons,
+    shields,
+    ringsAmulets,
+    others } = props
+
+  useEffect(() => {
+    pushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
+    pushItem('armor', armors)
+    pushItem('weapon', weapons)
+    pushItem('shield', shields)
+    pushItem('ringsAmulet', ringsAmulets)
+    pushItem('other', others)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [helmetGlovesBootsBelt, armors, weapons, shields, ringsAmulets, others])
+
 
   return (
     <div className={classes.loot}>
@@ -34,10 +53,11 @@ const Loot = (props) => {
         <div className={classes.typesOfLoot} onClick={() => setViewItem(otherItems)}><img src={book} alt='book' /></div>
       </div>
       <div className={classes.lootDescriptionComp}>
-        {selectedLoot && selectedLoot.map((field, index) => {
+        {selectedLoot.map((field, index) => {
           return (
             <LootComp
               nameLoot={field.nameLoot}
+              color={field.color}
               key={index}
             />
           )
@@ -56,5 +76,12 @@ export default connect((store, ownProps) => {
     shieldItems: store.lootAndDescriptionReducer.shield,
     ringsAmuletItems: store.lootAndDescriptionReducer.ringsAmulet,
     otherItems: store.lootAndDescriptionReducer.other,
+
+    helmetGlovesBootsBelt: store.lootOptionsReducer.helmetGlovesBootsBelt,
+    armors: store.lootOptionsReducer.armor,
+    weapons: store.lootOptionsReducer.weapon,
+    shields: store.lootOptionsReducer.shield,
+    ringsAmulets: store.lootOptionsReducer.ringsAmulet,
+    others: store.lootOptionsReducer.other,
   }
-}, { setViewItem })(Loot)
+}, { setViewItem, pushItem })(Loot)
