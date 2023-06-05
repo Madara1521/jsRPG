@@ -118,10 +118,10 @@ export function setMana() {
   }
 }
 
-export function setViewItem(typesLoot) {
+export function setViewItem(selectedLoot) {
   return {
     type: SET_VIEW_ITEM,
-    typesLoot
+    selectedLoot
   }
 }
 

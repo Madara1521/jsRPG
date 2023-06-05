@@ -1,14 +1,15 @@
 import React from "react"
-import { useStyles } from "../../../Styles"
+import { useStyles } from "../../../../Styles"
 
 
 
-const LootComp = () => {
+const LootComp = (props) => {
   const classes = useStyles()
+  const { nameLoot } = props
 
   return (
     <div className={classes.lootCell}>
-      helm
+      {nameLoot}
     </div>
   )
 }
