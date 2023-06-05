@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useStyles } from "../../../../Styles"
 import helm from './helm.png'
 import armor from './armor.png'
@@ -6,7 +6,7 @@ import weapon from './weapon.png'
 import shield from './shield.png'
 import ring from './ring.png'
 import book from './book.png'
-import { pushItem, setViewItem } from "../../../../../Redux/actions"
+import { setViewItem } from "../../../../../Redux/actions"
 import { connect } from "react-redux"
 import LootComp from './LootComp'
 
@@ -21,25 +21,8 @@ const Loot = (props) => {
     weaponItems,
     shieldItems,
     ringsAmuletItems,
-    otherItems,
-    pushItem,
+    otherItems } = props
 
-    helmetGlovesBootsBelt,
-    armors,
-    weapons,
-    shields,
-    ringsAmulets,
-    others } = props
-
-  useEffect(() => {
-    pushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
-    pushItem('armor', armors)
-    pushItem('weapon', weapons)
-    pushItem('shield', shields)
-    pushItem('ringsAmulet', ringsAmulets)
-    pushItem('other', others)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [helmetGlovesBootsBelt, armors, weapons, shields, ringsAmulets, others])
 
 
   return (
@@ -76,12 +59,5 @@ export default connect((store, ownProps) => {
     shieldItems: store.lootAndDescriptionReducer.shield,
     ringsAmuletItems: store.lootAndDescriptionReducer.ringsAmulet,
     otherItems: store.lootAndDescriptionReducer.other,
-
-    helmetGlovesBootsBelt: store.lootOptionsReducer.helmetGlovesBootsBelt,
-    armors: store.lootOptionsReducer.armor,
-    weapons: store.lootOptionsReducer.weapon,
-    shields: store.lootOptionsReducer.shield,
-    ringsAmulets: store.lootOptionsReducer.ringsAmulet,
-    others: store.lootOptionsReducer.other,
   }
-}, { setViewItem, pushItem })(Loot)
+}, { setViewItem })(Loot)

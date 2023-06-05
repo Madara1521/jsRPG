@@ -4,16 +4,36 @@ import Talismans from "./Talismans/Talismans"
 import Cloth from "./Cloth/Cloth"
 import LootAndDescription from "./LootAndDescription/LootAndDescription"
 import { connect } from "react-redux"
-import { setViewItem } from "../../../Redux/actions"
+import { pushItem, setViewItem } from "../../../Redux/actions"
 
 const InvertoryContent = (props) => {
   const classes = useStyles()
-  const {gold, setViewItem, helmetGlovesBootsBelt} = props
+  const { 
+    gold, 
+    setViewItem,
+    helmetGlovesBootsBelt,
+    pushItem,
+    armors,
+    weapons,
+    shields,
+    ringsAmulets,
+    others } = props
 
   useEffect(() => {
     setViewItem(helmetGlovesBootsBelt)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[setViewItem])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setViewItem])
+
+  useEffect(() => {
+    //imitation loot
+    pushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
+    pushItem('armor', armors)
+    pushItem('weapon', weapons)
+    pushItem('shield', shields)
+    pushItem('ringsAmulet', ringsAmulets)
+    pushItem('other', others)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [helmetGlovesBootsBelt, armors, weapons, shields, ringsAmulets, others])
 
 
   return (
@@ -24,7 +44,7 @@ const InvertoryContent = (props) => {
         </div>
         <Cloth />
         <Talismans />
-        <LootAndDescription/>
+        <LootAndDescription />
         <div className={classes.goldComp}>
           gold : {gold}
         </div>
@@ -37,5 +57,10 @@ export default connect(store => {
   return {
     gold: store.lootAndDescriptionReducer.gold,
     helmetGlovesBootsBelt: store.lootOptionsReducer.helmetGlovesBootsBelt,
+    armors: store.lootOptionsReducer.armor,
+    weapons: store.lootOptionsReducer.weapon,
+    shields: store.lootOptionsReducer.shield,
+    ringsAmulets: store.lootOptionsReducer.ringsAmulet,
+    others: store.lootOptionsReducer.other,
   }
-},{setViewItem})(InvertoryContent)
+}, { setViewItem, pushItem })(InvertoryContent)
