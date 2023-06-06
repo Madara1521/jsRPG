@@ -238,7 +238,7 @@ export const useStyles = makeStyles(() => ({
     border: 'black 1px solid',
     flexDirection: 'column',
   },
-  lootDescriptionComp: {
+  lootComp: {
     display: 'flex',
     border: 'rgba(0, 0, 0, 0.7) 1px solid',
     flexDirection: 'column',
@@ -298,4 +298,27 @@ export const useStyles = makeStyles(() => ({
     height: '35px',
 
   },
+  DescriptionComp: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxHeight: '243px',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      width: '0em',
+      height: '0em'
+    }
+  },
+  nameLoot: {
+    display: 'flex',
+    justifyContent: 'center',
+    justifyItems: 'center',
+    fontSize: '150%',
+    border: 'rgba(0, 0, 0, 0.7) 1px solid',
+  },
+  lootBonus: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    fontSize: '120%'
+  }
 }))

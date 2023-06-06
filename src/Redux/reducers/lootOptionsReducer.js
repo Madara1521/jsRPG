@@ -8,10 +8,8 @@ const initialState = {
       id: uniqid(),
       info: {
         nameLoot: 'helmet peasant',
-        strength: 5,
         dexterity: 5,
         vitality: 5,
-        energy: 5,
       }
     },
     {
@@ -19,10 +17,8 @@ const initialState = {
       color: 'lootCellLegendary',
       info: {
         nameLoot: 'gloves dragon',
-        strength: 80,
         dexterity: 60,
         vitality: 120,
-        energy: 55,
       }
     },
     {
@@ -30,7 +26,7 @@ const initialState = {
       color: 'lootCellKit',
       info: {
         nameLoot: 'boots speed',
-        strength: 30,
+        strength: 5,
         dexterity: 90,
         vitality: 20,
         energy: 80,
@@ -51,41 +47,75 @@ const initialState = {
   ], // helmet
   armor: [
     {
-      nameLoot: 'armor',
       id: uniqid(),
-      color: 'lootCellStandart'
+      color: 'lootCellStandart',
+      info: {
+        nameLoot: 'armor bandit',
+        strength: 9,
+        dexterity: 2,
+        vitality: 6,
+        energy: 0,
+      }
     },
   ], // armor
   weapon: [
     {
-      nameLoot: 'weapon',
       id: uniqid(),
-      color: 'lootCellStandart'
+      color: 'lootCellStandart',
+      info: {
+        nameLoot: 'javelin shtorm',
+        strength: 4,
+        dexterity: 3,
+        vitality: 2,
+        energy: 0,
+        startPhysicalDamage: 33,
+        finalPhycicalDamage: 46
+      }
     }
   ],// weapon
   shield: [
     {
-      nameLoot: 'shield',
       id: uniqid(),
-      color: 'lootCellStandart'
+      color: 'lootCellStandart',
+      info: {
+        nameLoot: 'shield peasant',
+        strength: 5,
+        dexterity: 7,
+        vitality: 4,
+        energy: 0,
+      }
     }
   ], //shield
   ringsAmulet: [
     {
-      nameLoot: 'rings',
       id: uniqid(),
-      color: 'lootCellStandart'
+      color: 'lootCellStandart',
+      info: {
+        nameLoot: 'ring of strength',
+        strength: 5,
+        dexterity: 7,
+        vitality: 4,
+        energy: 0,
+      }
     },
     {
-      nameLoot: 'amulet',
       id: uniqid(),
-      color: 'lootCellStandart'
+      color: 'lootCellStandart',
+      info: {
+        nameLoot: 'amulet of dexterity',
+        strength: 5,
+        dexterity: 7,
+        vitality: 4,
+        energy: 0,
+      }
     }
   ],//rings
   other: [
     {
-      nameLoot: 'cube',
-      id: uniqid(), color: 'lootCellStandart'
+      id: uniqid(), color: 'lootCellStandart',
+      info: {
+        nameLoot: 'cube',
+      }
     }
   ],// other
 }

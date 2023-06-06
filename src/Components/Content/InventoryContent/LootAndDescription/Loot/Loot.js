@@ -34,7 +34,7 @@ const Loot = (props) => {
         <div className={classes.typesOfLoot} onClick={() => setViewItem(ringsAmuletItems)}><img src={ring} alt='ring' /></div>
         <div className={classes.typesOfLoot} onClick={() => setViewItem(otherItems)}><img src={book} alt='book' /></div>
       </div>
-      <div className={classes.lootDescriptionComp}>
+      <div className={classes.lootComp}>
         {selectedLoot.map((field, index) => {
           return (
             <LootComp
