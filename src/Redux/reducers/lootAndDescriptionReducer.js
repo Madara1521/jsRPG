@@ -1,8 +1,7 @@
-import { PUSH_ITEM, SET_VIEW_ITEM } from "../types"
+import { GET_VIEW_DESCRIPTION, SET_PUSH_ITEM, SET_VIEW_ITEM } from "../types"
 
 
 const initialState = {
-  
   helmetGlovesBootsBelt: [],
   armor: [],
   weapon: [],
@@ -10,7 +9,9 @@ const initialState = {
   ringsAmulet: [],
   other: [],
   gold: 4514,
-  selectedLoot: [ 'inventory' ]
+  selectedLoot: [],
+
+  description: []
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {
@@ -20,10 +21,15 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
         ...state,
         selectedLoot: action.selectedLoot
       }
-    case PUSH_ITEM:
+    case SET_PUSH_ITEM:
       return {
         ...state,
         [action.nameType]: [...action.items]
+      }
+    case GET_VIEW_DESCRIPTION:
+      return {
+        ...state,
+        description: action.info
       }
     default:
       return state

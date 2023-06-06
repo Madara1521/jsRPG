@@ -14,7 +14,8 @@ import {
   SET_HEALTH_AND_STAMINA,
   SET_MANA,
   SET_VIEW_ITEM,
-  PUSH_ITEM
+  SET_PUSH_ITEM,
+  GET_VIEW_DESCRIPTION
 } from "./types"
 
 export function incrementStat(statName) {
@@ -126,11 +127,18 @@ export function setViewItem(selectedLoot) {
   }
 }
 
-export function pushItem( nameType, items) {
+export function setPushItem( nameType, items) {
   return {
-    type: PUSH_ITEM,
+    type: SET_PUSH_ITEM,
     nameType,
     items
+  }
+}
+
+export function getViewDescription(info) {
+  return {
+    type: GET_VIEW_DESCRIPTION,
+    info
   }
 }
 

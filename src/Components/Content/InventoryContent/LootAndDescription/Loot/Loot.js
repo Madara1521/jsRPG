@@ -11,6 +11,7 @@ import { connect } from "react-redux"
 import LootComp from './LootComp'
 
 
+
 const Loot = (props) => {
   const classes = useStyles()
   const {
@@ -22,8 +23,6 @@ const Loot = (props) => {
     shieldItems,
     ringsAmuletItems,
     otherItems } = props
-
-
 
   return (
     <div className={classes.loot}>
@@ -39,8 +38,9 @@ const Loot = (props) => {
         {selectedLoot.map((field, index) => {
           return (
             <LootComp
-              nameLoot={field.nameLoot}
+              nameLoot={field.info.nameLoot}
               color={field.color}
+              info={field.info}
               key={index}
             />
           )

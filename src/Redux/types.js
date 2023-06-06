@@ -13,4 +13,6 @@ export const SET_BLOCKING = 'SET_BLOCKING'
 export const SET_HEALTH_AND_STAMINA = 'SET_HEALTH_AND_STAMINA'
 export const SET_MANA = 'SET_MANA'
 export const SET_VIEW_ITEM = 'SET_VIEW_ITEM'
-export const PUSH_ITEM = 'PUSH_ITEM'
+export const SET_PUSH_ITEM = 'SET_PUSH_ITEM'
+export const GET_VIEW_DESCRIPTION = 'GET_VIEW_DESCRIPTION'
+

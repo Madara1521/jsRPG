@@ -1,39 +1,93 @@
-
+import uniqid from 'uniqid'
 
 
 const initialState = {
   helmetGlovesBootsBelt: [
-    { nameLoot: 'helmet peasant', color: 'lootCellStandart' },
-    { nameLoot: 'gloves dragon', color: 'lootCellLegendary' },
-    { nameLoot: 'gloves dragon', color: 'lootCellLegendary' },
-    { nameLoot: 'gloves dragon', color: 'lootCellLegendary' },
-    { nameLoot: 'boots speed', color: 'lootCellKit' },
-    { nameLoot: 'boots speed', color: 'lootCellKit' },
-    { nameLoot: 'boots speed', color: 'lootCellKit' },
-    { nameLoot: 'belt peasant', color: 'lootCellMagic' },
-    { nameLoot: 'belt peasant', color: 'lootCellMagic' },
-    { nameLoot: 'belt peasant', color: 'lootCellMagic' },
-    { nameLoot: 'belt peasant', color: 'lootCellMagic' },
-    { nameLoot: 'belt peasant', color: 'lootCellMagic' },
-    { nameLoot: 'belt peasant', color: 'lootCellMagic' },
-    { nameLoot: 'belt peasant', color: 'lootCellMagic' },
-  ],
+    {
+      color: 'lootCellStandart',
+      id: uniqid(),
+      info: {
+        nameLoot: 'helmet peasant',
+        strength: 5,
+        dexterity: 5,
+        vitality: 5,
+        energy: 5,
+      }
+    },
+    {
+      id: uniqid(),
+      color: 'lootCellLegendary',
+      info: {
+        nameLoot: 'gloves dragon',
+        strength: 80,
+        dexterity: 60,
+        vitality: 120,
+        energy: 55,
+      }
+    },
+    {
+      id: uniqid(),
+      color: 'lootCellKit',
+      info: {
+        nameLoot: 'boots speed',
+        strength: 30,
+        dexterity: 90,
+        vitality: 20,
+        energy: 80,
+      }
+    },
+    {
+      id: uniqid(),
+      color: 'lootCellMagic',
+      info: {
+        nameLoot: 'belt peasant',
+        strength: 4,
+        dexterity: 3,
+        vitality: 2,
+        energy: 0,
+      }
+    },
+
+  ], // helmet
   armor: [
-    { nameLoot: 'armor', color: 'lootCellStandart' },
-  ],
+    {
+      nameLoot: 'armor',
+      id: uniqid(),
+      color: 'lootCellStandart'
+    },
+  ], // armor
   weapon: [
-    { nameLoot: 'weapon', color: 'lootCellStandart' }
-  ],
+    {
+      nameLoot: 'weapon',
+      id: uniqid(),
+      color: 'lootCellStandart'
+    }
+  ],// weapon
   shield: [
-    { nameLoot: 'shield', color: 'lootCellStandart' }
-  ],
+    {
+      nameLoot: 'shield',
+      id: uniqid(),
+      color: 'lootCellStandart'
+    }
+  ], //shield
   ringsAmulet: [
-    { nameLoot: 'rings', color: 'lootCellStandart' },
-    { nameLoot: 'amulet', color: 'lootCellStandart' }
-  ],
+    {
+      nameLoot: 'rings',
+      id: uniqid(),
+      color: 'lootCellStandart'
+    },
+    {
+      nameLoot: 'amulet',
+      id: uniqid(),
+      color: 'lootCellStandart'
+    }
+  ],//rings
   other: [
-    { nameLoot: 'cube', color: 'lootCellStandart' }
-  ],
+    {
+      nameLoot: 'cube',
+      id: uniqid(), color: 'lootCellStandart'
+    }
+  ],// other
 }
 
 export const lootOptionsReducer = (state = initialState, action) => {
