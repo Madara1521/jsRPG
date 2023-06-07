@@ -9,6 +9,8 @@ import book from './book.png'
 import { setViewItem } from "../../../../../Redux/actions"
 import { connect } from "react-redux"
 import LootComp from './LootComp'
+import { PropTypes } from 'prop-types'
+import uniqid from 'uniqid'
 
 
 
@@ -24,30 +26,78 @@ const Loot = (props) => {
     ringsAmuletItems,
     otherItems } = props
 
+  const iconsFields = [
+    {
+      value: helmetGlovesBootsBeltItems,
+      src: helm,
+      alt: 'helm'
+    },
+    {
+      value: armorItems,
+      src: armor,
+      alt: 'armor'
+    },
+    {
+      value: weaponItems,
+      src: weapon,
+      alt: 'weapon'
+    },
+    {
+      value: shieldItems,
+      src: shield,
+      alt: 'shield'
+    },
+    {
+      value: ringsAmuletItems,
+      src: ring,
+      alt: 'ring'
+    },
+    {
+      value: otherItems,
+      src: book,
+      alt: 'book'
+    },
+  ]
+
   return (
     <div className={classes.loot}>
       <div className={classes.twoTitle}>
-        <div className={classes.typesOfLoot} onClick={() => setViewItem(helmetGlovesBootsBeltItems)}><img src={helm} alt='helm' /></div>
-        <div className={classes.typesOfLoot} onClick={() => setViewItem(armorItems)}><img src={armor} alt='armor' /></div>
-        <div className={classes.typesOfLoot} onClick={() => setViewItem(weaponItems)}><img src={weapon} alt='weapon' /></div>
-        <div className={classes.typesOfLoot} onClick={() => setViewItem(shieldItems)}><img src={shield} alt='shield' /></div>
-        <div className={classes.typesOfLoot} onClick={() => setViewItem(ringsAmuletItems)}><img src={ring} alt='ring' /></div>
-        <div className={classes.typesOfLoot} onClick={() => setViewItem(otherItems)}><img src={book} alt='book' /></div>
+        {iconsFields.map(field => {
+          return (
+            <div
+              className={classes.typesOfLoot}
+              key={uniqid()}
+              onClick={() => setViewItem(field.value)}>
+              <img src={field.src} alt={field.alt} />
+            </div>
+          )
+        })}
       </div>
       <div className={classes.lootComp}>
-        {selectedLoot.map((field, index) => {
+        {selectedLoot.map((field) => {
           return (
             <LootComp
-              nameLoot={field.info.nameLoot}
-              color={field.color}
+              lootName={field.info.lootName}
+              color={field.info.color}
               info={field.info}
-              key={index}
+              key={field.id}
             />
           )
         })}
       </div>
     </div>
   )
+}
+
+
+Loot.propTypes = {
+  selectedLoot: PropTypes.array.isRequired,
+  helmetGlovesBootsBeltItems: PropTypes.array.isRequired,
+  armorItems: PropTypes.array.isRequired,
+  weaponItems: PropTypes.array.isRequired,
+  shieldItems: PropTypes.array.isRequired,
+  ringsAmuletItems: PropTypes.array.isRequired,
+  otherItems: PropTypes.array.isRequired,
 }
 
 export default connect((store, ownProps) => {

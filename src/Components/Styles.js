@@ -240,7 +240,6 @@ export const useStyles = makeStyles(() => ({
   },
   lootComp: {
     display: 'flex',
-    border: 'rgba(0, 0, 0, 0.7) 1px solid',
     flexDirection: 'column',
     maxHeight: '243px',
     overflowY: 'scroll',
@@ -248,6 +247,11 @@ export const useStyles = makeStyles(() => ({
       width: '0em',
       height: '0em'
     }
+  },
+  lootCellNull: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   lootCellStandart: {
     display: 'flex',
@@ -301,8 +305,10 @@ export const useStyles = makeStyles(() => ({
   DescriptionComp: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
     maxHeight: '243px',
     overflowY: 'scroll',
+    fontSize: '130%',
     '&::-webkit-scrollbar': {
       width: '0em',
       height: '0em'
@@ -319,6 +325,13 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    fontSize: '120%'
+  },
+  magicLetters: {
+    color: 'blue'
+  },
+  imgDescription: {
+    display: 'flex',
+    maxHeight: '100px',
+    maxWidth: '100px'
   }
 }))

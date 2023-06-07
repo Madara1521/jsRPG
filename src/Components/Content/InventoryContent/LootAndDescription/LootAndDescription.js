@@ -6,6 +6,7 @@ import Description from "./Description/Description"
 const LootAndDescription = () => {
   const classes = useStyles()
 
+
   return (
     <div className={classes.lootAndDescription}>
       <Loot />

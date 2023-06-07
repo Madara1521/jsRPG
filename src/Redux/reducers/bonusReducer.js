@@ -5,6 +5,12 @@ const initialState = {
     finalPhyBonus: 20,
     attackRatingBonus: 50
   },
+  helmetBonus:{
+    strength: 0,
+    dexterity: 0,
+    vitality: 0,
+    energy: 0,
+  },
   armorBonus: {
     strength: 0,
     dexterity: 0,
