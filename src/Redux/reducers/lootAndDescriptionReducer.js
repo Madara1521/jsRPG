@@ -30,7 +30,8 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
     case GET_VIEW_DESCRIPTION:
       return {
         ...state,
-        description: action.info
+        description: action.info,
+        isActiveItem: action.isActiveItem
       }
     default:
       return state

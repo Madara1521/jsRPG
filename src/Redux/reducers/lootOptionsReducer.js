@@ -3,13 +3,19 @@ import recruitHelmet from './helmetImg/recruitHelmet.png'
 import skullCap from './helmetImg/skullCap.png'
 import uniqid from 'uniqid'
 
+//rarity 0 = 'lootCellStandart'
+//rarity 1 = 'lootCellMagic'
+//rarity 2 = 'lootCellKit'
+//rarity 3 = 'lootCellLegendary'
+
+
+
 const initialState = {
   helmetGlovesBootsBelt: [
     {
       info: {
         id: uniqid(),
         rarity: 0,
-        color: 'lootCellStandart',
         lootName: 'Peasant helmet',
         img: helmetPeasant,
         requiredLevel: 1,
@@ -20,7 +26,6 @@ const initialState = {
       info: {
         id: uniqid(),
         rarity: 0,
-        color: 'lootCellStandart',
         lootName: 'Skull cap',
         img: skullCap,
         requiredLevel: 1,
@@ -45,7 +50,6 @@ const initialState = {
       info: {
         id: uniqid(),
         rarity: 3,
-        color: 'lootCellLegendary',
         lootName: 'gloves dragon',
         requiredLevel: 40,
         requiredStrength: 50,
@@ -57,7 +61,7 @@ const initialState = {
     {
       info: {
         id: uniqid(),
-        color: 'lootCellKit',
+        rarity: 2,
         lootName: 'boots speed',
         requiredLevel: 43,
         requiredStrength: 35,
@@ -71,8 +75,7 @@ const initialState = {
     {
       info: {
         id: uniqid(),
-        rarity: 2,
-        color: 'lootCellMagic',
+        rarity: 0,
         lootName: 'belt peasant',
         requiredLevel: 1,
         strength: 4,
@@ -86,7 +89,8 @@ const initialState = {
   armor: [
     {
       info: {
-        color: 'lootCellStandart',
+        id: uniqid(),
+        rarity: 0,
         lootName: 'armor bandit',
         strength: 9,
         dexterity: 2,
@@ -98,7 +102,8 @@ const initialState = {
   weapon: [
     {
       info: {
-        color: 'lootCellStandart',
+        id: uniqid(),
+        rarity: 0,
         lootName: 'Blackleach Blade',
         startPhysicalDamage: 109,
         finalPhycicalDamage: 253,
@@ -116,7 +121,8 @@ const initialState = {
   shield: [
     {
       info: {
-        color: 'lootCellStandart',
+        id: uniqid(),
+        rarity: 0,
         lootName: 'shield peasant',
         strength: 5,
         dexterity: 7,
@@ -128,7 +134,8 @@ const initialState = {
   ringsAmulet: [
     {
       info: {
-        color: 'lootCellStandart',
+        id: uniqid(),
+        rarity: 0,
         lootName: 'ring of strength',
         strength: 5,
         dexterity: 7,
@@ -138,7 +145,8 @@ const initialState = {
     },
     {
       info: {
-        color: 'lootCellStandart',
+        id: uniqid(),
+        rarity: 0,
         lootName: 'amulet of dexterity',
         strength: 5,
         dexterity: 7,
@@ -150,7 +158,8 @@ const initialState = {
   other: [
     {
       info: {
-        color: 'lootCellStandart',
+        id: uniqid(),
+        rarity: 0,
         lootName: 'cube',
       }
     }

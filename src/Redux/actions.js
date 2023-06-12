@@ -135,10 +135,11 @@ export function setPushItem( nameType, items) {
   }
 }
 
-export function getViewDescription(info) {
+export function getViewDescription(info,isActiveItem) {
   return {
     type: GET_VIEW_DESCRIPTION,
-    info
+    info,
+    isActiveItem
   }
 }
 

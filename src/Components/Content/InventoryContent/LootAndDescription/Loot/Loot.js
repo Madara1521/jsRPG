@@ -1,5 +1,4 @@
 import React from "react"
-import { useStyles } from "../../../../Styles"
 import helm from './helm.png'
 import armor from './armor.png'
 import weapon from './weapon.png'
@@ -11,8 +10,42 @@ import { connect } from "react-redux"
 import LootComp from './LootComp'
 import { PropTypes } from 'prop-types'
 import { useState } from "react"
+import { makeStyles } from "@mui/styles"
 
+const useStyles = makeStyles({
+  loot: {
+    display: 'flex',
+    border: 'black 1px solid',
+    flexDirection: 'column',
 
+  },
+  twoTitle: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '304px',
+    height: '37px'
+  },
+  typesOfLoot: {
+    display: 'flex',
+    justifyContent: 'center',
+    background: 'rgba(148, 146, 145)',
+    border: '1px solid #ed0000',
+    width: '49px',
+    height: '35px',
+
+  },
+  lootComp: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxHeight: '243px',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      width: '0em',
+      height: '0em'
+    }
+  },
+})
 
 const Loot = (props) => {
   const classes = useStyles()
@@ -26,6 +59,7 @@ const Loot = (props) => {
     ringsAmuletItems,
     otherItems } = props
 
+  const [activeItem, setActiveItem] = useState(null)
 
   const iconsFields = [
     {
@@ -60,12 +94,10 @@ const Loot = (props) => {
     },
   ]
 
-  const [activeItem, setActiveItem] = useState(null)
-
   return (
     <div className={classes.loot}>
       <div className={classes.twoTitle}>
-        {iconsFields.map((field,index) => {
+        {iconsFields.map((field, index) => {
           return (
             <div
               className={classes.typesOfLoot}

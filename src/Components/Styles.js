@@ -120,13 +120,6 @@ export const useStyles = makeStyles(() => ({
     width: '49px',
     height: '40px'
   },
-  twoTitle: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '304px',
-    height: '37px'
-  },
   characterClothes: {
     display: 'flex',
     alignItems: 'center',
@@ -227,72 +220,6 @@ export const useStyles = makeStyles(() => ({
     flex: '2',
     flexDirection: 'row'
   },
-  loot: {
-    display: 'flex',
-    border: 'black 1px solid',
-    flexDirection: 'column',
-    
-  },
-  description: {
-    display: 'flex',
-    border: 'black 1px solid',
-    flexDirection: 'column',
-  },
-  lootComp: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxHeight: '243px',
-    overflowY: 'scroll',
-    '&::-webkit-scrollbar': {
-      width: '0em',
-      height: '0em'
-    }
-  },
-  lootCellNull: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  lootCellStandart: {
-    display: 'flex',
-    border: '1px solid #edebeb',
-    justifyContent: 'center',
-    background:'rgba(182, 200, 209, 0.7)',
-    alignItems: 'center',
-    minHeight: '25px',
-  },
-  lootCellActive: {
-    display: 'flex',
-    border: '1px solid #edebeb',
-    justifyContent: 'center',
-    background:'rgba(65, 35, 92, 0.7)',
-    alignItems: 'center',
-    minHeight: '25px',
-  },
-  lootCellMagic: {
-    display: 'flex',
-    border: '1px solid #edebeb',
-    justifyContent: 'center',
-    background:'rgba(10, 32, 199, 0.7)',
-    alignItems: 'center',
-    minHeight: '25px',
-  },
-  lootCellKit: {
-    display: 'flex',
-    border: '1px solid #edebeb',
-    justifyContent: 'center',
-    background:'rgba(17, 184, 61, 0.7)',
-    alignItems: 'center',
-    minHeight: '25px',
-  },
-  lootCellLegendary: {
-    display: 'flex',
-    border: '1px solid #edebeb',
-    justifyContent: 'center',
-    background:'rgba(235, 106, 7, 0.7)',
-    alignItems: 'center',
-    minHeight: '25px',
-  },
   goldComp: {
     display: 'flex',
     justifyContent: 'center',
@@ -301,27 +228,6 @@ export const useStyles = makeStyles(() => ({
     width: '610px',
     height: '25px'
   },
-  typesOfLoot: {
-    display: 'flex',
-    justifyContent: 'center',
-    background: 'rgba(148, 146, 145)',
-    border: '1px solid #ed0000',
-    width: '49px',
-    height: '35px',
-
-  },
-  DescriptionComp: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    maxHeight: '243px',
-    overflowY: 'scroll',
-    fontSize: '130%',
-    '&::-webkit-scrollbar': {
-      width: '0em',
-      height: '0em'
-    }
-  },
   nameLoot: {
     display: 'flex',
     justifyContent: 'center',
@@ -329,17 +235,4 @@ export const useStyles = makeStyles(() => ({
     fontSize: '150%',
     border: 'rgba(0, 0, 0, 0.7) 1px solid',
   },
-  lootBonus: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
-  magicLetters: {
-    color: 'blue'
-  },
-  imgDescription: {
-    display: 'flex',
-    maxHeight: '100px',
-    maxWidth: '100px'
-  }
 }))

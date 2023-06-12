@@ -1,13 +1,91 @@
 import React from "react"
-import { useStyles } from "../../../../Styles"
 import { connect } from "react-redux"
 import { PropTypes } from 'prop-types'
+import { makeStyles } from "@mui/styles"
+import classNames from "classnames"
+
+const useStyles = makeStyles({
+  twoTitle: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '304px',
+    height: '37px'
+  },
+  magicLetters: {
+    color: 'blue'
+  },
+  imgDescription: {
+    display: 'flex',
+    maxHeight: '100px',
+    maxWidth: '100px'
+  },
+  description: {
+    display: 'flex',
+    border: 'black 1px solid',
+    flexDirection: 'column',
+  },
+  descriptionComp: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    maxHeight: '243px',
+    overflowY: 'scroll',
+    fontSize: '130%',
+    '&::-webkit-scrollbar': {
+      width: '0em',
+      height: '0em'
+    }
+  },
+  lootBonus: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  lootCell: {
+    display: 'flex',
+    border: '1px solid #edebeb',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '25px',
+  },
+  lootCellStandart: {
+    background: 'rgba(182, 200, 209, 0.7)',
+  },
+  lootCellActive: {
+    background: 'rgba(65, 35, 92, 0.7) !important',
+  },
+  lootCellMagic: {
+    background: 'rgba(10, 32, 199, 0.7)',
+  },
+  lootCellKit: {
+    background: 'rgba(17, 184, 61, 0.7)',
+  },
+  lootCellLegendary: {
+    background: 'rgba(235, 106, 7, 0.7)',
+  },
+})
+
+const rarityDescriptionColorHelper = (classes, rarity) => {
+  switch (rarity) {
+    case 1:
+      return classes.lootCellMagic
+    case 2:
+      return classes.lootCellKit
+    case 3:
+      return classes.lootCellLegendary
+    default:
+      return classes.lootCellStandart
+  }
+}
 
 const Description = (props) => {
   const classes = useStyles()
   const {
-    description,
-    color } = props
+    description
+  } = props
+
+  const lootCellColor = rarityDescriptionColorHelper(classes, description.rarity)
 
   const renderStat = (name, value) => {
     return value ? <div className={classes.magicLetters}> +{value} {name}</div> : null
@@ -29,17 +107,14 @@ const Description = (props) => {
     return img ? <img className={classes.imgDescription} src={img} alt='img' /> : null
   }
 
-  const renderName = (colorLoot) => {
-    return colorLoot ? <div className={classes[colorLoot]}>{description.lootName}</div> : null
-  }
-
   return (
     <div className={classes.description}>
       <div className={classes.twoTitle}>
         <h1>Item description</h1>
       </div>
-      <div className={classes.DescriptionComp}>
-        {renderName(color)}
+      <div className={classes.descriptionComp}>
+        <div className={classNames(classes.lootCell && lootCellColor)}>{description.lootName}</div>
+        {/* {renderName(lootCellColor)} */}
         {renderImg(description.img)}
         <div className={classes.lootBonus}>
           {renderDamage('Physical damage', description.startPhysicalDamage, description.finalPhycicalDamage)}
@@ -62,13 +137,11 @@ const Description = (props) => {
 
 Description.propTypes = {
   description: PropTypes.object.isRequired,
-  color: PropTypes.string.isRequired,
 }
 
 export default connect(
   (store) => ({
     description: store.lootAndDescriptionReducer.description,
-    color: store.lootAndDescriptionReducer.description.color
   }),
   {}
 )(Description)

@@ -60,10 +60,10 @@ const LootComp = (props) => {
 
   const handleClick = () => {
     if(isActiveItem) {
-      // getViewDescription(null)
+      getViewDescription(null)
       return setActiveItem(null)
     }
-    getViewDescription(info)
+    getViewDescription(info,isActiveItem)
     return setActiveItem(id)
   }
 
@@ -83,7 +83,11 @@ const LootComp = (props) => {
 LootComp.propTypes = {
   lootName: PropTypes.string.isRequired,
   info: PropTypes.object.isRequired,
-  getViewDescription: PropTypes.func.isRequired
+  getViewDescription: PropTypes.func.isRequired,
+  setActiveItem: PropTypes.func.isRequired,
+  isActiveItem: PropTypes.bool,
+  id: PropTypes.string.isRequired,
+  rarity: PropTypes.number.isRequired,
 }
 
 export default connect(null, { getViewDescription })(LootComp)
