@@ -2,6 +2,7 @@ import { GET_VIEW_DESCRIPTION, SET_PUSH_ITEM, SET_VIEW_ITEM } from "../types"
 
 
 const initialState = {
+  allItems: [],
   helmetGlovesBootsBelt: [],
   armor: [],
   weapon: [],
@@ -11,7 +12,7 @@ const initialState = {
   gold: 4514,
   selectedLoot: [],
 
-  description: {color: 'lootCellNull'}
+  description: {color: ''}
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {

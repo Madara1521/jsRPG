@@ -10,7 +10,7 @@ import { setViewItem } from "../../../../../Redux/actions"
 import { connect } from "react-redux"
 import LootComp from './LootComp'
 import { PropTypes } from 'prop-types'
-import uniqid from 'uniqid'
+import { useState } from "react"
 
 
 
@@ -25,6 +25,7 @@ const Loot = (props) => {
     shieldItems,
     ringsAmuletItems,
     otherItems } = props
+
 
   const iconsFields = [
     {
@@ -59,14 +60,16 @@ const Loot = (props) => {
     },
   ]
 
+  const [activeItem, setActiveItem] = useState(null)
+
   return (
     <div className={classes.loot}>
       <div className={classes.twoTitle}>
-        {iconsFields.map(field => {
+        {iconsFields.map((field,index) => {
           return (
             <div
               className={classes.typesOfLoot}
-              key={uniqid()}
+              key={index}
               onClick={() => setViewItem(field.value)}>
               <img src={field.src} alt={field.alt} />
             </div>
@@ -74,13 +77,17 @@ const Loot = (props) => {
         })}
       </div>
       <div className={classes.lootComp}>
-        {selectedLoot.map((field) => {
+        {selectedLoot.map((field, index) => {
+          const isActiveItem = field.info.id === activeItem
           return (
             <LootComp
+              id={field.info.id}
               lootName={field.info.lootName}
-              color={field.info.color}
               info={field.info}
-              key={field.id}
+              key={index}
+              rarity={field.info.rarity}
+              setActiveItem={setActiveItem}
+              isActiveItem={isActiveItem}
             />
           )
         })}

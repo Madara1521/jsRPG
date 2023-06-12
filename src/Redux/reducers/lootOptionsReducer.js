@@ -1,14 +1,14 @@
-import uniqid from 'uniqid'
 import helmetPeasant from './helmetImg/peasantHelmet.png'
 import recruitHelmet from './helmetImg/recruitHelmet.png'
 import skullCap from './helmetImg/skullCap.png'
-
+import uniqid from 'uniqid'
 
 const initialState = {
   helmetGlovesBootsBelt: [
     {
-      id: uniqid(),
       info: {
+        id: uniqid(),
+        rarity: 0,
         color: 'lootCellStandart',
         lootName: 'Peasant helmet',
         img: helmetPeasant,
@@ -17,8 +17,9 @@ const initialState = {
       }
     },
     {
-      id: uniqid(),
       info: {
+        id: uniqid(),
+        rarity: 0,
         color: 'lootCellStandart',
         lootName: 'Skull cap',
         img: skullCap,
@@ -27,9 +28,9 @@ const initialState = {
       }
     },
     {
-      id: uniqid(),
       info: {
-        color: 'lootCellMagic',
+        id: uniqid(),
+        rarity: 1,
         lootName: 'Recruit helmet',
         img: recruitHelmet,
         requiredLevel: 1,
@@ -41,8 +42,9 @@ const initialState = {
       }
     },
     {
-      id: uniqid(),
       info: {
+        id: uniqid(),
+        rarity: 3,
         color: 'lootCellLegendary',
         lootName: 'gloves dragon',
         requiredLevel: 40,
@@ -53,8 +55,8 @@ const initialState = {
       }
     },
     {
-      id: uniqid(),
       info: {
+        id: uniqid(),
         color: 'lootCellKit',
         lootName: 'boots speed',
         requiredLevel: 43,
@@ -67,8 +69,9 @@ const initialState = {
       }
     },
     {
-      id: uniqid(),
       info: {
+        id: uniqid(),
+        rarity: 2,
         color: 'lootCellMagic',
         lootName: 'belt peasant',
         requiredLevel: 1,
@@ -82,7 +85,6 @@ const initialState = {
   ], // helmet
   armor: [
     {
-      id: uniqid(),
       info: {
         color: 'lootCellStandart',
         lootName: 'armor bandit',
@@ -95,7 +97,6 @@ const initialState = {
   ], // armor
   weapon: [
     {
-      id: uniqid(),
       info: {
         color: 'lootCellStandart',
         lootName: 'Blackleach Blade',
@@ -114,7 +115,6 @@ const initialState = {
   ],// weapon
   shield: [
     {
-      id: uniqid(),
       info: {
         color: 'lootCellStandart',
         lootName: 'shield peasant',
@@ -127,7 +127,6 @@ const initialState = {
   ], //shield
   ringsAmulet: [
     {
-      id: uniqid(),
       info: {
         color: 'lootCellStandart',
         lootName: 'ring of strength',
@@ -138,7 +137,6 @@ const initialState = {
       }
     },
     {
-      id: uniqid(),
       info: {
         color: 'lootCellStandart',
         lootName: 'amulet of dexterity',
@@ -151,7 +149,6 @@ const initialState = {
   ],//rings
   other: [
     {
-      id: uniqid(),
       info: {
         color: 'lootCellStandart',
         lootName: 'cube',

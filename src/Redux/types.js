@@ -15,4 +15,5 @@ export const SET_MANA = 'SET_MANA'
 export const SET_VIEW_ITEM = 'SET_VIEW_ITEM'
 export const SET_PUSH_ITEM = 'SET_PUSH_ITEM'
 export const GET_VIEW_DESCRIPTION = 'GET_VIEW_DESCRIPTION'
+export const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM'
 

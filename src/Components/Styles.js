@@ -261,6 +261,14 @@ export const useStyles = makeStyles(() => ({
     alignItems: 'center',
     minHeight: '25px',
   },
+  lootCellActive: {
+    display: 'flex',
+    border: '1px solid #edebeb',
+    justifyContent: 'center',
+    background:'rgba(65, 35, 92, 0.7)',
+    alignItems: 'center',
+    minHeight: '25px',
+  },
   lootCellMagic: {
     display: 'flex',
     border: '1px solid #edebeb',
