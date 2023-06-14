@@ -36,7 +36,16 @@ export const characteristicsReducer = (state = initialState, action) => {
     case SET_TOTAL_STAT:
       return {
         ...state,
-        [action.totalStatName]: action.attributeCurrent + action.bonusAttribute
+        [action.totalStatName]: action.attributeCurrent + action.armorBonus + action.amuletBonus +
+          action.helmetBonus +
+          action.secondAmuletBonus +
+          action.weaponBonus +
+          action.shieldBonus +
+          action.ringBonus +
+          action.beltBonus +
+          action.secondRingBonus +
+          action.glovesBonus +
+          action.bootsBonus
       }
     case SET_PHYSICAL_DAMAGE:
       return {
@@ -64,7 +73,7 @@ export const characteristicsReducer = (state = initialState, action) => {
         ...state,
         health: (state.totalVitality * 4),
         stamina: (state.totalVitality * 4)
-        
+
       }
     case SET_MANA:
       return {

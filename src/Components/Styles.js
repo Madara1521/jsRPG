@@ -105,84 +105,15 @@ export const useStyles = makeStyles(() => ({
     width: '60px',
     height: '30px'
   },
-  invertoryClothTitle: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: 'black 1px solid',
-  },
-  talismansCont: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: 'black 1px solid',
-    width: '49px',
-    height: '40px'
-  },
-  characterClothes: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    border: 'black 1px solid',
-    padding: '3px',
-    height: '370px'
-  },
-  helmet: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: 'black 2px solid',
-    height: '70px',
-    width: '70px'
-  },
-  amuletAndRing: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: 'black 2px solid',
-    height: '25px',
-    width: '25px'
-  },
-  weaponAndShield: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: 'black 2px solid',
-    height: '150px',
-    width: '80px'
-  },
   colthPadding: {
     display: 'flex',
     flexDirection: 'row',
     padding: '3px'
   },
-  armor: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: 'black 2px solid',
-    height: '120px',
-    width: '80px'
-  },
   clothStyle: {
     display: 'flex',
     flex: '2',
     flexDirection: 'row'
-  },
-  clothPartnerAndCharacter: {
-    display: 'flex',
-    flex: '1',
-    flexDirection: 'column'
-  },
-  belt: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: 'black 2px solid',
-    height: '25px',
-    width: '80px'
   },
   glovesAndBoots: {
     display: 'flex',
@@ -202,31 +133,6 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     padding: '40px'
-  },
-  endAmulet: {
-    display: 'flex',
-    alignItems: 'end'
-  },
-  stackColumn: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  stackRow: {
-    display: 'flex',
-    flexDirection: 'row'
-  },
-  lootAndDescription: {
-    display: 'flex',
-    flex: '2',
-    flexDirection: 'row'
-  },
-  goldComp: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    border: 'black 1px solid',
-    width: '610px',
-    height: '25px'
   },
   nameLoot: {
     display: 'flex',

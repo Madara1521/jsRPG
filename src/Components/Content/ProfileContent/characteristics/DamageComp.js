@@ -22,8 +22,8 @@ const DamageComp = (props) => {
 }
 
 DamageComp.propTypes = {
-  startPhyBonus: PropTypes.number.isRequired,
-  finalPhyBonus: PropTypes.number.isRequired,
+  startPhyBonus: PropTypes.number,
+  finalPhyBonus: PropTypes.number,
   startPhyDamage: PropTypes.number.isRequired,
   finalPhyDamage: PropTypes.number.isRequired,
   setPhysicalDamage: PropTypes.func.isRequired

@@ -15,7 +15,8 @@ import {
   SET_MANA,
   SET_VIEW_ITEM,
   SET_PUSH_ITEM,
-  GET_VIEW_DESCRIPTION
+  GET_VIEW_DESCRIPTION,
+  SET_HELMET_BONUS
 } from "./types"
 
 export function incrementStat(statName) {
@@ -65,13 +66,36 @@ export function rankUpdate(rank) {
   }
 }
 
-export function setTottalStat(totalStatName, attributeCurrent, bonusAttribute) {
+export function setTottalStat(
+  totalStatName, 
+  attributeCurrent, 
+  armorBonus,     
+  amuletBonus,
+  helmetBonus,
+  secondAmuletBonus,
+  weaponBonus,
+  shieldBonus,
+  ringBonus,
+  beltBonus,
+  secondRingBonus,
+  glovesBonus,
+  bootsBonus,) {
   // accepts the name of an attribute and sums the total value of this attribute
   return {
     type: SET_TOTAL_STAT,
     totalStatName,
     attributeCurrent,
-    bonusAttribute
+    amuletBonus,
+    helmetBonus,
+    secondAmuletBonus,
+    weaponBonus,
+    armorBonus,
+    shieldBonus,
+    ringBonus,
+    beltBonus,
+    secondRingBonus,
+    glovesBonus,
+    bootsBonus,
   }
 }
 
@@ -127,7 +151,7 @@ export function setViewItem(selectedLoot) {
   }
 }
 
-export function setPushItem( nameType, items) {
+export function setPushItem(nameType, items) {
   return {
     type: SET_PUSH_ITEM,
     nameType,
@@ -140,6 +164,13 @@ export function getViewDescription(info,isActiveItem) {
     type: GET_VIEW_DESCRIPTION,
     info,
     isActiveItem
+  }
+}
+
+export function setHelmetBonus(helmetBonus) {
+  return {
+    type: SET_HELMET_BONUS,
+    helmetBonus
   }
 }
 

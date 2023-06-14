@@ -1,43 +1,91 @@
+import { SET_HELMET_BONUS } from "../types"
 
 const initialState = {
-  weaponBonus: {
-    startPhyBonus: 10,
-    finalPhyBonus: 20,
-    attackRatingBonus: 50
+  amuletBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
   },
-  helmetBonus:{
-    strength: 0,
-    dexterity: 0,
-    vitality: 0,
-    energy: 0,
+  helmetBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+  },
+  secondAmuletBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+  },
+  weaponBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    startPhyBonus: null,
+    finalPhyBonus: null,
+    attackRatingBonus: null
   },
   armorBonus: {
-    strength: 0,
-    dexterity: 0,
-    vitality: 0,
-    energy: 0,
-    defenseBonus: 50
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    defenseBonus: null
   },
   shieldBonus: {
-    strength: 0,
-    dexterity: 0,
-    vitality: 0,
-    energy: 0,
-    blockingBonus: 25
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    blockingBonus: null
   },
-  amuletBonus: {
-    strength: 4,
-    dexterity: 3
-  }
+  ringBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    defenseBonus: null
+  },
+  beltBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    defenseBonus: null
+  },
+  secondRingBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    defenseBonus: null
+  },
+  glovesBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    defenseBonus: null
+  },
+  bootsBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    defenseBonus: null
+  },
 }
 
 export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case SET_ARMOR_BONUS:
-    //   return {
-    //     ...state,
-    //     armorBonus: state.armorBonus.strength
-    //   }
+    case SET_HELMET_BONUS:
+      return {
+        ...state,
+        helmetBonus: action.helmetBonus
+      }
     default:
       return state
   }

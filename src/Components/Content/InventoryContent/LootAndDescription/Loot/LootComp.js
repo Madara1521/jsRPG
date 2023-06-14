@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   },
 })
 
-const rarityColorHelper = (classes, rarity) => {
+export const rarityColorHelper = (classes, rarity) => {
   switch (rarity) {
     case 1:
       return classes.lootCellMagic
@@ -57,13 +57,12 @@ const LootComp = (props) => {
     isActiveItem } = props
 
 
-
   const handleClick = () => {
-    if(isActiveItem) {
-      getViewDescription(null)
+    if (isActiveItem) {
+      getViewDescription({})
       return setActiveItem(null)
     }
-    getViewDescription(info,isActiveItem)
+    getViewDescription(info, isActiveItem)
     return setActiveItem(id)
   }
 

@@ -16,20 +16,30 @@ const initialState = {
       info: {
         id: uniqid(),
         rarity: 0,
+        classItem: 2,
         lootName: 'Peasant helmet',
         img: helmetPeasant,
         requiredLevel: 1,
-        defense: 4
+        defense: 4,
+        strength: 2,
+        dexterity: null,
+        vitality: 5,
+        energy: null,
       }
     },
     {
       info: {
         id: uniqid(),
         rarity: 0,
+        classItem: 2,
         lootName: 'Skull cap',
         img: skullCap,
         requiredLevel: 1,
-        defense: 8
+        defense: 8,
+        strength: 4,
+        dexterity: 6,
+        vitality: 3,
+        energy: 2,
       }
     },
     {

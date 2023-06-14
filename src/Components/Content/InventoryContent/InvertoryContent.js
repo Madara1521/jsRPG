@@ -1,10 +1,46 @@
 import React, { useEffect } from "react"
-import { useStyles } from "../../Styles"
 import Talismans from "./Talismans/Talismans"
 import Cloth from "./Cloth/Cloth"
 import LootAndDescription from "./LootAndDescription/LootAndDescription"
 import { connect } from "react-redux"
 import { setPushItem, setViewItem } from "../../../Redux/actions"
+import { makeStyles } from "@mui/styles"
+
+const useStyles = makeStyles({
+  content: {
+    display: 'flex',
+    justifyContent: 'center',
+    height: '100vh',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      width: '0em',
+      height: '0em'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0,0,0,0)'
+    }
+  },
+  stackColumn: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  titleComp: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+    width: '610px',
+    height: '37px'
+  },
+  goldComp: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+    width: '610px',
+    height: '25px'
+  },
+})
 
 const InvertoryContent = (props) => {
   const classes = useStyles()

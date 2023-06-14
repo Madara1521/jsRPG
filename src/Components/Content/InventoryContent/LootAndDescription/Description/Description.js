@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { PropTypes } from 'prop-types'
 import { makeStyles } from "@mui/styles"
 import classNames from "classnames"
+import { rarityColorHelper } from "../Loot/LootComp"
 
 const useStyles = makeStyles({
   twoTitle: {
@@ -66,18 +67,7 @@ const useStyles = makeStyles({
   },
 })
 
-const rarityDescriptionColorHelper = (classes, rarity) => {
-  switch (rarity) {
-    case 1:
-      return classes.lootCellMagic
-    case 2:
-      return classes.lootCellKit
-    case 3:
-      return classes.lootCellLegendary
-    default:
-      return classes.lootCellStandart
-  }
-}
+
 
 const Description = (props) => {
   const classes = useStyles()
@@ -85,7 +75,7 @@ const Description = (props) => {
     description
   } = props
 
-  const lootCellColor = rarityDescriptionColorHelper(classes, description.rarity)
+  const lootCellColor = rarityColorHelper(classes, description.rarity)
 
   const renderStat = (name, value) => {
     return value ? <div className={classes.magicLetters}> +{value} {name}</div> : null
@@ -114,7 +104,6 @@ const Description = (props) => {
       </div>
       <div className={classes.descriptionComp}>
         <div className={classNames(classes.lootCell && lootCellColor)}>{description.lootName}</div>
-        {/* {renderName(lootCellColor)} */}
         {renderImg(description.img)}
         <div className={classes.lootBonus}>
           {renderDamage('Physical damage', description.startPhysicalDamage, description.finalPhycicalDamage)}

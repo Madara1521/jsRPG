@@ -1,7 +1,15 @@
 import React from "react"
-import { useStyles } from "../../../Styles"
 import Loot from "./Loot/Loot"
 import Description from "./Description/Description"
+import { makeStyles } from "@mui/styles"
+
+const useStyles = makeStyles({
+  lootAndDescription: {
+    display: 'flex',
+    flex: '2',
+    flexDirection: 'row'
+  }
+})
 
 const LootAndDescription = () => {
   const classes = useStyles()

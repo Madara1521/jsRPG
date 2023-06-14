@@ -12,7 +12,8 @@ const initialState = {
   gold: 4514,
   selectedLoot: [],
 
-  description: {color: ''}
+  description: {color: ''},
+  isActiveItem: false,
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {

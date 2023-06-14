@@ -68,7 +68,7 @@ AttributeComp.propTypes = {
   attributeCurrent: PropTypes.number.isRequired,
   points: PropTypes.number.isRequired,
   isButtonDisabled: PropTypes.bool,
-  bonusAttribute: PropTypes.number.isRequired,
+  bonusAttribute: PropTypes.number,
   totalStatName: PropTypes.string.isRequired,
   statName: PropTypes.string.isRequired,
   incrementStat: PropTypes.func.isRequired,

@@ -1,6 +1,21 @@
 import React from "react"
 import TalismansComp from "./TalismansComp"
-import { useStyles } from "../../../Styles"
+import { makeStyles } from "@mui/styles"
+
+const useStyles = makeStyles({
+  stackRow: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  titleComp: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+    width: '610px',
+    height: '37px'
+  }
+})
 
 const Talismans = () => {
   const classes = useStyles()

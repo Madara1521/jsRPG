@@ -76,17 +76,17 @@ const Attributes = (props) => {
 }
 
 Attributes.propTypes = {
-  startPhyBonus: PropTypes.number.isRequired,
-  finalPhyBonus: PropTypes.number.isRequired,
+  startPhyBonus: PropTypes.number,
+  finalPhyBonus: PropTypes.number,
   setPhysicalDamage: PropTypes.func.isRequired,
   setAttackRating: PropTypes.func.isRequired,
   setDefense: PropTypes.func.isRequired,
   setBlocking: PropTypes.func.isRequired,
   setHealthAndStamina: PropTypes.func.isRequired,
   setMana: PropTypes.func.isRequired,
-  attackRatingBonus: PropTypes.number.isRequired,
-  defenseBonus: PropTypes.number.isRequired,
-  blockingBonus: PropTypes.number.isRequired,
+  attackRatingBonus: PropTypes.number,
+  defenseBonus: PropTypes.number,
+  blockingBonus: PropTypes.number,
 }
 
 export default connect(store => {
