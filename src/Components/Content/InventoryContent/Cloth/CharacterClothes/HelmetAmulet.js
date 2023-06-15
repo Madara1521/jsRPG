@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { makeStyles } from "@mui/styles"
 import { connect } from "react-redux"
-import { setHelmetBonus } from "../../../../../Redux/actions"
+import { getViewDescription, setDeleteHelmet, setHelmetBonus } from "../../../../../Redux/actions"
 
 const useStyles = makeStyles({
   colthPadding: {
@@ -42,26 +42,70 @@ const useStyles = makeStyles({
   }
 })
 
+const nullHelmet = {
+  id: null,
+  rarity: null,
+  classItem: null,
+  lootName: null,
+  img: null,
+  requiredLevel: null,
+  defense: null,
+  strength: null,
+  dexterity: null,
+  vitality: null,
+  energy: null
+}
 
-
-const HemletAmulet = (props) => {
+const HelmetAmulet = (props) => {
   const classes = useStyles()
   const {
-    // id,
     classItem,
     imgHelmet,
     setHelmetBonus,
-    helmetBonus } = props
+    helmetBonus,
+    info,
+    getViewDescription,
+    helmetGlovesBootsBelt,
+    setDeleteHelmet,
+    index } = props
+
+  const [activeHelmet, setActiveHelmet] = useState(false)
+
+  console.log(index)
 
   const helmetClick = () => {
-    if (classItem === 2) {
-      setHelmetBonus(helmetBonus)
+    getViewDescription(info)
+    if (activeHelmet === false) {
+      if (classItem === 'helmet') {
+        setHelmetBonus(helmetBonus)
+        setActiveHelmet(true)
+        setDeleteHelmet(index)
+        console.log(helmetGlovesBootsBelt)
+      }
+    }
+    if (activeHelmet === true) {
+      if (classItem === 'helmet') {
+        setHelmetBonus(helmetBonus)
+        setDeleteHelmet(index)
+        console.log(helmetGlovesBootsBelt)
+      }
+    }
+  }
+
+  const removingTheHelmet = () => {
+    getViewDescription({})
+    if (activeHelmet === true) {
+      if (classItem === 'helmet') {
+        setHelmetBonus(nullHelmet)
+        setActiveHelmet(false)
+      }
     }
   }
 
   const renderImg = (img) => {
     return img ? <img className={classes.imgDescription} src={img} alt='img' /> : null
   }
+
 
   return (
     <div className={classes.colthPadding}>
@@ -71,7 +115,7 @@ const HemletAmulet = (props) => {
         </div>
       </div>
       <div className={classes.armorBeltHelmPading} >
-        <div className={classes.helmet} onClick={helmetClick}>
+        <div className={classes.helmet} onClick={helmetClick} onDoubleClick={removingTheHelmet}>
           {renderImg(imgHelmet)}
         </div>
       </div>
@@ -86,11 +130,13 @@ const HemletAmulet = (props) => {
 
 export default connect(
   (store) => ({
-    // id: store.lootAndDescriptionReducer.description.id,
     classItem: store.lootAndDescriptionReducer.description.classItem,
+    helmetGlovesBootsBelt: store.lootAndDescriptionReducer.helmetGlovesBootsBelt,
     imgHelmet: store.bonusReducer.helmetBonus.img,
     helmetBonus: store.lootAndDescriptionReducer.description,
-    helmetBonusRed: store.bonusReducer.helmetBonus
+    helmetBonusRed: store.bonusReducer.helmetBonus,
+    info: store.bonusReducer.helmetBonus,
+    index: store.lootAndDescriptionReducer.index,
   }),
-  {setHelmetBonus}
-)(HemletAmulet)
+  { setHelmetBonus, getViewDescription, setDeleteHelmet }
+)(HelmetAmulet)

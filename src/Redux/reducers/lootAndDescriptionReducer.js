@@ -1,8 +1,12 @@
-import { GET_VIEW_DESCRIPTION, SET_PUSH_ITEM, SET_VIEW_ITEM } from "../types"
+import {
+  GET_VIEW_DESCRIPTION,
+  SET_PUSH_ITEM,
+  SET_VIEW_ITEM,
+  SET_DELETE_HELMET
+} from "../types"
 
 
 const initialState = {
-  allItems: [],
   helmetGlovesBootsBelt: [],
   armor: [],
   weapon: [],
@@ -12,8 +16,9 @@ const initialState = {
   gold: 4514,
   selectedLoot: [],
 
-  description: {color: ''},
+  description: { color: '' },
   isActiveItem: false,
+  index: ''
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {
@@ -32,7 +37,14 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
       return {
         ...state,
         description: action.info,
-        isActiveItem: action.isActiveItem
+        isActiveItem: action.isActiveItem,
+        index: action.index
+      }
+    case SET_DELETE_HELMET:
+      const updatedHelmetGlovesBootsBelt = state.helmetGlovesBootsBelt.filter((item, index) => index !== action.index)
+      return {
+        ...state,
+        helmetGlovesBootsBelt: updatedHelmetGlovesBootsBelt,
       }
     default:
       return state

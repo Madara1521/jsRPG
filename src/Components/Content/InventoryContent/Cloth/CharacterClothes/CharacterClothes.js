@@ -1,5 +1,5 @@
 import React from "react"
-import HemletAmulet from "./HemletAmulet"
+import HelmetAmulet from "./HelmetAmulet"
 import WeaponArmorShield from "./WeaponArmorShield"
 import RingBelt from "./RingBelt"
 import GlovesBoots from "./GlovesBoots"
@@ -39,7 +39,7 @@ const CharacterClothes = () => {
         <div>nickname</div>
       </div>
       <div className={classes.characterClothes}>
-        <HemletAmulet />
+        <HelmetAmulet />
         <WeaponArmorShield />
         <RingBelt />
         <GlovesBoots />

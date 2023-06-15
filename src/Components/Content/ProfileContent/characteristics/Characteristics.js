@@ -2,7 +2,6 @@ import React from "react"
 import { Stack } from '@mui/material'
 import { useStyles } from "../../../Styles"
 import DamageComp from "./DamageComp"
-import uniqid from 'uniqid'
 import CharacteristicsComp from "./CharacteristicsComp"
 import AttackRaitingAndDefenseComp from "./AttackRaitingAndDefenseComp"
 import HealthAndStaminaComp from "./HealthAndStaminaComp"
@@ -17,34 +16,30 @@ const Characteristics = () => {
     {
       name: 'strength',
       totalStatName: 'totalStrength',
-      id: uniqid()
     },
     {
       name: 'dexterity',
       totalStatName: 'totalDexterity',
-      id: uniqid()
     },
     {
       name: 'vitality',
       totalStatName: 'totalVitality',
-      id: uniqid()
     },
     {
       name: 'energy',
       totalStatName: 'totalEnergy',
-      id: uniqid()
     }
   ]
 
   return (
     <Stack direction='row' flex={2}>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
-        {characteristicsFields.map(field => {
+        {characteristicsFields.map((field,index) => {
           return (
             <CharacteristicsComp
               name={field.name}
               totalStatName={field.totalStatName}
-              key={field.id}
+              key={index}
             />
           )
         })}

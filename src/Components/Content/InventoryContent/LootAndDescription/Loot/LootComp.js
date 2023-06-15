@@ -54,7 +54,8 @@ const LootComp = (props) => {
     id,
     rarity,
     setActiveItem,
-    isActiveItem } = props
+    isActiveItem,
+    index } = props
 
 
   const handleClick = () => {
@@ -62,7 +63,7 @@ const LootComp = (props) => {
       getViewDescription({})
       return setActiveItem(null)
     }
-    getViewDescription(info, isActiveItem)
+    getViewDescription(info, isActiveItem, index)
     return setActiveItem(id)
   }
 

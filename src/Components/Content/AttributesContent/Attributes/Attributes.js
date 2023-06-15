@@ -2,7 +2,6 @@ import React from "react"
 import { useStyles } from "../../../Styles"
 import { Stack } from '@mui/material'
 import Points from "./Points"
-import uniqid from 'uniqid'
 import AttributeComp from "./AttributeComp"
 import {
   setPhysicalDamage,
@@ -16,6 +15,7 @@ import { connect } from "react-redux"
 import { PropTypes } from 'prop-types'
 
 const Attributes = (props) => {
+  const classes = useStyles()
   const {
     setPhysicalDamage,
     startPhyBonus,
@@ -29,8 +29,6 @@ const Attributes = (props) => {
     setHealthAndStamina,
     setMana
   } = props
-
-  const classes = useStyles()
 
   const attributesFields = [
     {
@@ -61,13 +59,13 @@ const Attributes = (props) => {
   return (
     <Stack direction='column' spacing={10} className={classes.attribBorder}>
       <Points />
-      {attributesFields.map(field => {
+      {attributesFields.map((field, index) => {
         return (
           <AttributeComp
             statName={field.statName}
             totalStatName={field.totalStatName}
             action={field.action}
-            key={uniqid()}
+            key={index}
           />
         )
       })}

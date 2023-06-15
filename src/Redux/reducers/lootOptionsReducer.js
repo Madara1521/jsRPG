@@ -16,7 +16,7 @@ const initialState = {
       info: {
         id: uniqid(),
         rarity: 0,
-        classItem: 2,
+        classItem: 'helmet',
         lootName: 'Peasant helmet',
         img: helmetPeasant,
         requiredLevel: 1,
@@ -31,7 +31,7 @@ const initialState = {
       info: {
         id: uniqid(),
         rarity: 0,
-        classItem: 2,
+        classItem: 'helmet',
         lootName: 'Skull cap',
         img: skullCap,
         requiredLevel: 1,
@@ -46,13 +46,16 @@ const initialState = {
       info: {
         id: uniqid(),
         rarity: 1,
+        classItem: 'helmet',
         lootName: 'Recruit helmet',
         img: recruitHelmet,
         requiredLevel: 1,
         requiredStrength: 5,
         defense: 10,
-        dexterity: 7,
-        vitality: 3
+        strength: 2,
+        dexterity: null,
+        vitality: 5,
+        energy: null,
 
       }
     },

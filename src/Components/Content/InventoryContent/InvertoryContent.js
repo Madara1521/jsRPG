@@ -3,7 +3,7 @@ import Talismans from "./Talismans/Talismans"
 import Cloth from "./Cloth/Cloth"
 import LootAndDescription from "./LootAndDescription/LootAndDescription"
 import { connect } from "react-redux"
-import { setPushItem, setViewItem } from "../../../Redux/actions"
+import { setPushItem } from "../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
 
 const useStyles = makeStyles({
@@ -46,7 +46,6 @@ const InvertoryContent = (props) => {
   const classes = useStyles()
   const { 
     gold, 
-    setViewItem,
     helmetGlovesBootsBelt,
     setPushItem,
     armors,
@@ -54,11 +53,6 @@ const InvertoryContent = (props) => {
     shields,
     ringsAmulets,
     others } = props
-
-  useEffect(() => {
-    setViewItem(helmetGlovesBootsBelt)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setViewItem])
 
   useEffect(() => {
     //imitation loot
@@ -99,4 +93,4 @@ export default connect(store => {
     ringsAmulets: store.lootOptionsReducer.ringsAmulet,
     others: store.lootOptionsReducer.other,
   }
-}, { setViewItem, setPushItem })(InvertoryContent)
+}, { setPushItem })(InvertoryContent)

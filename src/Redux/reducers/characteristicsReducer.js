@@ -36,7 +36,9 @@ export const characteristicsReducer = (state = initialState, action) => {
     case SET_TOTAL_STAT:
       return {
         ...state,
-        [action.totalStatName]: action.attributeCurrent + action.armorBonus + action.amuletBonus +
+        [action.totalStatName]: action.attributeCurrent +
+          action.armorBonus +
+          action.amuletBonus +
           action.helmetBonus +
           action.secondAmuletBonus +
           action.weaponBonus +

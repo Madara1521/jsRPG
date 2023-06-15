@@ -22,6 +22,7 @@ const CharacteristicsComp = (props) => {
     glovesBonus,
     bootsBonus, } = props
 
+
   useEffect(() => {
     setTottalStat(totalStatName,
       attributeCurrent,
@@ -37,7 +38,7 @@ const CharacteristicsComp = (props) => {
       glovesBonus,
       bootsBonus,)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [attributeCurrent, 
+  }, [attributeCurrent,
     armorBonus,
     amuletBonus,
     helmetBonus,

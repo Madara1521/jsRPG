@@ -94,6 +94,8 @@ const Loot = (props) => {
     },
   ]
 
+
+
   return (
     <div className={classes.loot}>
       <div className={classes.twoTitle}>
@@ -117,6 +119,7 @@ const Loot = (props) => {
               lootName={field.info.lootName}
               info={field.info}
               key={index}
+              index={index}
               rarity={field.info.rarity}
               setActiveItem={setActiveItem}
               isActiveItem={isActiveItem}
@@ -127,7 +130,6 @@ const Loot = (props) => {
     </div>
   )
 }
-
 
 Loot.propTypes = {
   selectedLoot: PropTypes.array.isRequired,

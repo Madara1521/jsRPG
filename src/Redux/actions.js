@@ -16,7 +16,8 @@ import {
   SET_VIEW_ITEM,
   SET_PUSH_ITEM,
   GET_VIEW_DESCRIPTION,
-  SET_HELMET_BONUS
+  SET_HELMET_BONUS,
+  SET_DELETE_HELMET
 } from "./types"
 
 export function incrementStat(statName) {
@@ -159,11 +160,12 @@ export function setPushItem(nameType, items) {
   }
 }
 
-export function getViewDescription(info,isActiveItem) {
+export function getViewDescription(info,isActiveItem,index) {
   return {
     type: GET_VIEW_DESCRIPTION,
     info,
-    isActiveItem
+    isActiveItem,
+    index
   }
 }
 
@@ -171,6 +173,13 @@ export function setHelmetBonus(helmetBonus) {
   return {
     type: SET_HELMET_BONUS,
     helmetBonus
+  }
+}
+
+export function setDeleteHelmet(index) {
+  return {
+    type: SET_DELETE_HELMET,
+    index
   }
 }
 
