@@ -1,9 +1,8 @@
-import React, { useEffect } from "react"
+import React from "react"
 import Talismans from "./Talismans/Talismans"
 import Cloth from "./Cloth/Cloth"
 import LootAndDescription from "./LootAndDescription/LootAndDescription"
 import { connect } from "react-redux"
-import { setPushItem } from "../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
 
 const useStyles = makeStyles({
@@ -44,27 +43,7 @@ const useStyles = makeStyles({
 
 const InvertoryContent = (props) => {
   const classes = useStyles()
-  const { 
-    gold, 
-    helmetGlovesBootsBelt,
-    setPushItem,
-    armors,
-    weapons,
-    shields,
-    ringsAmulets,
-    others } = props
-
-  useEffect(() => {
-    //imitation loot
-    setPushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
-    setPushItem('armor', armors)
-    setPushItem('weapon', weapons)
-    setPushItem('shield', shields)
-    setPushItem('ringsAmulet', ringsAmulets)
-    setPushItem('other', others)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [helmetGlovesBootsBelt, armors, weapons, shields, ringsAmulets, others])
-
+  const { gold } = props
 
   return (
     <div className={classes.content} >
@@ -86,11 +65,5 @@ const InvertoryContent = (props) => {
 export default connect(store => {
   return {
     gold: store.lootAndDescriptionReducer.gold,
-    helmetGlovesBootsBelt: store.lootOptionsReducer.helmetGlovesBootsBelt,
-    armors: store.lootOptionsReducer.armor,
-    weapons: store.lootOptionsReducer.weapon,
-    shields: store.lootOptionsReducer.shield,
-    ringsAmulets: store.lootOptionsReducer.ringsAmulet,
-    others: store.lootOptionsReducer.other,
   }
-}, { setPushItem })(InvertoryContent)
+}, {})(InvertoryContent)

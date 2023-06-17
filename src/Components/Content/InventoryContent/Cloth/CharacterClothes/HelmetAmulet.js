@@ -65,13 +65,10 @@ const HelmetAmulet = (props) => {
     helmetBonus,
     info,
     getViewDescription,
-    helmetGlovesBootsBelt,
     setDeleteHelmet,
     index } = props
 
   const [activeHelmet, setActiveHelmet] = useState(false)
-
-  console.log(index)
 
   const helmetClick = () => {
     getViewDescription(info)
@@ -80,17 +77,16 @@ const HelmetAmulet = (props) => {
         setHelmetBonus(helmetBonus)
         setActiveHelmet(true)
         setDeleteHelmet(index)
-        console.log(helmetGlovesBootsBelt)
       }
     }
     if (activeHelmet === true) {
       if (classItem === 'helmet') {
         setHelmetBonus(helmetBonus)
         setDeleteHelmet(index)
-        console.log(helmetGlovesBootsBelt)
       }
     }
   }
+
 
   const removingTheHelmet = () => {
     getViewDescription({})

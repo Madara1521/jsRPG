@@ -47,6 +47,7 @@ const useStyles = makeStyles({
   },
 })
 
+
 const Loot = (props) => {
   const classes = useStyles()
   const {
@@ -57,44 +58,68 @@ const Loot = (props) => {
     weaponItems,
     shieldItems,
     ringsAmuletItems,
-    otherItems } = props
+    otherItems,
+    idArray } = props
+
+  const itemArrayHelper = (index) => {
+    switch (index) {
+      case 1:
+        return helmetGlovesBootsBeltItems
+      case 2:
+        return armorItems
+      case 3:
+        return weaponItems
+      case 4:
+        return shieldItems
+      case 5:
+        return ringsAmuletItems
+      case 6:
+        return otherItems
+      default:
+        return selectedLoot
+    }
+  }
 
   const [activeItem, setActiveItem] = useState(null)
 
   const iconsFields = [
     {
-      value: helmetGlovesBootsBeltItems,
+      id: 1,
       src: helm,
       alt: 'helm'
     },
     {
-      value: armorItems,
+      id: 2,
       src: armor,
       alt: 'armor'
     },
     {
-      value: weaponItems,
+      id: 3,
       src: weapon,
       alt: 'weapon'
     },
     {
-      value: shieldItems,
+      id: 4,
       src: shield,
       alt: 'shield'
     },
     {
-      value: ringsAmuletItems,
+      id: 5,
       src: ring,
       alt: 'ring'
     },
     {
-      value: otherItems,
+      id: 6,
       src: book,
       alt: 'book'
     },
   ]
 
+  const viewItem = (idArray) => {
+    setViewItem(idArray)
+  }
 
+  const lootItems = itemArrayHelper(idArray)
 
   return (
     <div className={classes.loot}>
@@ -104,14 +129,14 @@ const Loot = (props) => {
             <div
               className={classes.typesOfLoot}
               key={index}
-              onClick={() => setViewItem(field.value)}>
+              onClick={() => viewItem(field.id)}>
               <img src={field.src} alt={field.alt} />
             </div>
           )
         })}
       </div>
       <div className={classes.lootComp}>
-        {selectedLoot.map((field, index) => {
+        {lootItems.map((field, index) => {
           const isActiveItem = field.info.id === activeItem
           return (
             <LootComp
@@ -144,6 +169,7 @@ Loot.propTypes = {
 export default connect((store, ownProps) => {
   return {
     selectedLoot: store.lootAndDescriptionReducer.selectedLoot,
+    idArray: store.lootAndDescriptionReducer.idArray,
     helmetGlovesBootsBeltItems: store.lootAndDescriptionReducer.helmetGlovesBootsBelt,
     armorItems: store.lootAndDescriptionReducer.armor,
     weaponItems: store.lootAndDescriptionReducer.weapon,

@@ -17,7 +17,7 @@ import {
   SET_PUSH_ITEM,
   GET_VIEW_DESCRIPTION,
   SET_HELMET_BONUS,
-  SET_DELETE_HELMET
+  SET_DELETE_HELMET,
 } from "./types"
 
 export function incrementStat(statName) {
@@ -145,10 +145,10 @@ export function setMana() {
   }
 }
 
-export function setViewItem(selectedLoot) {
+export function setViewItem(idArray) {
   return {
     type: SET_VIEW_ITEM,
-    selectedLoot
+    idArray
   }
 }
 
@@ -182,6 +182,7 @@ export function setDeleteHelmet(index) {
     index
   }
 }
+
 
 
 

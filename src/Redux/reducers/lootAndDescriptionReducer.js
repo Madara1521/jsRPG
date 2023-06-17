@@ -2,7 +2,7 @@ import {
   GET_VIEW_DESCRIPTION,
   SET_PUSH_ITEM,
   SET_VIEW_ITEM,
-  SET_DELETE_HELMET
+  SET_DELETE_HELMET,
 } from "../types"
 
 
@@ -13,8 +13,9 @@ const initialState = {
   shield: [],
   ringsAmulet: [],
   other: [],
-  gold: 4514,
   selectedLoot: [],
+  gold: 4514,
+  idArray: '',
 
   description: { color: '' },
   isActiveItem: false,
@@ -26,7 +27,7 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
     case SET_VIEW_ITEM:
       return {
         ...state,
-        selectedLoot: action.selectedLoot
+        idArray: action.idArray
       }
     case SET_PUSH_ITEM:
       return {
