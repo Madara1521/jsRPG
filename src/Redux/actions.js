@@ -18,6 +18,7 @@ import {
   GET_VIEW_DESCRIPTION,
   SET_HELMET_BONUS,
   SET_DELETE_HELMET,
+  SET_PUSH_HELMET,
 } from "./types"
 
 export function incrementStat(statName) {
@@ -180,6 +181,13 @@ export function setDeleteHelmet(index) {
   return {
     type: SET_DELETE_HELMET,
     index
+  }
+}
+
+export function setPushHelmet(item) {
+  return {
+    type: SET_PUSH_HELMET,
+    item
   }
 }
 

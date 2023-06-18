@@ -3,6 +3,7 @@ import {
   SET_PUSH_ITEM,
   SET_VIEW_ITEM,
   SET_DELETE_HELMET,
+  SET_PUSH_HELMET,
 } from "../types"
 
 
@@ -19,6 +20,7 @@ const initialState = {
 
   description: { color: '' },
   isActiveItem: false,
+  id: '',
   index: ''
 }
 
@@ -46,6 +48,11 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
       return {
         ...state,
         helmetGlovesBootsBelt: updatedHelmetGlovesBootsBelt,
+      }
+    case SET_PUSH_HELMET:
+      return {
+        ...state,
+        helmetGlovesBootsBelt: [...state.helmetGlovesBootsBelt, action.item],
       }
     default:
       return state

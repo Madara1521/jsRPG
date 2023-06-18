@@ -1,7 +1,12 @@
 import React, { useState } from "react"
 import { makeStyles } from "@mui/styles"
 import { connect } from "react-redux"
-import { getViewDescription, setDeleteHelmet, setHelmetBonus } from "../../../../../Redux/actions"
+import {
+  getViewDescription,
+  setDeleteHelmet,
+  setHelmetBonus,
+  setPushHelmet,
+} from "../../../../../Redux/actions"
 
 const useStyles = makeStyles({
   colthPadding: {
@@ -63,15 +68,18 @@ const HelmetAmulet = (props) => {
     imgHelmet,
     setHelmetBonus,
     helmetBonus,
-    info,
     getViewDescription,
     setDeleteHelmet,
-    index } = props
+    index,
+    helmet,
+    setPushHelmet } = props
 
   const [activeHelmet, setActiveHelmet] = useState(false)
 
+  const helmetUpdate = {info:helmet}
+
   const helmetClick = () => {
-    getViewDescription(info)
+    getViewDescription(helmet)
     if (activeHelmet === false) {
       if (classItem === 'helmet') {
         setHelmetBonus(helmetBonus)
@@ -79,23 +87,17 @@ const HelmetAmulet = (props) => {
         setDeleteHelmet(index)
       }
     }
-    if (activeHelmet === true) {
-      if (classItem === 'helmet') {
-        setHelmetBonus(helmetBonus)
-        setDeleteHelmet(index)
-      }
-    }
   }
 
-
   const removingTheHelmet = () => {
-    getViewDescription({})
     if (activeHelmet === true) {
       if (classItem === 'helmet') {
         setHelmetBonus(nullHelmet)
+        setPushHelmet(helmetUpdate)
         setActiveHelmet(false)
       }
     }
+    getViewDescription({})
   }
 
   const renderImg = (img) => {
@@ -127,12 +129,12 @@ const HelmetAmulet = (props) => {
 export default connect(
   (store) => ({
     classItem: store.lootAndDescriptionReducer.description.classItem,
+    activeItem: store.lootAndDescriptionReducer.activeItem,
     helmetGlovesBootsBelt: store.lootAndDescriptionReducer.helmetGlovesBootsBelt,
     imgHelmet: store.bonusReducer.helmetBonus.img,
     helmetBonus: store.lootAndDescriptionReducer.description,
-    helmetBonusRed: store.bonusReducer.helmetBonus,
-    info: store.bonusReducer.helmetBonus,
+    helmet: store.bonusReducer.helmetBonus,
     index: store.lootAndDescriptionReducer.index,
   }),
-  { setHelmetBonus, getViewDescription, setDeleteHelmet }
+  { setHelmetBonus, getViewDescription, setDeleteHelmet, setPushHelmet }
 )(HelmetAmulet)
