@@ -161,12 +161,12 @@ export function setPushItem(nameType, items) {
   }
 }
 
-export function getViewDescription(info,isActiveItem,index) {
+export function getViewDescription(info,isActiveItem,id) {
   return {
     type: GET_VIEW_DESCRIPTION,
     info,
     isActiveItem,
-    index
+    id
   }
 }
 
@@ -177,10 +177,10 @@ export function setHelmetBonus(helmetBonus) {
   }
 }
 
-export function setDeleteHelmet(index) {
+export function setDeleteHelmet(id) {
   return {
     type: SET_DELETE_HELMET,
-    index
+    id
   }
 }
 

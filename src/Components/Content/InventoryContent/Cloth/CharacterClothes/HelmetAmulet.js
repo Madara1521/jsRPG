@@ -70,7 +70,7 @@ const HelmetAmulet = (props) => {
     helmetBonus,
     getViewDescription,
     setDeleteHelmet,
-    index,
+    id,
     helmet,
     setPushHelmet } = props
 
@@ -79,12 +79,13 @@ const HelmetAmulet = (props) => {
   const helmetUpdate = {info:helmet}
 
   const helmetClick = () => {
+    console.log(id)
     getViewDescription(helmet)
     if (activeHelmet === false) {
       if (classItem === 'helmet') {
         setHelmetBonus(helmetBonus)
         setActiveHelmet(true)
-        setDeleteHelmet(index)
+        setDeleteHelmet(id)
       }
     }
   }
@@ -134,7 +135,7 @@ export default connect(
     imgHelmet: store.bonusReducer.helmetBonus.img,
     helmetBonus: store.lootAndDescriptionReducer.description,
     helmet: store.bonusReducer.helmetBonus,
-    index: store.lootAndDescriptionReducer.index,
+    id: store.lootAndDescriptionReducer.id,
   }),
   { setHelmetBonus, getViewDescription, setDeleteHelmet, setPushHelmet }
 )(HelmetAmulet)

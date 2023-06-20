@@ -1,3 +1,6 @@
+import update from 'immutability-helper'
+import _ from 'lodash'
+
 import {
   GET_VIEW_DESCRIPTION,
   SET_PUSH_ITEM,
@@ -21,7 +24,6 @@ const initialState = {
   description: { color: '' },
   isActiveItem: false,
   id: '',
-  index: ''
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {
@@ -41,19 +43,16 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
         ...state,
         description: action.info,
         isActiveItem: action.isActiveItem,
-        index: action.index
+        id: action.id
       }
     case SET_DELETE_HELMET:
-      const updatedHelmetGlovesBootsBelt = state.helmetGlovesBootsBelt.filter((item, index) => index !== action.index)
-      return {
-        ...state,
-        helmetGlovesBootsBelt: updatedHelmetGlovesBootsBelt,
-      }
+      return update(state,{
+        helmetGlovesBootsBelt: {$set: _.filter(state.helmetGlovesBootsBelt, (item) => item.info.id !== action.id)},
+      })
     case SET_PUSH_HELMET:
-      return {
-        ...state,
-        helmetGlovesBootsBelt: [...state.helmetGlovesBootsBelt, action.item],
-      }
+      return update(state, {
+        helmetGlovesBootsBelt: {$push: [action.item]},
+      })
     default:
       return state
   }
