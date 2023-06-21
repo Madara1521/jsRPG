@@ -28,7 +28,8 @@ const Characteristics = () => {
     {
       name: 'energy',
       totalStatName: 'totalEnergy',
-    }
+    },
+    
   ]
 
   return (

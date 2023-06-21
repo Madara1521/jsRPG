@@ -112,7 +112,7 @@ const Description = (props) => {
           {renderRequired("Required dexterity", description.requiredDexterity)}
           {renderRequired("Durability", description.durability)}
           {renderRequired("Base weapon speed", description.baseWeaponSpeed)}
-          {renderDefense("Defense", description.defense)}
+          {renderDefense("Defense", description.defenseBonus)}
           {renderStat("Strength", description.strength)}
           {renderStat("Dexterity", description.dexterity)}
           {renderStat("Vitality", description.vitality)}

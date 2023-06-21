@@ -20,5 +20,6 @@ export const SET_DELETE_ITEM = 'SET_DELETE_ITEM'
 export const SET_PUSH_HELMET = 'SET_PUSH_HELMET'
 export const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM'
 export const SET_PUSH_CLOTH = 'SET_PUSH_CLOTH'
+export const SET_ALL_DEFENSE = 'SET_ALL_DEFENSE'
 
 

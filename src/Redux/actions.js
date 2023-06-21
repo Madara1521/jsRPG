@@ -19,7 +19,8 @@ import {
   SET_ITEM_BONUS,
   SET_DELETE_ITEM,
   SET_PUSH_CLOTH,
-  SET_ACTIVE_ITEM
+  SET_ACTIVE_ITEM,
+  SET_ALL_DEFENSE
 } from "./types"
 
 export function incrementStat(statName) {
@@ -200,6 +201,12 @@ export function setActiveItem(typeItem,bool) {
     type: SET_ACTIVE_ITEM,
     typeItem,
     bool
+  }
+}
+
+export function setAllDefense() {
+  return {
+    type: SET_ALL_DEFENSE,
   }
 }
 

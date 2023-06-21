@@ -1,8 +1,11 @@
 import update from 'immutability-helper'
 
-import { SET_ITEM_BONUS } from "../types"
+import { 
+  SET_ITEM_BONUS,
+  SET_ALL_DEFENSE } from "../types"
 
 const initialState = {
+  allDefense: 0,
   amuletBonus: {
     strength: null,
     dexterity: null,
@@ -14,6 +17,7 @@ const initialState = {
     dexterity: null,
     vitality: null,
     energy: null,
+    defenseBonus: null,
   },
   secondAmuletBonus: {
     strength: null,
@@ -42,7 +46,8 @@ const initialState = {
     dexterity: null,
     vitality: null,
     energy: null,
-    blockingBonus: null
+    blockingBonus: null,
+    defenseBonus: null
   },
   ringBonus: {
     strength: null,
@@ -84,8 +89,17 @@ const initialState = {
 export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEM_BONUS:
-      return update(state,{
-        [action.typeItem]: {$set: action.bonus}
+      return update(state, {
+        [action.typeItem]: { $set: action.bonus }
+      })
+    case SET_ALL_DEFENSE:
+      return update(state, {
+        allDefense: { $set: state.armorBonus.defenseBonus +
+            state.bootsBonus.defenseBonus +
+            state.glovesBonus.defenseBonus +
+            state.shieldBonus.defenseBonus +
+            state.helmetBonus.defenseBonus +
+            state.beltBonus.defenseBonus }
       })
     default:
       return state

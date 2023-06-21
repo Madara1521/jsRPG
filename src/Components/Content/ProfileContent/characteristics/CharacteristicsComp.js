@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { setTottalStat } from "../../../../Redux/actions"
+import { setAllDefense, setTottalStat } from "../../../../Redux/actions"
 import { PropTypes } from 'prop-types'
 
 const CharacteristicsComp = (props) => {
@@ -20,10 +20,12 @@ const CharacteristicsComp = (props) => {
     beltBonus,
     secondRingBonus,
     glovesBonus,
-    bootsBonus, } = props
+    bootsBonus, 
+    setAllDefense} = props
 
 
   useEffect(() => {
+    setAllDefense()
     setTottalStat(totalStatName,
       attributeCurrent,
       armorBonus,
@@ -82,6 +84,6 @@ export default connect((store, ownProps) => {
     attributeCurrent: store.attributeReducer[ownProps.name],
     totalAttribute: store.characteristicsReducer[ownProps.totalStatName]
   }
-}, { setTottalStat })(CharacteristicsComp)
+}, { setTottalStat, setAllDefense })(CharacteristicsComp)
 
 

@@ -56,7 +56,7 @@ const nullHelmet = {
   lootName: null,
   img: null,
   requiredLevel: null,
-  defense: null,
+  defenseBonus: null,
   strength: null,
   dexterity: null,
   vitality: null,
@@ -138,7 +138,6 @@ const HelmetAmulet = (props) => {
 HelmetAmulet.propTypes = {
   classItem: PropTypes.string,
   activeHelmet: PropTypes.bool,
-  helmetGlovesBootsBelt: PropTypes.array.isRequired,
   imgHelmet: PropTypes.string,
   helmetBonus: PropTypes.object.isRequired,
   helmet: PropTypes.object.isRequired,
@@ -154,7 +153,6 @@ export default connect(
   (store) => ({
     classItem: store.lootAndDescriptionReducer.description.classItem,
     activeHelmet: store.lootAndDescriptionReducer.activeHelmet,
-    helmetGlovesBootsBelt: store.lootAndDescriptionReducer.helmetGlovesBootsBelt,
     imgHelmet: store.bonusReducer.helmetBonus.img,
     helmetBonus: store.lootAndDescriptionReducer.description,
     helmet: store.bonusReducer.helmetBonus,
