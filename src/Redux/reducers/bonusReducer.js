@@ -1,4 +1,6 @@
-import { SET_HELMET_BONUS } from "../types"
+import update from 'immutability-helper'
+
+import { SET_ITEM_BONUS } from "../types"
 
 const initialState = {
   amuletBonus: {
@@ -81,11 +83,10 @@ const initialState = {
 
 export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_HELMET_BONUS:
-      return {
-        ...state,
-        helmetBonus: action.helmetBonus
-      }
+    case SET_ITEM_BONUS:
+      return update(state,{
+        [action.typeItem]: {$set: action.bonus}
+      })
     default:
       return state
   }

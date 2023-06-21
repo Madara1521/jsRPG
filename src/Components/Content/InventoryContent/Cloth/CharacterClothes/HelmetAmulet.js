@@ -1,12 +1,14 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import { makeStyles } from "@mui/styles"
 import { connect } from "react-redux"
 import {
   getViewDescription,
-  setDeleteHelmet,
-  setHelmetBonus,
-  setPushHelmet,
+  setActiveItem,
+  setDeleteItem,
+  setItemBonus,
+  setPushCloth,
 } from "../../../../../Redux/actions"
+import { PropTypes } from 'prop-types'
 
 const useStyles = makeStyles({
   colthPadding: {
@@ -66,26 +68,32 @@ const HelmetAmulet = (props) => {
   const {
     classItem,
     imgHelmet,
-    setHelmetBonus,
+    setItemBonus,
     helmetBonus,
     getViewDescription,
-    setDeleteHelmet,
+    setDeleteItem,
     id,
     helmet,
-    setPushHelmet } = props
+    setPushCloth,
+    setActiveItem,
+    activeHelmet } = props
 
-  const [activeHelmet, setActiveHelmet] = useState(false)
 
-  const helmetUpdate = {info:helmet}
+
+  const helmetUpdate = { info: helmet }
+
+  useEffect(() => {
+    getViewDescription({})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const helmetClick = () => {
-    console.log(id)
     getViewDescription(helmet)
     if (activeHelmet === false) {
       if (classItem === 'helmet') {
-        setHelmetBonus(helmetBonus)
-        setActiveHelmet(true)
-        setDeleteHelmet(id)
+        setItemBonus('helmetBonus',helmetBonus)
+        setDeleteItem('helmetGlovesBootsBelt',id)
+        setActiveItem('activeHelmet',true)
       }
     }
   }
@@ -93,9 +101,9 @@ const HelmetAmulet = (props) => {
   const removingTheHelmet = () => {
     if (activeHelmet === true) {
       if (classItem === 'helmet') {
-        setHelmetBonus(nullHelmet)
-        setPushHelmet(helmetUpdate)
-        setActiveHelmet(false)
+        setItemBonus('helmetBonus',nullHelmet)
+        setPushCloth('helmetGlovesBootsBelt',helmetUpdate)
+        setActiveItem('activeHelmet',false)
       }
     }
     getViewDescription({})
@@ -127,15 +135,35 @@ const HelmetAmulet = (props) => {
   )
 }
 
+HelmetAmulet.propTypes = {
+  classItem: PropTypes.string,
+  activeHelmet: PropTypes.bool,
+  helmetGlovesBootsBelt: PropTypes.array.isRequired,
+  imgHelmet: PropTypes.string,
+  helmetBonus: PropTypes.object.isRequired,
+  helmet: PropTypes.object.isRequired,
+  id: PropTypes.string,
+  setActiveItem: PropTypes.func.isRequired,
+  setItemBonus: PropTypes.func.isRequired,
+  getViewDescription: PropTypes.func.isRequired,
+  setDeleteItem: PropTypes.func.isRequired,
+  setPushCloth: PropTypes.func.isRequired,
+}
+
 export default connect(
   (store) => ({
     classItem: store.lootAndDescriptionReducer.description.classItem,
-    activeItem: store.lootAndDescriptionReducer.activeItem,
+    activeHelmet: store.lootAndDescriptionReducer.activeHelmet,
     helmetGlovesBootsBelt: store.lootAndDescriptionReducer.helmetGlovesBootsBelt,
     imgHelmet: store.bonusReducer.helmetBonus.img,
     helmetBonus: store.lootAndDescriptionReducer.description,
     helmet: store.bonusReducer.helmetBonus,
     id: store.lootAndDescriptionReducer.id,
   }),
-  { setHelmetBonus, getViewDescription, setDeleteHelmet, setPushHelmet }
-)(HelmetAmulet)
+  {
+    setActiveItem,
+    setItemBonus,
+    getViewDescription,
+    setDeleteItem,
+    setPushCloth
+  })(HelmetAmulet)

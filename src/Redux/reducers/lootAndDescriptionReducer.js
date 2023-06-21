@@ -5,8 +5,9 @@ import {
   GET_VIEW_DESCRIPTION,
   SET_PUSH_ITEM,
   SET_VIEW_ITEM,
-  SET_DELETE_HELMET,
-  SET_PUSH_HELMET,
+  SET_DELETE_ITEM,
+  SET_PUSH_CLOTH,
+  SET_ACTIVE_ITEM
 } from "../types"
 
 
@@ -23,35 +24,39 @@ const initialState = {
 
   description: { color: '' },
   isActiveItem: false,
+  activeHelmet: false,
+  activeGloves: false,
+  activeBoots: false,
   id: '',
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_VIEW_ITEM:
-      return {
-        ...state,
-        idArray: action.idArray
-      }
-    case SET_PUSH_ITEM:
-      return {
-        ...state,
-        [action.nameType]: [...action.items]
-      }
-    case GET_VIEW_DESCRIPTION:
-      return {
-        ...state,
-        description: action.info,
-        isActiveItem: action.isActiveItem,
-        id: action.id
-      }
-    case SET_DELETE_HELMET:
       return update(state,{
-        helmetGlovesBootsBelt: {$set: _.filter(state.helmetGlovesBootsBelt, (item) => item.info.id !== action.id)},
+        idArray: {$set: action.idArray}
       })
-    case SET_PUSH_HELMET:
+    case SET_PUSH_ITEM:
+      return update(state,{
+        [action.nameType]: {$set: [...action.items]}
+      })
+    case GET_VIEW_DESCRIPTION:
+      return update(state,{
+        description: { $set: action.info },
+        isActiveItem: { $set: action.isActiveItem },
+        id: { $set: action.id }
+      })
+    case SET_DELETE_ITEM:
+      return update(state,{
+        [action.typeArray]: {$set: _.filter(state[action.typeArray], (item) => item.info.id !== action.id)},
+      })
+    case SET_ACTIVE_ITEM:
+      return update(state,{
+        [action.typeItem]: {$set: action.bool}
+      })
+    case SET_PUSH_CLOTH:
       return update(state, {
-        helmetGlovesBootsBelt: {$push: [action.item]},
+        [action.typeArray]: {$push: [action.item]},
       })
     default:
       return state

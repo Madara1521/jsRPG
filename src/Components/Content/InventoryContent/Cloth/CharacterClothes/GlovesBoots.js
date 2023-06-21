@@ -1,5 +1,7 @@
 import React from "react"
 import { makeStyles } from "@mui/styles"
+import { connect } from "react-redux"
+import { PropTypes } from 'prop-types'
 
 const useStyles = makeStyles({
   colthPadding: {
@@ -38,4 +40,33 @@ const GlovesBoots = () => {
   )
 }
 
-export default GlovesBoots
+GlovesBoots.propTypes = {
+  classItem: PropTypes.string,
+  helmetGlovesBootsBelt: PropTypes.array.isRequired,
+  activeGloves: PropTypes.bool,
+  activeBoots: PropTypes.bool,
+}
+
+export default connect(
+  (store) => ({
+    classItem: store.lootAndDescriptionReducer.description.classItem,
+    activeGloves: store.lootAndDescriptionReducer.activeGloves,
+    activeBoots: store.lootAndDescriptionReducer.activeBoots,
+    helmetGlovesBootsBelt: store.lootAndDescriptionReducer.helmetGlovesBootsBelt,
+    imgGloves: store.bonusReducer.glovesBonus.img,
+    imgBoots: store.bonusReducer.bootsBonus.img,
+    glovesBonus: store.lootAndDescriptionReducer.description,
+    bootsBonus: store.lootAndDescriptionReducer.description,
+    gloves: store.bonusReducer.glovesBonus,
+    boots: store.bonusReducer.bootsBonus,
+    id: store.lootAndDescriptionReducer.id,
+  }),
+  // {
+  // setActiveItem,
+  //   setItemBonus,
+  //   getViewDescription,
+  //   setDeleteItem,
+  //   setPushCloth
+  // }
+)(GlovesBoots)
+
