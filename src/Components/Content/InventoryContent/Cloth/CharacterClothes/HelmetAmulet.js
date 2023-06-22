@@ -1,14 +1,12 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { makeStyles } from "@mui/styles"
-import { connect } from "react-redux"
-import {
-  getViewDescription,
-  setActiveItem,
-  setDeleteItem,
-  setItemBonus,
-  setPushCloth,
-} from "../../../../../Redux/actions"
+import { connect, useDispatch } from "react-redux"
 import { PropTypes } from 'prop-types'
+import {
+  addItemToColthHelper,
+  itemUpdateHelper,
+  removeItemHelper, 
+  renderImgHelper} from "../../../../../helpers/helperCloth"
 
 const useStyles = makeStyles({
   colthPadding: {
@@ -65,53 +63,43 @@ const nullHelmet = {
 
 const HelmetAmulet = (props) => {
   const classes = useStyles()
+  const dispatch = useDispatch()
   const {
     classItem,
     imgHelmet,
-    setItemBonus,
     helmetBonus,
-    getViewDescription,
-    setDeleteItem,
     id,
     helmet,
-    setPushCloth,
-    setActiveItem,
     activeHelmet } = props
 
-
-
-  const helmetUpdate = { info: helmet }
-
-  useEffect(() => {
-    getViewDescription({})
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const helmetClick = () => {
-    getViewDescription(helmet)
-    if (activeHelmet === false) {
-      if (classItem === 'helmet') {
-        setItemBonus('helmetBonus',helmetBonus)
-        setDeleteItem('helmetGlovesBootsBelt',id)
-        setActiveItem('activeHelmet',true)
-      }
+  const handleClickHelmet = () => addItemToColthHelper(
+    {
+      dispatch,
+      item: helmet,
+      stingItem: 'helmet',
+      activeItem: activeHelmet,
+      strignActiveitem: 'activeHelmet',
+      bonus: helmetBonus,
+      stringBonus: 'helmetBonus',
+      arrayType: 'helmetGlovesBootsBelt',
+      classItems: classItem,
+      id
     }
-  }
+  )
 
-  const removingTheHelmet = () => {
-    if (activeHelmet === true) {
-      if (classItem === 'helmet') {
-        setItemBonus('helmetBonus',nullHelmet)
-        setPushCloth('helmetGlovesBootsBelt',helmetUpdate)
-        setActiveItem('activeHelmet',false)
-      }
+  const removeHelmet = () => removeItemHelper(
+    {
+      dispatch,
+      activeItem: activeHelmet,
+      stingItem: 'helmet',
+      stringBonus: 'helmetBonus',
+      nullValue: nullHelmet,
+      arrayType: 'helmetGlovesBootsBelt',
+      updateItem: itemUpdateHelper(helmet),
+      strignActiveitem: 'activeHelmet',
+      classItems: classItem
     }
-    getViewDescription({})
-  }
-
-  const renderImg = (img) => {
-    return img ? <img className={classes.imgDescription} src={img} alt='img' /> : null
-  }
+  )
 
 
   return (
@@ -122,8 +110,8 @@ const HelmetAmulet = (props) => {
         </div>
       </div>
       <div className={classes.armorBeltHelmPading} >
-        <div className={classes.helmet} onClick={helmetClick} onDoubleClick={removingTheHelmet}>
-          {renderImg(imgHelmet)}
+        <div className={classes.helmet} onClick={handleClickHelmet} onDoubleClick={removeHelmet}>
+          {renderImgHelper(imgHelmet, classes.imgDescription)}
         </div>
       </div>
       <div className={classes.endAmulet}>
@@ -142,11 +130,6 @@ HelmetAmulet.propTypes = {
   helmetBonus: PropTypes.object.isRequired,
   helmet: PropTypes.object.isRequired,
   id: PropTypes.string,
-  setActiveItem: PropTypes.func.isRequired,
-  setItemBonus: PropTypes.func.isRequired,
-  getViewDescription: PropTypes.func.isRequired,
-  setDeleteItem: PropTypes.func.isRequired,
-  setPushCloth: PropTypes.func.isRequired,
 }
 
 export default connect(
@@ -158,10 +141,4 @@ export default connect(
     helmet: store.bonusReducer.helmetBonus,
     id: store.lootAndDescriptionReducer.id,
   }),
-  {
-    setActiveItem,
-    setItemBonus,
-    getViewDescription,
-    setDeleteItem,
-    setPushCloth
-  })(HelmetAmulet)
+  {})(HelmetAmulet)

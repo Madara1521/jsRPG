@@ -5,6 +5,7 @@ import RingBelt from "./RingBelt"
 import GlovesBoots from "./GlovesBoots"
 import { makeStyles } from "@mui/styles"
 
+
 const useStyles = makeStyles({
   clothPartnerAndCharacter: {
     display: 'flex',

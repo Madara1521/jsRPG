@@ -1,20 +1,19 @@
 import React from "react"
 import { makeStyles } from "@mui/styles"
-import { connect } from "react-redux"
+import { connect, useDispatch } from "react-redux"
 import { PropTypes } from 'prop-types'
 import {
-  setActiveItem,
-  setItemBonus,
-  getViewDescription,
-  setDeleteItem,
-  setPushCloth
-} from '../../../../../Redux/actions'
+  addItemToColthHelper,
+  itemUpdateHelper,
+  removeItemHelper,
+  renderImgHelper
+} from "../../../../../helpers/helperCloth"
 
 const useStyles = makeStyles({
   colthPadding: {
     display: 'flex',
     flexDirection: 'row',
-    padding: '3px'
+    padding: '1px'
   },
   glovesAndBoots: {
     display: 'flex',
@@ -49,64 +48,111 @@ const nullGloves = {
   vitality: null,
   energy: null
 }
+const nullBoots = {
+  id: null,
+  rarity: null,
+  classItem: null,
+  lootName: null,
+  img: null,
+  requiredLevel: null,
+  defenseBonus: null,
+  strength: null,
+  dexterity: null,
+  vitality: null,
+  energy: null
+}
 
 const GlovesBoots = (props) => {
   const classes = useStyles()
+  const dispatch = useDispatch()
   const {
-    classItem,
     activeGloves,
-    // activeBoots,
+    activeBoots,
     imgGloves,
-    // imgBoots,
+    imgBoots,
     glovesBonus,
-    // bootsBonus,
+    bootsBonus,
     gloves,
-    // boots,
-    id,
-    setActiveItem,
-    setItemBonus,
-    getViewDescription,
-    setDeleteItem,
-    setPushCloth } = props
+    boots,
+    classItem,
+    id } = props
 
-  const glovesUpdate = { info: gloves }
-
-  const glovesClick = () => {
-    getViewDescription(gloves)
-    if (activeGloves === false) {
-      if (classItem === 'gloves') {
-        setItemBonus('glovesBonus', glovesBonus)
-        setDeleteItem('helmetGlovesBootsBelt', id)
-        setActiveItem('activeGloves', true)
-      }
+  const handleClickGloves = () => addItemToColthHelper(
+    {
+      dispatch,
+      item: gloves,
+      stingItem: 'gloves',
+      activeItem: activeGloves,
+      strignActiveitem: 'activeGloves',
+      bonus: glovesBonus,
+      stringBonus: 'glovesBonus',
+      arrayType: 'helmetGlovesBootsBelt',
+      classItems: classItem,
+      id
     }
-  }
+  )
 
-  const removingTheGloves = () => {
-    if (activeGloves === true) {
-      if (classItem === 'gloves') {
-        setItemBonus('glovesBonus', nullGloves)
-        setPushCloth('helmetGlovesBootsBelt', glovesUpdate)
-        setActiveItem('activeGloves', false)
-      }
+  const removeGloves = () => removeItemHelper(
+    {
+      dispatch,
+      activeItem: activeGloves,
+      stingItem: 'gloves',
+      stringBonus: 'glovesBonus',
+      nullValue: nullGloves,
+      arrayType: 'helmetGlovesBootsBelt',
+      updateItem: itemUpdateHelper(gloves),
+      strignActiveitem: 'activeGloves',
+      classItems: classItem
     }
-    getViewDescription({})
-  }
+  )
 
-  const renderImg = (img) => {
-    return img ? <img className={classes.imgDescription} src={img} alt='img' /> : null
-  }
+  const handleClickBoots = () => addItemToColthHelper(
+    {
+      dispatch,
+      item: boots,
+      stingItem: 'boots',
+      activeItem: activeBoots,
+      strignActiveitem: 'activeBoots',
+      bonus: bootsBonus,
+      stringBonus: 'bootsBonus',
+      arrayType: 'helmetGlovesBootsBelt',
+      classItems: classItem,
+      id
+    }
+  )
+
+  const removeBoots = () => removeItemHelper(
+    {
+      dispatch,
+      activeItem: activeBoots,
+      stingItem: 'boots',
+      stringBonus: 'bootsBonus',
+      nullValue: nullBoots,
+      arrayType: 'helmetGlovesBootsBelt',
+      updateItem: itemUpdateHelper(boots),
+      strignActiveitem: 'activeBoots',
+      classItems: classItem
+    }
+  )
 
   return (
     <div className={classes.colthPadding}>
-      <div className={classes.glovesAndBoots} onClick={glovesClick} onDoubleClick={removingTheGloves}>
-        {renderImg(imgGloves)}
+      <div
+        className={classes.glovesAndBoots}
+        onClick={handleClickGloves}
+        onDoubleClick={removeGloves}
+      >
+        {renderImgHelper(imgGloves, classes.imgDescription)}
       </div>
       <div className={classes.paddingGloves} />
-      <div className={classes.glovesAndBoots}>
-
+      <div
+        className={classes.glovesAndBoots}
+        onClick={handleClickBoots}
+        onDoubleClick={removeBoots}
+      >
+        {renderImgHelper(imgBoots, classes.imgDescription)}
       </div>
-    </div>
+    </div >
   )
 }
 
@@ -114,6 +160,13 @@ GlovesBoots.propTypes = {
   classItem: PropTypes.string,
   activeGloves: PropTypes.bool,
   activeBoots: PropTypes.bool,
+  imgGloves: PropTypes.string,
+  imgBoots: PropTypes.string,
+  glovesBonus: PropTypes.object.isRequired,
+  bootsBonus: PropTypes.object.isRequired,
+  gloves: PropTypes.object.isRequired,
+  boots: PropTypes.object.isRequired,
+  id: PropTypes.string
 }
 
 export default connect(
@@ -129,12 +182,6 @@ export default connect(
     boots: store.bonusReducer.bootsBonus,
     id: store.lootAndDescriptionReducer.id,
   }),
-  {
-    setActiveItem,
-    setItemBonus,
-    getViewDescription,
-    setDeleteItem,
-    setPushCloth
-  }
+  {}
 )(GlovesBoots)
 

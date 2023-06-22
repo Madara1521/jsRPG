@@ -6,11 +6,14 @@ import {
 
 const initialState = {
   allDefense: 0,
+  allAttackRating: 0,
+  
   amuletBonus: {
     strength: null,
     dexterity: null,
     vitality: null,
     energy: null,
+    attackRatingBonus: null,
   },
   helmetBonus: {
     strength: null,
@@ -24,6 +27,7 @@ const initialState = {
     dexterity: null,
     vitality: null,
     energy: null,
+    attackRatingBonus: null,
   },
   weaponBonus: {
     strength: null,
@@ -39,7 +43,8 @@ const initialState = {
     dexterity: null,
     vitality: null,
     energy: null,
-    defenseBonus: null
+    defenseBonus: null,
+    attackRatingBonus: null,
   },
   shieldBonus: {
     strength: null,
@@ -47,35 +52,40 @@ const initialState = {
     vitality: null,
     energy: null,
     blockingBonus: null,
-    defenseBonus: null
+    defenseBonus: null,
+    attackRatingBonus: null,
   },
   ringBonus: {
     strength: null,
     dexterity: null,
     vitality: null,
     energy: null,
-    defenseBonus: null
+    defenseBonus: null,
+    attackRatingBonus: null,
   },
   beltBonus: {
     strength: null,
     dexterity: null,
     vitality: null,
     energy: null,
-    defenseBonus: null
+    defenseBonus: null,
+    attackRatingBonus: null,
   },
   secondRingBonus: {
     strength: null,
     dexterity: null,
     vitality: null,
     energy: null,
-    defenseBonus: null
+    defenseBonus: null,
+    attackRatingBonus: null,
   },
   glovesBonus: {
     strength: null,
     dexterity: null,
     vitality: null,
     energy: null,
-    defenseBonus: null
+    defenseBonus: null,
+    attackRatingBonus: null,
   },
   bootsBonus: {
     strength: null,

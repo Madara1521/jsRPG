@@ -344,7 +344,7 @@ const initialState = {
         requiredLevel: 1,
         defenseBonus: 1,
         strength: 1000,
-        dexterity: 1,
+        dexterity: null,
         vitality: 1000,
         energy: 1000,
       }
