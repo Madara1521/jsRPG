@@ -27,7 +27,17 @@ const initialState = {
   activeHelmet: false,
   activeGloves: false,
   activeBoots: false,
+  activeArmor: false,
+  activeWeapon: false,
+  activeSecondWeapon: false,
+  activeShield: false,
+  activeRing: false,
+  activeSecondRing: false,
+  activeAmulet: false,
+  activeSecondAmulet: false,
   id: '',
+  oneHanded: false,
+  twoHanded: false
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {

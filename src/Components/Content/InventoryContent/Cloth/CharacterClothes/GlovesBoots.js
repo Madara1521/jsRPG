@@ -46,7 +46,8 @@ const nullGloves = {
   strength: null,
   dexterity: null,
   vitality: null,
-  energy: null
+  energy: null,
+  attackRatingBonus: null
 }
 const nullBoots = {
   id: null,
@@ -59,7 +60,8 @@ const nullBoots = {
   strength: null,
   dexterity: null,
   vitality: null,
-  energy: null
+  energy: null,
+  attackRatingBonus: null
 }
 
 const GlovesBoots = (props) => {
@@ -70,8 +72,7 @@ const GlovesBoots = (props) => {
     activeBoots,
     imgGloves,
     imgBoots,
-    glovesBonus,
-    bootsBonus,
+    bonus,
     gloves,
     boots,
     classItem,
@@ -84,7 +85,7 @@ const GlovesBoots = (props) => {
       stingItem: 'gloves',
       activeItem: activeGloves,
       strignActiveitem: 'activeGloves',
-      bonus: glovesBonus,
+      bonus: bonus,
       stringBonus: 'glovesBonus',
       arrayType: 'helmetGlovesBootsBelt',
       classItems: classItem,
@@ -113,7 +114,7 @@ const GlovesBoots = (props) => {
       stingItem: 'boots',
       activeItem: activeBoots,
       strignActiveitem: 'activeBoots',
-      bonus: bootsBonus,
+      bonus: bonus,
       stringBonus: 'bootsBonus',
       arrayType: 'helmetGlovesBootsBelt',
       classItems: classItem,
@@ -162,8 +163,7 @@ GlovesBoots.propTypes = {
   activeBoots: PropTypes.bool,
   imgGloves: PropTypes.string,
   imgBoots: PropTypes.string,
-  glovesBonus: PropTypes.object.isRequired,
-  bootsBonus: PropTypes.object.isRequired,
+  bonus: PropTypes.object.isRequired,
   gloves: PropTypes.object.isRequired,
   boots: PropTypes.object.isRequired,
   id: PropTypes.string
@@ -176,8 +176,7 @@ export default connect(
     activeBoots: store.lootAndDescriptionReducer.activeBoots,
     imgGloves: store.bonusReducer.glovesBonus.img,
     imgBoots: store.bonusReducer.bootsBonus.img,
-    glovesBonus: store.lootAndDescriptionReducer.description,
-    bootsBonus: store.lootAndDescriptionReducer.description,
+    bonus: store.lootAndDescriptionReducer.description,
     gloves: store.bonusReducer.glovesBonus,
     boots: store.bonusReducer.bootsBonus,
     id: store.lootAndDescriptionReducer.id,

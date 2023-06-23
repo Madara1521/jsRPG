@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import cap from './helmetImg/peasantHelmet.png'
 import skullCap from './helmetImg/skullCap.png'
 import helm from './helmetImg/recruitHelmet.png'
@@ -19,6 +20,14 @@ import lightBelt from './beltImg/lightBelt.png'
 import belt from './beltImg/belt.png'
 import heavyBelt from './beltImg/heavyBelt.png'
 import platedBelt from './beltImg/platedBelt.png'
+
+import ancientArmor from './armorImg/ancientArmor.png'
+import breastPlate from './armorImg/breastPlate.png'
+import chainMail from './armorImg/chainMail.png'
+import fieldPlate from './armorImg/fieldPlate.png'
+import fullPlateMail from './armorImg/fullPlateMail.png'
+
+import bardiche from './weaponImg/ancientWeaponImg/bardiche.png'
 
 import uniqid from 'uniqid'
 
@@ -64,36 +73,6 @@ const initialState = {
     {
       info: {
         id: uniqid(),
-        rarity: 0,
-        classItem: 'helmet',
-        lootName: 'Peasant helmet',
-        img: cap,
-        requiredLevel: 1,
-        defenseBonus: 4,
-        strength: 2,
-        dexterity: null,
-        vitality: 5,
-        energy: null,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 0,
-        classItem: 'helmet',
-        lootName: 'Skull cap',
-        img: skullCap,
-        requiredLevel: 1,
-        defenseBonus: 8,
-        strength: 4,
-        dexterity: 6,
-        vitality: 3,
-        energy: 2,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
         rarity: 1,
         classItem: 'helmet',
         lootName: 'Recruit helmet',
@@ -104,71 +83,8 @@ const initialState = {
         strength: 2,
         dexterity: null,
         vitality: 5,
-        energy: null,
-
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 3,
-        classItem: 'gloves',
-        lootName: 'Gloves Dragon',
-        img: leatherGloves,
-        requiredLevel: 41,
-        requiredStrength: 35,
-        defenseBonus: 14,
-        strength: 32,
-        dexterity: 23,
-        vitality: 20,
-        energy: 15,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 2,
-        classItem: 'gloves',
-        lootName: 'Gloves Diablo',
-        img: gaunlets,
-        requiredLevel: 71,
-        requiredStrength: 35,
-        defenseBonus: 95,
-        strength: 42,
-        dexterity: 43,
-        vitality: 40,
-        energy: 55,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 1,
-        classItem: 'gloves',
-        lootName: 'Gloves sakura',
-        img: lightGauntlets,
-        requiredLevel: 11,
-        defenseBonus: 14,
-        strength: null,
-        dexterity: 3,
-        vitality: 2,
-        energy: 5,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 3,
-        classItem: 'gloves',
-        lootName: 'Gloves Dracula',
-        img: heavyGloves,
-        requiredLevel: 35,
-        requiredStrength: 25,
-        defenseBonus: 14,
-        strength: 32,
-        dexterity: 23,
-        vitality: 20,
-        energy: 15,
+        energy: null, 
+        attackRatingBonus: 30
       }
     },
     {
@@ -184,56 +100,8 @@ const initialState = {
         strength: null,
         dexterity: null,
         vitality: null,
-        energy: null,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 3,
-        classItem: 'boots',
-        lootName: 'Boots of speed',
-        img: heavyBoots,
-        requiredLevel: 33,
-        requiredStrength: 5,
-        requiredDexterity: 15,
-        defenseBonus: 35,
-        strength: 20,
-        dexterity: 25,
-        vitality: 40,
-        energy: 35,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 1,
-        classItem: 'boots',
-        lootName: 'Greaves sex',
-        img: greaves,
-        requiredLevel: 3,
-        defenseBonus: 5,
-        strength: 6,
-        dexterity: 3,
-        vitality: 4,
-        energy: 5,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 1,
-        classItem: 'boots',
-        lootName: 'Boots of damage',
-        img: boots,
-        requiredLevel: 33,
-        requiredStrength: 5,
-        requiredDexterity: 15,
-        defenseBonus: 35,
-        strength: 20,
-        dexterity: 25,
-        vitality: 40,
-        energy: 35,
+        energy: null, 
+        attackRatingBonus: 30
       }
     },
     {
@@ -250,24 +118,8 @@ const initialState = {
         strength: 10,
         dexterity: 5,
         vitality: 60,
-        energy: 25,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 3,
-        classItem: 'boots',
-        lootName: 'Boots of gay',
-        img: chainBoots,
-        requiredLevel: 33,
-        requiredStrength: 5,
-        requiredDexterity: 15,
-        defenseBonus: 35,
-        strength: 20,
-        dexterity: 25,
-        vitality: 40,
-        energy: 35,
+        energy: null,
+        attackRatingBonus: 30
       }
     },
     {
@@ -283,102 +135,49 @@ const initialState = {
         strength: 20,
         dexterity: 25,
         vitality: 40,
-        energy: 35,
+        energy: null,
+        attackRatingBonus: 30
       }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 3,
-        classItem: 'belt',
-        lootName: 'Belt cain',
-        img: platedBelt,
-        requiredLevel: 65,
-        requiredDexterity: 25,
-        defenseBonus: 201,
-        strength: 40,
-        dexterity: 55,
-        vitality: 60,
-        energy: 35,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 1,
-        classItem: 'belt',
-        lootName: 'Belt barbarian',
-        img: lightBelt,
-        requiredLevel: 15,
-        requiredDexterity: 15,
-        defenseBonus: 53,
-        strength: 10,
-        dexterity: 15,
-        vitality: 30,
-        energy: 45,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 3,
-        classItem: 'belt',
-        lootName: 'Belt spider',
-        img: sash,
-        requiredLevel: 41,
-        requiredDexterity: 25,
-        defenseBonus: 105,
-        strength: 10,
-        dexterity: 35,
-        vitality: 30,
-        energy: 65,
-      }
-    },
-    {
-      info: {
-        id: uniqid(),
-        rarity: 0,
-        classItem: 'belt',
-        lootName: 'Belt nigers',
-        img: heavyBelt,
-        requiredLevel: 1,
-        defenseBonus: 1,
-        strength: 1000,
-        dexterity: null,
-        vitality: 1000,
-        energy: 1000,
-      }
-    },
+    }
   ], // helmet,boots,gloves,belt
   armor: [
     {
       info: {
         id: uniqid(),
-        rarity: 0,
-        lootName: 'armor bandit',
-        strength: 9,
-        dexterity: 2,
-        vitality: 6,
-        energy: 0,
+        rarity: 3,
+        classItem: 'armor',
+        lootName: 'Viper armor',
+        img: ancientArmor,
+        requiredLevel: 40,
+        defenseBonus: 553,
+        strength: 100,
+        dexterity: null,
+        vitality: 100,
+        energy: null, attackRatingBonus: 30
       }
-    },
+    }
   ], // armor
   weapon: [
     {
       info: {
         id: uniqid(),
         rarity: 0,
+        classItem: 'weapon',
+        typeWeapon: 'ancientWeapon',
         lootName: 'Blackleach Blade',
+        img: bardiche,
         startPhysicalDamage: 109,
-        finalPhycicalDamage: 253,
-        requiredLevel: 10,
+        finalPhysicalDamage: 253,
+        requiredLevel: 32,
         requiredStrength: 10,
         requiredDexterity: 15,
         durability: 50,
         baseWeaponSpeed: 10,
-        strength: 4,
+        strength: null,
         dexterity: 10,
         vitality: 25,
+        energy: null, 
+        attackRatingBonus: 30,
       }
     }
   ],// weapon
@@ -391,7 +190,8 @@ const initialState = {
         strength: 5,
         dexterity: 7,
         vitality: 4,
-        energy: 0,
+        energy: null, 
+        attackRatingBonus: 30
       }
     }
   ], //shield
@@ -404,7 +204,8 @@ const initialState = {
         strength: 5,
         dexterity: 7,
         vitality: 4,
-        energy: 0,
+        energy: null, 
+        attackRatingBonus: 30
       }
     },
     {
@@ -415,7 +216,8 @@ const initialState = {
         strength: 5,
         dexterity: 7,
         vitality: 4,
-        energy: 0,
+        energy: null, 
+        attackRatingBonus: 30
       }
     }
   ],//rings

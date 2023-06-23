@@ -67,7 +67,7 @@ const HelmetAmulet = (props) => {
   const {
     classItem,
     imgHelmet,
-    helmetBonus,
+    bonus,
     id,
     helmet,
     activeHelmet } = props
@@ -79,7 +79,7 @@ const HelmetAmulet = (props) => {
       stingItem: 'helmet',
       activeItem: activeHelmet,
       strignActiveitem: 'activeHelmet',
-      bonus: helmetBonus,
+      bonus: bonus,
       stringBonus: 'helmetBonus',
       arrayType: 'helmetGlovesBootsBelt',
       classItems: classItem,
@@ -127,7 +127,7 @@ HelmetAmulet.propTypes = {
   classItem: PropTypes.string,
   activeHelmet: PropTypes.bool,
   imgHelmet: PropTypes.string,
-  helmetBonus: PropTypes.object.isRequired,
+  bonus: PropTypes.object.isRequired,
   helmet: PropTypes.object.isRequired,
   id: PropTypes.string,
 }
@@ -137,7 +137,7 @@ export default connect(
     classItem: store.lootAndDescriptionReducer.description.classItem,
     activeHelmet: store.lootAndDescriptionReducer.activeHelmet,
     imgHelmet: store.bonusReducer.helmetBonus.img,
-    helmetBonus: store.lootAndDescriptionReducer.description,
+    bonus: store.lootAndDescriptionReducer.description,
     helmet: store.bonusReducer.helmetBonus,
     id: store.lootAndDescriptionReducer.id,
   }),

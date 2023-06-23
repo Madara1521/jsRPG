@@ -33,7 +33,7 @@ export default connect(store => {
   return {
     startPhyDamage: store.characteristicsReducer.startPhyDamage,
     finalPhyDamage: store.characteristicsReducer.finalPhyDamage,
-    startPhyBonus: store.bonusReducer.weaponBonus.startPhyBonus,
-    finalPhyBonus: store.bonusReducer.weaponBonus.finalPhyBonus
+    startPhyBonus: store.bonusReducer.allStartPhyBonus,
+    finalPhyBonus: store.bonusReducer.allFinalPhyBonus
   }
 }, { setPhysicalDamage })(DamageComp)

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { setAllDefense, setTottalStat } from "../../../../Redux/actions"
+import { setAllAttackRating, setAllDefense, setAllPhyBonus, setTottalStat } from "../../../../Redux/actions"
 import { PropTypes } from 'prop-types'
 
 const CharacteristicsComp = (props) => {
@@ -20,12 +20,15 @@ const CharacteristicsComp = (props) => {
     beltBonus,
     secondRingBonus,
     glovesBonus,
-    bootsBonus, 
-    setAllDefense} = props
-
+    bootsBonus,
+    setAllDefense,
+    setAllAttackRating,
+    setAllPhyBonus } = props
 
   useEffect(() => {
     setAllDefense()
+    setAllAttackRating()
+    setAllPhyBonus()
     setTottalStat(totalStatName,
       attributeCurrent,
       armorBonus,
@@ -65,7 +68,18 @@ CharacteristicsComp.propTypes = {
   name: PropTypes.string.isRequired,
   setTottalStat: PropTypes.func.isRequired,
   attributeCurrent: PropTypes.number.isRequired,
-  totalAttribute: PropTypes.number.isRequired
+  totalAttribute: PropTypes.number.isRequired,
+  amuletBonus: PropTypes.number,
+  helmetBonus: PropTypes.number,
+  secondAmuletBonus: PropTypes.number,
+  weaponBonus: PropTypes.number,
+  armorBonus: PropTypes.number,
+  shieldBonus: PropTypes.number,
+  ringBonus: PropTypes.number,
+  beltBonus: PropTypes.number,
+  secondRingBonus: PropTypes.number,
+  glovesBonus: PropTypes.number,
+  bootsBonus: PropTypes.number,
 }
 
 export default connect((store, ownProps) => {
@@ -84,6 +98,11 @@ export default connect((store, ownProps) => {
     attributeCurrent: store.attributeReducer[ownProps.name],
     totalAttribute: store.characteristicsReducer[ownProps.totalStatName]
   }
-}, { setTottalStat, setAllDefense })(CharacteristicsComp)
+}, {
+  setTottalStat,
+  setAllDefense,
+  setAllAttackRating,
+  setAllPhyBonus
+})(CharacteristicsComp)
 
 

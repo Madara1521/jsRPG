@@ -51,7 +51,8 @@ const nullBelt = {
   strength: null,
   dexterity: null,
   vitality: null,
-  energy: null
+  energy: null,
+  attackRatingBonus: null
 }
 
 const RingBelt = (props) => {

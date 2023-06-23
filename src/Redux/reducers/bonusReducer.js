@@ -1,13 +1,18 @@
 import update from 'immutability-helper'
 
-import { 
+import {
   SET_ITEM_BONUS,
-  SET_ALL_DEFENSE } from "../types"
+  SET_ALL_DEFENSE,
+  SET_ALL_ATTACK_RATING,
+  SET_ALL_PHY_BONUS
+} from "../types"
 
 const initialState = {
-  allDefense: 0,
-  allAttackRating: 0,
-  
+  allDefenseBonus: 0,
+  allAttackRatingBonus: 0,
+  allStartPhyBonus: 0,
+  allFinalPhyBonus: 0,
+
   amuletBonus: {
     strength: null,
     dexterity: null,
@@ -34,9 +39,22 @@ const initialState = {
     dexterity: null,
     vitality: null,
     energy: null,
-    startPhyBonus: null,
-    finalPhyBonus: null,
-    attackRatingBonus: null
+    startPhysicalDamage: null,
+    finalPhysicalDamage: null,
+    attackRatingBonus: null,
+    oneHanded: null,
+    twoHanded: null
+  },
+  secondWeaponBonus: {
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    startPhysicalDamage: null,
+    finalPhysicalDamage: null,
+    attackRatingBonus: null,
+    oneHanded: null,
+    twoHanded: null
   },
   armorBonus: {
     strength: null,
@@ -104,12 +122,42 @@ export const bonusReducer = (state = initialState, action) => {
       })
     case SET_ALL_DEFENSE:
       return update(state, {
-        allDefense: { $set: state.armorBonus.defenseBonus +
+        allDefense: {
+          $set: state.armorBonus.defenseBonus +
             state.bootsBonus.defenseBonus +
             state.glovesBonus.defenseBonus +
             state.shieldBonus.defenseBonus +
             state.helmetBonus.defenseBonus +
-            state.beltBonus.defenseBonus }
+            state.beltBonus.defenseBonus
+        }
+      })
+    case SET_ALL_ATTACK_RATING:
+      return update(state, {
+        allAttackRatingBonus: {
+          $set: state.amuletBonus.attackRatingBonus +
+            state.secondAmuletBonus.attackRatingBonus +
+            state.weaponBonus.attackRatingBonus +
+            state.armorBonus.attackRatingBonus +
+            state.shieldBonus.attackRatingBonus +
+            state.ringBonus.attackRatingBonus +
+            state.beltBonus.attackRatingBonus +
+            state.secondRingBonus.attackRatingBonus +
+            state.glovesBonus.attackRatingBonus
+        }
+      })
+    case SET_ALL_PHY_BONUS:
+      return update(state, {
+        allStartPhyBonus: {
+          $set:
+            state.weaponBonus.startPhysicalDamage +
+            state.secondWeaponBonus.startPhysicalDamage
+        },
+        allFinalPhyBonus: {
+          $set:
+            state.weaponBonus.finalPhysicalDamage +
+            state.secondWeaponBonus.finalPhysicalDamage
+        }
+
       })
     default:
       return state

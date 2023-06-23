@@ -106,7 +106,7 @@ const Description = (props) => {
         <div className={classNames(classes.lootCell && lootCellColor)}>{description.lootName}</div>
         {renderImg(description.img)}
         <div className={classes.lootBonus}>
-          {renderDamage('Physical damage', description.startPhysicalDamage, description.finalPhycicalDamage)}
+          {renderDamage('Physical damage', description.startPhysicalDamage, description.finalPhysicalDamage)}
           {renderRequired("Required level", description.requiredLevel)}
           {renderRequired("Required strength", description.requiredStrength)}
           {renderRequired("Required dexterity", description.requiredDexterity)}

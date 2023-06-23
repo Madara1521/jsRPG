@@ -20,7 +20,9 @@ import {
   SET_DELETE_ITEM,
   SET_PUSH_CLOTH,
   SET_ACTIVE_ITEM,
-  SET_ALL_DEFENSE
+  SET_ALL_DEFENSE,
+  SET_ALL_ATTACK_RATING,
+  SET_ALL_PHY_BONUS
 } from "./types"
 
 export function incrementStat(statName) {
@@ -207,6 +209,18 @@ export function setActiveItem(typeItem,bool) {
 export function setAllDefense() {
   return {
     type: SET_ALL_DEFENSE,
+  }
+}
+
+export function setAllAttackRating() {
+  return {
+    type: SET_ALL_ATTACK_RATING,
+  }
+}
+
+export function setAllPhyBonus() {
+  return {
+    type: SET_ALL_PHY_BONUS,
   }
 }
 
