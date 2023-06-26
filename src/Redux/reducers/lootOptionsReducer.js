@@ -28,6 +28,10 @@ import fieldPlate from './armorImg/fieldPlate.png'
 import fullPlateMail from './armorImg/fullPlateMail.png'
 
 import bardiche from './weaponImg/ancientWeaponImg/bardiche.png'
+import axe from './weaponImg/axes/oneHandedAxesImg/axe.png'
+import crystalSword from './weaponImg/swordsImg/crystalSword.png'
+import scepter from './weaponImg/scepters/scepter.png'
+import poleaxe from './weaponImg/ancientWeaponImg/poleaxe.png'
 
 import uniqid from 'uniqid'
 
@@ -75,7 +79,7 @@ const initialState = {
         requiredLevel: 32,
         requiredStrength: 10,
         requiredDexterity: 15,
-        typeHelmet: null,
+        typeHelmet: 'helm',
       },
       info: {
         id: uniqid(),
@@ -95,7 +99,7 @@ const initialState = {
         requiredLevel: 32,
         requiredStrength: 10,
         requiredDexterity: 15,
-        typeHelmet: null,
+        typeHelmet: 'cap',
       },
       info: {
         id: uniqid(),
@@ -115,7 +119,7 @@ const initialState = {
         requiredLevel: 32,
         requiredStrength: 10,
         requiredDexterity: 15,
-        typeWeapon: '',
+        typeGloves: 'chainGloves',
       },
       info: {
         id: uniqid(),
@@ -128,7 +132,7 @@ const initialState = {
         dexterity: null,
         vitality: null,
         energy: null, 
-        attackRatingBonus: 30
+        attackRatingBonus: 23
       }
     },
     {
@@ -136,7 +140,7 @@ const initialState = {
         requiredLevel: 32,
         requiredStrength: 10,
         requiredDexterity: 15,
-        typeWeapon: '',
+        typeBoots: 'lightPlateBoots',
       },
       info: {
         id: uniqid(),
@@ -150,7 +154,7 @@ const initialState = {
         dexterity: 5,
         vitality: 60,
         energy: null,
-        attackRatingBonus: 30
+        attackRatingBonus: 80
       }
     },
     {
@@ -158,7 +162,7 @@ const initialState = {
         requiredLevel: 32,
         requiredStrength: 10,
         requiredDexterity: 15,
-        typeWeapon: '',
+        typeBelt: 'belt',
       },
       info: {
         id: uniqid(),
@@ -171,7 +175,7 @@ const initialState = {
         dexterity: 25,
         vitality: 40,
         energy: null,
-        attackRatingBonus: 30
+        attackRatingBonus: null
       }
     }
   ], // helmet,boots,gloves,belt
@@ -181,7 +185,7 @@ const initialState = {
         requiredLevel: 32,
         requiredStrength: 10,
         requiredDexterity: 15,
-        typeWeapon: '',
+        typeArmor: 'ancientArmor',
       },
       info: {
         id: uniqid(),
@@ -193,17 +197,18 @@ const initialState = {
         strength: 100,
         dexterity: null,
         vitality: 100,
-        energy: null, attackRatingBonus: 30
+        energy: null, 
+        attackRatingBonus: 550
       }
     }
   ], // armor
   weapon: [
     {
       requirements: {
-        requiredLevel: 32,
-        requiredStrength: 10,
-        requiredDexterity: 15,
-        typeWeapon: 'ancientWeapon',
+        requiredLevel: 22,
+        requiredStrength: 123,
+        requiredDexterity: 60,
+        typeWeapon: 'bardiche',
       },
       info: {
         id: uniqid(),
@@ -219,7 +224,61 @@ const initialState = {
         dexterity: 10,
         vitality: 25,
         energy: null, 
-        attackRatingBonus: 30,
+        attackRatingBonus: 20,
+        oneHanded: false,
+        twoHanded: true,
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 11,
+        requiredStrength: 55,
+        requiredDexterity: 20,
+        typeWeapon: 'axe',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 2,
+        classItem: 'weapon',
+        lootName: 'Axe durability',
+        img: axe,
+        startPhysicalDamage: 59,
+        finalPhysicalDamage: 77,
+        durability: 550,
+        baseWeaponSpeed: 120,
+        strength: 25,
+        dexterity: null,
+        vitality: 45,
+        energy: 11, 
+        attackRatingBonus: 120,
+        oneHanded: true,
+        twoHanded: false,
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 22,
+        requiredStrength: 123,
+        requiredDexterity: 60,
+        typeWeapon: 'crystalSword',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 3,
+        classItem: 'weapon',
+        lootName: 'Sword of infinity',
+        img: crystalSword,
+        startPhysicalDamage: 109,
+        finalPhysicalDamage: 253,
+        durability: 100,
+        baseWeaponSpeed: 150,
+        strength: null,
+        dexterity: 40,
+        vitality: 35,
+        energy: null, 
+        attackRatingBonus: 260,
+        oneHanded: true,
+        twoHanded: false,
       }
     }
   ],// weapon

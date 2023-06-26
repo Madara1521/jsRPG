@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { makeStyles } from "@mui/styles"
 import { connect, useDispatch } from "react-redux"
 import { PropTypes } from 'prop-types'
@@ -55,7 +55,7 @@ const nullHelmet = {
     requiredDexterity: null,
     typeHelmet: null,
   },
-  info:{
+  info: {
     id: null,
     rarity: null,
     classItem: null,
@@ -83,9 +83,6 @@ const HelmetAmulet = (props) => {
     requirements,
     helmetRequirements } = props
 
-  useEffect(() => {
-    console.log(activeHelmet)
-  })
 
   const handleClickHelmet = () => addItemToColthHelper(
     {
@@ -95,7 +92,7 @@ const HelmetAmulet = (props) => {
       stingItem: 'helmet',
       activeItem: activeHelmet,
       strignActiveitem: 'activeHelmet',
-      bonus: {info: info, requirements: requirements},
+      bonus: { info: info, requirements: requirements },
       stringBonus: 'helmetBonus',
       arrayType: 'helmetGlovesBootsBelt',
       classItems: classItem,
@@ -143,9 +140,11 @@ HelmetAmulet.propTypes = {
   classItem: PropTypes.string,
   activeHelmet: PropTypes.bool,
   imgHelmet: PropTypes.string,
-  bonus: PropTypes.object.isRequired,
-  helmet: PropTypes.object.isRequired,
   id: PropTypes.string,
+  info: PropTypes.object.isRequired,
+  requirements: PropTypes.object.isRequired,
+  helmetInfo: PropTypes.object.isRequired,
+  helmetRequirements: PropTypes.object.isRequired
 }
 
 export default connect(

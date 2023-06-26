@@ -50,37 +50,53 @@ const useStyles = makeStyles({
 })
 
 const nullArmor = {
-  id: null,
-  rarity: null,
-  classItem: null,
-  lootName: null,
-  img: null,
-  requiredLevel: null,
-  defenseBonus: null,
-  strength: null,
-  dexterity: null,
-  vitality: null,
-  energy: null,
-  attackRatingBonus: null,
+  info: {
+    id: null,
+    rarity: null,
+    classItem: null,
+    lootName: null,
+    img: null,
+    requiredLevel: null,
+    defenseBonus: null,
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    attackRatingBonus: null
+  },
+  requirements: {
+    requiredLevel: null,
+    requiredStrength: null,
+    requiredDexterity: null,
+    typeArmor: null
+  }
 }
 
 const nullWeapon = {
-  id: null,
-  rarity: null,
-  classItem: null,
-  lootName: null,
-  img: null,
-  requiredLevel: null,
-  defenseBonus: null,
-  strength: null,
-  dexterity: null,
-  vitality: null,
-  energy: null,
-  attackRatingBonus: null,
-  startPhysicalDamage: null,
-  finalPhysicalDamage: null,
-  oneHanded: null,
-  twoHanded: null
+  info: {
+    id: null,
+    rarity: null,
+    classItem: null,
+    lootName: null,
+    img: null,
+    requiredLevel: null,
+    defenseBonus: null,
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    attackRatingBonus: null,
+    startPhysicalDamage: null,
+    finalPhysicalDamage: null,
+    oneHanded: null,
+    twoHanded: null
+  },
+  requirements: {
+    requiredLevel: null,
+    requiredStrength: null,
+    requiredDexterity: null,
+    typeWeapon: null
+  }
 }
 
 const WeaponArmorShield = (props) => {
@@ -90,27 +106,33 @@ const WeaponArmorShield = (props) => {
     classItem,
     activeArmor,
     activeWeapon,
+    id,
     imgArmor,
     imgWeapon,
-    bonus,
-    armor,
-    weapon,
-    id } = props
+    info,
+    requirements,
+    armorInfo,
+    weaponInfo,
+    armorRequirements,
+    weaponRequirements } = props
 
-  const handleClickArmor = () => addItemToColthHelper(
-    {
-      dispatch,
-      item: armor,
-      stingItem: 'armor',
-      activeItem: activeArmor,
-      strignActiveitem: 'activeArmor',
-      bonus: bonus,
-      stringBonus: 'armorBonus',
-      arrayType: 'armor',
-      classItems: classItem,
-      id
-    }
-  )
+  const handleClickArmor = () => {
+    addItemToColthHelper(
+      {
+        dispatch,
+        itemInfo: armorInfo,
+        itemRequirements: armorRequirements,
+        stingItem: 'armor',
+        activeItem: activeArmor,
+        strignActiveitem: 'activeArmor',
+        bonus: { info: info, requirements: requirements },
+        stringBonus: 'armorBonus',
+        arrayType: 'armor',
+        classItems: classItem,
+        id
+      }
+    )
+  }
 
   const removeArmor = () => removeItemHelper(
     {
@@ -120,26 +142,31 @@ const WeaponArmorShield = (props) => {
       stringBonus: 'armorBonus',
       nullValue: nullArmor,
       arrayType: 'armor',
-      updateItem: itemUpdateHelper(armor),
+      updateItem: itemUpdateHelper(armorInfo, armorRequirements),
       strignActiveitem: 'activeArmor',
       classItems: classItem
     }
   )
 
-  const handleClickWeapon = () => addItemToColthHelper(
-    {
-      dispatch,
-      item: weapon,
-      stingItem: 'weapon',
-      activeItem: activeWeapon,
-      strignActiveitem: 'activeWeapon',
-      bonus: bonus,
-      stringBonus: 'weaponBonus',
-      arrayType: 'weapon',
-      classItems: classItem,
-      id
-    }
-  )
+  const handleClickWeapon = () => {
+    // if (true) {
+    addItemToColthHelper(
+      {
+        dispatch,
+        itemInfo: weaponInfo,
+        itemRequirements: weaponRequirements,
+        stingItem: 'weapon',
+        activeItem: activeWeapon,
+        strignActiveitem: 'activeWeapon',
+        bonus: { info: info, requirements: requirements },
+        stringBonus: 'weaponBonus',
+        arrayType: 'weapon',
+        classItems: classItem,
+        id
+      }
+    )
+    // }
+  }
 
   const removeWeapon = () => removeItemHelper(
     {
@@ -149,7 +176,7 @@ const WeaponArmorShield = (props) => {
       stringBonus: 'weaponBonus',
       nullValue: nullWeapon,
       arrayType: 'weapon',
-      updateItem: itemUpdateHelper(weapon),
+      updateItem: itemUpdateHelper(weaponInfo, weaponRequirements),
       strignActiveitem: 'activeWeapon',
       classItems: classItem
     }
@@ -176,9 +203,13 @@ WeaponArmorShield.propTypes = {
   classItem: PropTypes.string,
   activeArmor: PropTypes.bool,
   imgArmor: PropTypes.string,
-  bonus: PropTypes.object.isRequired,
-  armor: PropTypes.object.isRequired,
   id: PropTypes.string,
+  info: PropTypes.object.isRequired,
+  requirements: PropTypes.object.isRequired,
+  armorInfo: PropTypes.object.isRequired,
+  armorRequirements: PropTypes.object.isRequired,
+  weaponInfo: PropTypes.object.isRequired,
+  weaponRequirements: PropTypes.object.isRequired
 }
 
 export default connect(
@@ -186,11 +217,14 @@ export default connect(
     classItem: store.lootAndDescriptionReducer.description.classItem,
     activeArmor: store.lootAndDescriptionReducer.activeArmor,
     activeWeapon: store.lootAndDescriptionReducer.activeWeapon,
-    imgArmor: store.bonusReducer.armorBonus.img,
-    imgWeapon: store.bonusReducer.weaponBonus.img,
-    bonus: store.lootAndDescriptionReducer.description,
-    armor: store.bonusReducer.armorBonus,
-    weapon: store.bonusReducer.weaponBonus,
     id: store.lootAndDescriptionReducer.id,
+    imgArmor: store.bonusReducer.armorBonus.info.img,
+    imgWeapon: store.bonusReducer.weaponBonus.info.img,
+    info: store.lootAndDescriptionReducer.description,
+    requirements: store.lootAndDescriptionReducer.requirements,
+    armorInfo: store.bonusReducer.armorBonus.info,
+    weaponInfo: store.bonusReducer.weaponBonus.info,
+    armorRequirements: store.bonusReducer.armorBonus.requirements,
+    weaponRequirements: store.bonusReducer.weaponBonus.requirements,
   }),
   {})(WeaponArmorShield)

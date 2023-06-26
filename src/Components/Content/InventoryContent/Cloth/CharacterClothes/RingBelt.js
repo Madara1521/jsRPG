@@ -41,18 +41,26 @@ const useStyles = makeStyles({
 })
 
 const nullBelt = {
-  id: null,
-  rarity: null,
-  classItem: null,
-  lootName: null,
-  img: null,
-  requiredLevel: null,
-  defenseBonus: null,
-  strength: null,
-  dexterity: null,
-  vitality: null,
-  energy: null,
-  attackRatingBonus: null
+  info: {
+    id: null,
+    rarity: null,
+    classItem: null,
+    lootName: null,
+    img: null,
+    requiredLevel: null,
+    defenseBonus: null,
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    attackRatingBonus: null
+  },
+  requirements: {
+    requiredLevel: null,
+    requiredStrength: null,
+    requiredDexterity: null,
+    typeBelt: null,
+  }
 }
 
 const RingBelt = (props) => {
@@ -62,18 +70,21 @@ const RingBelt = (props) => {
     classItem,
     activeBelt,
     imgBelt,
-    beltBonus,
-    belt,
-    id } = props
+    id,
+    info,
+    requirements,
+    beltInfo,
+    beltRequirements } = props
 
   const handleClickBelt = () => addItemToColthHelper(
     {
       dispatch,
-      item: belt,
+      itemInfo: beltInfo,
+      itemRequirements: beltRequirements,
       stingItem: 'belt',
       activeItem: activeBelt,
       strignActiveitem: 'activeBelt',
-      bonus: beltBonus,
+      bonus: { info: info, requirements: requirements },
       stringBonus: 'beltBonus',
       arrayType: 'helmetGlovesBootsBelt',
       classItems: classItem,
@@ -89,7 +100,7 @@ const RingBelt = (props) => {
       stringBonus: 'beltBonus',
       nullValue: nullBelt,
       arrayType: 'helmetGlovesBootsBelt',
-      updateItem: itemUpdateHelper(belt),
+      updateItem: itemUpdateHelper(beltInfo, beltRequirements),
       strignActiveitem: 'activeBelt',
       classItems: classItem
     }
@@ -116,16 +127,20 @@ RingBelt.propTypes = {
   classItem: PropTypes.string,
   activeBelt: PropTypes.bool,
   imgBelt: PropTypes.string,
-  beltBonus: PropTypes.object.isRequired,
-  belt: PropTypes.object.isRequired,
   id: PropTypes.string,
+  info: PropTypes.object.isRequired,
+  requirements: PropTypes.object.isRequired,
+  beltInfo: PropTypes.object.isRequired,
+  beltRequirements: PropTypes.object.isRequired
 }
 
 export default connect((store) => ({
   classItem: store.lootAndDescriptionReducer.description.classItem,
   activeBelt: store.lootAndDescriptionReducer.activeBelt,
-  imgBelt: store.bonusReducer.beltBonus.img,
-  beltBonus: store.lootAndDescriptionReducer.description,
-  belt: store.bonusReducer.beltBonus,
+  imgBelt: store.bonusReducer.beltBonus.info.img,
   id: store.lootAndDescriptionReducer.id,
+  info: store.lootAndDescriptionReducer.description,
+  requirements: store.lootAndDescriptionReducer.requirements,
+  beltInfo: store.bonusReducer.beltBonus.info,
+  beltRequirements: store.bonusReducer.beltBonus.requirements,
 }), {})(RingBelt)

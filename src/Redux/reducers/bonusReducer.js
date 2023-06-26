@@ -71,7 +71,10 @@ const initialState = {
       twoHanded: null,
     },
     requirements: {
-
+      requiredLevel: null,
+      requiredStrength: null,
+      requiredDexterity: null,
+      typeWeapon: null,
     }
   },
   secondWeaponBonus: {
@@ -87,7 +90,10 @@ const initialState = {
       twoHanded: null,
     },
     requirements: {
-
+      requiredLevel: null,
+      requiredStrength: null,
+      requiredDexterity: null,
+      typeWeapon: null,
     }
   },
   armorBonus: {
@@ -100,7 +106,10 @@ const initialState = {
       attackRatingBonus: null,
     },
     requirements: {
-
+      requiredLevel: null,
+      requiredStrength: null,
+      requiredDexterity: null,
+      typeArmor: null,
     }
   },
   shieldBonus: {
@@ -140,7 +149,10 @@ const initialState = {
       attackRatingBonus: null,
     },
     requirements: {
-
+      requiredLevel: null,
+      requiredStrength: null,
+      requiredDexterity: null,
+      typeBelt: null,
     }
   },
   secondRingBonus: {
@@ -166,7 +178,10 @@ const initialState = {
       attackRatingBonus: null,
     },
     requirements: {
-
+      requiredLevel: null,
+      requiredStrength: null,
+      requiredDexterity: null,
+      typeGloves: null,
     }
   },
   bootsBonus: {
@@ -176,9 +191,13 @@ const initialState = {
       vitality: null,
       energy: null,
       defenseBonus: null,
+      attackRatingBonus: null
     },
     requirements: {
-
+      requiredLevel: null,
+      requiredStrength: null,
+      requiredDexterity: null,
+      typeBoots: null,
     }
   },
 }

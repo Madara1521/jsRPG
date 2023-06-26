@@ -36,32 +36,48 @@ const useStyles = makeStyles({
 })
 
 const nullGloves = {
-  id: null,
-  rarity: null,
-  classItem: null,
-  lootName: null,
-  img: null,
-  requiredLevel: null,
-  defenseBonus: null,
-  strength: null,
-  dexterity: null,
-  vitality: null,
-  energy: null,
-  attackRatingBonus: null
+  requirements: {
+    requiredLevel: null,
+    requiredStrength: null,
+    requiredDexterity: null,
+    typeGloves: null,
+  },
+  info: {
+    id: null,
+    rarity: null,
+    classItem: null,
+    lootName: null,
+    img: null,
+    requiredLevel: null,
+    defenseBonus: null,
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    attackRatingBonus: null,
+  }
 }
 const nullBoots = {
-  id: null,
-  rarity: null,
-  classItem: null,
-  lootName: null,
-  img: null,
-  requiredLevel: null,
-  defenseBonus: null,
-  strength: null,
-  dexterity: null,
-  vitality: null,
-  energy: null,
-  attackRatingBonus: null
+  requirements: {
+    requiredLevel: null,
+    requiredStrength: null,
+    requiredDexterity: null,
+    typeBoots: null,
+  },
+  info: {
+    id: null,
+    rarity: null,
+    classItem: null,
+    lootName: null,
+    img: null,
+    requiredLevel: null,
+    defenseBonus: null,
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null,
+    attackRatingBonus: null
+  }
 }
 
 const GlovesBoots = (props) => {
@@ -72,21 +88,24 @@ const GlovesBoots = (props) => {
     activeBoots,
     imgGloves,
     imgBoots,
-    bonus,
-    gloves,
-    boots,
     classItem,
+    glovesInfo,
+    glovesRequirements,
+    bootsInfo,
+    bootsRequirements,
+    info,
+    requirements,
     id } = props
 
   const handleClickGloves = () => addItemToColthHelper(
     {
       dispatch,
-      item: gloves,
-      requirements: {},
+      itemInfo: glovesInfo,
+      itemRequirements: glovesRequirements,
       stingItem: 'gloves',
       activeItem: activeGloves,
       strignActiveitem: 'activeGloves',
-      bonus: bonus,
+      bonus: { info: info, requirements: requirements },
       stringBonus: 'glovesBonus',
       arrayType: 'helmetGlovesBootsBelt',
       classItems: classItem,
@@ -102,7 +121,7 @@ const GlovesBoots = (props) => {
       stringBonus: 'glovesBonus',
       nullValue: nullGloves,
       arrayType: 'helmetGlovesBootsBelt',
-      updateItem: itemUpdateHelper(gloves),
+      updateItem: itemUpdateHelper(glovesInfo, glovesRequirements),
       strignActiveitem: 'activeGloves',
       classItems: classItem
     }
@@ -111,12 +130,13 @@ const GlovesBoots = (props) => {
   const handleClickBoots = () => addItemToColthHelper(
     {
       dispatch,
-      item: boots,
+      itemInfo: bootsInfo,
+      itemRequirements: bootsRequirements,
       requirements: {},
       stingItem: 'boots',
       activeItem: activeBoots,
       strignActiveitem: 'activeBoots',
-      bonus: bonus,
+      bonus: { info: info, requirements: requirements },
       stringBonus: 'bootsBonus',
       arrayType: 'helmetGlovesBootsBelt',
       classItems: classItem,
@@ -132,7 +152,7 @@ const GlovesBoots = (props) => {
       stringBonus: 'bootsBonus',
       nullValue: nullBoots,
       arrayType: 'helmetGlovesBootsBelt',
-      updateItem: itemUpdateHelper(boots),
+      updateItem: itemUpdateHelper(bootsInfo, bootsRequirements),
       strignActiveitem: 'activeBoots',
       classItems: classItem
     }
@@ -165,10 +185,13 @@ GlovesBoots.propTypes = {
   activeBoots: PropTypes.bool,
   imgGloves: PropTypes.string,
   imgBoots: PropTypes.string,
-  bonus: PropTypes.object.isRequired,
-  gloves: PropTypes.object.isRequired,
-  boots: PropTypes.object.isRequired,
-  id: PropTypes.string
+  id: PropTypes.string,
+  info: PropTypes.object.isRequired,
+  requirements: PropTypes.object.isRequired,
+  glovesInfo: PropTypes.object.isRequired,
+  glovesRequirements: PropTypes.object.isRequired,
+  bootsInfo: PropTypes.object.isRequired,
+  bootsRequirements: PropTypes.object.isRequired,
 }
 
 export default connect(
@@ -176,12 +199,15 @@ export default connect(
     classItem: store.lootAndDescriptionReducer.description.classItem,
     activeGloves: store.lootAndDescriptionReducer.activeGloves,
     activeBoots: store.lootAndDescriptionReducer.activeBoots,
-    imgGloves: store.bonusReducer.glovesBonus.img,
-    imgBoots: store.bonusReducer.bootsBonus.img,
-    bonus: store.lootAndDescriptionReducer.description,
-    gloves: store.bonusReducer.glovesBonus,
-    boots: store.bonusReducer.bootsBonus,
+    imgGloves: store.bonusReducer.glovesBonus.info.img,
+    imgBoots: store.bonusReducer.bootsBonus.info.img,
+    info: store.lootAndDescriptionReducer.description,
+    requirements: store.lootAndDescriptionReducer.requirements,
     id: store.lootAndDescriptionReducer.id,
+    glovesInfo: store.bonusReducer.glovesBonus.info,
+    bootsInfo: store.bonusReducer.bootsBonus.info,
+    glovesRequirements: store.bonusReducer.glovesBonus.requirements,
+    bootsRequirements: store.bonusReducer.bootsBonus.requirements,
   }),
   {}
 )(GlovesBoots)

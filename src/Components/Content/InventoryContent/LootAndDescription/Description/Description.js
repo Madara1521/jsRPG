@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types'
 import { makeStyles } from "@mui/styles"
 import classNames from "classnames"
 import { rarityColorHelper } from "../Loot/LootComp"
+import { renderImgHelper } from "../../../../../helpers/helperCloth"
 
 const useStyles = makeStyles({
   twoTitle: {
@@ -18,8 +19,8 @@ const useStyles = makeStyles({
   },
   imgDescription: {
     display: 'flex',
-    maxHeight: '100px',
-    maxWidth: '100px'
+    maxHeight: '180px',
+    maxWidth: '180px'
   },
   description: {
     display: 'flex',
@@ -95,9 +96,7 @@ const Description = (props) => {
     return start ? <div>{name}: {start}-{final}</div> : null
   }
 
-  const renderImg = (img) => {
-    return img ? <img className={classes.imgDescription} src={img} alt='img' /> : null
-  }
+
 
   return (
     <div className={classes.description}>
@@ -106,7 +105,7 @@ const Description = (props) => {
       </div>
       <div className={classes.descriptionComp}>
         <div className={classNames(classes.lootCell && lootCellColor)}>{description.lootName}</div>
-        {renderImg(description.img)}
+        {renderImgHelper(description.img, classes.imgDescription)}
         <div className={classes.lootBonus}>
           {renderDamage('Physical damage', description.startPhysicalDamage, description.finalPhysicalDamage)}
           {renderRequired("Required level", requirements.requiredLevel)}
@@ -119,6 +118,7 @@ const Description = (props) => {
           {renderStat("Dexterity", description.dexterity)}
           {renderStat("Vitality", description.vitality)}
           {renderStat("Energy", description.energy)}
+          {renderStat("Attack rating bonus", description.attackRatingBonus)}
         </div>
       </div>
     </div>
