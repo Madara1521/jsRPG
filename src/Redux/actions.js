@@ -165,20 +165,21 @@ export function setPushItem(nameType, items) {
   }
 }
 
-export function getViewDescription(info,isActiveItem,id) {
+export function getViewDescription(info,requirements,isActiveItem,id) {
   return {
     type: GET_VIEW_DESCRIPTION,
     info,
+    requirements,
     isActiveItem,
     id
   }
 }
 
-export function setItemBonus(typeItem,bonus) {
+export function setItemBonus(typeItem,bonus,) {
   return {
     type: SET_ITEM_BONUS,
     typeItem,
-    bonus
+    bonus,
   }
 }
 

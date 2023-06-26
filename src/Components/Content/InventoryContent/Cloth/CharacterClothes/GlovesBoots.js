@@ -82,6 +82,7 @@ const GlovesBoots = (props) => {
     {
       dispatch,
       item: gloves,
+      requirements: {},
       stingItem: 'gloves',
       activeItem: activeGloves,
       strignActiveitem: 'activeGloves',
@@ -111,6 +112,7 @@ const GlovesBoots = (props) => {
     {
       dispatch,
       item: boots,
+      requirements: {},
       stingItem: 'boots',
       activeItem: activeBoots,
       strignActiveitem: 'activeBoots',

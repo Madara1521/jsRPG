@@ -4,113 +4,182 @@ import {
   SET_ITEM_BONUS,
   SET_ALL_DEFENSE,
   SET_ALL_ATTACK_RATING,
-  SET_ALL_PHY_BONUS
+  SET_ALL_PHY_BONUS,
 } from "../types"
+
+
 
 const initialState = {
   allDefenseBonus: 0,
   allAttackRatingBonus: 0,
   allStartPhyBonus: 0,
   allFinalPhyBonus: 0,
+  allStrengthBonus: 0,
+  allDexterityBonus: 0,
+  allVitalityBonus: 0,
+  allEnergyBonus: 0,
 
   amuletBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null,
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+      requiredLevel: null,
+    }
   },
   helmetBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    defenseBonus: null,
+    requirements: {
+      requiredLevel: null,
+      requiredStrength: null,
+      requiredDexterity: null,
+      typeHelmet: null,
+    },
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+    }
   },
   secondAmuletBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null,
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+
+    }
   },
   weaponBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    startPhysicalDamage: null,
-    finalPhysicalDamage: null,
-    attackRatingBonus: null,
-    oneHanded: null,
-    twoHanded: null
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      startPhysicalDamage: null,
+      finalPhysicalDamage: null,
+      attackRatingBonus: null,
+      oneHanded: null,
+      twoHanded: null,
+    },
+    requirements: {
+
+    }
   },
   secondWeaponBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    startPhysicalDamage: null,
-    finalPhysicalDamage: null,
-    attackRatingBonus: null,
-    oneHanded: null,
-    twoHanded: null
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      startPhysicalDamage: null,
+      finalPhysicalDamage: null,
+      attackRatingBonus: null,
+      oneHanded: null,
+      twoHanded: null,
+    },
+    requirements: {
+
+    }
   },
   armorBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    defenseBonus: null,
-    attackRatingBonus: null,
+    info:{
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+
+    }
   },
   shieldBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    blockingBonus: null,
-    defenseBonus: null,
-    attackRatingBonus: null,
+    info:{
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      blockingBonus: null,
+      defenseBonus: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+
+    }
   },
   ringBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    defenseBonus: null,
-    attackRatingBonus: null,
+    info:{
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+
+    }
   },
   beltBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    defenseBonus: null,
-    attackRatingBonus: null,
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+
+    }
   },
   secondRingBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    defenseBonus: null,
-    attackRatingBonus: null,
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+
+    }
   },
   glovesBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    defenseBonus: null,
-    attackRatingBonus: null,
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+
+    }
   },
   bootsBonus: {
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    defenseBonus: null
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+    },
+    requirements: {
+
+    }
   },
 }
 
@@ -118,44 +187,44 @@ export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEM_BONUS:
       return update(state, {
-        [action.typeItem]: { $set: action.bonus }
+        [action.typeItem]: {$set: action.bonus }
       })
     case SET_ALL_DEFENSE:
       return update(state, {
-        allDefense: {
-          $set: state.armorBonus.defenseBonus +
-            state.bootsBonus.defenseBonus +
-            state.glovesBonus.defenseBonus +
-            state.shieldBonus.defenseBonus +
-            state.helmetBonus.defenseBonus +
-            state.beltBonus.defenseBonus
+        allDefenseBonus: {
+          $set: state.armorBonus.info.defenseBonus +
+            state.bootsBonus.info.defenseBonus +
+            state.glovesBonus.info.defenseBonus +
+            state.shieldBonus.info.defenseBonus +
+            state.helmetBonus.info.defenseBonus +
+            state.beltBonus.info.defenseBonus
         }
       })
     case SET_ALL_ATTACK_RATING:
       return update(state, {
         allAttackRatingBonus: {
-          $set: state.amuletBonus.attackRatingBonus +
-            state.secondAmuletBonus.attackRatingBonus +
-            state.weaponBonus.attackRatingBonus +
-            state.armorBonus.attackRatingBonus +
-            state.shieldBonus.attackRatingBonus +
-            state.ringBonus.attackRatingBonus +
-            state.beltBonus.attackRatingBonus +
-            state.secondRingBonus.attackRatingBonus +
-            state.glovesBonus.attackRatingBonus
+          $set: state.amuletBonus.info.attackRatingBonus +
+            state.secondAmuletBonus.info.attackRatingBonus +
+            state.weaponBonus.info.attackRatingBonus +
+            state.armorBonus.info.attackRatingBonus +
+            state.shieldBonus.info.attackRatingBonus +
+            state.ringBonus.info.attackRatingBonus +
+            state.beltBonus.info.attackRatingBonus +
+            state.secondRingBonus.info.attackRatingBonus +
+            state.glovesBonus.info.attackRatingBonus
         }
       })
     case SET_ALL_PHY_BONUS:
       return update(state, {
         allStartPhyBonus: {
           $set:
-            state.weaponBonus.startPhysicalDamage +
-            state.secondWeaponBonus.startPhysicalDamage
+            state.weaponBonus.info.startPhysicalDamage +
+            state.secondWeaponBonus.info.startPhysicalDamage
         },
         allFinalPhyBonus: {
           $set:
-            state.weaponBonus.finalPhysicalDamage +
-            state.secondWeaponBonus.finalPhysicalDamage
+            state.weaponBonus.info.finalPhysicalDamage +
+            state.secondWeaponBonus.info.finalPhysicalDamage
         }
 
       })

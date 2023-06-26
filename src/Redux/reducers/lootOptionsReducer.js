@@ -71,31 +71,58 @@ import uniqid from 'uniqid'
 const initialState = {
   helmetGlovesBootsBelt: [
     {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeHelmet: null,
+      },
       info: {
         id: uniqid(),
         rarity: 1,
         classItem: 'helmet',
         lootName: 'Recruit helmet',
         img: helm,
-        requiredLevel: 1,
-        requiredStrength: 5,
         defenseBonus: 10,
         strength: 2,
         dexterity: null,
         vitality: 5,
         energy: null, 
-        attackRatingBonus: 30
       }
     },
     {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeHelmet: null,
+      },
+      info: {
+        id: uniqid(),
+        rarity: 3,
+        classItem: 'helmet',
+        lootName: 'Helmet Cain',
+        img: cap,
+        defenseBonus: 130,
+        strength: 100,
+        dexterity: 233,
+        vitality: 500,
+        energy: 111
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeWeapon: '',
+      },
       info: {
         id: uniqid(),
         rarity: 0,
         classItem: 'gloves',
         lootName: 'Gloves peasant',
         img: chainGloves,
-        requiredLevel: 1,
-        requiredStrength: null,
         defenseBonus: 4,
         strength: null,
         dexterity: null,
@@ -105,6 +132,12 @@ const initialState = {
       }
     },
     {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeWeapon: '',
+      },
       info: {
         id: uniqid(),
         rarity: 1,
@@ -112,8 +145,6 @@ const initialState = {
         lootName: 'Boots of satanic',
         img: lightPlateBoots,
         requiredLevel: 23,
-        requiredStrength: 23,
-        requiredDexterity: 45,
         defenseBonus: 55,
         strength: 10,
         dexterity: 5,
@@ -123,14 +154,18 @@ const initialState = {
       }
     },
     {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeWeapon: '',
+      },
       info: {
         id: uniqid(),
         rarity: 2,
         classItem: 'belt',
         lootName: 'Belt hydra',
         img: belt,
-        requiredLevel: 45,
-        requiredDexterity: 25,
         defenseBonus: 101,
         strength: 20,
         dexterity: 25,
@@ -142,13 +177,18 @@ const initialState = {
   ], // helmet,boots,gloves,belt
   armor: [
     {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeWeapon: '',
+      },
       info: {
         id: uniqid(),
         rarity: 3,
         classItem: 'armor',
         lootName: 'Viper armor',
         img: ancientArmor,
-        requiredLevel: 40,
         defenseBonus: 553,
         strength: 100,
         dexterity: null,
@@ -159,18 +199,20 @@ const initialState = {
   ], // armor
   weapon: [
     {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeWeapon: 'ancientWeapon',
+      },
       info: {
         id: uniqid(),
         rarity: 0,
         classItem: 'weapon',
-        typeWeapon: 'ancientWeapon',
         lootName: 'Blackleach Blade',
         img: bardiche,
         startPhysicalDamage: 109,
         finalPhysicalDamage: 253,
-        requiredLevel: 32,
-        requiredStrength: 10,
-        requiredDexterity: 15,
         durability: 50,
         baseWeaponSpeed: 10,
         strength: null,

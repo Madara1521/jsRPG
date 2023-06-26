@@ -84,17 +84,17 @@ CharacteristicsComp.propTypes = {
 
 export default connect((store, ownProps) => {
   return {
-    amuletBonus: store.bonusReducer.amuletBonus[ownProps.name],
-    helmetBonus: store.bonusReducer.helmetBonus[ownProps.name],
-    secondAmuletBonus: store.bonusReducer.secondAmuletBonus[ownProps.name],
-    weaponBonus: store.bonusReducer.weaponBonus[ownProps.name],
-    armorBonus: store.bonusReducer.armorBonus[ownProps.name],
-    shieldBonus: store.bonusReducer.shieldBonus[ownProps.name],
-    ringBonus: store.bonusReducer.ringBonus[ownProps.name],
-    beltBonus: store.bonusReducer.beltBonus[ownProps.name],
-    secondRingBonus: store.bonusReducer.secondRingBonus[ownProps.name],
-    glovesBonus: store.bonusReducer.glovesBonus[ownProps.name],
-    bootsBonus: store.bonusReducer.bootsBonus[ownProps.name],
+    amuletBonus: store.bonusReducer.amuletBonus.info[ownProps.name],
+    helmetBonus: store.bonusReducer.helmetBonus.info[ownProps.name],
+    secondAmuletBonus: store.bonusReducer.secondAmuletBonus.info[ownProps.name],
+    weaponBonus: store.bonusReducer.weaponBonus.info[ownProps.name],
+    armorBonus: store.bonusReducer.armorBonus.info[ownProps.name],
+    shieldBonus: store.bonusReducer.shieldBonus.info[ownProps.name],
+    ringBonus: store.bonusReducer.ringBonus.info[ownProps.name],
+    beltBonus: store.bonusReducer.beltBonus.info[ownProps.name],
+    secondRingBonus: store.bonusReducer.secondRingBonus.info[ownProps.name],
+    glovesBonus: store.bonusReducer.glovesBonus.info[ownProps.name],
+    bootsBonus: store.bonusReducer.bootsBonus.info[ownProps.name],
     attributeCurrent: store.attributeReducer[ownProps.name],
     totalAttribute: store.characteristicsReducer[ownProps.totalStatName]
   }

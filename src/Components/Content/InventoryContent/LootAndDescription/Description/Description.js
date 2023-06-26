@@ -72,8 +72,10 @@ const useStyles = makeStyles({
 const Description = (props) => {
   const classes = useStyles()
   const {
-    description
+    description,
+    requirements
   } = props
+
 
   const lootCellColor = rarityColorHelper(classes, description.rarity)
 
@@ -81,7 +83,7 @@ const Description = (props) => {
     return value ? <div className={classes.magicLetters}> +{value} {name}</div> : null
   }
 
-  const renderDefense = (name, value) => {
+  const renderIndicators = (name, value) => {
     return value ? <div>{name}: {value}</div> : null
   }
 
@@ -107,12 +109,12 @@ const Description = (props) => {
         {renderImg(description.img)}
         <div className={classes.lootBonus}>
           {renderDamage('Physical damage', description.startPhysicalDamage, description.finalPhysicalDamage)}
-          {renderRequired("Required level", description.requiredLevel)}
-          {renderRequired("Required strength", description.requiredStrength)}
-          {renderRequired("Required dexterity", description.requiredDexterity)}
-          {renderRequired("Durability", description.durability)}
-          {renderRequired("Base weapon speed", description.baseWeaponSpeed)}
-          {renderDefense("Defense", description.defenseBonus)}
+          {renderRequired("Required level", requirements.requiredLevel)}
+          {renderRequired("Required strength", requirements.requiredStrength)}
+          {renderRequired("Required dexterity", requirements.requiredDexterity)}
+          {renderIndicators("Durability", description.durability)}
+          {renderIndicators("Base weapon speed", description.baseWeaponSpeed)}
+          {renderIndicators("Defense", description.defenseBonus)}
           {renderStat("Strength", description.strength)}
           {renderStat("Dexterity", description.dexterity)}
           {renderStat("Vitality", description.vitality)}
@@ -131,6 +133,7 @@ Description.propTypes = {
 export default connect(
   (store) => ({
     description: store.lootAndDescriptionReducer.description,
+    requirements: store.lootAndDescriptionReducer.requirements
   }),
   {}
 )(Description)

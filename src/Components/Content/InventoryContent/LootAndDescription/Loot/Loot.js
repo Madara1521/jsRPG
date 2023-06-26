@@ -143,6 +143,7 @@ const Loot = (props) => {
               id={field.info.id}
               lootName={field.info.lootName}
               info={field.info}
+              requirements={field.requirements}
               key={index}
               rarity={field.info.rarity}
               setActiveItem={setActiveItem}

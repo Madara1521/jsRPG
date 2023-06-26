@@ -10,7 +10,7 @@ const Cloth = ({getViewDescription}) => {
   const classes = useStyles()
 
   useEffect(() => {
-    getViewDescription({})
+    getViewDescription({},{})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

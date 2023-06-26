@@ -64,7 +64,7 @@ export default connect(store => {
     blocking: store.characteristicsReducer.blocking,
     attackRatingBonus: store.bonusReducer.allAttackRatingBonus,
     defenseBonus: store.bonusReducer.allDefenseBonus,
-    blockingBonus: store.bonusReducer.shieldBonus.blockingBonus,
+    blockingBonus: store.bonusReducer.shieldBonus.info.blockingBonus,
     totalDexterity: store.characteristicsReducer.totalDexterity,
   }
 }, {

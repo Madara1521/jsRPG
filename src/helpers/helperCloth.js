@@ -6,8 +6,11 @@ import {
   setPushCloth
 } from "../Redux/actions"
 
-export const itemUpdateHelper = (item) => {
-  return { info: item }
+export const itemUpdateHelper = (itemInfo, itemRequirement) => {
+  return {
+    requirements: itemRequirement,
+    info: itemInfo
+  }
 }
 
 export const renderImgHelper = (img, classDiv) => {
@@ -17,7 +20,7 @@ export const renderImgHelper = (img, classDiv) => {
 export const addItemToColthHelper = (props) => {
   const {
     dispatch,
-    item,
+    itemInfo,
     stingItem,
     activeItem,
     strignActiveitem,
@@ -25,9 +28,10 @@ export const addItemToColthHelper = (props) => {
     stringBonus,
     arrayType,
     classItems,
-    id } = props
+    id,
+    itemRequirements } = props
 
-  dispatch(getViewDescription(item))
+  dispatch(getViewDescription(itemInfo, itemRequirements))
   if (!activeItem && classItems === stingItem) {
     dispatch(setItemBonus(stringBonus, bonus))
     dispatch(setDeleteItem(arrayType, id))
@@ -41,10 +45,10 @@ export const removeItemHelper = (props) => {
     activeItem, stingItem,
     stringBonus, nullValue,
     arrayType, updateItem,
-    strignActiveitem, classItems
+    strignActiveitem, classItems,
   } = props
 
-  dispatch(getViewDescription({}))
+  dispatch(getViewDescription({},{}))
   if (activeItem && classItems === stingItem) {
     dispatch(setItemBonus(stringBonus, nullValue))
     dispatch(setPushCloth(arrayType, updateItem))

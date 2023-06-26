@@ -1,12 +1,13 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { makeStyles } from "@mui/styles"
 import { connect, useDispatch } from "react-redux"
 import { PropTypes } from 'prop-types'
 import {
   addItemToColthHelper,
   itemUpdateHelper,
-  removeItemHelper, 
-  renderImgHelper} from "../../../../../helpers/helperCloth"
+  removeItemHelper,
+  renderImgHelper
+} from "../../../../../helpers/helperCloth"
 
 const useStyles = makeStyles({
   colthPadding: {
@@ -48,17 +49,25 @@ const useStyles = makeStyles({
 })
 
 const nullHelmet = {
-  id: null,
-  rarity: null,
-  classItem: null,
-  lootName: null,
-  img: null,
-  requiredLevel: null,
-  defenseBonus: null,
-  strength: null,
-  dexterity: null,
-  vitality: null,
-  energy: null
+  requirements: {
+    requiredLevel: null,
+    requiredStrength: null,
+    requiredDexterity: null,
+    typeHelmet: null,
+  },
+  info:{
+    id: null,
+    rarity: null,
+    classItem: null,
+    lootName: null,
+    img: null,
+    requiredLevel: null,
+    defenseBonus: null,
+    strength: null,
+    dexterity: null,
+    vitality: null,
+    energy: null
+  }
 }
 
 const HelmetAmulet = (props) => {
@@ -67,19 +76,26 @@ const HelmetAmulet = (props) => {
   const {
     classItem,
     imgHelmet,
-    bonus,
+    info,
     id,
-    helmet,
-    activeHelmet } = props
+    helmetInfo,
+    activeHelmet,
+    requirements,
+    helmetRequirements } = props
+
+  useEffect(() => {
+    console.log(activeHelmet)
+  })
 
   const handleClickHelmet = () => addItemToColthHelper(
     {
       dispatch,
-      item: helmet,
+      itemInfo: helmetInfo,
+      itemRequirements: helmetRequirements,
       stingItem: 'helmet',
       activeItem: activeHelmet,
       strignActiveitem: 'activeHelmet',
-      bonus: bonus,
+      bonus: {info: info, requirements: requirements},
       stringBonus: 'helmetBonus',
       arrayType: 'helmetGlovesBootsBelt',
       classItems: classItem,
@@ -92,10 +108,10 @@ const HelmetAmulet = (props) => {
       dispatch,
       activeItem: activeHelmet,
       stingItem: 'helmet',
-      stringBonus: 'helmetBonus',
       nullValue: nullHelmet,
+      stringBonus: 'helmetBonus',
       arrayType: 'helmetGlovesBootsBelt',
-      updateItem: itemUpdateHelper(helmet),
+      updateItem: itemUpdateHelper(helmetInfo, helmetRequirements),
       strignActiveitem: 'activeHelmet',
       classItems: classItem
     }
@@ -136,9 +152,11 @@ export default connect(
   (store) => ({
     classItem: store.lootAndDescriptionReducer.description.classItem,
     activeHelmet: store.lootAndDescriptionReducer.activeHelmet,
-    imgHelmet: store.bonusReducer.helmetBonus.img,
-    bonus: store.lootAndDescriptionReducer.description,
-    helmet: store.bonusReducer.helmetBonus,
+    imgHelmet: store.bonusReducer.helmetBonus.info.img,
+    info: store.lootAndDescriptionReducer.description,
+    requirements: store.lootAndDescriptionReducer.requirements,
+    helmetInfo: store.bonusReducer.helmetBonus.info,
+    helmetRequirements: store.bonusReducer.helmetBonus.requirements,
     id: store.lootAndDescriptionReducer.id,
   }),
   {})(HelmetAmulet)

@@ -23,6 +23,7 @@ const initialState = {
   idArray: '',
 
   description: { color: '' },
+  requirements: { },
   isActiveItem: false,
   activeHelmet: false,
   activeGloves: false,
@@ -53,6 +54,7 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
     case GET_VIEW_DESCRIPTION:
       return update(state,{
         description: { $set: action.info },
+        requirements: { $set: action.requirements },
         isActiveItem: { $set: action.isActiveItem },
         id: { $set: action.id }
       })

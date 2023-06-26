@@ -47,7 +47,7 @@ const Characteristics = () => {
       </Stack>
       <Stack className={classes.charBorder} flex={1} spacing={1}>
         <DamageComp />
-        <div>Magic damage: 1000-3000</div>
+        {/* <div>Magic damage: 1000-3000</div> */}
         <AttackRaitingAndDefenseComp />
         <HealthAndStaminaComp />
         <ManaComp />
