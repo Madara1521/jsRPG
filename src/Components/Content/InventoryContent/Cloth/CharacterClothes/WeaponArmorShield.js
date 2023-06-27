@@ -88,8 +88,8 @@ const nullWeapon = {
     attackRatingBonus: null,
     startPhysicalDamage: null,
     finalPhysicalDamage: null,
-    oneHanded: null,
-    twoHanded: null
+    oneHanded: false,
+    twoHanded: false
   },
   requirements: {
     requiredLevel: null,
@@ -114,7 +114,17 @@ const WeaponArmorShield = (props) => {
     armorInfo,
     weaponInfo,
     armorRequirements,
-    weaponRequirements } = props
+    weaponRequirements,
+    // oneHanded,
+    twoHanded,
+    twoHandedBonus,
+    // oneHandedBonus,
+    activeSecondWeapon,
+    imgSecondWeapon,
+    secondWeaponInfo,
+    secondWeaponRequirements,
+    // secondBonusCheck
+  } = props
 
   const handleClickArmor = () => {
     addItemToColthHelper(
@@ -148,8 +158,57 @@ const WeaponArmorShield = (props) => {
     }
   )
 
+  const removeWeapon = () => removeItemHelper(
+    {
+      dispatch,
+      activeItem: activeWeapon,
+      stingItem: 'weapon',
+      stringBonus: 'weaponBonus',
+      nullValue: nullWeapon,
+      arrayType: 'weapon',
+      updateItem: itemUpdateHelper(weaponInfo, weaponRequirements),
+      strignActiveitem: 'activeWeapon',
+      classItems: classItem
+    }
+  )
+
+  const handleClickSecondWeapon = () => {
+    if (!twoHanded) {
+      if (twoHandedBonus === false) {
+        addItemToColthHelper(
+          {
+            dispatch,
+            itemInfo: secondWeaponInfo,
+            itemRequirements: secondWeaponRequirements,
+            stingItem: 'weapon',
+            activeItem: activeSecondWeapon,
+            strignActiveitem: 'activeSecondWeapon',
+            bonus: { info: info, requirements: requirements },
+            stringBonus: 'secondWeaponBonus',
+            arrayType: 'weapon',
+            classItems: classItem,
+            id
+          }
+        )
+      }
+    }
+  }
+
+  const removeSecondWeapon = () => removeItemHelper(
+    {
+      dispatch,
+      activeItem: activeSecondWeapon,
+      stingItem: 'weapon',
+      stringBonus: 'secondWeaponBonus',
+      nullValue: nullWeapon,
+      arrayType: 'weapon',
+      updateItem: itemUpdateHelper(secondWeaponInfo, secondWeaponRequirements),
+      strignActiveitem: 'activeSecondWeapon',
+      classItems: classItem
+    }
+  )
+
   const handleClickWeapon = () => {
-    // if (true) {
     addItemToColthHelper(
       {
         dispatch,
@@ -165,22 +224,7 @@ const WeaponArmorShield = (props) => {
         id
       }
     )
-    // }
   }
-
-  const removeWeapon = () => removeItemHelper(
-    {
-      dispatch,
-      activeItem: activeWeapon,
-      stingItem: 'weapon',
-      stringBonus: 'weaponBonus',
-      nullValue: nullWeapon,
-      arrayType: 'weapon',
-      updateItem: itemUpdateHelper(weaponInfo, weaponRequirements),
-      strignActiveitem: 'activeWeapon',
-      classItems: classItem
-    }
-  )
 
   return (
     <div className={classes.colthPadding}>
@@ -192,8 +236,8 @@ const WeaponArmorShield = (props) => {
           {renderImgHelper(imgArmor, classes.imgDescriptionArmor)}
         </div>
       </div>
-      <div className={classes.weaponAndShield}>
-        {renderImgHelper(imgWeapon, classes.imgDescriptionWeaponAndShield)}
+      <div className={classes.weaponAndShield} onClick={handleClickSecondWeapon} onDoubleClick={removeSecondWeapon}>
+        {renderImgHelper(imgSecondWeapon, classes.imgDescriptionWeaponAndShield)}
       </div>
     </div>
   )
@@ -215,16 +259,24 @@ WeaponArmorShield.propTypes = {
 export default connect(
   (store) => ({
     classItem: store.lootAndDescriptionReducer.description.classItem,
+    oneHanded: store.lootAndDescriptionReducer.description.oneHanded,
+    secondBonusCheck: store.bonusReducer.secondWeaponBonus.info.oneHanded,
+    twoHanded: store.lootAndDescriptionReducer.description.twoHanded,
+    twoHandedBonus: store.bonusReducer.weaponBonus.info.twoHanded,
     activeArmor: store.lootAndDescriptionReducer.activeArmor,
     activeWeapon: store.lootAndDescriptionReducer.activeWeapon,
+    activeSecondWeapon: store.lootAndDescriptionReducer.activeSecondWeapon,
     id: store.lootAndDescriptionReducer.id,
     imgArmor: store.bonusReducer.armorBonus.info.img,
     imgWeapon: store.bonusReducer.weaponBonus.info.img,
+    imgSecondWeapon: store.bonusReducer.secondWeaponBonus.info.img,
     info: store.lootAndDescriptionReducer.description,
     requirements: store.lootAndDescriptionReducer.requirements,
     armorInfo: store.bonusReducer.armorBonus.info,
     weaponInfo: store.bonusReducer.weaponBonus.info,
+    secondWeaponInfo: store.bonusReducer.secondWeaponBonus.info,
     armorRequirements: store.bonusReducer.armorBonus.requirements,
     weaponRequirements: store.bonusReducer.weaponBonus.requirements,
+    secondWeaponRequirements: store.bonusReducer.secondWeaponBonus.requirements,
   }),
   {})(WeaponArmorShield)

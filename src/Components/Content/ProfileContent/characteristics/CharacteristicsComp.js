@@ -23,7 +23,8 @@ const CharacteristicsComp = (props) => {
     bootsBonus,
     setAllDefense,
     setAllAttackRating,
-    setAllPhyBonus } = props
+    setAllPhyBonus,
+    secondWeaponBonus } = props
 
   useEffect(() => {
     setAllDefense()
@@ -36,6 +37,7 @@ const CharacteristicsComp = (props) => {
       helmetBonus,
       secondAmuletBonus,
       weaponBonus,
+      secondWeaponBonus,
       shieldBonus,
       ringBonus,
       beltBonus,
@@ -49,6 +51,7 @@ const CharacteristicsComp = (props) => {
     helmetBonus,
     secondAmuletBonus,
     weaponBonus,
+    secondWeaponBonus,
     shieldBonus,
     ringBonus,
     beltBonus,
@@ -73,6 +76,7 @@ CharacteristicsComp.propTypes = {
   helmetBonus: PropTypes.number,
   secondAmuletBonus: PropTypes.number,
   weaponBonus: PropTypes.number,
+  secondWeaponBonus: PropTypes.number,
   armorBonus: PropTypes.number,
   shieldBonus: PropTypes.number,
   ringBonus: PropTypes.number,
@@ -88,6 +92,7 @@ export default connect((store, ownProps) => {
     helmetBonus: store.bonusReducer.helmetBonus.info[ownProps.name],
     secondAmuletBonus: store.bonusReducer.secondAmuletBonus.info[ownProps.name],
     weaponBonus: store.bonusReducer.weaponBonus.info[ownProps.name],
+    secondWeaponBonus: store.bonusReducer.secondWeaponBonus.info[ownProps.name],
     armorBonus: store.bonusReducer.armorBonus.info[ownProps.name],
     shieldBonus: store.bonusReducer.shieldBonus.info[ownProps.name],
     ringBonus: store.bonusReducer.ringBonus.info[ownProps.name],

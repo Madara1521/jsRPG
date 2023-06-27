@@ -67,8 +67,8 @@ const initialState = {
       startPhysicalDamage: null,
       finalPhysicalDamage: null,
       attackRatingBonus: null,
-      oneHanded: null,
-      twoHanded: null,
+      oneHanded: false,
+      twoHanded: false,
     },
     requirements: {
       requiredLevel: null,
@@ -86,8 +86,8 @@ const initialState = {
       startPhysicalDamage: null,
       finalPhysicalDamage: null,
       attackRatingBonus: null,
-      oneHanded: null,
-      twoHanded: null,
+      oneHanded: false,
+      twoHanded: false,
     },
     requirements: {
       requiredLevel: null,
@@ -225,6 +225,7 @@ export const bonusReducer = (state = initialState, action) => {
           $set: state.amuletBonus.info.attackRatingBonus +
             state.secondAmuletBonus.info.attackRatingBonus +
             state.weaponBonus.info.attackRatingBonus +
+            state.secondWeaponBonus.info.attackRatingBonus +
             state.armorBonus.info.attackRatingBonus +
             state.shieldBonus.info.attackRatingBonus +
             state.ringBonus.info.attackRatingBonus +

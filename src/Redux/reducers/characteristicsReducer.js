@@ -42,6 +42,7 @@ export const characteristicsReducer = (state = initialState, action) => {
           action.helmetBonus +
           action.secondAmuletBonus +
           action.weaponBonus +
+          action.secondWeaponBonus +
           action.shieldBonus +
           action.ringBonus +
           action.beltBonus +
