@@ -60,6 +60,7 @@ const initialState = {
   },
   weaponBonus: {
     info: {
+      id: null,
       strength: null,
       dexterity: null,
       vitality: null,
@@ -79,6 +80,7 @@ const initialState = {
   },
   secondWeaponBonus: {
     info: {
+      id: null,
       strength: null,
       dexterity: null,
       vitality: null,
