@@ -104,13 +104,11 @@ const HelmetAmulet = (props) => {
     {
       dispatch,
       activeItem: activeHelmet,
-      stingItem: 'helmet',
       nullValue: nullHelmet,
       stringBonus: 'helmetBonus',
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(helmetInfo, helmetRequirements),
       strignActiveitem: 'activeHelmet',
-      classItem
     }
   )
 

@@ -117,13 +117,11 @@ const GlovesBoots = (props) => {
     {
       dispatch,
       activeItem: activeGloves,
-      stingItem: 'gloves',
       stringBonus: 'glovesBonus',
       nullValue: nullGloves,
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(glovesInfo, glovesRequirements),
       strignActiveitem: 'activeGloves',
-      classItem
     }
   )
 
@@ -148,13 +146,11 @@ const GlovesBoots = (props) => {
     {
       dispatch,
       activeItem: activeBoots,
-      stingItem: 'boots',
       stringBonus: 'bootsBonus',
       nullValue: nullBoots,
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(bootsInfo, bootsRequirements),
       strignActiveitem: 'activeBoots',
-      classItem
     }
   )
 

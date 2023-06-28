@@ -37,8 +37,6 @@ const initialState = {
   activeAmulet: false,
   activeSecondAmulet: false,
   id: '',
-  oneHanded: null,
-  twoHanded: null
 }
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {

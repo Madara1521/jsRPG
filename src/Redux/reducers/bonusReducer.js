@@ -123,11 +123,11 @@ const initialState = {
       energy: null,
       startPhysicalDamage: null,
       finalPhysicalDamage: null,
-      oneHanded: false,
-      twoHanded: false,
       blockingBonus: null,
       defenseBonus: null,
       attackRatingBonus: null,
+      oneHanded: false,
+      twoHanded: false,
     },
     requirements: {
       requiredLevel: null,

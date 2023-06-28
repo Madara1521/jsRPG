@@ -96,13 +96,11 @@ const RingBelt = (props) => {
     {
       dispatch,
       activeItem: activeBelt,
-      stingItem: 'belt',
       stringBonus: 'beltBonus',
       nullValue: nullBelt,
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(beltInfo, beltRequirements),
       strignActiveitem: 'activeBelt',
-      classItem
     }
   )
 
