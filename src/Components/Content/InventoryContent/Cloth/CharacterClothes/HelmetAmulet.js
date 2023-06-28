@@ -92,10 +92,10 @@ const HelmetAmulet = (props) => {
       stingItem: 'helmet',
       activeItem: activeHelmet,
       strignActiveitem: 'activeHelmet',
-      bonus: { info: info, requirements: requirements },
+      bonus: { info, requirements },
       stringBonus: 'helmetBonus',
       arrayType: 'helmetGlovesBootsBelt',
-      classItems: classItem,
+      classItem,
       id
     }
   )
@@ -110,7 +110,7 @@ const HelmetAmulet = (props) => {
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(helmetInfo, helmetRequirements),
       strignActiveitem: 'activeHelmet',
-      classItems: classItem
+      classItem
     }
   )
 

@@ -27,12 +27,12 @@ export const addItemToColthHelper = (props) => {
     bonus,
     stringBonus,
     arrayType,
-    classItems,
+    classItem,
     id,
     itemRequirements } = props
 
   dispatch(getViewDescription(itemInfo, itemRequirements))
-  if (!activeItem && classItems === stingItem) {
+  if (!activeItem && classItem === stingItem) {
     dispatch(setItemBonus(stringBonus, bonus))
     dispatch(setDeleteItem(arrayType, id))
     dispatch(setActiveItem(strignActiveitem, true))
@@ -45,11 +45,11 @@ export const removeItemHelper = (props) => {
     activeItem, stingItem,
     stringBonus, nullValue,
     arrayType, updateItem,
-    strignActiveitem, classItems,
+    strignActiveitem, classItem,
   } = props
 
   dispatch(getViewDescription({},{}))
-  if (activeItem && classItems === stingItem) {
+  if (activeItem && classItem === stingItem) {
     dispatch(setItemBonus(stringBonus, nullValue))
     dispatch(setPushCloth(arrayType, updateItem))
     dispatch(setActiveItem(strignActiveitem, false))

@@ -105,10 +105,10 @@ const GlovesBoots = (props) => {
       stingItem: 'gloves',
       activeItem: activeGloves,
       strignActiveitem: 'activeGloves',
-      bonus: { info: info, requirements: requirements },
+      bonus: { info, requirements },
       stringBonus: 'glovesBonus',
       arrayType: 'helmetGlovesBootsBelt',
-      classItems: classItem,
+      classItem,
       id
     }
   )
@@ -123,7 +123,7 @@ const GlovesBoots = (props) => {
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(glovesInfo, glovesRequirements),
       strignActiveitem: 'activeGloves',
-      classItems: classItem
+      classItem
     }
   )
 
@@ -136,10 +136,10 @@ const GlovesBoots = (props) => {
       stingItem: 'boots',
       activeItem: activeBoots,
       strignActiveitem: 'activeBoots',
-      bonus: { info: info, requirements: requirements },
+      bonus: { info, requirements },
       stringBonus: 'bootsBonus',
       arrayType: 'helmetGlovesBootsBelt',
-      classItems: classItem,
+      classItem,
       id
     }
   )
@@ -154,7 +154,7 @@ const GlovesBoots = (props) => {
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(bootsInfo, bootsRequirements),
       strignActiveitem: 'activeBoots',
-      classItems: classItem
+      classItem
     }
   )
 

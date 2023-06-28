@@ -33,6 +33,15 @@ import crystalSword from './weaponImg/swordsImg/crystalSword.png'
 import scepter from './weaponImg/scepters/scepter.png'
 import poleaxe from './weaponImg/ancientWeaponImg/poleaxe.png'
 
+import buckler from './shieldImg/buckler.png'
+import boneShield from './shieldImg/boneShield.png'
+import gothicShield from './shieldImg/gothicShield.png'
+import kiteShield from './shieldImg/kiteShield.png'
+import largeShield from './shieldImg/largeShield.png'
+import smallShield from './shieldImg/smallShield.png'
+import spikedShield from './shieldImg/spikedShield.png'
+import towerShield from './shieldImg/towerShield.png'
+
 import uniqid from 'uniqid'
 
 //rarity 0 = 'lootCellStandart'
@@ -284,15 +293,57 @@ const initialState = {
   ],// weapon
   shield: [
     {
+      requirements: {
+        requiredLevel: null,
+        requiredStrength: 10,
+        requiredDexterity: null,
+        typeShield: 'buckler',
+      },
       info: {
         id: uniqid(),
-        rarity: 0,
-        lootName: 'shield peasant',
+        rarity: 1,
+        classItem: 'shield',
+        lootName: 'Shield peasant',
+        img: buckler,
+        startPhysicalDamage: null,
+        finalPhysicalDamage: null,
+        durability: 30,
+        defenseBonus: 25,
+        baseWeaponSpeed: null,
         strength: 5,
-        dexterity: 7,
-        vitality: 4,
+        dexterity: null,
+        vitality: null,
         energy: null, 
-        attackRatingBonus: 30
+        attackRatingBonus: null,
+        oneHanded: true,
+        twoHanded: false,
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 150,
+        requiredDexterity: 40,
+        typeShield: 'buckler',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 3,
+        classItem: 'boneShield',
+        lootName: 'Shield of infinity',
+        img: boneShield,
+        startPhysicalDamage: null,
+        finalPhysicalDamage: null,
+        durability: 300,
+        defenseBonus: 353,
+        baseWeaponSpeed: null,
+        strength: 25,
+        dexterity: null,
+        vitality: 35,
+        energy: 35, 
+        attackRatingBonus: 260,
+        oneHanded: true,
+        twoHanded: false,
       }
     }
   ], //shield

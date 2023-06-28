@@ -84,10 +84,10 @@ const RingBelt = (props) => {
       stingItem: 'belt',
       activeItem: activeBelt,
       strignActiveitem: 'activeBelt',
-      bonus: { info: info, requirements: requirements },
+      bonus: { info, requirements },
       stringBonus: 'beltBonus',
       arrayType: 'helmetGlovesBootsBelt',
-      classItems: classItem,
+      classItem,
       id
     }
   )
@@ -102,7 +102,7 @@ const RingBelt = (props) => {
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(beltInfo, beltRequirements),
       strignActiveitem: 'activeBelt',
-      classItems: classItem
+      classItem
     }
   )
 

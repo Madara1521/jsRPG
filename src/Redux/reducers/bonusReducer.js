@@ -116,16 +116,24 @@ const initialState = {
   },
   shieldBonus: {
     info:{
+      id: null,
       strength: null,
       dexterity: null,
       vitality: null,
       energy: null,
+      startPhysicalDamage: null,
+      finalPhysicalDamage: null,
+      oneHanded: false,
+      twoHanded: false,
       blockingBonus: null,
       defenseBonus: null,
       attackRatingBonus: null,
     },
     requirements: {
-
+      requiredLevel: null,
+      requiredStrength: null,
+      requiredDexterity: null,
+      typeShield: null,
     }
   },
   ringBonus: {
@@ -241,12 +249,14 @@ export const bonusReducer = (state = initialState, action) => {
         allStartPhyBonus: {
           $set:
             state.weaponBonus.info.startPhysicalDamage +
-            state.secondWeaponBonus.info.startPhysicalDamage
+            state.secondWeaponBonus.info.startPhysicalDamage +
+            state.shieldBonus.info.startPhysicalDamage
         },
         allFinalPhyBonus: {
           $set:
             state.weaponBonus.info.finalPhysicalDamage +
-            state.secondWeaponBonus.info.finalPhysicalDamage
+            state.secondWeaponBonus.info.finalPhysicalDamage +
+            state.shieldBonus.info.finalPhysicalDamage 
         }
 
       })
