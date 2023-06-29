@@ -42,6 +42,16 @@ import smallShield from './shieldImg/smallShield.png'
 import spikedShield from './shieldImg/spikedShield.png'
 import towerShield from './shieldImg/towerShield.png'
 
+import amu1 from './amuletRingsImg/amulets/amu1.png'
+import amu2 from './amuletRingsImg/amulets/amu2.png'
+import amu3 from './amuletRingsImg/amulets/amu3.png'
+
+import ring1 from './amuletRingsImg/rings/ring1.png'
+import ring2 from './amuletRingsImg/rings/ring2.png'
+import ring3 from './amuletRingsImg/rings/ring3.png'
+import ring4 from './amuletRingsImg/rings/ring4.png'
+import ring5 from './amuletRingsImg/rings/ring5.png'
+
 import uniqid from 'uniqid'
 
 //rarity 0 = 'lootCellStandart'
@@ -350,30 +360,78 @@ const initialState = {
   ], //shield
   ringsAmulet: [
     {
+      requirements: {
+        requiredLevel: null,
+        typeAmulet: 'amu1',
+      },
       info: {
         id: uniqid(),
-        rarity: 0,
-        lootName: 'ring of strength',
-        strength: 5,
-        dexterity: 7,
-        vitality: 4,
-        energy: null, 
-        attackRatingBonus: 30
+        rarity: 1,
+        classItem: 'amulet',
+        lootName: 'Recruit amulet',
+        img: amu1,
+        strength: 2,
+        dexterity: null,
+        vitality: 5,
+        energy: null,
+        attackRatingBonus: 23, 
       }
     },
     {
+      requirements: {
+        requiredLevel: 42,
+        typeAmulet: 'amu2',
+      },
       info: {
         id: uniqid(),
-        rarity: 0,
-        lootName: 'amulet of dexterity',
-        strength: 5,
-        dexterity: 7,
-        vitality: 4,
-        energy: null, 
-        attackRatingBonus: 30
+        rarity: 3,
+        classItem: 'amulet',
+        lootName: 'God amulet',
+        img: amu2,
+        strength: 50,
+        dexterity: 70,
+        vitality: 30,
+        energy: 40,
+        attackRatingBonus: 260, 
       }
-    }
-  ],//rings
+    },
+    {
+      requirements: {
+        requiredLevel: null,
+        typeRing: 'ring1',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 3,
+        classItem: 'ring',
+        lootName: 'Ring of deficite',
+        img: ring1,
+        strength: 50,
+        dexterity: 30,
+        vitality: 25,
+        energy: 20,
+        attackRatingBonus: 100, 
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: null,
+        typeRing: 'ring2',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 2,
+        classItem: 'ring',
+        lootName: 'Ring of deficite',
+        img: ring2,
+        strength: 10,
+        dexterity: null,
+        vitality: 10,
+        energy: 5,
+        attackRatingBonus: 100, 
+      }
+    },
+  ],//rings,amulet
   other: [
     {
       info: {

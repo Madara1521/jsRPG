@@ -144,7 +144,7 @@ const WeaponArmorShield = (props) => {
     activeArmor,
     activeWeapon,
     id,
-    bonusId,
+    weaponBonusId,
     imgArmor,
     imgWeapon,
     info,
@@ -202,11 +202,11 @@ const WeaponArmorShield = (props) => {
   )
 
   const handleClickSecondWeapon = () => {
-    if (selectedId === bonusId || twoHandedBonus) {
+    if (selectedId === weaponBonusId || twoHandedBonus) {
       getViewDescription({}, {})
     }
     if (!twoHanded && !twoHandedBonus) {
-      if (selectedId !== bonusId) {
+      if (selectedId !== weaponBonusId) {
         addItemToColthHelper(
           {
             dispatch,
@@ -227,11 +227,11 @@ const WeaponArmorShield = (props) => {
   }
 
   const handleClickShield = () => {
-    if (selectedId === bonusId || twoHandedBonus) {
+    if (selectedId === weaponBonusId || twoHandedBonus) {
       getViewDescription({}, {})
     }
     if (!twoHanded && !twoHandedBonus) {
-      if (selectedId !== bonusId) {
+      if (selectedId !== weaponBonusId) {
         addItemToColthHelper(
           {
             dispatch,
@@ -393,7 +393,7 @@ export default connect(
     activeShield: store.lootAndDescriptionReducer.activeShield,
     id: store.lootAndDescriptionReducer.id,
     selectedId: store.lootAndDescriptionReducer.description.id,
-    bonusId: store.bonusReducer.weaponBonus.info.id,
+    weaponBonusId: store.bonusReducer.weaponBonus.info.id,
     secondWeaponBonusId: store.bonusReducer.secondWeaponBonus.info.id,
     shieldBonusId: store.bonusReducer.shieldBonus.info.id,
     imgArmor: store.bonusReducer.armorBonus.info.img,

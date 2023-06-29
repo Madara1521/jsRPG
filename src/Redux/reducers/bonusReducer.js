@@ -29,6 +29,20 @@ const initialState = {
     },
     requirements: {
       requiredLevel: null,
+      typeAmulet: null,
+    }
+  },
+  secondAmuletBonus: {
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+      requiredLevel: null,
+      typeAmulet: null,
     }
   },
   helmetBonus: {
@@ -44,18 +58,6 @@ const initialState = {
       vitality: null,
       energy: null,
       defenseBonus: null,
-    }
-  },
-  secondAmuletBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-
     }
   },
   weaponBonus: {
@@ -146,7 +148,22 @@ const initialState = {
       attackRatingBonus: null,
     },
     requirements: {
-
+      requiredLevel: null,
+      typeRing: null,
+    }
+  },
+  secondRingBonus: {
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+      attackRatingBonus: null,
+    },
+    requirements: {
+      requiredLevel: null,
+      typeRing: null,
     }
   },
   beltBonus: {
@@ -163,19 +180,6 @@ const initialState = {
       requiredStrength: null,
       requiredDexterity: null,
       typeBelt: null,
-    }
-  },
-  secondRingBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-
     }
   },
   glovesBonus: {
