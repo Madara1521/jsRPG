@@ -7,6 +7,10 @@ import {
   disableButton,
   incrementStat,
   setTottalStat,
+  setAllDefense,
+  setAllAttackRating,
+  setAllPhyBonus,
+  setAllBonusStat
 } from '../../../../Redux/actions'
 import { useStyles } from "../../../Styles"
 import { PropTypes } from 'prop-types'
@@ -25,39 +29,27 @@ const AttributeComp = (props) => {
     isButtonDisabled,
     totalAttribute,
     action,
-    armorBonus,
-    amuletBonus,
-    helmetBonus,
-    secondAmuletBonus,
-    weaponBonus,
-    shieldBonus,
-    ringBonus,
-    beltBonus,
-    secondRingBonus,
-    glovesBonus,
-    bootsBonus, } = props
+    bonus,
+    setAllDefense,
+    setAllAttackRating,
+    setAllPhyBonus,
+    setAllBonusStat
+  } = props
+
 
   useEffect(() => {
-    setTottalStat(totalStatName,
-      attributeCurrent,
-      armorBonus,
-      amuletBonus,
-      helmetBonus,
-      secondAmuletBonus,
-      weaponBonus,
-      shieldBonus,
-      ringBonus,
-      beltBonus,
-      secondRingBonus,
-      glovesBonus,
-      bootsBonus)
+    setAllDefense()
+    setAllAttackRating()
+    setAllPhyBonus()
+    setAllBonusStat()
+    setTottalStat(totalStatName, attributeCurrent, bonus)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [attributeCurrent])
+  }, [attributeCurrent, bonus])
 
   useEffect(() => {
     action.forEach(action => action())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalAttribute]) //accepts an action and performs the functions of the tracked attribute
+  }, [attributeCurrent, totalAttribute, bonus]) //accepts an action and performs the functions of the tracked attribute
 
   const addAttribute = () => {
     incrementStat(statName)
@@ -96,18 +88,7 @@ AttributeComp.propTypes = {
   disableButton: PropTypes.func.isRequired,
   setTottalStat: PropTypes.func.isRequired,
   totalAttribute: PropTypes.number.isRequired,
-
-  amuletBonus: PropTypes.number,
-  helmetBonus: PropTypes.number,
-  secondAmuletBonus: PropTypes.number,
-  weaponBonus: PropTypes.number,
-  armorBonus: PropTypes.number,
-  shieldBonus: PropTypes.number,
-  ringBonus: PropTypes.number,
-  beltBonus: PropTypes.number,
-  secondRingBonus: PropTypes.number,
-  glovesBonus: PropTypes.number,
-  bootsBonus: PropTypes.number,
+  bonus: PropTypes.number.isRequired,
 }
 
 export default connect((store, ownProps) => {
@@ -116,21 +97,14 @@ export default connect((store, ownProps) => {
     points: store.attributeReducer.points,
     isButtonDisabled: store.attributeReducer.isButtonDisabled,
     totalAttribute: store.characteristicsReducer[ownProps.totalStatName],
-
-    amuletBonus: store.bonusReducer.amuletBonus[ownProps.statName],
-    helmetBonus: store.bonusReducer.helmetBonus[ownProps.statName],
-    secondAmuletBonus: store.bonusReducer.secondAmuletBonus[ownProps.statName],
-    weaponBonus: store.bonusReducer.weaponBonus[ownProps.statName],
-    armorBonus: store.bonusReducer.armorBonus[ownProps.statName],
-    shieldBonus: store.bonusReducer.shieldBonus[ownProps.statName],
-    ringBonus: store.bonusReducer.ringBonus[ownProps.statName],
-    beltBonus: store.bonusReducer.beltBonus[ownProps.statName],
-    secondRingBonus: store.bonusReducer.secondRingBonus[ownProps.statName],
-    glovesBonus: store.bonusReducer.glovesBonus[ownProps.statName],
-    bootsBonus: store.bonusReducer.bootsBonus[ownProps.statName]
+    bonus: store.bonusReducer[ownProps.allStatBonus]
   }
 }, {
   disableButton,
   incrementStat,
-  setTottalStat
+  setTottalStat,
+  setAllDefense,
+  setAllAttackRating,
+  setAllPhyBonus,
+  setAllBonusStat
 })(AttributeComp)

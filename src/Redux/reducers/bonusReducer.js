@@ -5,6 +5,7 @@ import {
   SET_ALL_DEFENSE,
   SET_ALL_ATTACK_RATING,
   SET_ALL_PHY_BONUS,
+  SET_ALL_BONUS_STAT,
 } from "../types"
 
 
@@ -101,7 +102,7 @@ const initialState = {
     }
   },
   armorBonus: {
-    info:{
+    info: {
       strength: null,
       dexterity: null,
       vitality: null,
@@ -117,7 +118,7 @@ const initialState = {
     }
   },
   shieldBonus: {
-    info:{
+    info: {
       id: null,
       strength: null,
       dexterity: null,
@@ -139,7 +140,7 @@ const initialState = {
     }
   },
   ringBonus: {
-    info:{
+    info: {
       strength: null,
       dexterity: null,
       vitality: null,
@@ -234,7 +235,7 @@ export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEM_BONUS:
       return update(state, {
-        [action.typeItem]: {$set: action.bonus }
+        [action.typeItem]: { $set: action.bonus }
       })
     case SET_ALL_DEFENSE:
       return update(state, {
@@ -274,9 +275,75 @@ export const bonusReducer = (state = initialState, action) => {
           $set:
             state.weaponBonus.info.finalPhysicalDamage +
             state.secondWeaponBonus.info.finalPhysicalDamage +
-            state.shieldBonus.info.finalPhysicalDamage 
+            state.shieldBonus.info.finalPhysicalDamage
         }
-
+      })
+    case SET_ALL_BONUS_STAT:
+      return update(state, {
+        allStrengthBonus: {
+          $set:
+            state.amuletBonus.info.strength +
+            state.secondAmuletBonus.info.strength +
+            state.helmetBonus.info.strength +
+            state.weaponBonus.info.strength +
+            state.secondWeaponBonus.info.strength +
+            state.armorBonus.info.strength +
+            state.shieldBonus.info.strength +
+            state.ringBonus.info.strength +
+            state.secondRingBonus.info.strength +
+            state.beltBonus.info.strength +
+            state.glovesBonus.info.strength +
+            state.bootsBonus.info.strength +
+            state.otherBonus.info.strength
+        },
+        allDexterityBonus: {
+          $set:
+          state.amuletBonus.info.dexterity +
+          state.secondAmuletBonus.info.dexterity +
+          state.helmetBonus.info.dexterity +
+          state.weaponBonus.info.dexterity +
+          state.secondWeaponBonus.info.dexterity +
+          state.armorBonus.info.dexterity +
+          state.shieldBonus.info.dexterity +
+          state.ringBonus.info.dexterity +
+          state.secondRingBonus.info.dexterity +
+          state.beltBonus.info.dexterity +
+          state.glovesBonus.info.dexterity +
+          state.bootsBonus.info.dexterity +
+          state.otherBonus.info.dexterity
+        },
+        allVitalityBonus: {
+          $set:
+          state.amuletBonus.info.vitality +
+          state.secondAmuletBonus.info.vitality +
+          state.helmetBonus.info.vitality +
+          state.weaponBonus.info.vitality +
+          state.secondWeaponBonus.info.vitality +
+          state.armorBonus.info.vitality +
+          state.shieldBonus.info.vitality +
+          state.ringBonus.info.vitality +
+          state.secondRingBonus.info.vitality +
+          state.beltBonus.info.vitality +
+          state.glovesBonus.info.vitality +
+          state.bootsBonus.info.vitality +
+          state.otherBonus.info.vitality
+        },
+        allEnergyBonus: {
+          $set:
+          state.amuletBonus.info.energy +
+          state.secondAmuletBonus.info.energy +
+          state.helmetBonus.info.energy +
+          state.weaponBonus.info.energy +
+          state.secondWeaponBonus.info.energy +
+          state.armorBonus.info.energy +
+          state.shieldBonus.info.energy +
+          state.ringBonus.info.energy +
+          state.secondRingBonus.info.energy +
+          state.beltBonus.info.energy +
+          state.glovesBonus.info.energy +
+          state.bootsBonus.info.energy +
+          state.otherBonus.info.energy
+        }
       })
     default:
       return state

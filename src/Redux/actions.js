@@ -22,7 +22,8 @@ import {
   SET_ACTIVE_ITEM,
   SET_ALL_DEFENSE,
   SET_ALL_ATTACK_RATING,
-  SET_ALL_PHY_BONUS
+  SET_ALL_PHY_BONUS,
+  SET_ALL_BONUS_STAT
 } from "./types"
 
 export function incrementStat(statName) {
@@ -74,36 +75,14 @@ export function rankUpdate(rank) {
 
 export function setTottalStat(
   totalStatName, 
-  attributeCurrent, 
-  armorBonus,     
-  amuletBonus,
-  helmetBonus,
-  secondAmuletBonus,
-  weaponBonus,
-  secondWeaponBonus,
-  shieldBonus,
-  ringBonus,
-  beltBonus,
-  secondRingBonus,
-  glovesBonus,
-  bootsBonus,) {
+  attributeCurrent,
+  bonus) {
   // accepts the name of an attribute and sums the total value of this attribute
   return {
     type: SET_TOTAL_STAT,
     totalStatName,
     attributeCurrent,
-    amuletBonus,
-    helmetBonus,
-    secondAmuletBonus,
-    weaponBonus,
-    secondWeaponBonus,
-    armorBonus,
-    shieldBonus,
-    ringBonus,
-    beltBonus,
-    secondRingBonus,
-    glovesBonus,
-    bootsBonus,
+    bonus
   }
 }
 
@@ -224,6 +203,12 @@ export function setAllAttackRating() {
 export function setAllPhyBonus() {
   return {
     type: SET_ALL_PHY_BONUS,
+  }
+}
+
+export function setAllBonusStat() {
+  return {
+    type: SET_ALL_BONUS_STAT,
   }
 }
 

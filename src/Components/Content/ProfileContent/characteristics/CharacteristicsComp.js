@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { setAllAttackRating, setAllDefense, setAllPhyBonus, setTottalStat } from "../../../../Redux/actions"
+import { setAllAttackRating, setAllBonusStat, setAllDefense, setAllPhyBonus, setTottalStat } from "../../../../Redux/actions"
 import { PropTypes } from 'prop-types'
 
 const CharacteristicsComp = (props) => {
@@ -8,56 +8,24 @@ const CharacteristicsComp = (props) => {
     totalStatName,
     name,
     setTottalStat,
-    armorBonus,
     attributeCurrent,
     totalAttribute,
-    amuletBonus,
-    helmetBonus,
-    secondAmuletBonus,
-    weaponBonus,
-    shieldBonus,
-    ringBonus,
-    beltBonus,
-    secondRingBonus,
-    glovesBonus,
-    bootsBonus,
     setAllDefense,
     setAllAttackRating,
     setAllPhyBonus,
-    secondWeaponBonus } = props
+    setAllBonusStat,
+    bonus,
+  } = props
+
 
   useEffect(() => {
     setAllDefense()
     setAllAttackRating()
     setAllPhyBonus()
-    setTottalStat(totalStatName,
-      attributeCurrent,
-      armorBonus,
-      amuletBonus,
-      helmetBonus,
-      secondAmuletBonus,
-      weaponBonus,
-      secondWeaponBonus,
-      shieldBonus,
-      ringBonus,
-      beltBonus,
-      secondRingBonus,
-      glovesBonus,
-      bootsBonus,)
+    setAllBonusStat()
+    setTottalStat(totalStatName, attributeCurrent, bonus)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [attributeCurrent,
-    armorBonus,
-    amuletBonus,
-    helmetBonus,
-    secondAmuletBonus,
-    weaponBonus,
-    secondWeaponBonus,
-    shieldBonus,
-    ringBonus,
-    beltBonus,
-    secondRingBonus,
-    glovesBonus,
-    bootsBonus,])
+  }, [attributeCurrent, bonus])
 
 
   return (
@@ -88,18 +56,7 @@ CharacteristicsComp.propTypes = {
 
 export default connect((store, ownProps) => {
   return {
-    amuletBonus: store.bonusReducer.amuletBonus.info[ownProps.name],
-    helmetBonus: store.bonusReducer.helmetBonus.info[ownProps.name],
-    secondAmuletBonus: store.bonusReducer.secondAmuletBonus.info[ownProps.name],
-    weaponBonus: store.bonusReducer.weaponBonus.info[ownProps.name],
-    secondWeaponBonus: store.bonusReducer.secondWeaponBonus.info[ownProps.name],
-    armorBonus: store.bonusReducer.armorBonus.info[ownProps.name],
-    shieldBonus: store.bonusReducer.shieldBonus.info[ownProps.name],
-    ringBonus: store.bonusReducer.ringBonus.info[ownProps.name],
-    beltBonus: store.bonusReducer.beltBonus.info[ownProps.name],
-    secondRingBonus: store.bonusReducer.secondRingBonus.info[ownProps.name],
-    glovesBonus: store.bonusReducer.glovesBonus.info[ownProps.name],
-    bootsBonus: store.bonusReducer.bootsBonus.info[ownProps.name],
+    bonus: store.bonusReducer[ownProps.allStatBonus],
     attributeCurrent: store.attributeReducer[ownProps.name],
     totalAttribute: store.characteristicsReducer[ownProps.totalStatName]
   }
@@ -107,7 +64,8 @@ export default connect((store, ownProps) => {
   setTottalStat,
   setAllDefense,
   setAllAttackRating,
-  setAllPhyBonus
+  setAllPhyBonus,
+  setAllBonusStat,
 })(CharacteristicsComp)
 
 

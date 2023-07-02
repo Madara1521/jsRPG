@@ -9,12 +9,13 @@ const DamageComp = (props) => {
     startPhyDamage,
     finalPhyDamage,
     startPhyBonus,
-    finalPhyBonus } = props
+    finalPhyBonus,
+    totalStrength } = props
 
   useEffect(() => {
     setPhysicalDamage(startPhyBonus, finalPhyBonus)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startPhyBonus, finalPhyBonus])
+  }, [startPhyBonus, finalPhyBonus, totalStrength])
 
   return (
     <div>Physical damage: {startPhyDamage}-{finalPhyDamage}</div>
@@ -26,6 +27,7 @@ DamageComp.propTypes = {
   finalPhyBonus: PropTypes.number,
   startPhyDamage: PropTypes.number.isRequired,
   finalPhyDamage: PropTypes.number.isRequired,
+  totalStrength: PropTypes.number.isRequired,
   setPhysicalDamage: PropTypes.func.isRequired
 }
 
@@ -33,6 +35,7 @@ export default connect(store => {
   return {
     startPhyDamage: store.characteristicsReducer.startPhyDamage,
     finalPhyDamage: store.characteristicsReducer.finalPhyDamage,
+    totalStrength: store.characteristicsReducer.totalStrength,
     startPhyBonus: store.bonusReducer.allStartPhyBonus,
     finalPhyBonus: store.bonusReducer.allFinalPhyBonus
   }

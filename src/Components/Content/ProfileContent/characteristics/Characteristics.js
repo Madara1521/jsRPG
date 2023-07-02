@@ -16,18 +16,22 @@ const Characteristics = () => {
     {
       name: 'strength',
       totalStatName: 'totalStrength',
+      allStatBonus: 'allStrengthBonus'
     },
     {
       name: 'dexterity',
       totalStatName: 'totalDexterity',
+      allStatBonus: 'allDexterityBonus'
     },
     {
       name: 'vitality',
       totalStatName: 'totalVitality',
+      allStatBonus: 'allVitalityBonus'
     },
     {
       name: 'energy',
       totalStatName: 'totalEnergy',
+      allStatBonus: 'allEnergyBonus'
     },
     
   ]
@@ -40,6 +44,7 @@ const Characteristics = () => {
             <CharacteristicsComp
               name={field.name}
               totalStatName={field.totalStatName}
+              allStatBonus={field.allStatBonus}
               key={index}
             />
           )

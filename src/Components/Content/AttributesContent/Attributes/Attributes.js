@@ -34,11 +34,13 @@ const Attributes = (props) => {
     {
       statName: 'strength',
       totalStatName: 'totalStrength',
+      allStatBonus: 'allStrengthBonus',
       action: [() => setPhysicalDamage(startPhyBonus, finalPhyBonus)]
     },
     {
       statName: 'dexterity',
       totalStatName: 'totalDexterity',
+      allStatBonus: 'allDexterityBonus',
       action: [
         () => setDefense(defenseBonus),
         () => setBlocking(blockingBonus),
@@ -47,11 +49,13 @@ const Attributes = (props) => {
     {
       statName: 'vitality',
       totalStatName: 'totalVitality',
+      allStatBonus: 'allVitalityBonus',
       action: [() => setHealthAndStamina()]
     },
     {
       statName: 'energy',
       totalStatName: 'totalEnergy',
+      allStatBonus: 'allEnergyBonus',
       action: [() => setMana()]
     },
   ]
@@ -64,6 +68,7 @@ const Attributes = (props) => {
           <AttributeComp
             statName={field.statName}
             totalStatName={field.totalStatName}
+            allStatBonus={field.allStatBonus}
             action={field.action}
             key={index}
           />
@@ -89,11 +94,11 @@ Attributes.propTypes = {
 
 export default connect(store => {
   return {
-    startPhyBonus: store.bonusReducer.weaponBonus.startPhyBonus,
-    finalPhyBonus: store.bonusReducer.weaponBonus.finalPhyBonus,
-    attackRatingBonus: store.bonusReducer.weaponBonus.attackRatingBonus,
-    blockingBonus: store.bonusReducer.shieldBonus.blockingBonus,
-    defenseBonus: store.bonusReducer.armorBonus.defenseBonus,
+    startPhyBonus: store.bonusReducer.allStartPhyBonus,
+    finalPhyBonus: store.bonusReducer.allFinalPhyBonus,
+    attackRatingBonus: store.bonusReducer.allAttackRatingBonus,
+    blockingBonus: store.bonusReducer.shieldBonus.info.blockingBonus,
+    defenseBonus: store.bonusReducer.allDefenseBonus,
   }
 }, {
   setPhysicalDamage,

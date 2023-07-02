@@ -392,7 +392,7 @@ const initialState = {
         dexterity: 70,
         vitality: 30,
         energy: 40,
-        attackRatingBonus: 260, 
+        attackRatingBonus: null, 
       }
     },
     {
