@@ -58,6 +58,8 @@ const LootComp = (props) => {
     requirements
   } = props
 
+
+
   const handleClick = () => {
     if (isActiveItem) {
       getViewDescription({}, {})
@@ -69,7 +71,6 @@ const LootComp = (props) => {
 
   const lootCellColor = rarityColorHelper(classes, rarity)
 
-
   return (
     <div
       onClick={handleClick}
@@ -79,6 +80,8 @@ const LootComp = (props) => {
     </div>
   )
 }
+
+
 
 LootComp.propTypes = {
   lootName: PropTypes.string.isRequired,

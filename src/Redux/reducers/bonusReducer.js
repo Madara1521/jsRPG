@@ -214,6 +214,20 @@ const initialState = {
       typeBoots: null,
     }
   },
+  otherBonus: {
+    info: {
+      strength: null,
+      dexterity: null,
+      vitality: null,
+      energy: null,
+      defenseBonus: null,
+      attackRatingBonus: null
+    },
+    requirements: {
+      requiredLevel: null,
+      typeOther: null,
+    }
+  },
 }
 
 export const bonusReducer = (state = initialState, action) => {

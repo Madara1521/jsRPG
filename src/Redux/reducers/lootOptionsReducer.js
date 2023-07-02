@@ -433,13 +433,13 @@ const initialState = {
     },
   ],//rings,amulet
   other: [
-    {
-      info: {
-        id: uniqid(),
-        rarity: 0,
-        lootName: 'cube',
-      }
-    }
+    // {
+    //   info: {
+    //     id: uniqid(),
+    //     rarity: 0,
+    //     lootName: 'cube',
+    //   }
+    // }
   ],// other
 }
 

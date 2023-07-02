@@ -2,15 +2,16 @@ import React, { useEffect } from "react"
 import { useStyles } from "../../../Styles"
 import CharacterClothes from "./CharacterClothes/CharacterClothes"
 import PartnerClothes from "./PartnerClothes/PartnerClothes"
-import { getViewDescription } from "../../../../Redux/actions"
+import { getViewDescription, setViewItem } from "../../../../Redux/actions"
 import { connect } from "react-redux"
 
 
-const Cloth = ({getViewDescription}) => {
+const Cloth = ({getViewDescription, setViewItem}) => {
   const classes = useStyles()
 
   useEffect(() => {
     getViewDescription({},{})
+    setViewItem(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -22,4 +23,4 @@ const Cloth = ({getViewDescription}) => {
   )
 }
 
-export default connect(null,{getViewDescription})(Cloth)
+export default connect(null,{getViewDescription, setViewItem})(Cloth)

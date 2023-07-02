@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import helm from './helm.png'
 import armor from './armor.png'
 import weapon from './weapon.png'
@@ -11,6 +11,7 @@ import LootComp from './LootComp'
 import { PropTypes } from 'prop-types'
 import { useState } from "react"
 import { makeStyles } from "@mui/styles"
+import classNames from "classnames"
 
 const useStyles = makeStyles({
   loot: {
@@ -34,6 +35,24 @@ const useStyles = makeStyles({
     width: '49px',
     height: '35px',
 
+  },
+  activeHelmetItems: {
+    background: 'rgba(240, 130, 5)',
+  },
+  activeArmorItems: {
+    background: 'rgba(93, 81, 181)',
+  },
+  activeWeaponItems: {
+    background: 'rgba(148, 50, 4)',
+  },
+  activeShieldItems: {
+    background: 'rgba(154, 4, 204)',
+  },
+  activeRingItems: {
+    background: 'rgba(250, 225, 0)',
+  },
+  activeOtherItems: {
+    background: 'rgba(21, 250, 0)',
   },
   lootComp: {
     display: 'flex',
@@ -59,7 +78,8 @@ const Loot = (props) => {
     shieldItems,
     ringsAmuletItems,
     otherItems,
-    idArray } = props
+    idArray, } = props
+
 
   const itemArrayHelper = (index) => {
     switch (index) {
@@ -79,8 +99,43 @@ const Loot = (props) => {
         return selectedLoot
     }
   }
+  const arrayColorHelper = (index) => {
+    switch (index) {
+      case 1:
+        return classes.activeHelmetItems
+      case 2:
+        return classes.activeArmorItems
+      case 3:
+        return classes.activeWeaponItems
+      case 4:
+        return classes.activeShieldItems
+      case 5:
+        return classes.activeRingItems
+      case 6:
+        return classes.activeOtherItems
+      default:
+        return classes.typesOfLoot
+    }
+  }
 
   const [activeItem, setActiveItem] = useState(null)
+  const [activeArray, setActiveArray] = useState(null)
+  const ref = useRef(null)
+
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setActiveItem(null)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
 
   const iconsFields = [
     {
@@ -115,27 +170,37 @@ const Loot = (props) => {
     },
   ]
 
-  const viewItem = (idArray) => {
+  const viewItem = (idArray, isActiveArray) => {
+    if (isActiveArray) {
+      setViewItem(null)
+      return setActiveArray(null)
+    }
     setViewItem(idArray)
+    return setActiveArray(idArray)
   }
 
   const lootItems = itemArrayHelper(idArray)
+  const arrayColor = arrayColorHelper(idArray)
 
   return (
     <div className={classes.loot}>
       <div className={classes.twoTitle}>
         {iconsFields.map((field, index) => {
+          const isActiveArray = field.id === activeArray
           return (
             <div
-              className={classes.typesOfLoot}
+              className={classNames(classes.typesOfLoot, isActiveArray && arrayColor)}
               key={index}
-              onClick={() => viewItem(field.id)}>
-              <img src={field.src} alt={field.alt} />
+              onClick={() => viewItem(field.id, isActiveArray)}>
+              <img src={field.src} alt={field.alt}/>
             </div>
           )
         })}
       </div>
-      <div className={classes.lootComp}>
+      <div
+        ref={ref}
+        className={classes.lootComp}
+      >
         {lootItems.map((field, index) => {
           const isActiveItem = field.info.id === activeItem
           return (
@@ -155,6 +220,7 @@ const Loot = (props) => {
     </div>
   )
 }
+
 
 Loot.propTypes = {
   selectedLoot: PropTypes.array.isRequired,
