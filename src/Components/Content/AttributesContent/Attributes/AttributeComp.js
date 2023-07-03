@@ -10,7 +10,9 @@ import {
   setAllDefense,
   setAllAttackRating,
   setAllPhyBonus,
-  setAllBonusStat
+  setAllBonusStat,
+  setAttackRating,
+  setDefense
 } from '../../../../Redux/actions'
 import { useStyles } from "../../../Styles"
 import { PropTypes } from 'prop-types'
@@ -33,7 +35,12 @@ const AttributeComp = (props) => {
     setAllDefense,
     setAllAttackRating,
     setAllPhyBonus,
-    setAllBonusStat
+    setAllBonusStat,
+    attackRatingBonus,
+    defenseBonus,
+    totalDexterity,
+    setAttackRating,
+    setDefense
   } = props
 
 
@@ -50,6 +57,17 @@ const AttributeComp = (props) => {
     action.forEach(action => action())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attributeCurrent, totalAttribute, bonus]) //accepts an action and performs the functions of the tracked attribute
+
+
+  useEffect(() => {
+    setAttackRating(attackRatingBonus)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [attackRatingBonus, totalDexterity])
+
+  useEffect(() => {
+    setDefense(defenseBonus)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defenseBonus, totalDexterity])
 
   const addAttribute = () => {
     incrementStat(statName)
@@ -89,6 +107,16 @@ AttributeComp.propTypes = {
   setTottalStat: PropTypes.func.isRequired,
   totalAttribute: PropTypes.number.isRequired,
   bonus: PropTypes.number.isRequired,
+  action: PropTypes.array,
+  setAllDefense: PropTypes.func.isRequired,
+  setAllAttackRating: PropTypes.func.isRequired,
+  setAllPhyBonus: PropTypes.func.isRequired,
+  setAllBonusStat: PropTypes.func.isRequired,
+  attackRatingBonus: PropTypes.number.isRequired,
+  defenseBonus: PropTypes.number.isRequired,
+  totalDexterity: PropTypes.number.isRequired,
+  setAttackRating: PropTypes.func.isRequired,
+  setDefense: PropTypes.func.isRequired,
 }
 
 export default connect((store, ownProps) => {
@@ -97,7 +125,11 @@ export default connect((store, ownProps) => {
     points: store.attributeReducer.points,
     isButtonDisabled: store.attributeReducer.isButtonDisabled,
     totalAttribute: store.characteristicsReducer[ownProps.totalStatName],
-    bonus: store.bonusReducer[ownProps.allStatBonus]
+    bonus: store.bonusReducer[ownProps.allStatBonus],
+
+    attackRatingBonus: store.bonusReducer.allAttackRatingBonus,
+    defenseBonus: store.bonusReducer.allDefenseBonus,
+    totalDexterity: store.characteristicsReducer.totalDexterity,
   }
 }, {
   disableButton,
@@ -106,5 +138,7 @@ export default connect((store, ownProps) => {
   setAllDefense,
   setAllAttackRating,
   setAllPhyBonus,
-  setAllBonusStat
+  setAllBonusStat,
+  setAttackRating,
+  setDefense
 })(AttributeComp)

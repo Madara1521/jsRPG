@@ -40,18 +40,7 @@ CharacteristicsComp.propTypes = {
   setTottalStat: PropTypes.func.isRequired,
   attributeCurrent: PropTypes.number.isRequired,
   totalAttribute: PropTypes.number.isRequired,
-  amuletBonus: PropTypes.number,
-  helmetBonus: PropTypes.number,
-  secondAmuletBonus: PropTypes.number,
-  weaponBonus: PropTypes.number,
-  secondWeaponBonus: PropTypes.number,
-  armorBonus: PropTypes.number,
-  shieldBonus: PropTypes.number,
-  ringBonus: PropTypes.number,
-  beltBonus: PropTypes.number,
-  secondRingBonus: PropTypes.number,
-  glovesBonus: PropTypes.number,
-  bootsBonus: PropTypes.number,
+  bonus: PropTypes.number.isRequired,
 }
 
 export default connect((store, ownProps) => {

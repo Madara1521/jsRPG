@@ -5,8 +5,6 @@ import Points from "./Points"
 import AttributeComp from "./AttributeComp"
 import {
   setPhysicalDamage,
-  setAttackRating,
-  setDefense,
   setBlocking,
   setHealthAndStamina,
   setMana,
@@ -20,12 +18,8 @@ const Attributes = (props) => {
     setPhysicalDamage,
     startPhyBonus,
     finalPhyBonus,
-    attackRatingBonus,
     blockingBonus,
-    defenseBonus,
-    setDefense,
     setBlocking,
-    setAttackRating,
     setHealthAndStamina,
     setMana
   } = props
@@ -41,10 +35,7 @@ const Attributes = (props) => {
       statName: 'dexterity',
       totalStatName: 'totalDexterity',
       allStatBonus: 'allDexterityBonus',
-      action: [
-        () => setDefense(defenseBonus),
-        () => setBlocking(blockingBonus),
-        () => setAttackRating(attackRatingBonus)]
+      action: [() => setBlocking(blockingBonus)]
     },
     {
       statName: 'vitality',
@@ -82,13 +73,9 @@ Attributes.propTypes = {
   startPhyBonus: PropTypes.number,
   finalPhyBonus: PropTypes.number,
   setPhysicalDamage: PropTypes.func.isRequired,
-  setAttackRating: PropTypes.func.isRequired,
-  setDefense: PropTypes.func.isRequired,
   setBlocking: PropTypes.func.isRequired,
   setHealthAndStamina: PropTypes.func.isRequired,
   setMana: PropTypes.func.isRequired,
-  attackRatingBonus: PropTypes.number,
-  defenseBonus: PropTypes.number,
   blockingBonus: PropTypes.number,
 }
 
@@ -96,14 +83,10 @@ export default connect(store => {
   return {
     startPhyBonus: store.bonusReducer.allStartPhyBonus,
     finalPhyBonus: store.bonusReducer.allFinalPhyBonus,
-    attackRatingBonus: store.bonusReducer.allAttackRatingBonus,
     blockingBonus: store.bonusReducer.shieldBonus.info.blockingBonus,
-    defenseBonus: store.bonusReducer.allDefenseBonus,
   }
 }, {
   setPhysicalDamage,
-  setAttackRating,
-  setDefense,
   setBlocking,
   setHealthAndStamina,
   setMana,
