@@ -1,3 +1,5 @@
+import update from 'immutability-helper'
+
 import {
   SET_ATTACK_RATING,
   SET_BLOCKING,
@@ -34,43 +36,35 @@ const initialState = {
 export const characteristicsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TOTAL_STAT:
-      return {
-        ...state,
-        [action.totalStatName]: action.attributeCurrent + action.bonus
-      }
+      return update(state,{
+        [action.totalStatName]: {$set: action.attributeCurrent + action.bonus}
+      })
     case SET_PHYSICAL_DAMAGE:
-      return {
-        ...state,
-        startPhyDamage: (state.totalStrength * 4) + action.startPhyBonus,
-        finalPhyDamage: (state.totalStrength * 6) + action.finalPhyBonus,
-      }
+      return update(state,{
+        startPhyDamage: {$set: (state.totalStrength * 4) + action.startPhyBonus},
+        finalPhyDamage: {$set: (state.totalStrength * 6) + action.finalPhyBonus}
+      })
     case SET_ATTACK_RATING:
-      return {
-        ...state,
-        attackRating: (state.totalDexterity * 8) + action.attackRatingBonus
-      }
+      return update(state,{
+        attackRating: {$set: (state.totalDexterity * 8) + action.attackRatingBonus}
+      })
     case SET_DEFENSE:
-      return {
-        ...state,
-        defense: (state.totalDexterity * 4) + action.defenseBonus
-      }
+      return update(state,{
+        defense: {$set: (state.totalDexterity * 4) + action.defenseBonus}
+      })
     case SET_BLOCKING:
-      return {
-        ...state,
-        blocking: (state.totalDexterity * 2) + action.blockingBonus
-      }
+      return update(state,{
+        blocking: {$set: (state.totalDexterity * 2) + action.blockingBonus}
+      })
     case SET_HEALTH_AND_STAMINA:
-      return {
-        ...state,
-        health: (state.totalVitality * 4),
-        stamina: (state.totalVitality * 4)
-
-      }
+      return update(state,{
+        health: {$set: (state.totalVitality * 4)},
+        stamina: {$set: (state.totalVitality * 4)}
+      })
     case SET_MANA:
-      return {
-        ...state,
-        mana: (state.totalEnergy * 6),
-      }
+      return update(state,{
+        mana: {$set: state.totalEnergy * 6}
+      })
     default:
       return state
   }

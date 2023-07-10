@@ -1,9 +1,9 @@
+import update from 'immutability-helper'
 import {
   ACTIVE_BUTTON,
   DISABLE_BUTTON,
   INCREMENT_POINTS,
-  INCREMENT_STAT,
-} from "../types"
+  INCREMENT_STAT } from "../types"
 
 
 const initialState = {
@@ -18,26 +18,22 @@ const initialState = {
 export const attributeReducer = (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT_STAT:
-      return {
-        ...state,
-        [action.statName]: state[action.statName] + 1,
-        points: state.points - 1
-      }
+      return update(state, {
+        [action.statName]: {$set: state[action.statName] + 1},
+        points: {$set: state.points - 1}
+      })
     case INCREMENT_POINTS:
-      return {
-        ...state,
-        points: state.points + 5
-      }
+      return update(state, {
+        points: {$set: state.points + 5}
+      })
     case DISABLE_BUTTON:
-      return {
-        ...state,
-        isButtonDisabled: true
-      }
+      return update(state, {
+        isButtonDisabled: {$set: true}
+      })
     case ACTIVE_BUTTON:
-      return {
-        ...state,
-        isButtonDisabled: false
-      }
+      return update(state, {
+        isButtonDisabled: {$set: false}
+      })
     default:
       return state
   }

@@ -1,8 +1,8 @@
+import update from 'immutability-helper'
 import {
   INCREMENT_EXPERIENCE,
   RANK_UPDATE,
-  UPDATE_LEVEL
-} from "../types"
+  UPDATE_LEVEL } from "../types"
 
 const initialState = {
   level: 9,
@@ -14,21 +14,18 @@ const initialState = {
 export const levelReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_LEVEL:
-      return {
-        ...state,
-        level: state.level + 1,
-        nextLevel: state.nextLevel + action.experience
-      }
+      return update(state, {
+        level: {$set: state.level + 1},
+        nextLevel: {$set: state.nextLevel + action.experience}
+      })
     case INCREMENT_EXPERIENCE:
-      return {
-        ...state,
-        experience: state.experience + 250
-      }
+      return update(state, {
+        experience: {$set: state.experience + 250}
+      })
     case RANK_UPDATE:
-      return {
-        ...state,
-        rank: action.rank
-      }
+      return update(state,{
+        rank: {$set: action.rank}
+      })
     default:
       return state
   }
