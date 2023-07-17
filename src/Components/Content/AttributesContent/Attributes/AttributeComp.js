@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { Stack } from '@mui/material'
 import { connect } from "react-redux"
-import { AttributeButton } from "../../../Header/StyledHeader"
+import { AttributeButton } from "../../../Header/StyledGlobal"
 import IconsAttribute from "./IconsAttribute"
 import {
   disableButton,

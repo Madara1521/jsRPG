@@ -58,12 +58,6 @@ export const useStyles = makeStyles(() => ({
     alignItems: 'center',
     border: 'black 1px solid',
   },
-  headerCss: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    background: 'linear-gradient(0deg, rgba(190,190,190,1) 0%, rgba(214,214,214,1) 11%, rgba(242,241,241,1) 58%)'
-  },
   attribCont: {
     display: 'flex',
     alignItems: 'center',
@@ -109,11 +103,6 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
     padding: '3px'
-  },
-  clothStyle: {
-    display: 'flex',
-    flex: '2',
-    flexDirection: 'row'
   },
   glovesAndBoots: {
     display: 'flex',

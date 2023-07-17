@@ -7,7 +7,7 @@ import { makeStyles } from "@mui/styles"
 
 
 const useStyles = makeStyles({
-  clothPartnerAndCharacter: {
+  characterCloth: {
     display: 'flex',
     flex: '1',
     flexDirection: 'column'
@@ -35,7 +35,7 @@ const CharacterClothes = () => {
   const classes = useStyles()
 
   return (
-    <div className={classes.clothPartnerAndCharacter}>
+    <div className={classes.characterCloth}>
       <div className={classes.invertoryClothTitle}>
         <div>nickname</div>
       </div>

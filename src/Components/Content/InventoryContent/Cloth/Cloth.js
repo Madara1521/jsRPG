@@ -1,9 +1,17 @@
 import React, { useEffect } from "react"
-import { useStyles } from "../../../Styles"
 import CharacterClothes from "./CharacterClothes/CharacterClothes"
 import PartnerClothes from "./PartnerClothes/PartnerClothes"
 import { getViewDescription, setViewItem } from "../../../../Redux/actions"
 import { connect } from "react-redux"
+import { makeStyles } from "@mui/styles"
+
+const useStyles = makeStyles({
+  clothStyle: {
+    display: 'flex',
+    flex: '2',
+    flexDirection: 'row'
+  },
+})
 
 
 const Cloth = ({getViewDescription, setViewItem}) => {
