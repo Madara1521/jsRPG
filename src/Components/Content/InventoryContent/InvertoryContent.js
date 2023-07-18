@@ -9,7 +9,10 @@ const useStyles = makeStyles({
   content: {
     display: 'flex',
     justifyContent: 'center',
-    height: '100vh',
+    color: 'white',
+    fontSize: '20px',
+    '-webkit-text-stroke': '0.3px black',
+    height: 'calc(100vh - 102px)',
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
       width: '0em',
@@ -27,6 +30,10 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    letterSpacing: '2px',
+    color: 'rgb(179, 30, 0)',
+    '-webkit-text-stroke': '0.5px black',
+    fontSize: '17px',
     border: 'black 1px solid',
     width: '610px',
     height: '37px'

@@ -15,12 +15,7 @@ const useStyles = makeStyles({
   },
   header: {
     display: 'flex',
-  },
-  penta: {
-    display: 'flex',
-    maxWidth: '150px',    
-    maxHeight: '100px',
-  },
+  }
 })
 
 const Header = () => {

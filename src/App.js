@@ -15,16 +15,16 @@ import mainImg from './Components/Content/img/fon.png'
 
 const useStyles = makeStyles({
   appBar: {
-    display: 'flex',
+    display: 'flex !important',
+    flexDirection: 'row !important',
     justifyContent: 'center',
     backgroundImage: `url(${ImgHeader})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    flexDirection: 'row'
   },
   penta: {
     display: 'flex',
-    maxWidth: '150px',    
+    maxWidth: '150px',
     maxHeight: '100px',
   },
   main: {
@@ -32,6 +32,7 @@ const useStyles = makeStyles({
     backgroundImage: `url(${mainImg})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
+    marginTop: '102px',
   }
 })
 
@@ -42,15 +43,11 @@ const App = () => {
   return (
     <>
       <AppBar position="fixed" className={classes.appBar}>
-        <div>
-          <img className={classes.penta} src={penta} alt='penta' />
-        </div>
+        <img className={classes.penta} src={penta} alt='penta' />
         <Container fixed className={classes.container}>
           <Header />
         </Container>
-        <div>
-          <img className={classes.penta} src={penta} alt='penta' />
-        </div>
+        <img className={classes.penta} src={penta} alt='penta' />
       </AppBar>
       <main>
         <Paper className={classes.main}>

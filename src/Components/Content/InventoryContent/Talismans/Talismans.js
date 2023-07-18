@@ -11,6 +11,10 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    letterSpacing: '2px',
+    color: 'rgb(179, 30, 0)',
+    '-webkit-text-stroke': '0.5px black',
+    fontSize: '17px',
     border: 'black 1px solid',
     width: '610px',
     height: '37px'
