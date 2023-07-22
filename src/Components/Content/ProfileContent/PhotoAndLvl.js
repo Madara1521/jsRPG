@@ -1,11 +1,38 @@
 import React, { useEffect } from "react"
-import { useStyles } from "../../Styles"
 import barbarian from './Barbarian.webp'
-import { Stack, Box } from '@mui/material'
 import { connect } from "react-redux"
 import { rankUpdate } from "../../../Redux/actions"
 import { PropTypes } from 'prop-types'
+import { makeStyles } from "@mui/styles"
 
+
+const useStyles = makeStyles((theme) => ({
+  placing: {
+    display: 'flex',
+    flexDirection: 'row',
+    [theme.breakpoints.down("sm")]: { 
+      flexDirection: 'column',
+    }
+  },
+  img: {
+    display: 'flex',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    flex: 1,
+  },
+  level: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+    '& div': {
+      marginTop: '10px',
+      marginBottom: '10px'
+    }
+  },
+}))
 
 const PhotoAndLvl = (props) => {
   const { rankUpdate, level, rank } = props
@@ -28,17 +55,17 @@ const PhotoAndLvl = (props) => {
   }, [level]) 
 
   return (
-    <Stack direction='row' flex={2}>
-      <Box className={classes.imgBorder} flex={1}>
+    <div className={classes.placing}>
+      <div className={classes.img}>
         <img src={barbarian} alt='img' />
-      </Box>
-      <Stack direction='column' className={classes.lvlBorder} flex={1} spacing={1}>
+      </div>
+      <div className={classes.level}>
         <div>Class: Barbarian</div>
         <div>Level: {level}</div>
         <div>Rank: {rank}</div>
         <div>Difficulty level: normal</div>
-      </Stack>
-    </Stack>
+      </div>
+    </div>
   )
 }
 

@@ -9,9 +9,6 @@ const useStyles = makeStyles({
   content: {
     display: 'flex',
     justifyContent: 'center',
-    color: 'white',
-    fontSize: '20px',
-    '-webkit-text-stroke': '0.3px black',
     height: 'calc(100vh - 102px)',
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
@@ -25,18 +22,6 @@ const useStyles = makeStyles({
   stackColumn: {
     display: 'flex',
     flexDirection: 'column'
-  },
-  titleComp: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    letterSpacing: '2px',
-    color: 'rgb(179, 30, 0)',
-    '-webkit-text-stroke': '0.5px black',
-    fontSize: '17px',
-    border: 'black 1px solid',
-    width: '610px',
-    height: '37px'
   },
   goldComp: {
     display: 'flex',
@@ -55,8 +40,8 @@ const InvertoryContent = (props) => {
   return (
     <div className={classes.content} >
       <div className={classes.stackColumn}>
-        <div className={classes.titleComp}>
-          <h1>Invertoty</h1>
+        <div>
+          <h1>Invertory</h1>
         </div>
         <Cloth />
         <Talismans />

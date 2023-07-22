@@ -6,17 +6,39 @@ import SkillComponent from "./MenuButtons/Skills/SkillComponent"
 import MapComponent from "./MenuButtons/Map/MapComponent"
 import TradeComponent from "./MenuButtons/Trade/TradeComponent"
 import { makeStyles } from "@mui/styles"
+import backgroundImage from './MenuButtons/backgroundItem.png'
 
-const useStyles = makeStyles({
+export const useStyles = makeStyles((theme) => ({
   headerPlacing: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   header: {
     display: 'flex',
+  },
+  iconStyle: {
+    display: 'flex',
+    width: '100px',
+    height: '100px',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    backgroundImage:`url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    '&:hover': {
+      background: 'linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,20,20,0.9136029411764706) 38%, rgba(205,0,0,0.7847514005602241) 71%)',
+      cursor: 'pointer'
+    },
+    [theme.breakpoints.down("sm")]: { 
+      width: '60px',
+      height: '60px',
+    }
+  },
+  cellActive: {
+    background: 'blue'
   }
-})
+}))
 
 const Header = () => {
   const classes = useStyles()

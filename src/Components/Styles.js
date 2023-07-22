@@ -5,9 +5,6 @@ export const useStyles = makeStyles(() => ({
   content: {
     display: 'flex',
     justifyContent: 'center',
-    color: 'white',
-    fontSize: '20px',
-    '-webkit-text-stroke': '0.3px black',
     height: 'calc(100vh - 102px)',
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
@@ -28,23 +25,6 @@ export const useStyles = makeStyles(() => ({
       backgroundColor: 'rgba(0,0,0,0)'
     }
   },
-  titleComp: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    letterSpacing: '2px',
-    color: 'rgb(179, 30, 0)',
-    '-webkit-text-stroke': '0.5px black',
-    fontSize: '17px',
-    border: 'black 1px solid',
-    width: '610px',
-    height: '37px'
-  },
-  imgBorder: {
-    display: 'flex',
-    justifyContent: 'center',
-    border: 'black 1px solid'
-  },
   charBorder: {
     display: 'flex',
     direction: 'column',
@@ -58,12 +38,6 @@ export const useStyles = makeStyles(() => ({
     border: 'black 1px solid',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  lvlBorder: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    border: 'black 1px solid',
   },
   attribCont: {
     display: 'flex',
