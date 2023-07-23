@@ -1,5 +1,5 @@
 import React from "react"
-import PhotoAndLvl from "./PhotoAndLvl"
+import PhotoAndLevel from "./PhotoAndLevel"
 import Characteristics from "./characteristics/Characteristics"
 import GeneralInfo from "./GeneralInfo"
 import { makeStyles } from "@mui/styles"
@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   profile: {
     display: 'flex',
+    flex: 3,
     flexDirection: 'column',
   }
 }))
@@ -36,7 +37,7 @@ const ProfileContent = () => {
     <div className={classes.content} >
       <div className={classes.profile}>
         <h1>Nikname</h1>
-        <PhotoAndLvl />
+        <PhotoAndLevel />
         <h1>Characteristics</h1>
         <Characteristics />
         <h1>General information</h1>

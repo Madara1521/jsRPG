@@ -25,20 +25,6 @@ export const useStyles = makeStyles(() => ({
       backgroundColor: 'rgba(0,0,0,0)'
     }
   },
-  charBorder: {
-    display: 'flex',
-    direction: 'column',
-    border: 'black 1px solid',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  genBorder: {
-    display: 'flex',
-    direction: 'column',
-    border: 'black 1px solid',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   attribCont: {
     display: 'flex',
     alignItems: 'center',

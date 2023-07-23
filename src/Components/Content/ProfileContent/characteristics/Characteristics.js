@@ -1,12 +1,35 @@
 import React from "react"
-import { Stack } from '@mui/material'
-import { useStyles } from "../../../Styles"
 import DamageComp from "./DamageComp"
 import CharacteristicsComp from "./CharacteristicsComp"
 import AttackRaitingAndDefenseComp from "./AttackRaitingAndDefenseComp"
 import HealthAndStaminaComp from "./HealthAndStaminaComp"
 import ManaComp from "./ManaComp"
+import { makeStyles } from "@mui/styles"
 
+
+const useStyles = makeStyles((theme) => ({
+  placing: {
+    display: 'flex',
+    flex: 2,
+    flexDirection: 'row',
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: 'column',
+    }
+  },
+  characteristicsBorder: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& div': {
+      marginTop: '4px',
+      marginBottom: '4px',
+      padding: '1px'
+    }
+  }
+}))
 
 
 const Characteristics = () => {
@@ -33,13 +56,13 @@ const Characteristics = () => {
       totalStatName: 'totalEnergy',
       allStatBonus: 'allEnergyBonus'
     },
-    
+
   ]
 
   return (
-    <Stack direction='row' flex={2}>
-      <Stack className={classes.charBorder} flex={1} spacing={1}>
-        {characteristicsFields.map((field,index) => {
+    <div className={classes.placing}>
+      <div className={classes.characteristicsBorder}>
+        {characteristicsFields.map((field, index) => {
           return (
             <CharacteristicsComp
               name={field.name}
@@ -49,15 +72,15 @@ const Characteristics = () => {
             />
           )
         })}
-      </Stack>
-      <Stack className={classes.charBorder} flex={1} spacing={1}>
+      </div>
+      <div className={classes.characteristicsBorder}>
         <DamageComp />
         {/* <div>Magic damage: 1000-3000</div> */}
         <AttackRaitingAndDefenseComp />
         <HealthAndStaminaComp />
         <ManaComp />
-      </Stack>
-    </Stack>
+      </div>
+    </div>
   )
 }
 

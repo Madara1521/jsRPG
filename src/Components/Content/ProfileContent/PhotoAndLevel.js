@@ -9,6 +9,7 @@ import { makeStyles } from "@mui/styles"
 const useStyles = makeStyles((theme) => ({
   placing: {
     display: 'flex',
+    flex: 2,
     flexDirection: 'row',
     [theme.breakpoints.down("sm")]: { 
       flexDirection: 'column',
@@ -28,13 +29,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     border: 'black 1px solid',
     '& div': {
-      marginTop: '10px',
-      marginBottom: '10px'
+      marginTop: '4px',
+      marginBottom: '4px',
+      padding: '1px'
     }
   },
 }))
 
-const PhotoAndLvl = (props) => {
+const PhotoAndLevel = (props) => {
   const { rankUpdate, level, rank } = props
   const classes = useStyles()
 
@@ -69,7 +71,7 @@ const PhotoAndLvl = (props) => {
   )
 }
 
-PhotoAndLvl.propTypes = {
+PhotoAndLevel.propTypes = {
   level: PropTypes.number.isRequired,
   rank: PropTypes.string.isRequired,
   rankUpdate: PropTypes.func.isRequired,
@@ -80,4 +82,4 @@ export default connect(store => {
     level: store.levelReducer.level,
     rank: store.levelReducer.rank
   }
-}, { rankUpdate })(PhotoAndLvl)
+}, { rankUpdate })(PhotoAndLevel)
