@@ -4,7 +4,6 @@ import Characteristics from "./characteristics/Characteristics"
 import GeneralInfo from "./GeneralInfo"
 import { makeStyles } from "@mui/styles"
 
-
 const useStyles = makeStyles((theme) => ({
   content: {
     display: 'flex',
@@ -13,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: { 
       height: 'calc(100vh - 62px)'
     },
-    backdropFilter: 'blur(2px)',
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
       width: '0em',
@@ -26,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   profile: {
     display: 'flex',
     flex: 3,
-    flexDirection: 'column',
+    flexDirection: 'column'
   }
 }))
 
@@ -36,7 +34,7 @@ const ProfileContent = () => {
   return (
     <div className={classes.content} >
       <div className={classes.profile}>
-        <h1>Nikname</h1>
+        <h1>Profile</h1>
         <PhotoAndLevel />
         <h1>Characteristics</h1>
         <Characteristics />

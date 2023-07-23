@@ -4,13 +4,15 @@ import WeaponArmorShield from "./WeaponArmorShield"
 import RingBelt from "./RingBelt"
 import GlovesBoots from "./GlovesBoots"
 import { makeStyles } from "@mui/styles"
+import divImg from '../../../img/divBackground.png'
 
 
 const useStyles = makeStyles({
   characterCloth: {
     display: 'flex',
-    flex: '1',
-    flexDirection: 'column'
+    flex: 1,
+    flexDirection: 'column',
+    backgroundImage: `url(${divImg})`,
   },
   invertoryClothTitle: {
     display: 'flex',
@@ -22,11 +24,12 @@ const useStyles = makeStyles({
   characterClothes: {
     display: 'flex',
     alignItems: 'center',
+    backdropFilter: 'blur(3px)',
     flexDirection: 'column',
     justifyContent: 'center',
     border: 'black 1px solid',
     padding: '3px',
-    height: '370px'
+    height: '370px',
   }
 })
 
@@ -37,7 +40,7 @@ const CharacterClothes = () => {
   return (
     <div className={classes.characterCloth}>
       <div className={classes.invertoryClothTitle}>
-        <div>nickname</div>
+        Rubaka115
       </div>
       <div className={classes.characterClothes}>
         <HelmetAmulet />

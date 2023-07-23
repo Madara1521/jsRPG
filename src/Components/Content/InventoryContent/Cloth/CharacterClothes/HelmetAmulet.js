@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   colthPadding: {
     display: 'flex',
     flexDirection: 'row',
-    padding: '2px'
+    padding: '1px'
   },
   endAmulet: {
     display: 'flex',
@@ -28,11 +28,11 @@ const useStyles = makeStyles({
     height: '35px',
     width: '35px'
   },
-  armorBeltHelmPading: {
+  helmetPading: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '3px'
+    padding: '2px'
   },
   helmet: {
     display: 'flex',
@@ -225,7 +225,7 @@ const HelmetAmulet = (props) => {
           {renderImgHelper(imgAmulet, classes.imgDescriptionAmulet)}
         </div>
       </div>
-      <div className={classes.armorBeltHelmPading} >
+      <div className={classes.helmetPading} >
         <div className={classes.helmet} onClick={handleClickHelmet} onDoubleClick={removeHelmet}>
           {renderImgHelper(imgHelmet, classes.imgDescriptionHelmet)}
         </div>

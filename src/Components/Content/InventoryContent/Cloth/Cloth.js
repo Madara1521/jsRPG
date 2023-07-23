@@ -5,20 +5,23 @@ import { getViewDescription, setViewItem } from "../../../../Redux/actions"
 import { connect } from "react-redux"
 import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   clothStyle: {
     display: 'flex',
     flex: '2',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: 'column',
+    },
   },
-})
+}))
 
 
-const Cloth = ({getViewDescription, setViewItem}) => {
+const Cloth = ({ getViewDescription, setViewItem }) => {
   const classes = useStyles()
 
   useEffect(() => {
-    getViewDescription({},{})
+    getViewDescription({}, {})
     setViewItem(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -31,4 +34,4 @@ const Cloth = ({getViewDescription, setViewItem}) => {
   )
 }
 
-export default connect(null,{getViewDescription, setViewItem})(Cloth)
+export default connect(null, { getViewDescription, setViewItem })(Cloth)

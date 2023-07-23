@@ -4,21 +4,26 @@ import { connect } from "react-redux"
 import { rankUpdate } from "../../../Redux/actions"
 import { PropTypes } from 'prop-types'
 import { makeStyles } from "@mui/styles"
+import divImg from '../img/oldPaper.png'
 
 
 const useStyles = makeStyles((theme) => ({
   placing: {
     display: 'flex',
     flex: 2,
+    backgroundImage: `url(${divImg})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     flexDirection: 'row',
-    [theme.breakpoints.down("sm")]: { 
+    [theme.breakpoints.down("sm")]: {
       flexDirection: 'column',
-    }
+    },
   },
   img: {
     display: 'flex',
     justifyContent: 'center',
     border: 'black 1px solid',
+
     flex: 1,
   },
   level: {
@@ -53,8 +58,8 @@ const PhotoAndLevel = (props) => {
         rankUpdate(rank)
       }
     })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [level]) 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [level])
 
   return (
     <div className={classes.placing}>
@@ -62,6 +67,7 @@ const PhotoAndLevel = (props) => {
         <img src={barbarian} alt='img' />
       </div>
       <div className={classes.level}>
+        <div>Name: Rubaka115</div>
         <div>Class: Barbarian</div>
         <div>Level: {level}</div>
         <div>Rank: {rank}</div>

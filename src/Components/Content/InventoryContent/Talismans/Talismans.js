@@ -1,38 +1,31 @@
 import React from "react"
 import TalismansComp from "./TalismansComp"
 import { makeStyles } from "@mui/styles"
+import divImg from '../../img/divBackground.png'
 
-const useStyles = makeStyles({
-  stackRow: {
+const useStyles = makeStyles((theme)=> ({
+  placing: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundImage: `url(${divImg})`,
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
   },
-  titleComp: {
+  placingContainer: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    letterSpacing: '2px',
-    color: 'rgb(179, 30, 0)',
-    '-webkit-text-stroke': '0.5px black',
-    fontSize: '17px',
-    border: 'black 1px solid',
-    width: '610px',
-    height: '37px'
-  }
-})
+    flexDirection: 'row',
+    backdropFilter: 'blur(3px)',
+  },
+}))
 
 const Talismans = () => {
   const classes = useStyles()
 
   return (
-    <div>
-      <div className={classes.stackRow}>
-        <TalismansComp />
-        <TalismansComp />
-        <TalismansComp />
-        <TalismansComp />
-        <TalismansComp />
-        <TalismansComp />
+    <div className={classes.placing}>
+      <div className={classes.placingContainer}>
         <TalismansComp />
         <TalismansComp />
         <TalismansComp />
@@ -40,8 +33,13 @@ const Talismans = () => {
         <TalismansComp />
         <TalismansComp />
       </div>
-      <div className={classes.titleComp}>
-        <h1>Talismans</h1>
+      <div className={classes.placingContainer}>
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
+        <TalismansComp />
       </div>
     </div>
   )

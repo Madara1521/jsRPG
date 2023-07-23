@@ -65,36 +65,5 @@ export const useStyles = makeStyles(() => ({
     border: 'black 3px solid',
     width: '60px',
     height: '30px'
-  },
-  colthPadding: {
-    display: 'flex',
-    flexDirection: 'row',
-    padding: '3px'
-  },
-  glovesAndBoots: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: 'black 2px solid',
-    height: '80px',
-    width: '80px',
-  },
-  armorBeltHelmPading: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '3px'
-  },
-  paddingGloves: {
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '40px'
-  },
-  nameLoot: {
-    display: 'flex',
-    justifyContent: 'center',
-    justifyItems: 'center',
-    fontSize: '150%',
-    border: 'rgba(0, 0, 0, 0.7) 1px solid',
-  },
+  }
 }))

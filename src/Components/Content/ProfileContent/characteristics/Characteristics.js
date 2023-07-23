@@ -5,13 +5,14 @@ import AttackRaitingAndDefenseComp from "./AttackRaitingAndDefenseComp"
 import HealthAndStaminaComp from "./HealthAndStaminaComp"
 import ManaComp from "./ManaComp"
 import { makeStyles } from "@mui/styles"
-
+import divImg from '../../img/oldPaper.png'
 
 const useStyles = makeStyles((theme) => ({
   placing: {
     display: 'flex',
     flex: 2,
     flexDirection: 'row',
+    backgroundImage: `url(${divImg})`,
     [theme.breakpoints.down("xs")]: {
       flexDirection: 'column',
     }

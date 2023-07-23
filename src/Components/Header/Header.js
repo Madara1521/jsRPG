@@ -31,8 +31,8 @@ export const useStyles = makeStyles((theme) => ({
       cursor: 'pointer'
     },
     [theme.breakpoints.down("sm")]: { 
-      width: '60px',
-      height: '60px',
+      width: '65px',
+      height: '65px',
     }
   },
   cellActive: {

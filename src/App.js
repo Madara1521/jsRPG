@@ -10,7 +10,7 @@ import TradeContent from "./Components/Content/TradeContent/TradeContent"
 import { Paper,AppBar } from '@mui/material'
 import { makeStyles } from "@mui/styles"
 import penta from './Components/Header/penta.png'
-import mainImg from './Components/Content/img/fon.png'
+import mainImg from './Components/Content/img/mainBackground.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,8 +57,6 @@ const useStyles = makeStyles((theme) => ({
   main: {
     justifyContent: 'center',
     display: 'flex',
-    height: '100%',
-    width: '100%',
     backgroundImage: `url(${mainImg})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -66,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: '62px',
     }
-  },
+  }
 }))
 
 

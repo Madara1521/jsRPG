@@ -5,11 +5,14 @@ import LootAndDescription from "./LootAndDescription/LootAndDescription"
 import { connect } from "react-redux"
 import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   content: {
     display: 'flex',
     justifyContent: 'center',
     height: 'calc(100vh - 102px)',
+    [theme.breakpoints.down("sm")]: {
+      height: 'calc(100vh - 62px)'
+    },
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
       width: '0em',
@@ -19,10 +22,6 @@ const useStyles = makeStyles({
       backgroundColor: 'rgba(0,0,0,0)'
     }
   },
-  stackColumn: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
   goldComp: {
     display: 'flex',
     justifyContent: 'center',
@@ -31,7 +30,12 @@ const useStyles = makeStyles({
     width: '610px',
     height: '25px'
   },
-})
+  invertory: {
+    display: 'flex',
+    flex: 3,
+    flexDirection: 'column',
+  }
+}))
 
 const InvertoryContent = (props) => {
   const classes = useStyles()
@@ -39,12 +43,11 @@ const InvertoryContent = (props) => {
 
   return (
     <div className={classes.content} >
-      <div className={classes.stackColumn}>
-        <div>
-          <h1>Invertory</h1>
-        </div>
+      <div className={classes.invertory}>
+        <h1>Invertory</h1>
         <Cloth />
         <Talismans />
+        <h1>Talismans</h1>
         <LootAndDescription />
         <div className={classes.goldComp}>
           gold : {gold}
