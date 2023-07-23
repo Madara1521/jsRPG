@@ -5,7 +5,7 @@ import AttackRaitingAndDefenseComp from "./AttackRaitingAndDefenseComp"
 import HealthAndStaminaComp from "./HealthAndStaminaComp"
 import ManaComp from "./ManaComp"
 import { makeStyles } from "@mui/styles"
-import divImg from '../../img/oldPaper.png'
+import divImg from '../../img/divBackground.png'
 
 const useStyles = makeStyles((theme) => ({
   placing: {
@@ -17,9 +17,10 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
     }
   },
-  characteristicsBorder: {
+  characteristics: {
     display: 'flex',
     flex: 1,
+    backdropFilter: 'blur(3px)',
     flexDirection: 'column',
     border: 'black 1px solid',
     justifyContent: 'center',
@@ -62,7 +63,7 @@ const Characteristics = () => {
 
   return (
     <div className={classes.placing}>
-      <div className={classes.characteristicsBorder}>
+      <div className={classes.characteristics}>
         {characteristicsFields.map((field, index) => {
           return (
             <CharacteristicsComp
@@ -74,7 +75,7 @@ const Characteristics = () => {
           )
         })}
       </div>
-      <div className={classes.characteristicsBorder}>
+      <div className={classes.characteristics}>
         <DamageComp />
         {/* <div>Magic damage: 1000-3000</div> */}
         <AttackRaitingAndDefenseComp />

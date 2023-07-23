@@ -1,6 +1,6 @@
 import React from "react"
 import { makeStyles } from "@mui/styles"
-import divImg from '../img/oldPaper.png'
+import divImg from '../img/divBackground.png'
 
 const useStyles = makeStyles((theme) => ({
   placing: {
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     flexDirection: 'column',
     border: 'black 1px solid',
+    backdropFilter: 'blur(3px)',
     justifyContent: 'center',
     alignItems: 'center',
     '& div': {

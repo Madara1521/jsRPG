@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { rankUpdate } from "../../../Redux/actions"
 import { PropTypes } from 'prop-types'
 import { makeStyles } from "@mui/styles"
-import divImg from '../img/oldPaper.png'
+import divImg from '../img/divBackground.png'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     border: 'black 1px solid',
-
+    backdropFilter: 'blur(3px)',
     flex: 1,
   },
   level: {
@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    backdropFilter: 'blur(3px)',
     border: 'black 1px solid',
     '& div': {
       marginTop: '4px',
