@@ -1,8 +1,29 @@
 import React from "react"
-import { useStyles } from "../../Styles"
-import { Stack } from '@mui/material'
 import { connect } from "react-redux"
 import { setPushItem } from "../../../Redux/actions"
+import { makeStyles } from "@mui/styles"
+
+export const useStyles = makeStyles(() => ({
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: 'calc(100vh - 102px)',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      width: '0em',
+      height: '0em'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0,0,0,0)'
+    }
+  },
+  map: {
+    display: 'flex',
+    flex: 2,
+    flexDirection: 'column'
+  }
+}))
 
 const MapContent = (props) => {
   const classes = useStyles()
@@ -27,12 +48,11 @@ const MapContent = (props) => {
 
   return (
     <div className={classes.content} >
-      <Stack direction='column'>
-        <div className={classes.titleComp}>
-          <h1>Map</h1>
-        </div>
-        <button onClick={inventoryLootUpdate}>click</button>
-      </Stack>
+      <h1>Map</h1>
+      <button onClick={inventoryLootUpdate}>click</button>
+      <div className={classes.map}>
+
+      </div>
     </div>
   )
 }

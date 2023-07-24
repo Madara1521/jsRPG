@@ -4,6 +4,7 @@ import Cloth from "./Cloth/Cloth"
 import LootAndDescription from "./LootAndDescription/LootAndDescription"
 import { connect } from "react-redux"
 import { makeStyles } from "@mui/styles"
+import divImg from '../img/divBackground.png'
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -28,7 +29,16 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     border: 'black 1px solid',
     width: '610px',
-    height: '25px'
+    height: '25px',
+    backgroundImage: `url(${divImg})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+  },
+  gold: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    backdropFilter: 'blur(3px)',
   },
   invertory: {
     display: 'flex',
@@ -46,12 +56,12 @@ const InvertoryContent = (props) => {
       <div className={classes.invertory}>
         <h1>Invertory</h1>
         <Cloth />
-        <Talismans />
-        <h1>Talismans</h1>
         <LootAndDescription />
         <div className={classes.goldComp}>
-          gold : {gold}
+          <div className={classes.gold}>gold : {gold}</div>
         </div>
+        <h1>Talismans</h1>
+        <Talismans />
       </div>
     </div>
   )

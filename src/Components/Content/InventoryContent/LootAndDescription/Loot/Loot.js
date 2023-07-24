@@ -13,19 +13,23 @@ import { useState } from "react"
 import { makeStyles } from "@mui/styles"
 import classNames from "classnames"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   loot: {
     display: 'flex',
+    flex: '1',
     border: 'black 1px solid',
     flexDirection: 'column',
-
+    backdropFilter: 'blur(3px)',
+    [theme.breakpoints.down("sm")]: {
+      alignItems: 'center',
+    }
   },
-  twoTitle: {
+  iconsContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     width: '304px',
-    height: '37px'
+    height: '37px',
   },
   typesOfLoot: {
     display: 'flex',
@@ -34,7 +38,6 @@ const useStyles = makeStyles({
     border: '1px solid #ed0000',
     width: '49px',
     height: '35px',
-
   },
   activeHelmetItems: {
     background: 'rgba(240, 130, 5)',
@@ -62,9 +65,13 @@ const useStyles = makeStyles({
     '&::-webkit-scrollbar': {
       width: '0em',
       height: '0em'
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: '100%',
+      height: '240px'
     }
   },
-})
+}))
 
 
 const Loot = (props) => {
@@ -184,7 +191,7 @@ const Loot = (props) => {
 
   return (
     <div className={classes.loot}>
-      <div className={classes.twoTitle}>
+      <div className={classes.iconsContainer}>
         {iconsFields.map((field, index) => {
           const isActiveArray = field.id === activeArray
           return (

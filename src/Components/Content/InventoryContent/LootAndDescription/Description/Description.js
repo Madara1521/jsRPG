@@ -6,30 +6,35 @@ import classNames from "classnames"
 import { rarityColorHelper } from "../Loot/LootComp"
 import { renderImgHelper } from "../../../../../helpers/helperCloth"
 
-const useStyles = makeStyles({
+
+const useStyles = makeStyles((theme) => ({
+  description: {
+    display: 'flex',
+    flex: 1,
+    border: 'black 1px solid',
+    flexDirection: 'column',
+    backdropFilter: 'blur(3px)',
+    [theme.breakpoints.down("sm")]: {
+      alignItems: 'center',
+    }
+  },
   twoTitle: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    letterSpacing: '2px',
-    color: 'rgb(179, 30, 0)',
-    '-webkit-text-stroke': '0.5px black',
-    fontSize: '17px',
     width: '304px',
-    height: '37px'
+    height: '37px',
+    [theme.breakpoints.down("sm")]: {
+      width: '100%',
+    }
   },
   magicLetters: {
-    color: 'blue'
+    color: 'blue !important'
   },
   imgDescription: {
     display: 'flex',
     maxHeight: '180px',
     maxWidth: '180px'
-  },
-  description: {
-    display: 'flex',
-    border: 'black 1px solid',
-    flexDirection: 'column',
   },
   descriptionComp: {
     display: 'flex',
@@ -41,6 +46,9 @@ const useStyles = makeStyles({
     '&::-webkit-scrollbar': {
       width: '0em',
       height: '0em'
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: '240px'
     }
   },
   lootBonus: {
@@ -70,7 +78,7 @@ const useStyles = makeStyles({
   lootCellLegendary: {
     background: 'rgba(235, 106, 7, 0.7)',
   },
-})
+}))
 
 
 

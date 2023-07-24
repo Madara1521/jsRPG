@@ -1,21 +1,45 @@
 import React from "react"
-import { Stack } from '@mui/material'
-import { useStyles } from "../../../Styles"
 import { connect } from "react-redux"
+import { makeStyles } from "@mui/styles"
+
+const useStyles = makeStyles((theme) => ({
+  placing: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    height: '100px',
+    backdropFilter: 'blur(3px)',
+  },
+  nextLevel: {
+    display: 'flex',
+    flexDirection: 'column',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100px'
+  },
+  class: {
+    display: 'flex',
+    flexDirection: 'column',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+}))
 
 const RigthTable = ({ nextLevel }) => {
   const classes = useStyles()
 
   return (
-    <Stack direction='column' flex={1} className={classes.lvlHeight}>
-      <div className={classes.expLvlBor}>
+    <div className={classes.placing}>
+      <div className={classes.class}>
         Barbarian
       </div>
-      <Stack direction='column' flex={4} className={classes.expLvlBor}>
+      <div className={classes.nextLevel}>
         <div>Next Level</div>
         <div>{nextLevel}</div>
-      </Stack>
-    </Stack>
+      </div>
+    </div>
   )
 }
 

@@ -1,9 +1,53 @@
 import React, { useEffect } from "react"
-import { Stack } from '@mui/material'
-import { useStyles } from "../../../Styles"
 import { connect } from "react-redux"
 import { incrementExperience, incrementPoints, updateLevel } from "../../../../Redux/actions"
 import PropTypes from 'prop-types'
+import { makeStyles } from "@mui/styles"
+
+const useStyles = makeStyles((theme) => ({
+  placing: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    height: '100px',
+    backdropFilter: 'blur(3px)',
+    [theme.breakpoints.down("sm")]: {
+      minHeight: '200px',
+    },
+  },
+  placingLevelAndExperience: {
+    display: 'flex',
+    flex: 6,
+    flexDirection: 'row',
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: 'column',
+    },
+  },
+  levelContainer: {
+    display: 'flex',
+    flex: 2,
+    flexDirection: 'column',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  experienceContainer: {
+    display: 'flex',
+    flex: 4,
+    flexDirection: 'column',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  nickname: {
+    display: 'flex',
+    flexDirection: 'column',
+    border: 'black 1px solid',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+}))
+
 
 const LeftTable = (props) => {
   const classes = useStyles()
@@ -22,22 +66,22 @@ const LeftTable = (props) => {
   }, [experience, nextLevel, incrementPoints, updateLevel])
 
   return (
-    <Stack direction='column' flex={1} className={classes.lvlHeight}>
-      <div className={classes.expLvlBor}>
+    <div className={classes.placing}>
+      <div className={classes.nickname}>
         Nikname
       </div>
-      <Stack direction='row' flex={6}>
-        <Stack direction='column' flex={2} className={classes.expLvlBor}>
+      <div className={classes.placingLevelAndExperience}>
+        <div className={classes.levelContainer}>
           <div>Level</div>
           <div>{level}</div>
-        </Stack>
-        <Stack direction='column' flex={4} className={classes.expLvlBor}>
+        </div>
+        <div className={classes.experienceContainer}>
           <div>Experience</div>
           <div>{experience}</div>
           <button onClick={addExperience} />
-        </Stack>
-      </Stack>
-    </Stack>
+        </div>
+      </div>
+    </div>
   )
 }
 

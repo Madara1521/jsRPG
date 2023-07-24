@@ -1,6 +1,4 @@
 import React from "react"
-import { useStyles } from "../../../Styles"
-import { Stack } from '@mui/material'
 import Points from "./Points"
 import AttributeComp from "./AttributeComp"
 import {
@@ -11,9 +9,24 @@ import {
 } from "../../../../Redux/actions"
 import { connect } from "react-redux"
 import { PropTypes } from 'prop-types'
+import { makeStyles } from "@mui/styles"
+
+
+const useStyles = makeStyles((theme) => ({
+  placing: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 'black 1px solid',
+    height: '100vh',
+    backdropFilter: 'blur(3px)',
+  }
+}))
 
 const Attributes = (props) => {
   const classes = useStyles()
+
   const {
     setPhysicalDamage,
     startPhyBonus,
@@ -52,7 +65,7 @@ const Attributes = (props) => {
   ]
 
   return (
-    <Stack direction='column' spacing={10} className={classes.attribBorder}>
+    <div className={classes.placing}>
       <Points />
       {attributesFields.map((field, index) => {
         return (
@@ -65,7 +78,7 @@ const Attributes = (props) => {
           />
         )
       })}
-    </Stack>
+    </div>
   )
 }
 

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import { Stack } from '@mui/material'
 import { connect } from "react-redux"
 import { AttributeButton } from "../../../Header/StyledGlobal"
 import IconsAttribute from "./IconsAttribute"
@@ -14,9 +13,25 @@ import {
   setAttackRating,
   setDefense
 } from '../../../../Redux/actions'
-import { useStyles } from "../../../Styles"
 import { PropTypes } from 'prop-types'
+import { makeStyles } from "@mui/styles"
 
+const useStyles = makeStyles((theme) => ({
+  placing: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: '40px',
+    marginBottom: '40px',
+  },
+  attribCont: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'black 1px solid',
+    width: '100px',
+    height: '30px'
+  },
+}))
 
 const AttributeComp = (props) => {
   const classes = useStyles()
@@ -79,7 +94,7 @@ const AttributeComp = (props) => {
 
 
   return (
-    <Stack direction='row'>
+    <div className={classes.placing}>
       <div className={classes.attribCont}>
         {statName.charAt(0).toUpperCase() + statName.slice(1)}
       </div>
@@ -91,7 +106,7 @@ const AttributeComp = (props) => {
           <IconsAttribute />
         </AttributeButton>
       </div>
-    </Stack>
+    </div>
   )
 }
 
