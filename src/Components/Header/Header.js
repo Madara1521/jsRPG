@@ -19,9 +19,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   iconStyle: {
     display: 'flex',
-    width: '100px',
-    height: '100px',
-    border: 'black 1px solid',
+    width: '96px',
+    height: '96px',
+    border: '3px ridge #a3a3a3',
     justifyContent: 'center',
     backgroundImage:`url(${backgroundImage})`,
     backgroundSize: 'cover',

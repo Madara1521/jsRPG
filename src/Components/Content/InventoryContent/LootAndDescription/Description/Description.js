@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   description: {
     display: 'flex',
     flex: 1,
-    border: 'black 1px solid',
+    border: '3px ridge #a3a3a3',
     flexDirection: 'column',
     backdropFilter: 'blur(3px)',
     [theme.breakpoints.down("sm")]: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '304px',
+    width: '296px',
     height: '37px',
     [theme.breakpoints.down("sm")]: {
       width: '100%',
@@ -40,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    maxHeight: '243px',
+    marginTop: '2px',
+    maxHeight: '210px',
     overflowY: 'scroll',
     fontSize: '130%',
     '&::-webkit-scrollbar': {

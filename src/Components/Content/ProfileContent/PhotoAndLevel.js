@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   img: {
     display: 'flex',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: '3px ridge #a3a3a3',
     backdropFilter: 'blur(3px)',
     flex: 1,
   },
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backdropFilter: 'blur(3px)',
-    border: 'black 1px solid',
+    border: '3px ridge #a3a3a3',
     '& div': {
       marginTop: '4px',
       marginBottom: '4px',

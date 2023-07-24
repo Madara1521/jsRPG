@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    border: 'black 1px solid',
-    width: '610px',
+    border: '3px ridge #a3a3a3',
+    width: '606px',
     height: '25px',
     backgroundImage: `url(${divImg})`,
     backgroundSize: 'cover',
@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
   gold: {
     display: 'flex',
     justifyContent: 'center',
-    width: '100%',
     backdropFilter: 'blur(3px)',
   },
   invertory: {

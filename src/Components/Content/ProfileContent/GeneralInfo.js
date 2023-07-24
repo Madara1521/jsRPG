@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    border: 'black 1px solid',
+    border: '3px ridge #a3a3a3',
     backdropFilter: 'blur(3px)',
     justifyContent: 'center',
     alignItems: 'center',

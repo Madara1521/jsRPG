@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 2px solid',
+    border: '3px ridge #a3a3a3',
     height: '150px',
     width: '80px'
   },
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 2px solid',
+    border: '3px ridge #a3a3a3',
     height: '120px',
     width: '80px'
   },

@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     width: '30px',
     height: '30px',
     justifyContent: 'center',
-    border: 'black 1px solid'
+    border: '3px ridge #a3a3a3',
   },
 }))
 

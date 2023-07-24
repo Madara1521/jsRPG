@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: '3px ridge #a3a3a3',
   },
   partnerClothes: {
     display: 'flex',
@@ -24,9 +24,9 @@ const useStyles = makeStyles({
     backdropFilter: 'blur(3px)',
     flexDirection: 'column',
     justifyContent: 'center',
-    border: 'black 1px solid',
+    border: '3px ridge #a3a3a3',
     padding: '3px',
-    height: '370px'
+    height: '380px'
   }
 })
 

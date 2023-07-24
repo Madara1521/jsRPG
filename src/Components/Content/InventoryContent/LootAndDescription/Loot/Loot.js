@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   loot: {
     display: 'flex',
     flex: '1',
-    border: 'black 1px solid',
+    border: '3px ridge #a3a3a3',
     flexDirection: 'column',
     backdropFilter: 'blur(3px)',
     [theme.breakpoints.down("sm")]: {
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   lootComp: {
     display: 'flex',
     flexDirection: 'column',
-    maxHeight: '243px',
+    maxHeight: '210px',
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
       width: '0em',

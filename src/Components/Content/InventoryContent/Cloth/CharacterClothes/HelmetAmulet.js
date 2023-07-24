@@ -24,7 +24,8 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 2px solid',
+    border: '3px ridge #a3a3a3',
+    borderRadius: '15%',
     height: '35px',
     width: '35px'
   },
@@ -32,13 +33,13 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '2px'
+    padding: '3px'
   },
   helmet: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'black 2px solid',
+    border: '3px ridge #a3a3a3',
     height: '70px',
     width: '70px'
   },

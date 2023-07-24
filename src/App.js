@@ -7,7 +7,7 @@ import AttributeContent from "./Components/Content/AttributesContent/AttributesC
 import SkillsContent from "./Components/Content/SkillsContent/SkillsContent"
 import MapContent from "./Components/Content/MapContent/MapContent"
 import TradeContent from "./Components/Content/TradeContent/TradeContent"
-import { Paper,AppBar } from '@mui/material'
+import { Paper, AppBar } from '@mui/material'
 import { makeStyles } from "@mui/styles"
 import penta from './Components/Header/penta.png'
 import mainImg from './Components/Content/img/mainBackground.png'
@@ -23,13 +23,13 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      border: 'black 1px solid',
       background: 'linear-gradient(0deg, rgba(52,52,52,1) 0%, rgba(77,77,77,1) 30%, rgba(77,77,77,1) 55%, rgba(54,54,54,1) 98%)',
       letterSpacing: '2px',
       color: 'rgb(214, 0, 0)',
       '-webkit-text-stroke': '0.5px black',
+      border: '3px ridge #a3a3a3',
       fontSize: '160%',
-      width: '610px',
+      width: '606px',
       height: '37px'
     },
   },
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     marginTop: '102px',
     [theme.breakpoints.down("sm")]: {
-      marginTop: '62px',
+      marginTop: '72px',
     }
   }
 }))
