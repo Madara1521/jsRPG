@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     border: '3px ridge #a3a3a3',
     width: '100px',
-    height: '30px'
+    height: '30px',
   },
 }))
 

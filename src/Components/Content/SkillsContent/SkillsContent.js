@@ -1,12 +1,15 @@
 import React from "react"
 import { makeStyles } from "@mui/styles"
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   content: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     height: 'calc(100vh - 102px)',
+    [theme.breakpoints.down("sm")]: {
+      height: 'calc(100vh - 125px)'
+    },
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
       width: '0em',
@@ -19,7 +22,7 @@ export const useStyles = makeStyles(() => ({
   skills: {
     display: 'flex',
     flex: 2,
-    flexDirection: 'column'
+    flexDirection: 'column',
   }
 }))
 
@@ -28,9 +31,9 @@ const SkillsContent = () => {
 
   return (
     <div className={classes.content} >
-      <h1>Skills</h1>
       <div className={classes.skills}>
-
+        <h1>Skills</h1>
+        <div></div>
       </div>
     </div>
   )

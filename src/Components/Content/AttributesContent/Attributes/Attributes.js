@@ -10,17 +10,24 @@ import {
 import { connect } from "react-redux"
 import { PropTypes } from 'prop-types'
 import { makeStyles } from "@mui/styles"
-
+import divImg from '../../img/divBackground.png'
 
 const useStyles = makeStyles((theme) => ({
   placing: {
+    border: '3px ridge #a3a3a3',
+    height: '100vh',
+    backgroundImage: `url(${divImg})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+  },
+  attributes: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    border: '3px ridge #a3a3a3',
-    height: '100vh',
-    backdropFilter: 'blur(3px)',
+    height: '100%',
+    width: '100%',
+    backdropFilter: 'blur(5px)',
   }
 }))
 
@@ -66,18 +73,20 @@ const Attributes = (props) => {
 
   return (
     <div className={classes.placing}>
-      <Points />
-      {attributesFields.map((field, index) => {
-        return (
-          <AttributeComp
-            statName={field.statName}
-            totalStatName={field.totalStatName}
-            allStatBonus={field.allStatBonus}
-            action={field.action}
-            key={index}
-          />
-        )
-      })}
+      <div className={classes.attributes}>
+        <Points />
+        {attributesFields.map((field, index) => {
+          return (
+            <AttributeComp
+              statName={field.statName}
+              totalStatName={field.totalStatName}
+              allStatBonus={field.allStatBonus}
+              action={field.action}
+              key={index}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

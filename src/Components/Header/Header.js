@@ -13,9 +13,9 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-  },
-  header: {
-    display: 'flex',
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: 'column'
+    }
   },
   iconStyle: {
     display: 'flex',
@@ -23,20 +23,24 @@ export const useStyles = makeStyles((theme) => ({
     height: '96px',
     border: '3px ridge #a3a3a3',
     justifyContent: 'center',
-    backgroundImage:`url(${backgroundImage})`,
+    backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     '&:hover': {
       background: 'linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,20,20,0.9136029411764706) 38%, rgba(205,0,0,0.7847514005602241) 71%)',
       cursor: 'pointer'
     },
-    [theme.breakpoints.down("sm")]: { 
-      width: '65px',
-      height: '65px',
+    [theme.breakpoints.down("sm")]: {
+      width: '56px',
+      height: '56px',
     }
   },
   cellActive: {
     background: 'blue'
+  },
+  headerContainer: {
+    display: 'flex',
+    flexDirection: 'row',
   }
 }))
 
@@ -45,10 +49,12 @@ const Header = () => {
 
   return (
     <div className={classes.headerPlacing}>
-      <div className={classes.header}>
+      <div className={classes.headerContainer}>
         <Profile />
         <InventoryComponent />
         <AttributeComponent />
+      </div>
+      <div className={classes.headerContainer}>
         <SkillComponent />
         <MapComponent />
         <TradeComponent />

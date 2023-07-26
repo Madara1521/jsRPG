@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     height: 'calc(100vh - 102px)',
     [theme.breakpoints.down("sm")]: {
-      height: 'calc(100vh - 62px)'
+      height: 'calc(100vh - 125px)'
     },
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {

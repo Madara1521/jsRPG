@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       border: '3px ridge #a3a3a3',
       fontSize: '160%',
       width: '606px',
-      height: '37px'
+      height: '37px',
     },
   },
   appBar: {
@@ -47,11 +47,13 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       display: 'flex',
-      maxWidth: '85px',
-      maxHeight: '70px',
+      maxWidth: '80px',
+      maxHeight: '60px',
     },
     [theme.breakpoints.down("xs")]: {
-      display: 'none',
+      display: 'flex',
+      maxWidth: '80px',
+      maxHeight: '60px',
     }
   },
   main: {
@@ -62,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     marginTop: '102px',
     [theme.breakpoints.down("sm")]: {
-      marginTop: '72px',
+      marginTop: '125px',
     }
   }
 }))
