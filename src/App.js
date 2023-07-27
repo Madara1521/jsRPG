@@ -47,14 +47,24 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       display: 'flex',
-      maxWidth: '80px',
-      maxHeight: '60px',
+      maxWidth: '140px',
+      maxHeight: '100px',
     },
     [theme.breakpoints.down("xs")]: {
       display: 'flex',
-      maxWidth: '80px',
-      maxHeight: '60px',
+      maxWidth: '100px',
+      maxHeight: '80px',
+    },
+    [theme.breakpoints.down("vs")]: {
+      display: 'flex',
+      maxWidth: '70px',
+      maxHeight: '50px',
     }
+  },
+  pentagramContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   main: {
     justifyContent: 'center',
@@ -64,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     marginTop: '102px',
     [theme.breakpoints.down("sm")]: {
-      marginTop: '125px',
+      marginTop: '124px',
     }
   }
 }))
@@ -76,9 +86,13 @@ const App = () => {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} sx={{ flexDirection: 'row' }}>
-        <img className={classes.penta} src={penta} alt='pentagram' />
+        <div className={classes.pentagramContainer}>
+          <img className={classes.penta} src={penta} alt='pentagram' />
+        </div>
         <Header />
-        <img className={classes.penta} src={penta} alt='penta' />
+        <div className={classes.pentagramContainer}>
+          <img className={classes.penta} src={penta} alt='pentagram' />
+        </div>
       </AppBar>
       <main>
         <Paper className={classes.main}>

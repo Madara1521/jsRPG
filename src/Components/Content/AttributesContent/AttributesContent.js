@@ -2,15 +2,16 @@ import React from "react"
 import Attributes from "./Attributes/Attributes"
 import AttributeLevelInfo from "./AttributeLvlInfo/AttributeLevelInfo"
 import { makeStyles } from "@mui/styles"
-import divImg from '../img/divBackground.png'
+
 
 const useStyles = makeStyles((theme) => ({
   content: {
     display: 'flex',
+    flex: 2,
     justifyContent: 'center',
     height: 'calc(100vh - 102px)',
     [theme.breakpoints.down("sm")]: {
-      height: 'calc(100vh - 125px)'
+      height: 'calc(100vh - 124px)'
     },
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
@@ -24,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
   placing: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundImage: `url(${divImg})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
   }
 }))
 

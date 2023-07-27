@@ -39,9 +39,6 @@ const CharacterClothes = () => {
 
   return (
     <div className={classes.characterCloth}>
-      <div className={classes.invertoryClothTitle}>
-        Rubaka115
-      </div>
       <div className={classes.characterClothes}>
         <HelmetAmulet />
         <WeaponArmorShield />

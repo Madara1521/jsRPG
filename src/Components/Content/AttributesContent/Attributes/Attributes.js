@@ -14,20 +14,22 @@ import divImg from '../../img/divBackground.png'
 
 const useStyles = makeStyles((theme) => ({
   placing: {
+    display: 'flex',
     border: '3px ridge #a3a3a3',
     height: '100vh',
     backgroundImage: `url(${divImg})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
+    minHeight: '536px'
   },
   attributes: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
     width: '100%',
     backdropFilter: 'blur(5px)',
+    minHeight: '536px'
   }
 }))
 

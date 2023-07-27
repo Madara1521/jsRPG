@@ -36,9 +36,6 @@ const PartnerClothes = () => {
 
   return (
     <div className={classes.clothPartner}>
-      <div className={classes.invertoryClothTitle} >
-        <div>Partner</div>
-      </div>
       <div className={classes.partnerClothes}>
         <HemletPartner />
         <WeaponArmorShieldPartner />

@@ -34,28 +34,28 @@ const useStyles = makeStyles((theme) => ({
   typesOfLoot: {
     display: 'flex',
     justifyContent: 'center',
-    background: 'rgba(148, 146, 145)',
-    border: '1px solid #ed0000',
+    background: 'linear-gradient(180deg, rgba(55,55,55,0.41220238095238093) 0%, rgba(63,63,63,0.8575805322128851) 45%, rgba(70,70,70,1) 100%)',
+    border: '1px ridge rgba(41, 40, 40)',
     width: '49px',
     height: '35px',
   },
   activeHelmetItems: {
-    background: 'rgba(240, 130, 5)',
+    background: 'linear-gradient(90deg, rgba(189,66,0,0.41220238095238093) 0%, rgba(220,85,0,0.7147233893557423) 26%, rgba(239,97,0,0.8463760504201681) 56%, rgba(255,106,0,1) 90%)',
   },
   activeArmorItems: {
-    background: 'rgba(93, 81, 181)',
+    background: 'linear-gradient(90deg, rgba(93,81,181,0.4822303921568627) 0%, rgba(112,99,210,0.6474964985994398) 45%, rgba(117,102,231,1) 86%)',
   },
   activeWeaponItems: {
-    background: 'rgba(148, 50, 4)',
+    background: 'linear-gradient(90deg, rgba(255,0,0,0.0984768907563025) 0%, rgba(210,0,0,0.6474964985994398) 45%, rgba(209,0,0,1) 86%)',
   },
   activeShieldItems: {
-    background: 'rgba(154, 4, 204)',
+    background: 'linear-gradient(90deg, rgba(255,255,255,0.3225665266106442) 0%, rgba(255,255,255,0.6474964985994398) 45%, rgba(255,255,255,1) 86%)',
   },
   activeRingItems: {
-    background: 'rgba(250, 225, 0)',
+    background: 'linear-gradient(90deg, rgba(255,231,0,0.3225665266106442) 0%, rgba(251,227,0,0.6474964985994398) 45%, rgba(250,235,0,1) 86%)',
   },
   activeOtherItems: {
-    background: 'rgba(21, 250, 0)',
+    background: 'linear-gradient(90deg, rgba(129,255,0,0.36458333333333337) 0%, rgba(89,251,0,0.6474964985994398) 45%, rgba(0,168,3,1) 86%)',
   },
   lootComp: {
     display: 'flex',
