@@ -65,19 +65,32 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '25px',
   },
   lootCellStandart: {
-    background: 'rgba(182, 200, 209, 0.7)',
-  },
-  lootCellActive: {
-    background: 'rgba(65, 35, 92, 0.7) !important',
+    display: 'flex',
+    background: 'linear-gradient(90deg, rgba(43,43,43,0.6811099439775911) 0%, rgba(74,74,74,1) 48%, rgba(48,48,48,0.6811099439775911) 100%)',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   lootCellMagic: {
-    background: 'rgba(10, 32, 199, 0.7)',
+    display: 'flex',
+    background: 'linear-gradient(90deg, rgba(0,91,255,0.27) 0%, rgba(0,91,255,0.6558998599439776) 50%, rgba(0,91,255,0.3) 100%)',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   lootCellKit: {
-    background: 'rgba(17, 184, 61, 0.7)',
+    display: 'flex',
+    background: 'linear-gradient(90deg, rgba(0,165,40,0.53) 0%, rgba(0,165,40,1) 50%, rgba(0,165,40,0.53) 100%)',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   lootCellLegendary: {
-    background: 'rgba(235, 106, 7, 0.7)',
+    display: 'flex',
+    background: 'linear-gradient(90deg, rgba(255,115,0,0.5326505602240896) 0%, rgba(255,115,0,1) 50%, rgba(255,115,0,0.6166841736694677) 100%)',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }))
 

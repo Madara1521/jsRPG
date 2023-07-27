@@ -15,19 +15,21 @@ const useStyles = makeStyles({
     minHeight: '25px',
   },
   lootCellStandart: {
-    background: 'rgba(182, 200, 209, 0.7)',
+    background: 'linear-gradient(90deg, rgba(43,43,43,0.6811099439775911) 0%, rgba(74,74,74,1) 48%, rgba(48,48,48,0.6811099439775911) 100%)',
   },
   lootCellActive: {
-    background: 'rgba(65, 35, 92, 0.7) !important',
+    background: 'linear-gradient(90deg, rgba(255,180,0,0.4514180672268907) 0%, rgba(255,180,0,1) 50%, rgba(255,180,0,0.45) 100%) !important',
+    border: 'none',
+    color: 'rgba(214, 0, 0) !important'
   },
   lootCellMagic: {
-    background: 'rgba(10, 32, 199, 0.7)',
+    background: 'linear-gradient(90deg, rgba(0,91,255,0.27) 0%, rgba(0,91,255,0.6558998599439776) 50%, rgba(0,91,255,0.3) 100%)',
   },
   lootCellKit: {
-    background: 'rgba(17, 184, 61, 0.7)',
+    background: 'linear-gradient(90deg, rgba(0,165,40,0.53) 0%, rgba(0,165,40,1) 50%, rgba(0,165,40,0.53) 100%)',
   },
   lootCellLegendary: {
-    background: 'rgba(235, 106, 7, 0.7)',
+    background: 'linear-gradient(90deg, rgba(255,115,0,0.5326505602240896) 0%, rgba(255,115,0,1) 50%, rgba(255,115,0,0.6166841736694677) 100%)',
   },
 })
 
