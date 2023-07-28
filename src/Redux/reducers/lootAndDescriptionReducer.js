@@ -22,7 +22,7 @@ const initialState = {
   gold: 4514,
   idArray: '',
 
-  description: { color: '' },
+  description: { },
   requirements: { },
   isActiveItem: false,
   activeHelmet: false,

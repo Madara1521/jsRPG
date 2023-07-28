@@ -49,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
       height: '0em'
     },
     [theme.breakpoints.down("sm")]: {
-      height: '240px'
+      height: '240px',
+      width: '100%'
     }
   },
   lootBonus: {
@@ -63,47 +64,29 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '25px',
+    width: '100%',
   },
   lootCellStandart: {
-    display: 'flex',
     background: 'linear-gradient(90deg, rgba(43,43,43,0.6811099439775911) 0%, rgba(74,74,74,1) 48%, rgba(48,48,48,0.6811099439775911) 100%)',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   lootCellMagic: {
-    display: 'flex',
     background: 'linear-gradient(90deg, rgba(0,91,255,0.27) 0%, rgba(0,91,255,0.6558998599439776) 50%, rgba(0,91,255,0.3) 100%)',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   lootCellKit: {
-    display: 'flex',
     background: 'linear-gradient(90deg, rgba(0,165,40,0.53) 0%, rgba(0,165,40,1) 50%, rgba(0,165,40,0.53) 100%)',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   lootCellLegendary: {
-    display: 'flex',
     background: 'linear-gradient(90deg, rgba(255,115,0,0.5326505602240896) 0%, rgba(255,115,0,1) 50%, rgba(255,115,0,0.6166841736694677) 100%)',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  }
 }))
-
-
 
 const Description = (props) => {
   const classes = useStyles()
   const {
     description,
-    requirements
+    requirements,
+    id
   } = props
-
-
   const lootCellColor = rarityColorHelper(classes, description.rarity)
 
   const renderStat = (name, value) => {
@@ -122,15 +105,15 @@ const Description = (props) => {
     return start ? <div>{name}: {start}-{final}</div> : null
   }
 
-
-
   return (
     <div className={classes.description}>
       <div className={classes.twoTitle}>
         <h1>Item description</h1>
       </div>
       <div className={classes.descriptionComp}>
-        <div className={classNames(classes.lootCell && lootCellColor)}>{description.lootName}</div>
+        <div className={classNames(id && classes.lootCell, lootCellColor)}>
+          {description.lootName}
+        </div>
         {renderImgHelper(description.img, classes.imgDescription)}
         <div className={classes.lootBonus}>
           {renderDamage('Physical damage', description.startPhysicalDamage, description.finalPhysicalDamage)}
@@ -159,7 +142,8 @@ Description.propTypes = {
 export default connect(
   (store) => ({
     description: store.lootAndDescriptionReducer.description,
-    requirements: store.lootAndDescriptionReducer.requirements
+    requirements: store.lootAndDescriptionReducer.requirements,
+    id: store.lootAndDescriptionReducer.description.id
   }),
   {}
 )(Description)
