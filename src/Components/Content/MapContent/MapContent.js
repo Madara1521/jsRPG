@@ -1,7 +1,7 @@
 import React from "react"
-import { connect } from "react-redux"
-import { setPushItem } from "../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
+import Location from "./Locations/Location"
+import { connect } from "react-redux"
 
 export const useStyles = makeStyles(() => ({
   content: {
@@ -21,37 +21,30 @@ export const useStyles = makeStyles(() => ({
   map: {
     display: 'flex',
     flex: 2,
-    flexDirection: 'column'
+    flexDirection: 'column',
   }
 }))
 
 const MapContent = (props) => {
+  const { locations } = props
   const classes = useStyles()
-  const {
-    helmetGlovesBootsBelt,
-    setPushItem,
-    armors,
-    weapons,
-    shields,
-    ringsAmulets,
-    others } = props
-
-  const inventoryLootUpdate = () => {
-    setPushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
-    setPushItem('armor', armors)
-    setPushItem('weapon', weapons)
-    setPushItem('shield', shields)
-    setPushItem('ringsAmulet', ringsAmulets)
-    setPushItem('other', others)
-
-  }
 
   return (
     <div className={classes.content} >
       <h1>Map</h1>
-      <button onClick={inventoryLootUpdate}>click</button>
       <div className={classes.map}>
-
+        {locations.map((field, index) => {
+          return (
+            <Location
+              name={field.name}
+              zoneLevel={field.zoneLevel}
+              numberOfMonsters={field.numberOfMonsters}
+              locationClearTime={field.locationClearTime}
+              monsters={field.monsters}
+              key={index}
+            />
+          )
+        })}
       </div>
     </div>
   )
@@ -59,12 +52,6 @@ const MapContent = (props) => {
 
 export default connect(store => {
   return {
-    gold: store.lootAndDescriptionReducer.gold,
-    helmetGlovesBootsBelt: store.lootOptionsReducer.helmetGlovesBootsBelt,
-    armors: store.lootOptionsReducer.armor,
-    weapons: store.lootOptionsReducer.weapon,
-    shields: store.lootOptionsReducer.shield,
-    ringsAmulets: store.lootOptionsReducer.ringsAmulet,
-    others: store.lootOptionsReducer.other,
+    locations: store.locationsReducer.locations,
   }
-}, { setPushItem })(MapContent)
+}, { })(MapContent)
