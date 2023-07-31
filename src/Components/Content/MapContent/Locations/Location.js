@@ -1,7 +1,8 @@
 import React from "react"
 import { connect } from "react-redux"
-import { setPushItem } from "../../../../Redux/actions"
+import { setPushItem, setTimer } from "../../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
+import classNames from 'classnames'
 
 export const useStyles = makeStyles(() => ({
   locationComponent: {
@@ -74,6 +75,9 @@ export const useStyles = makeStyles(() => ({
     flexDirection: 'row',
     border: '1px ridge #a3a3a3',
   },
+  nullContainer:{
+    display: 'none',
+  }
 }))
 
 const Location = (props) => {
@@ -89,19 +93,29 @@ const Location = (props) => {
     name,
     zoneLevel,
     numberOfMonsters,
-    locationClearTime } = props
+    locationClearTime,
+    timer,
+    setTimer } = props
+
+  const pushItems = () => {
+    setPushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
+    setPushItem('armor', armors)
+    setPushItem('weapon', weapons)
+    setPushItem('shield', shields)
+    setPushItem('ringsAmulet', ringsAmulets)
+    setPushItem('other', others)
+  }
 
   const inventoryLootUpdate = () => {
-    setTimeout(
-      function () {
-        setPushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
-        setPushItem('armor', armors)
-        setPushItem('weapon', weapons)
-        setPushItem('shield', shields)
-        setPushItem('ringsAmulet', ringsAmulets)
-        setPushItem('other', others)
-      }, locationClearTime
-    )
+    let i = (locationClearTime / 1000)
+    const time = setInterval(function () {
+      i--
+      setTimer(i)
+      if (i === -1) {
+        clearInterval(time)
+        setTimer(i,pushItems())
+      }
+    }, 1000)
   }
 
   return (
@@ -110,11 +124,14 @@ const Location = (props) => {
         <div>Location: {name}</div>
         <div>Zone level: {zoneLevel}</div>
         <div>Number of monsters: {numberOfMonsters}</div>
-        <div>Location clear time: {locationClearTime}</div>
+        <div>Location clear time: {locationClearTime / 1000}</div>
       </div>
       <div className={classes.actionWindow}>
         <div className={classes.buttonContainer}>
-          <div className={classes.startButton} onClick={inventoryLootUpdate(locationClearTime)}>start</div>
+          <div className={classes.startButton} onClick={inventoryLootUpdate}>
+            <div className={classNames((timer > -1 ) && classes.nullContainer)}>start</div>
+            <div className={classNames((timer === -1 ) && classes.nullContainer)}>{timer}s</div>
+          </div>
           <div className={classes.stopButton}>stop</div>
         </div>
         <div className={classes.healthManaContainer}>
@@ -141,5 +158,6 @@ export default connect(store => {
     shields: store.lootOptionsReducer.shield,
     ringsAmulets: store.lootOptionsReducer.ringsAmulet,
     others: store.lootOptionsReducer.other,
+    timer: store.locationsReducer.timer,
   }
-}, { setPushItem })(Location)
+}, { setPushItem, setTimer })(Location)

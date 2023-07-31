@@ -23,7 +23,8 @@ import {
   SET_ALL_DEFENSE,
   SET_ALL_ATTACK_RATING,
   SET_ALL_PHY_BONUS,
-  SET_ALL_BONUS_STAT
+  SET_ALL_BONUS_STAT,
+  SET_TIMER
 } from "./types"
 
 export function incrementStat(statName) {
@@ -209,6 +210,14 @@ export function setAllPhyBonus() {
 export function setAllBonusStat() {
   return {
     type: SET_ALL_BONUS_STAT,
+  }
+}
+
+export function setTimer(timer, pushItems) {
+  return {
+    type: SET_TIMER,
+    timer,
+    pushItems
   }
 }
 

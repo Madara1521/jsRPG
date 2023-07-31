@@ -41,7 +41,7 @@ const MapContent = (props) => {
               numberOfMonsters={field.numberOfMonsters}
               locationClearTime={field.locationClearTime}
               monsters={field.monsters}
-              key={index}
+              key={field.id}
             />
           )
         })}
