@@ -24,7 +24,9 @@ import {
   SET_ALL_ATTACK_RATING,
   SET_ALL_PHY_BONUS,
   SET_ALL_BONUS_STAT,
-  SET_TIMER
+  SET_TIMER,
+  SET_ID_LOCATION,
+  SET_GENERATION_RINGS_AMULETS
 } from "./types"
 
 export function incrementStat(statName) {
@@ -218,6 +220,18 @@ export function setTimer(timer, pushItems) {
     type: SET_TIMER,
     timer,
     pushItems
+  }
+}
+
+export function setIdLocation(activeId) {
+  return {
+    type: SET_ID_LOCATION,
+    activeId
+  }
+}
+export function setGenerationRingsAmulets() {
+  return {
+    type: SET_GENERATION_RINGS_AMULETS,
   }
 }
 

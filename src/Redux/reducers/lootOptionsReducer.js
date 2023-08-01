@@ -42,9 +42,9 @@ import smallShield from './shieldImg/smallShield.png'
 import spikedShield from './shieldImg/spikedShield.png'
 import towerShield from './shieldImg/towerShield.png'
 
-import amu1 from './amuletRingsImg/amulets/amu1.png'
-import amu2 from './amuletRingsImg/amulets/amu2.png'
-import amu3 from './amuletRingsImg/amulets/amu3.png'
+import amu0 from './amuletRingsImg/amulets/amu1.png'
+import amu1 from './amuletRingsImg/amulets/amu2.png'
+import amu2 from './amuletRingsImg/amulets/amu3.png'
 
 import ring1 from './amuletRingsImg/rings/ring1.png'
 import ring2 from './amuletRingsImg/rings/ring2.png'
@@ -53,6 +53,8 @@ import ring4 from './amuletRingsImg/rings/ring4.png'
 import ring5 from './amuletRingsImg/rings/ring5.png'
 
 import uniqid from 'uniqid'
+import update from 'immutability-helper'
+import { SET_GENERATION_RINGS_AMULETS } from '../types'
 
 //rarity 0 = 'lootCellStandart'
 //rarity 1 = 'lootCellMagic'
@@ -110,7 +112,7 @@ const initialState = {
         strength: 2,
         dexterity: null,
         vitality: 5,
-        energy: null, 
+        energy: null,
       }
     },
     {
@@ -150,7 +152,7 @@ const initialState = {
         strength: null,
         dexterity: null,
         vitality: null,
-        energy: null, 
+        energy: null,
         attackRatingBonus: 23
       }
     },
@@ -216,7 +218,7 @@ const initialState = {
         strength: 100,
         dexterity: null,
         vitality: 100,
-        energy: null, 
+        energy: null,
         attackRatingBonus: 550
       }
     }
@@ -242,7 +244,7 @@ const initialState = {
         strength: null,
         dexterity: 10,
         vitality: 25,
-        energy: null, 
+        energy: null,
         attackRatingBonus: 20,
         oneHanded: false,
         twoHanded: true,
@@ -268,7 +270,7 @@ const initialState = {
         strength: 25,
         dexterity: null,
         vitality: 45,
-        energy: 11, 
+        energy: 11,
         attackRatingBonus: 120,
         oneHanded: true,
         twoHanded: false,
@@ -294,7 +296,7 @@ const initialState = {
         strength: null,
         dexterity: 40,
         vitality: 35,
-        energy: null, 
+        energy: null,
         attackRatingBonus: 260,
         oneHanded: true,
         twoHanded: false,
@@ -323,7 +325,7 @@ const initialState = {
         strength: 5,
         dexterity: null,
         vitality: null,
-        energy: null, 
+        energy: null,
         attackRatingBonus: null,
         oneHanded: true,
         twoHanded: false,
@@ -351,7 +353,7 @@ const initialState = {
         strength: 25,
         dexterity: null,
         vitality: 35,
-        energy: 35, 
+        energy: 35,
         attackRatingBonus: 260,
         oneHanded: true,
         twoHanded: false,
@@ -359,79 +361,9 @@ const initialState = {
     }
   ], //shield
   ringsAmulet: [
-    {
-      requirements: {
-        requiredLevel: null,
-        typeAmulet: 'amu1',
-      },
-      info: {
-        id: uniqid(),
-        rarity: 1,
-        classItem: 'amulet',
-        lootName: 'Recruit amulet',
-        img: amu1,
-        strength: 2,
-        dexterity: null,
-        vitality: 5,
-        energy: null,
-        attackRatingBonus: 23, 
-      }
-    },
-    {
-      requirements: {
-        requiredLevel: 42,
-        typeAmulet: 'amu2',
-      },
-      info: {
-        id: uniqid(),
-        rarity: 3,
-        classItem: 'amulet',
-        lootName: 'God amulet',
-        img: amu2,
-        strength: 50,
-        dexterity: 70,
-        vitality: 30,
-        energy: 40,
-        attackRatingBonus: null, 
-      }
-    },
-    {
-      requirements: {
-        requiredLevel: null,
-        typeRing: 'ring1',
-      },
-      info: {
-        id: uniqid(),
-        rarity: 3,
-        classItem: 'ring',
-        lootName: 'Ring of deficite',
-        img: ring1,
-        strength: 50,
-        dexterity: 30,
-        vitality: 25,
-        energy: 20,
-        attackRatingBonus: 100, 
-      }
-    },
-    {
-      requirements: {
-        requiredLevel: null,
-        typeRing: 'ring2',
-      },
-      info: {
-        id: uniqid(),
-        rarity: 2,
-        classItem: 'ring',
-        lootName: 'Ring of deficite',
-        img: ring2,
-        strength: 10,
-        dexterity: null,
-        vitality: 10,
-        energy: 5,
-        attackRatingBonus: 100, 
-      }
-    },
+
   ],//rings,amulet
+
   other: [
     // {
     //   info: {
@@ -443,13 +375,35 @@ const initialState = {
   ],// other
 }
 
+const generationRandomInteger = (max) =>{
+  return Math.floor(Math.random() * max)
+}
+
 export const lootOptionsReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case SET_VIEW_ITEM:
-    //   return {
-    //     ...state,
-    //     selectedLoot: action.selectedLoot
-    //   }
+    case SET_GENERATION_RINGS_AMULETS:
+      const generationAmulet = () => {
+        return {
+          requirements: {
+            requiredLevel: null,
+          },
+          info: {
+            id: uniqid(),
+            rarity: generationRandomInteger(5),
+            classItem: 'amulet',
+            lootName: 'Recruit amulet',
+            img: amu0,
+            strength: generationRandomInteger(10),
+            dexterity: generationRandomInteger(10),
+            vitality: generationRandomInteger(10),
+            energy: generationRandomInteger(10),
+            attackRatingBonus: generationRandomInteger(30),
+          }
+        }
+      }
+      return update(state, {
+        ringsAmulet: { $set: [generationAmulet()] },
+      })
     default:
       return state
   }

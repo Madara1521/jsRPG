@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { setPushItem, setTimer } from "../../../../Redux/actions"
+import { setPushItem, setTimer, setIdLocation, setGenerationRingsAmulets } from "../../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
 import classNames from 'classnames'
 
@@ -9,7 +9,12 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     flex: 2,
     flexDirection: 'row',
-    maxHeight: '150px'
+    maxHeight: '150px',
+    opacity: '0.8'
+  },
+  activeLocationComponent: {
+    background: 'linear-gradient(90deg, rgba(99,0,165,0.53) 0%, rgba(165,0,39,0.8407738095238095) 50%, rgba(156,165,0,0.53) 100%)',
+    opacity: '1'
   },
   locationInfo: {
     display: 'flex',
@@ -75,7 +80,7 @@ export const useStyles = makeStyles(() => ({
     flexDirection: 'row',
     border: '1px ridge #a3a3a3',
   },
-  nullContainer:{
+  nullContainer: {
     display: 'none',
   }
 }))
@@ -95,7 +100,13 @@ const Location = (props) => {
     numberOfMonsters,
     locationClearTime,
     timer,
-    setTimer } = props
+    setTimer,
+    setActiveLocation,
+    isActiveLocation,
+    id,
+    setIdLocation,
+    activeId,
+    setGenerationRingsAmulets } = props
 
   const pushItems = () => {
     setPushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
@@ -106,39 +117,55 @@ const Location = (props) => {
     setPushItem('other', others)
   }
 
-  const inventoryLootUpdate = () => {
+  const handleClickStart = () => {
     let i = (locationClearTime / 1000)
     const time = setInterval(function () {
       i--
       setTimer(i)
       if (i === -1) {
         clearInterval(time)
-        setTimer(i,pushItems())
+        setTimer(i, pushItems())
       }
     }, 1000)
   }
+  const handleClickLocation = () => {
+    if (timer > -1) {
+      return setActiveLocation(activeId)
+    }
+    setGenerationRingsAmulets()
+    console.log(ringsAmulets)
+    setIdLocation(id)
+    return setActiveLocation(id)
+  }
 
   return (
-    <div className={classes.locationComponent}>
+    <div
+      className={classNames(
+        isActiveLocation && classes.activeLocationComponent, classes.locationComponent)}
+      onClick={handleClickLocation}
+    >
       <div className={classes.locationInfo}>
         <div>Location: {name}</div>
         <div>Zone level: {zoneLevel}</div>
         <div>Number of monsters: {numberOfMonsters}</div>
-        <div>Location clear time: {locationClearTime / 1000}</div>
+        <div>Location clear time: {locationClearTime / 1000}s</div>
       </div>
       <div className={classes.actionWindow}>
         <div className={classes.buttonContainer}>
-          <div className={classes.startButton} onClick={inventoryLootUpdate}>
-            <div className={classNames((timer > -1 ) && classes.nullContainer)}>start</div>
-            <div className={classNames((timer === -1 ) && classes.nullContainer)}>{timer}s</div>
+          <div
+            className={classNames(!isActiveLocation && classes.nullContainer, classes.startButton)}
+            onClick={handleClickStart}
+          >
+            <div className={classNames((timer > -1) && classes.nullContainer)}>start</div>
+            <div className={classNames((timer === -1) && classes.nullContainer)}>{timer}s</div>
           </div>
-          <div className={classes.stopButton}>stop</div>
+          <div className={classNames(!isActiveLocation && classes.nullContainer, classes.stopButton)}>stop</div>
         </div>
         <div className={classes.healthManaContainer}>
-          <div className={classes.healthContainer}>
+          <div className={classNames(!isActiveLocation && classes.nullContainer, classes.healthContainer)}>
             Health
           </div>
-          <div className={classes.manaContainer}>
+          <div className={classNames(!isActiveLocation && classes.nullContainer, classes.manaContainer)}>
             Mana
           </div>
         </div>
@@ -159,5 +186,11 @@ export default connect(store => {
     ringsAmulets: store.lootOptionsReducer.ringsAmulet,
     others: store.lootOptionsReducer.other,
     timer: store.locationsReducer.timer,
+    activeId: store.locationsReducer.activeId,
   }
-}, { setPushItem, setTimer })(Location)
+}, {
+  setPushItem,
+  setTimer,
+  setIdLocation,
+  setGenerationRingsAmulets
+})(Location)

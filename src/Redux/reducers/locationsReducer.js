@@ -1,8 +1,9 @@
 import update from 'immutability-helper'
-import { SET_TIMER } from '../types'
+import { SET_ID_LOCATION, SET_TIMER } from '../types'
 
 const initialState = {
   timer: -1,
+  activeId: 1,
   locations: [
     {
       id: 1,
@@ -33,7 +34,7 @@ const initialState = {
       name: 'Den of Evil',
       zoneLevel: 1,
       numberOfMonsters: 46,
-      locationClearTime: 5000,
+      locationClearTime: 13000,
       monsters: {
         fallen: {
           number: 15,
@@ -71,6 +72,11 @@ export const locationsReducer = (state = initialState, action) => {
       action.pushItems
       return update(state, {
         timer: { $set: action.timer },
+      })
+    case SET_ID_LOCATION:
+      action.pushItems
+      return update(state, {
+        activeId: { $set: action.activeId },
       })
     default:
       return state

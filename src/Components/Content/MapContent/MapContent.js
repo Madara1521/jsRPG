@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { makeStyles } from "@mui/styles"
 import Location from "./Locations/Location"
 import { connect } from "react-redux"
@@ -26,14 +26,16 @@ export const useStyles = makeStyles(() => ({
 }))
 
 const MapContent = (props) => {
-  const { locations } = props
+  const { locations, activeId } = props
   const classes = useStyles()
+  const [activeLocation, setActiveLocation] = useState(activeId)
 
   return (
     <div className={classes.content} >
       <h1>Map</h1>
       <div className={classes.map}>
         {locations.map((field, index) => {
+          const isActiveLocation = field.id === activeLocation
           return (
             <Location
               name={field.name}
@@ -41,7 +43,10 @@ const MapContent = (props) => {
               numberOfMonsters={field.numberOfMonsters}
               locationClearTime={field.locationClearTime}
               monsters={field.monsters}
+              setActiveLocation={setActiveLocation}
+              isActiveLocation={isActiveLocation}
               key={field.id}
+              id={field.id}
             />
           )
         })}
@@ -53,5 +58,6 @@ const MapContent = (props) => {
 export default connect(store => {
   return {
     locations: store.locationsReducer.locations,
+    activeId: store.locationsReducer.activeId,
   }
 }, { })(MapContent)
