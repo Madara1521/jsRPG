@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import {
   GET_VIEW_DESCRIPTION,
-  SET_PUSH_ITEM,
+  PUSH_RECEIVED_ITEM,
   SET_VIEW_ITEM,
   SET_DELETE_ITEM,
   SET_PUSH_CLOTH,
@@ -45,9 +45,9 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
       return update(state,{
         idArray: {$set: action.idArray}
       })
-    case SET_PUSH_ITEM:
+    case PUSH_RECEIVED_ITEM:
       return update(state,{
-        [action.nameType]: {$set: [...action.items]}
+        [action.nameType]: {$push: action.items}
       })
     case GET_VIEW_DESCRIPTION:
       return update(state,{

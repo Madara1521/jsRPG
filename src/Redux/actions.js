@@ -14,7 +14,7 @@ import {
   SET_HEALTH_AND_STAMINA,
   SET_MANA,
   SET_VIEW_ITEM,
-  SET_PUSH_ITEM,
+  PUSH_RECEIVED_ITEM,
   GET_VIEW_DESCRIPTION,
   SET_ITEM_BONUS,
   SET_DELETE_ITEM,
@@ -141,9 +141,9 @@ export function setViewItem(idArray) {
   }
 }
 
-export function setPushItem(nameType, items) {
+export function pushReceivedItem(nameType, items) {
   return {
-    type: SET_PUSH_ITEM,
+    type: PUSH_RECEIVED_ITEM,
     nameType,
     items
   }
@@ -229,9 +229,10 @@ export function setIdLocation(activeId) {
     activeId
   }
 }
-export function setGenerationRingsAmulets() {
+export function setGenerationRingsAmulets(zoneLevel) {
   return {
     type: SET_GENERATION_RINGS_AMULETS,
+    zoneLevel
   }
 }
 

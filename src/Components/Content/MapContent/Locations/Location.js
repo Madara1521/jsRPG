@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { setPushItem, setTimer, setIdLocation, setGenerationRingsAmulets } from "../../../../Redux/actions"
+import { pushReceivedItem, setTimer, setIdLocation, setGenerationRingsAmulets } from "../../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
 import classNames from 'classnames'
 
@@ -89,7 +89,7 @@ const Location = (props) => {
   const classes = useStyles()
   const {
     helmetGlovesBootsBelt,
-    setPushItem,
+    pushReceivedItem,
     armors,
     weapons,
     shields,
@@ -109,12 +109,12 @@ const Location = (props) => {
     setGenerationRingsAmulets } = props
 
   const pushItems = () => {
-    setPushItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
-    setPushItem('armor', armors)
-    setPushItem('weapon', weapons)
-    setPushItem('shield', shields)
-    setPushItem('ringsAmulet', ringsAmulets)
-    setPushItem('other', others)
+    pushReceivedItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
+    pushReceivedItem('armor', armors)
+    pushReceivedItem('weapon', weapons)
+    pushReceivedItem('shield', shields)
+    pushReceivedItem('ringsAmulet', ringsAmulets)
+    pushReceivedItem('other', others)
   }
 
   const handleClickStart = () => {
@@ -132,7 +132,7 @@ const Location = (props) => {
     if (timer > -1) {
       return setActiveLocation(activeId)
     }
-    setGenerationRingsAmulets()
+    setGenerationRingsAmulets(zoneLevel)
     console.log(ringsAmulets)
     setIdLocation(id)
     return setActiveLocation(id)
@@ -189,7 +189,7 @@ export default connect(store => {
     activeId: store.locationsReducer.activeId,
   }
 }, {
-  setPushItem,
+  pushReceivedItem,
   setTimer,
   setIdLocation,
   setGenerationRingsAmulets

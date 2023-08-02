@@ -42,9 +42,9 @@ import smallShield from './shieldImg/smallShield.png'
 import spikedShield from './shieldImg/spikedShield.png'
 import towerShield from './shieldImg/towerShield.png'
 
-import amu0 from './amuletRingsImg/amulets/amu1.png'
-import amu1 from './amuletRingsImg/amulets/amu2.png'
-import amu2 from './amuletRingsImg/amulets/amu3.png'
+import amu1 from './amuletRingsImg/amulets/amu1.png'
+import amu2 from './amuletRingsImg/amulets/amu2.png'
+import amu3 from './amuletRingsImg/amulets/amu3.png'
 
 import ring1 from './amuletRingsImg/rings/ring1.png'
 import ring2 from './amuletRingsImg/rings/ring2.png'
@@ -58,8 +58,9 @@ import { SET_GENERATION_RINGS_AMULETS } from '../types'
 
 //rarity 0 = 'lootCellStandart'
 //rarity 1 = 'lootCellMagic'
-//rarity 2 = 'lootCellKit'
-//rarity 3 = 'lootCellLegendary'
+//rarity 2 = 'lootCellUnique'
+//rarity 3 = 'lootCellKit'
+//rarity 4 = 'lootCellLegendary'
 
 //img class
 //Belts:
@@ -360,9 +361,7 @@ const initialState = {
       }
     }
   ], //shield
-  ringsAmulet: [
-
-  ],//rings,amulet
+  ringsAmulet: [],//rings,amulet
 
   other: [
     // {
@@ -375,29 +374,49 @@ const initialState = {
   ],// other
 }
 
-const generationRandomInteger = (max) =>{
-  return Math.floor(Math.random() * max)
+const generationRandomInteger = (max) => {
+  return Math.floor(Math.random() * max) + 1
+}
+
+const generationRandomRarity = () => {
+  const randomValue = Math.random() * 100
+
+  switch (true) {
+    case randomValue < 60:
+      return 0
+    case randomValue < 88:
+      return 1
+    case randomValue < 98:
+      return 2
+    case randomValue < 99.7:
+      return 3
+    default:
+      return 4
+  }
 }
 
 export const lootOptionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_GENERATION_RINGS_AMULETS:
+      const rarityItem = generationRandomRarity()
       const generationAmulet = () => {
-        return {
-          requirements: {
-            requiredLevel: null,
-          },
-          info: {
-            id: uniqid(),
-            rarity: generationRandomInteger(5),
-            classItem: 'amulet',
-            lootName: 'Recruit amulet',
-            img: amu0,
-            strength: generationRandomInteger(10),
-            dexterity: generationRandomInteger(10),
-            vitality: generationRandomInteger(10),
-            energy: generationRandomInteger(10),
-            attackRatingBonus: generationRandomInteger(30),
+        if (rarityItem <= 2) {
+          return {
+            requirements: {
+              requiredLevel: generationRandomInteger(action.zoneLevel),
+            },
+            info: {
+              id: uniqid(),
+              rarity: rarityItem,
+              classItem: 'amulet',
+              lootName: 'Recruit amulet',
+              img: amu1,
+              strength: generationRandomInteger(10),
+              dexterity: generationRandomInteger(10),
+              vitality: generationRandomInteger(10),
+              energy: generationRandomInteger(10),
+              attackRatingBonus: generationRandomInteger(30),
+            }
           }
         }
       }

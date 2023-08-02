@@ -8,7 +8,7 @@ const initialState = {
     {
       id: 1,
       name: 'Blood Moor',
-      zoneLevel: 1,
+      zoneLevel: 5,
       numberOfMonsters: 30,
       locationClearTime: 4000,
       monsters: {
@@ -32,7 +32,7 @@ const initialState = {
     {
       id: 2,
       name: 'Den of Evil',
-      zoneLevel: 1,
+      zoneLevel: 7,
       numberOfMonsters: 46,
       locationClearTime: 13000,
       monsters: {
