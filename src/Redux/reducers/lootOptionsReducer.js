@@ -55,6 +55,7 @@ import ring5 from './amuletRingsImg/rings/ring5.png'
 import uniqid from 'uniqid'
 import update from 'immutability-helper'
 import { SET_GENERATION_RINGS_AMULETS } from '../types'
+import { generationAmulet } from '../../helpers/amuletGenerationHelper'
 
 //rarity 0 = 'lootCellStandart'
 //rarity 1 = 'lootCellMagic'
@@ -125,7 +126,7 @@ const initialState = {
       },
       info: {
         id: uniqid(),
-        rarity: 3,
+        rarity: 4,
         classItem: 'helmet',
         lootName: 'Helmet Cain',
         img: cap,
@@ -188,7 +189,7 @@ const initialState = {
       },
       info: {
         id: uniqid(),
-        rarity: 2,
+        rarity: 3,
         classItem: 'belt',
         lootName: 'Belt hydra',
         img: belt,
@@ -374,54 +375,11 @@ const initialState = {
   ],// other
 }
 
-const generationRandomInteger = (max) => {
-  return Math.floor(Math.random() * max) + 1
-}
-
-const generationRandomRarity = () => {
-  const randomValue = Math.random() * 100
-
-  switch (true) {
-    case randomValue < 60:
-      return 0
-    case randomValue < 88:
-      return 1
-    case randomValue < 98:
-      return 2
-    case randomValue < 99.7:
-      return 3
-    default:
-      return 4
-  }
-}
-
 export const lootOptionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_GENERATION_RINGS_AMULETS:
-      const rarityItem = generationRandomRarity()
-      const generationAmulet = () => {
-        if (rarityItem <= 2) {
-          return {
-            requirements: {
-              requiredLevel: generationRandomInteger(action.zoneLevel),
-            },
-            info: {
-              id: uniqid(),
-              rarity: rarityItem,
-              classItem: 'amulet',
-              lootName: 'Recruit amulet',
-              img: amu1,
-              strength: generationRandomInteger(10),
-              dexterity: generationRandomInteger(10),
-              vitality: generationRandomInteger(10),
-              energy: generationRandomInteger(10),
-              attackRatingBonus: generationRandomInteger(30),
-            }
-          }
-        }
-      }
       return update(state, {
-        ringsAmulet: { $set: [generationAmulet()] },
+        ringsAmulet: { $set: [generationAmulet(action.zoneLevel)] },
       })
     default:
       return state

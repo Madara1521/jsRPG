@@ -72,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
   lootCellMagic: {
     background: 'linear-gradient(90deg, rgba(0,91,255,0.27) 0%, rgba(0,91,255,0.6558998599439776) 50%, rgba(0,91,255,0.3) 100%)',
   },
+  lootCellUnique: {
+    background: 'linear-gradient(90deg, rgba(99,0,165,0.53) 0%, rgba(55,0,165,0.8407738095238095) 50%, rgba(165,0,145,0.53) 100%)',
+  },
   lootCellKit: {
     background: 'linear-gradient(90deg, rgba(0,165,40,0.53) 0%, rgba(0,165,40,1) 50%, rgba(0,165,40,0.53) 100%)',
   },

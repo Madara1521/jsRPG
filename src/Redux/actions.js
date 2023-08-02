@@ -159,7 +159,7 @@ export function getViewDescription(info,requirements,isActiveItem,id) {
   }
 }
 
-export function setItemBonus(typeItem,bonus,) {
+export function setItemBonus(typeItem,bonus) {
   return {
     type: SET_ITEM_BONUS,
     typeItem,

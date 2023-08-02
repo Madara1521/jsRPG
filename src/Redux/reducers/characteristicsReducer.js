@@ -27,8 +27,6 @@ const initialState = {
   health: 0, // this indicator is affected by the vitality
   stamina: 0,
 
-
-
   mana: 0// this indicator is affected by the energy
 
 }

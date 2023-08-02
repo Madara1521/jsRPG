@@ -2,7 +2,84 @@ import uniqid from 'uniqid'
 
 import amu1 from '../Redux/reducers/amuletRingsImg/amulets/amu1.png'
 import amu2 from '../Redux/reducers/amuletRingsImg/amulets/amu2.png'
-import amu3 from '../Redux/reducers/amuletRingsImg/amulets/amu3.png'
+// import amu3 from '../Redux/reducers/amuletRingsImg/amulets/amu3.png'
+
+const generationRandomInteger = (max) => {
+  return Math.floor(Math.random() * max) + 1
+}
+
+const generationRandomRarityAmulet = () => {
+  const randomValue = Math.random() * 100
+
+  switch (true) {
+    case randomValue < 88:
+      return 1
+    case randomValue < 98:
+      return 2
+    case randomValue < 99.7:
+      return 3
+    default:
+      return 4
+  }
+}
+
+// const generationRandomRarity = () => {
+//   const randomValue = Math.random() * 100
+
+//   switch (true) {
+//     case randomValue < 60:
+//       return 0
+//     case randomValue < 88:
+//       return 1
+//     case randomValue < 98:
+//       return 2
+//     case randomValue < 99:
+//       return 3
+//     default:
+//       return 4
+//   }
+// }
+
+
+export const generationAmulet = (zoneLevel) => {
+  const rarityItem = generationRandomRarityAmulet()
+  if (rarityItem <= 2) {
+    return {
+      requirements: {
+        requiredLevel: generationRandomInteger(zoneLevel),
+      },
+      info: {
+        id: uniqid(),
+        rarity: rarityItem,
+        classItem: 'amulet',
+        lootName: 'Recruit amulet',
+        img: amu1,
+        strength: generationRandomInteger(10),
+        dexterity: generationRandomInteger(10),
+        vitality: generationRandomInteger(10),
+        energy: generationRandomInteger(10),
+        attackRatingBonus: generationRandomInteger(30),
+      }
+    }
+  }
+  return {
+    requirements: {
+      requiredLevel: generationRandomInteger(zoneLevel + 3),
+    },
+    info: {
+      id: uniqid(),
+      rarity: rarityItem,
+      classItem: 'amulet',
+      lootName: 'Kings amulet',
+      img: amu2,
+      strength: generationRandomInteger(25),
+      dexterity: generationRandomInteger(25),
+      vitality: generationRandomInteger(25),
+      energy: generationRandomInteger(25),
+      attackRatingBonus: generationRandomInteger(100),
+    }
+  }
+}
 
 export const legendaryAmulet = [
   {
@@ -71,7 +148,7 @@ export const legendaryAmulet = [
   },
 ]
 
-const kitAmulet = [
+export const kitAmulet = [
   {
     id: 1,
     item: {

@@ -133,7 +133,7 @@ const Location = (props) => {
       return setActiveLocation(activeId)
     }
     setGenerationRingsAmulets(zoneLevel)
-    console.log(ringsAmulets)
+    // console.log(ringsAmulets)
     setIdLocation(id)
     return setActiveLocation(id)
   }
