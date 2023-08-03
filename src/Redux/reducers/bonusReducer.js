@@ -7,6 +7,7 @@ import {
   SET_ALL_PHY_BONUS,
   SET_ALL_BONUS_STAT,
 } from "../types"
+import { getSummaryParams } from '../../helpers/summaryHelper'
 
 
 
@@ -231,6 +232,24 @@ const initialState = {
   },
 }
 
+const bonuses = [
+  'amuletBonus',
+  'secondAmuletBonus',
+  'helmetBonus',
+  'weaponBonus',
+  'secondWeaponBonus',
+  'armorBonus',
+  'shieldBonus',
+  'ringBonus',
+  'secondRingBonus',
+  'beltBonus',
+  'glovesBonus',
+  'bootsBonus',
+  'otherBonus'
+]
+
+console.log(getSummaryParams(initialState, bonuses, 'info.startPhysicalDamage'))
+
 export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEM_BONUS:
@@ -239,111 +258,23 @@ export const bonusReducer = (state = initialState, action) => {
       })
     case SET_ALL_DEFENSE:
       return update(state, {
-        allDefenseBonus: {
-          $set: state.armorBonus.info.defenseBonus +
-            state.bootsBonus.info.defenseBonus +
-            state.glovesBonus.info.defenseBonus +
-            state.shieldBonus.info.defenseBonus +
-            state.helmetBonus.info.defenseBonus +
-            state.beltBonus.info.defenseBonus
-        }
+        allDefenseBonus: { $set: getSummaryParams(initialState, bonuses, 'info.defenseBonus') }
       })
     case SET_ALL_ATTACK_RATING:
       return update(state, {
-        allAttackRatingBonus: {
-          $set: state.amuletBonus.info.attackRatingBonus +
-            state.secondAmuletBonus.info.attackRatingBonus +
-            state.weaponBonus.info.attackRatingBonus +
-            state.secondWeaponBonus.info.attackRatingBonus +
-            state.armorBonus.info.attackRatingBonus +
-            state.shieldBonus.info.attackRatingBonus +
-            state.ringBonus.info.attackRatingBonus +
-            state.beltBonus.info.attackRatingBonus +
-            state.secondRingBonus.info.attackRatingBonus +
-            state.glovesBonus.info.attackRatingBonus
-        }
+        allAttackRatingBonus: { $set: getSummaryParams(initialState, bonuses, 'info.attackRatingBonus') }
       })
     case SET_ALL_PHY_BONUS:
       return update(state, {
-        allStartPhyBonus: {
-          $set:
-            state.weaponBonus.info.startPhysicalDamage +
-            state.secondWeaponBonus.info.startPhysicalDamage +
-            state.shieldBonus.info.startPhysicalDamage
-        },
-        allFinalPhyBonus: {
-          $set:
-            state.weaponBonus.info.finalPhysicalDamage +
-            state.secondWeaponBonus.info.finalPhysicalDamage +
-            state.shieldBonus.info.finalPhysicalDamage
-        }
+        allStartPhyBonus: { $set: getSummaryParams(initialState, bonuses, 'info.startPhysicalDamage') },
+        allFinalPhyBonus: { $set: getSummaryParams(initialState, bonuses, 'info.finalPhysicalDamage') }
       })
     case SET_ALL_BONUS_STAT:
       return update(state, {
-        allStrengthBonus: {
-          $set:
-            state.amuletBonus.info.strength +
-            state.secondAmuletBonus.info.strength +
-            state.helmetBonus.info.strength +
-            state.weaponBonus.info.strength +
-            state.secondWeaponBonus.info.strength +
-            state.armorBonus.info.strength +
-            state.shieldBonus.info.strength +
-            state.ringBonus.info.strength +
-            state.secondRingBonus.info.strength +
-            state.beltBonus.info.strength +
-            state.glovesBonus.info.strength +
-            state.bootsBonus.info.strength +
-            state.otherBonus.info.strength
-        },
-        allDexterityBonus: {
-          $set:
-          state.amuletBonus.info.dexterity +
-          state.secondAmuletBonus.info.dexterity +
-          state.helmetBonus.info.dexterity +
-          state.weaponBonus.info.dexterity +
-          state.secondWeaponBonus.info.dexterity +
-          state.armorBonus.info.dexterity +
-          state.shieldBonus.info.dexterity +
-          state.ringBonus.info.dexterity +
-          state.secondRingBonus.info.dexterity +
-          state.beltBonus.info.dexterity +
-          state.glovesBonus.info.dexterity +
-          state.bootsBonus.info.dexterity +
-          state.otherBonus.info.dexterity
-        },
-        allVitalityBonus: {
-          $set:
-          state.amuletBonus.info.vitality +
-          state.secondAmuletBonus.info.vitality +
-          state.helmetBonus.info.vitality +
-          state.weaponBonus.info.vitality +
-          state.secondWeaponBonus.info.vitality +
-          state.armorBonus.info.vitality +
-          state.shieldBonus.info.vitality +
-          state.ringBonus.info.vitality +
-          state.secondRingBonus.info.vitality +
-          state.beltBonus.info.vitality +
-          state.glovesBonus.info.vitality +
-          state.bootsBonus.info.vitality +
-          state.otherBonus.info.vitality
-        },
-        allEnergyBonus: {
-          $set:
-          state.amuletBonus.info.energy +
-          state.secondAmuletBonus.info.energy +
-          state.helmetBonus.info.energy +
-          state.weaponBonus.info.energy +
-          state.secondWeaponBonus.info.energy +
-          state.armorBonus.info.energy +
-          state.shieldBonus.info.energy +
-          state.ringBonus.info.energy +
-          state.secondRingBonus.info.energy +
-          state.beltBonus.info.energy +
-          state.glovesBonus.info.energy +
-          state.bootsBonus.info.energy +
-          state.otherBonus.info.energy
-        }
+        allStrengthBonus: { $set: getSummaryParams(initialState, bonuses, 'info.strength') },
+        allDexterityBonus: { $set: getSummaryParams(initialState, bonuses, 'info.dexterity') },
+        allVitalityBonus: { $set: getSummaryParams(initialState, bonuses, 'info.vitality') },
+        allEnergyBonus: { $set: getSummaryParams(initialState, bonuses, 'info.energy') }
       })
     default:
       return state

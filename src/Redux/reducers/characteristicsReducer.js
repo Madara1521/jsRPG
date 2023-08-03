@@ -24,10 +24,12 @@ const initialState = {
   defense: 0,
   blocking: 0,
 
-  health: 0, // this indicator is affected by the vitality
+  maxHealth: 0, // this indicator is affected by the vitality
+  currentHealth: 0,
   stamina: 0,
 
-  mana: 0// this indicator is affected by the energy
+  maxMana: 0,// this indicator is affected by the energy
+  currentMana: 0
 
 }
 
@@ -56,12 +58,12 @@ export const characteristicsReducer = (state = initialState, action) => {
       })
     case SET_HEALTH_AND_STAMINA:
       return update(state,{
-        health: {$set: (state.totalVitality * 4)},
+        maxHealth: {$set: (state.totalVitality * 4)},
         stamina: {$set: (state.totalVitality * 4)}
       })
     case SET_MANA:
       return update(state,{
-        mana: {$set: state.totalEnergy * 6}
+        maxMana: {$set: state.totalEnergy * 6}
       })
     default:
       return state

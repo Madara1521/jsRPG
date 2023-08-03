@@ -9,7 +9,8 @@ const ManaComp = (props) => {
   const {
     totalEnergy,
     setMana,
-    mana } = props
+    maxMana,
+    currentMana } = props
 
   useEffect(() => {
     setMana()
@@ -17,19 +18,21 @@ const ManaComp = (props) => {
   }, [totalEnergy])
 
   return (
-    <div>Mana: {mana} </div>
+    <div>Mana: {currentMana} \ {maxMana}</div>
   )
 }
 
 ManaComp.propTypes = {
   totalEnergy: PropTypes.number.isRequired,
-  mana: PropTypes.number.isRequired,
+  maxMana: PropTypes.number.isRequired,
+  currentMana: PropTypes.number.isRequired,
   setMana: PropTypes.func.isRequired,
 }
 
 export default connect(store => {
   return {
     totalEnergy: store.characteristicsReducer.totalEnergy,
-    mana: store.characteristicsReducer.mana,
+    maxMana: store.characteristicsReducer.maxMana,
+    currentMana: store.characteristicsReducer.currentMana,
   }
 }, { setMana })(ManaComp)

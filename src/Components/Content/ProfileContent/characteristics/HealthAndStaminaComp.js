@@ -8,7 +8,8 @@ import { setHealthAndStamina } from "../../../../Redux/actions"
 const HealthAndStaminaComp = (props) => {
   const {
     totalVitality,
-    health,
+    maxHealth,
+    currentHealth,
     stamina,
     setHealthAndStamina } = props
 
@@ -19,7 +20,7 @@ const HealthAndStaminaComp = (props) => {
 
   return (
     <>
-      <div>Health: {health} </div>
+      <div>Health: {currentHealth} \ {maxHealth}</div>
       <div>Stamina: {stamina} </div>
     </>
   )
@@ -27,7 +28,8 @@ const HealthAndStaminaComp = (props) => {
 
 HealthAndStaminaComp.propTypes = {
   totalVitality: PropTypes.number.isRequired,
-  health: PropTypes.number.isRequired,
+  maxHealth: PropTypes.number.isRequired,
+  currentHealth: PropTypes.number.isRequired,
   stamina: PropTypes.number.isRequired,
   setHealthAndStamina: PropTypes.func.isRequired,
 }
@@ -35,7 +37,8 @@ HealthAndStaminaComp.propTypes = {
 export default connect(store => {
   return {
     totalVitality: store.characteristicsReducer.totalVitality,
-    health: store.characteristicsReducer.health,
+    maxHealth: store.characteristicsReducer.maxHealth,
+    currentHealth: store.characteristicsReducer.currentHealth,
     stamina: store.characteristicsReducer.stamina,
   }
 }, { setHealthAndStamina })(HealthAndStaminaComp)
