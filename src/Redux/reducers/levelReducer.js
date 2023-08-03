@@ -5,7 +5,7 @@ import {
   UPDATE_LEVEL } from "../types"
 
 const initialState = {
-  level: 9,
+  level: 1,
   experience: 0,
   nextLevel: 500,
   rank: 'Peasant'

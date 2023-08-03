@@ -248,8 +248,6 @@ const bonuses = [
   'otherBonus'
 ]
 
-console.log(getSummaryParams(initialState, bonuses, 'info.startPhysicalDamage'))
-
 export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEM_BONUS:

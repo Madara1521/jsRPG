@@ -118,22 +118,24 @@ const Location = (props) => {
   }
 
   const handleClickStart = () => {
-    let i = (locationClearTime / 1000)
-    const time = setInterval(function () {
-      i--
+    if( timer <= 0){
+      let i = (locationClearTime / 1000)
       setTimer(i)
-      if (i === -1) {
-        clearInterval(time)
-        setTimer(i, pushItems())
-      }
-    }, 1000)
+      const time = setInterval(function () {
+        i--
+        setTimer(i)
+        if (i === -1) {
+          clearInterval(time)
+          setTimer(i, pushItems())
+        }
+      }, 1000)
+    }
   }
   const handleClickLocation = () => {
     if (timer > -1) {
       return setActiveLocation(activeId)
     }
     setGenerationRingsAmulets(zoneLevel)
-    // console.log(ringsAmulets)
     setIdLocation(id)
     return setActiveLocation(id)
   }

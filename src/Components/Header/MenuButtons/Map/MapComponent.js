@@ -1,5 +1,5 @@
 import React from "react"
-import map from './map-removebg-preview.png'
+import map from './map.png'
 import { NavLink } from "react-router-dom"
 import { useStyles } from "../../Header"
 
