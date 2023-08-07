@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Header from './Components/Header/Header'
 import ProfileContent from "./Components/Content/ProfileContent/ProfileContent"
 import { Route, Routes } from "react-router-dom"
@@ -11,6 +11,8 @@ import { Paper, AppBar } from '@mui/material'
 import { makeStyles } from "@mui/styles"
 import penta from './Components/Header/penta.png'
 import mainImg from './Components/Content/img/mainBackground.png'
+import { connect } from "react-redux"
+import { setHealthRegeneration } from "./Redux/actions"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,13 +82,34 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const App = () => {
+const App = (props) => {
   const classes = useStyles()
+  const {
+    currentHealth,
+    maxHealth,
+    healthRegeneration,
+    setHealthRegeneration } = props
+
+  const regeneration = (current,maxCharacteristics, coefficient) => {
+    let i = current
+    const time = setInterval(function () {
+      i++
+      setHealthRegeneration(i)
+      if (i >= maxCharacteristics) {
+        clearInterval(time)
+      }
+    }, (coefficient * 1000))
+  }
+
+  useEffect(() => {
+    regeneration(currentHealth, maxHealth, healthRegeneration)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} sx={{ flexDirection: 'row' }}>
-        <div className={classes.pentagramContainer}>
+        <div className={classes.pentagramContainer} >
           <img className={classes.penta} src={penta} alt='pentagram' />
         </div>
         <Header />
@@ -110,4 +133,10 @@ const App = () => {
   )
 }
 
-export default App
+export default connect(store => {
+  return {
+    currentHealth: store.characteristicsReducer.currentHealth,
+    maxHealth: store.characteristicsReducer.maxHealth,
+    healthRegeneration: store.characteristicsReducer.healthRegeneration
+  }
+}, { setHealthRegeneration })(App)

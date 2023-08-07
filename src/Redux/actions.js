@@ -26,7 +26,8 @@ import {
   SET_ALL_BONUS_STAT,
   SET_TIMER,
   SET_ID_LOCATION,
-  SET_GENERATION_RINGS_AMULETS
+  SET_GENERATION_RINGS_AMULETS,
+  SET_HEALTH_REGENERATION
 } from "./types"
 
 export function incrementStat(statName) {
@@ -229,10 +230,19 @@ export function setIdLocation(activeId) {
     activeId
   }
 }
+
 export function setGenerationRingsAmulets(zoneLevel) {
   return {
     type: SET_GENERATION_RINGS_AMULETS,
     zoneLevel
+  }
+}
+
+export function setHealthRegeneration(currentHealth) {
+  const payload = currentHealth
+  return {
+    type: SET_HEALTH_REGENERATION,
+    payload
   }
 }
 

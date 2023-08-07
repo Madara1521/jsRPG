@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import { pushReceivedItem, setTimer, setIdLocation, setGenerationRingsAmulets } from "../../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
@@ -108,6 +108,12 @@ const Location = (props) => {
     activeId,
     setGenerationRingsAmulets } = props
 
+  useEffect(() => {
+    setGenerationRingsAmulets(zoneLevel)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
+
   const pushItems = () => {
     pushReceivedItem('helmetGlovesBootsBelt', helmetGlovesBootsBelt)
     pushReceivedItem('armor', armors)
@@ -118,8 +124,8 @@ const Location = (props) => {
   }
 
   const handleClickStart = () => {
-    if( timer <= 0){
-      let i = (locationClearTime / 1000)
+    if (timer < 0) {
+      let i = (locationClearTime)
       setTimer(i)
       const time = setInterval(function () {
         i--
@@ -150,7 +156,7 @@ const Location = (props) => {
         <div>Location: {name}</div>
         <div>Zone level: {zoneLevel}</div>
         <div>Number of monsters: {numberOfMonsters}</div>
-        <div>Location clear time: {locationClearTime / 1000}s</div>
+        <div>Location clear time: {locationClearTime}s</div>
       </div>
       <div className={classes.actionWindow}>
         <div className={classes.buttonContainer}>
