@@ -97,46 +97,46 @@ import { generationAmulet } from '../../helpers/amuletGenerationHelper'
 
 const initialState = {
   helmetGlovesBootsBelt: [
-    // {
-    //   requirements: {
-    //     requiredLevel: 32,
-    //     requiredStrength: 10,
-    //     requiredDexterity: 15,
-    //     typeHelmet: 'helm',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 1,
-    //     classItem: 'helmet',
-    //     lootName: 'Recruit helmet',
-    //     img: helm,
-    //     defenseBonus: 10,
-    //     strength: 2,
-    //     dexterity: null,
-    //     vitality: 5,
-    //     energy: null,
-    //   }
-    // },
-    // {
-    //   requirements: {
-    //     requiredLevel: 32,
-    //     requiredStrength: 10,
-    //     requiredDexterity: 15,
-    //     typeHelmet: 'cap',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 4,
-    //     classItem: 'helmet',
-    //     lootName: 'Helmet Cain',
-    //     img: cap,
-    //     defenseBonus: 130,
-    //     strength: 100,
-    //     dexterity: 233,
-    //     vitality: 500,
-    //     energy: 111
-    //   }
-    // },
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeHelmet: 'helm',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 1,
+        classItem: 'helmet',
+        lootName: 'Recruit helmet',
+        img: helm,
+        defenseBonus: 10,
+        strength: 2,
+        dexterity: null,
+        vitality: 5,
+        energy: null,
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeHelmet: 'cap',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 4,
+        classItem: 'helmet',
+        lootName: 'Helmet Cain',
+        img: cap,
+        defenseBonus: 130,
+        strength: 100,
+        dexterity: 233,
+        vitality: 500,
+        energy: 111
+      }
+    },
     // {
     //   requirements: {
     //     requiredLevel: 32,
@@ -203,107 +203,107 @@ const initialState = {
     // }
   ], // helmet,boots,gloves,belt
   armor: [
-    // {
-    //   requirements: {
-    //     requiredLevel: 32,
-    //     requiredStrength: 10,
-    //     requiredDexterity: 15,
-    //     typeArmor: 'ancientArmor',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 3,
-    //     classItem: 'armor',
-    //     lootName: 'Viper armor',
-    //     img: ancientArmor,
-    //     defenseBonus: 553,
-    //     strength: 100,
-    //     dexterity: null,
-    //     vitality: 100,
-    //     energy: null,
-    //     attackRatingBonus: 550
-    //   }
-    // }
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeArmor: 'ancientArmor',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 3,
+        classItem: 'armor',
+        lootName: 'Viper armor',
+        img: ancientArmor,
+        defenseBonus: 553,
+        strength: 100,
+        dexterity: null,
+        vitality: 100,
+        energy: null,
+        attackRatingBonus: 550
+      }
+    }
   ], // armor
   weapon: [
-    // {
-    //   requirements: {
-    //     requiredLevel: 22,
-    //     requiredStrength: 123,
-    //     requiredDexterity: 60,
-    //     typeWeapon: 'bardiche',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 0,
-    //     classItem: 'weapon',
-    //     lootName: 'Blackleach Blade',
-    //     img: bardiche,
-    //     startPhysicalDamage: 109,
-    //     finalPhysicalDamage: 253,
-    //     durability: 50,
-    //     baseWeaponSpeed: 10,
-    //     strength: null,
-    //     dexterity: 10,
-    //     vitality: 25,
-    //     energy: null,
-    //     attackRatingBonus: 20,
-    //     oneHanded: false,
-    //     twoHanded: true,
-    //   }
-    // },
-    // {
-    //   requirements: {
-    //     requiredLevel: 11,
-    //     requiredStrength: 55,
-    //     requiredDexterity: 20,
-    //     typeWeapon: 'axe',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 2,
-    //     classItem: 'weapon',
-    //     lootName: 'Axe durability',
-    //     img: axe,
-    //     startPhysicalDamage: 59,
-    //     finalPhysicalDamage: 77,
-    //     durability: 550,
-    //     baseWeaponSpeed: 120,
-    //     strength: 25,
-    //     dexterity: null,
-    //     vitality: 45,
-    //     energy: 11,
-    //     attackRatingBonus: 120,
-    //     oneHanded: true,
-    //     twoHanded: false,
-    //   }
-    // },
-    // {
-    //   requirements: {
-    //     requiredLevel: 22,
-    //     requiredStrength: 123,
-    //     requiredDexterity: 60,
-    //     typeWeapon: 'crystalSword',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 3,
-    //     classItem: 'weapon',
-    //     lootName: 'Sword of infinity',
-    //     img: crystalSword,
-    //     startPhysicalDamage: 59,
-    //     finalPhysicalDamage: 83,
-    //     durability: 100,
-    //     baseWeaponSpeed: 150,
-    //     strength: null,
-    //     dexterity: 40,
-    //     vitality: 35,
-    //     energy: null,
-    //     attackRatingBonus: 260,
-    //     oneHanded: true,
-    //     twoHanded: false,
-    //   }
-    // }
+    {
+      requirements: {
+        requiredLevel: 22,
+        requiredStrength: 123,
+        requiredDexterity: 60,
+        typeWeapon: 'bardiche',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 0,
+        classItem: 'weapon',
+        lootName: 'Blackleach Blade',
+        img: bardiche,
+        startPhysicalDamage: 109,
+        finalPhysicalDamage: 253,
+        durability: 50,
+        baseWeaponSpeed: 10,
+        strength: null,
+        dexterity: 10,
+        vitality: 25,
+        energy: null,
+        attackRatingBonus: 20,
+        oneHanded: false,
+        twoHanded: true,
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 11,
+        requiredStrength: 55,
+        requiredDexterity: 20,
+        typeWeapon: 'axe',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 2,
+        classItem: 'weapon',
+        lootName: 'Axe durability',
+        img: axe,
+        startPhysicalDamage: 59,
+        finalPhysicalDamage: 77,
+        durability: 550,
+        baseWeaponSpeed: 120,
+        strength: 25,
+        dexterity: null,
+        vitality: 45,
+        energy: 11,
+        attackRatingBonus: 120,
+        oneHanded: true,
+        twoHanded: false,
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 22,
+        requiredStrength: 123,
+        requiredDexterity: 60,
+        typeWeapon: 'crystalSword',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 3,
+        classItem: 'weapon',
+        lootName: 'Sword of infinity',
+        img: crystalSword,
+        startPhysicalDamage: 59,
+        finalPhysicalDamage: 83,
+        durability: 100,
+        baseWeaponSpeed: 150,
+        strength: null,
+        dexterity: 40,
+        vitality: 35,
+        energy: null,
+        attackRatingBonus: 260,
+        oneHanded: true,
+        twoHanded: false,
+      }
+    }
   ],// weapon
   shield: [
     // {

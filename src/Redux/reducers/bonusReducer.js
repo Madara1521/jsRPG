@@ -256,23 +256,23 @@ export const bonusReducer = (state = initialState, action) => {
       })
     case SET_ALL_DEFENSE:
       return update(state, {
-        allDefenseBonus: { $set: getSummaryParams(initialState, bonuses, 'info.defenseBonus') }
+        allDefenseBonus: { $set: getSummaryParams(state, bonuses, 'info.defenseBonus') }
       })
     case SET_ALL_ATTACK_RATING:
       return update(state, {
-        allAttackRatingBonus: { $set: getSummaryParams(initialState, bonuses, 'info.attackRatingBonus') }
+        allAttackRatingBonus: { $set: getSummaryParams(state, bonuses, 'info.attackRatingBonus') }
       })
     case SET_ALL_PHY_BONUS:
       return update(state, {
-        allStartPhyBonus: { $set: getSummaryParams(initialState, bonuses, 'info.startPhysicalDamage') },
-        allFinalPhyBonus: { $set: getSummaryParams(initialState, bonuses, 'info.finalPhysicalDamage') }
+        allStartPhyBonus: { $set: getSummaryParams(state, bonuses, 'info.startPhysicalDamage') },
+        allFinalPhyBonus: { $set: getSummaryParams(state, bonuses, 'info.finalPhysicalDamage') }
       })
     case SET_ALL_BONUS_STAT:
       return update(state, {
-        allStrengthBonus: { $set: getSummaryParams(initialState, bonuses, 'info.strength') },
-        allDexterityBonus: { $set: getSummaryParams(initialState, bonuses, 'info.dexterity') },
-        allVitalityBonus: { $set: getSummaryParams(initialState, bonuses, 'info.vitality') },
-        allEnergyBonus: { $set: getSummaryParams(initialState, bonuses, 'info.energy') }
+        allStrengthBonus: { $set: getSummaryParams(state, bonuses, 'info.strength') },
+        allDexterityBonus: { $set: getSummaryParams(state, bonuses, 'info.dexterity') },
+        allVitalityBonus: { $set: getSummaryParams(state, bonuses, 'info.vitality') },
+        allEnergyBonus: { $set: getSummaryParams(state, bonuses, 'info.energy') }
       })
     default:
       return state

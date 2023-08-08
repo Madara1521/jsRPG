@@ -12,7 +12,9 @@ import { makeStyles } from "@mui/styles"
 import penta from './Components/Header/penta.png'
 import mainImg from './Components/Content/img/mainBackground.png'
 import { connect } from "react-redux"
-import { setHealthRegeneration } from "./Redux/actions"
+import { regeneration } from "./helpers/profileHelper"
+import { setHealthRegeneration } from './Redux/actions'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,19 +92,15 @@ const App = (props) => {
     healthRegeneration,
     setHealthRegeneration } = props
 
-  const regeneration = (current,maxCharacteristics, coefficient) => {
-    let i = current
-    const time = setInterval(function () {
-      i++
-      setHealthRegeneration(i)
-      if (i >= maxCharacteristics) {
-        clearInterval(time)
-      }
-    }, (coefficient * 1000))
+  const regenProps = {
+    current: currentHealth,
+    maxCharacteristics: maxHealth,
+    coefficient: healthRegeneration,
+    regenFunc: setHealthRegeneration
   }
 
   useEffect(() => {
-    regeneration(currentHealth, maxHealth, healthRegeneration)
+    regeneration(regenProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

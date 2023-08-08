@@ -28,11 +28,12 @@ const initialState = {
   maxHealth: 20, // this indicator is affected by the vitality
   currentHealth: 1,
   healthRegeneration: 0.5,
-
-  stamina: 0,
+  stamina: 20,
+  staminaRegeneration: 0.5,
 
   maxMana: 30,// this indicator is affected by the energy
-  currentMana: 1
+  currentMana: 1,
+  manaRegeneration: 0.5
 
 }
 
