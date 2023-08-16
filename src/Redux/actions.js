@@ -27,7 +27,7 @@ import {
   SET_TIMER,
   SET_ID_LOCATION,
   SET_GENERATION_RINGS_AMULETS,
-  SET_HEALTH_REGENERATION
+  SET_REGENERATION
 } from "./types"
 
 export function incrementStat(statName) {
@@ -238,11 +238,11 @@ export function setGenerationRingsAmulets(zoneLevel) {
   }
 }
 
-export function setHealthRegeneration(currentHealth) {
-  const payload = currentHealth
+export function setRegeneration(element,currentAttribute) {
   return {
-    type: SET_HEALTH_REGENERATION,
-    payload
+    type: SET_REGENERATION,
+    element,
+    currentAttribute
   }
 }
 

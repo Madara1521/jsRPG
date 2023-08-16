@@ -13,7 +13,7 @@ import penta from './Components/Header/penta.png'
 import mainImg from './Components/Content/img/mainBackground.png'
 import { connect } from "react-redux"
 import { regeneration } from "./helpers/profileHelper"
-import { setHealthRegeneration } from './Redux/actions'
+import { setRegeneration } from './Redux/actions'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -90,19 +90,50 @@ const App = (props) => {
     currentHealth,
     maxHealth,
     healthRegeneration,
-    setHealthRegeneration } = props
+    setRegeneration,
+    currentStamina,
+    maxStamina,
+    staminaRegeneration,
+    currentMana,
+    maxMana,
+    manaRegeneration } = props
 
   const regenProps = {
-    current: currentHealth,
-    maxCharacteristics: maxHealth,
-    coefficient: healthRegeneration,
-    regenFunc: setHealthRegeneration
+    health:{
+      element: 'currentHealth',
+      current: currentHealth,
+      maxCharacteristics: maxHealth,
+      coefficient: healthRegeneration,
+      regenFunc: setRegeneration
+    },
+    stamina:{
+      element: 'currentStamina',
+      current: currentStamina,
+      maxCharacteristics: maxStamina,
+      coefficient: staminaRegeneration,
+      regenFunc: setRegeneration
+    },
+    mana: {
+      element: 'currentMana',
+      current: currentMana,
+      maxCharacteristics: maxMana,
+      coefficient: manaRegeneration,
+      regenFunc: setRegeneration
+    }
   }
 
   useEffect(() => {
-    regeneration(regenProps)
+    if(currentHealth < maxHealth){
+      regeneration(regenProps.health)
+    }
+    if(currentStamina < maxStamina){
+      regeneration(regenProps.stamina)
+    }
+    if(currentMana < maxMana){
+      regeneration(regenProps.mana)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [maxHealth, maxMana, maxStamina])
 
   return (
     <div className={classes.root}>
@@ -135,6 +166,12 @@ export default connect(store => {
   return {
     currentHealth: store.characteristicsReducer.currentHealth,
     maxHealth: store.characteristicsReducer.maxHealth,
-    healthRegeneration: store.characteristicsReducer.healthRegeneration
+    healthRegeneration: store.characteristicsReducer.healthRegeneration,
+    currentStamina: store.characteristicsReducer.currentStamina,
+    maxStamina: store.characteristicsReducer.maxStamina,
+    staminaRegeneration: store.characteristicsReducer.staminaRegeneration,
+    currentMana: store.characteristicsReducer.currentMana,
+    maxMana: store.characteristicsReducer.maxMana,
+    manaRegeneration: store.characteristicsReducer.manaRegeneration,
   }
-}, { setHealthRegeneration })(App)
+}, { setRegeneration })(App)

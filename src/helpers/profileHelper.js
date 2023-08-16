@@ -1,9 +1,9 @@
 
-export const regeneration = ({current,maxCharacteristics, coefficient, regenFunc}) => {
+export const regeneration = ({element,current,maxCharacteristics, coefficient, regenFunc}) => {
   let i = current
   const time = setInterval(function () {
     i++
-    regenFunc(i)
+    regenFunc(element,i)
     if (i >= maxCharacteristics) {
       clearInterval(time)
     }
