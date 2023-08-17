@@ -6,6 +6,7 @@ import HealthAndStaminaComp from "./HealthAndStaminaComp"
 import ManaComp from "./ManaComp"
 import { makeStyles } from "@mui/styles"
 import divImg from '../../img/divBackground.png'
+import uniqid from 'uniqid'
 
 const useStyles = makeStyles((theme) => ({
   placing: {
@@ -41,22 +42,22 @@ const Characteristics = () => {
     {
       name: 'strength',
       totalStatName: 'totalStrength',
-      allStatBonus: 'allStrengthBonus'
+      id: uniqid()
     },
     {
       name: 'dexterity',
       totalStatName: 'totalDexterity',
-      allStatBonus: 'allDexterityBonus'
+      id: uniqid()
     },
     {
       name: 'vitality',
       totalStatName: 'totalVitality',
-      allStatBonus: 'allVitalityBonus'
+      id: uniqid()
     },
     {
       name: 'energy',
       totalStatName: 'totalEnergy',
-      allStatBonus: 'allEnergyBonus'
+      id: uniqid()
     },
 
   ]
@@ -64,13 +65,12 @@ const Characteristics = () => {
   return (
     <div className={classes.placing}>
       <div className={classes.characteristics}>
-        {characteristicsFields.map((field, index) => {
+        {characteristicsFields.map((field) => {
           return (
             <CharacteristicsComp
               name={field.name}
               totalStatName={field.totalStatName}
-              allStatBonus={field.allStatBonus}
-              key={index}
+              key={field.id}
             />
           )
         })}

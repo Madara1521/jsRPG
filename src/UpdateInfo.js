@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import App from './App'
 import { PropTypes } from 'prop-types'
-import { regeneration } from "./helpers/profileHelper"
+import { regeneration } from "./helpers/updateInfoHelper"
 import { connect } from "react-redux"
 import {
   setTottalStat,
@@ -15,7 +15,8 @@ import {
   setDefense,
   setPhysicalDamage,
   setBlocking,
-  setRegeneration
+  setRegeneration,
+  resetRegeneration
 } from "./Redux/actions"
 
 
@@ -63,7 +64,10 @@ const UpdateInfo = (props) => {
     staminaRegeneration,
     currentMana,
     maxMana,
-    manaRegeneration
+    manaRegeneration,
+
+    actionHappened,
+    resetRegeneration
   } = props
 
 
@@ -122,23 +126,19 @@ const UpdateInfo = (props) => {
   useEffect(() => {
     setAllBonusStat()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allStrengthBonus,
-    allDexterityBonus,
-    allVitalityBonus,
-    allEnergyBonus])
+  }, [actionHappened])
   useEffect(() => {
     setAllPhyBonus()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startPhyBonus,
-    finalPhyBonus])
+  }, [actionHappened])
   useEffect(() => {
     setAllDefense()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defenseBonus])
+  }, [actionHappened])
   useEffect(() => {
     setAllAttackRating()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [attackRatingBonus])
+  }, [actionHappened])
   //BONUS REDUCER calculation
 
 
@@ -176,6 +176,16 @@ const UpdateInfo = (props) => {
     if (currentMana < maxMana) {
       regeneration(regenProps.mana)
     }
+
+    if (currentHealth > maxHealth) {
+      resetRegeneration('currentHealth', maxHealth)
+    }
+    if (currentStamina > maxStamina) {
+      resetRegeneration('currentStamina', maxStamina)
+    }
+    if (currentMana > maxMana) {
+      resetRegeneration('currentMana', maxMana)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxHealth, maxMana, maxStamina])
   //REGENERATION MANA AND HEALTH
@@ -188,7 +198,27 @@ const UpdateInfo = (props) => {
 }
 
 UpdateInfo.propTypes = {
+  strength: PropTypes.number.isRequired,
+  dexterity: PropTypes.number.isRequired,
+  vitality: PropTypes.number.isRequired,
+  energy: PropTypes.number.isRequired,
 
+  allStrengthBonus: PropTypes.number.isRequired,
+  allDexterityBonus: PropTypes.number.isRequired,
+  allVitalityBonus: PropTypes.number.isRequired,
+  allEnergyBonus: PropTypes.number.isRequired,
+
+  actionHappened: PropTypes.string.isRequired,
+  attackRatingBonus: PropTypes.number.isRequired,
+  defenseBonus: PropTypes.number.isRequired,
+  totalDexterity: PropTypes.number.isRequired,
+  totalStrength: PropTypes.number.isRequired,
+  totalVitality: PropTypes.number.isRequired,
+  totalEnergy: PropTypes.number.isRequired,
+
+  startPhyBonus: PropTypes.number.isRequired,
+  finalPhyBonus: PropTypes.number.isRequired,
+  blockingBonus: PropTypes.number,
 
   currentHealth: PropTypes.number.isRequired,
   maxHealth: PropTypes.number.isRequired,
@@ -200,6 +230,18 @@ UpdateInfo.propTypes = {
   maxMana: PropTypes.number.isRequired,
   manaRegeneration: PropTypes.number.isRequired,
   setRegeneration: PropTypes.func.isRequired,
+
+  setTottalStat: PropTypes.func.isRequired,
+  setAllDefense: PropTypes.func.isRequired,
+  setAllAttackRating: PropTypes.func.isRequired,
+  setAllPhyBonus: PropTypes.func.isRequired,
+  setAllBonusStat: PropTypes.func.isRequired,
+  setHealthAndStamina: PropTypes.func.isRequired,
+  setMana: PropTypes.func.isRequired,
+  setAttackRating: PropTypes.func.isRequired,
+  setDefense: PropTypes.func.isRequired,
+  setPhysicalDamage: PropTypes.func.isRequired,
+  setBlocking: PropTypes.func.isRequired
 }
 
 
@@ -249,5 +291,6 @@ export default connect(store => {
   setDefense,
   setPhysicalDamage,
   setBlocking,
-  setRegeneration
+  setRegeneration,
+  resetRegeneration
 })(UpdateInfo)

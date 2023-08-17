@@ -1,5 +1,5 @@
 
-export const regeneration = ({element,current,maxCharacteristics, coefficient, regenFunc}) => {
+export const regeneration = ({ element, current, maxCharacteristics, coefficient, regenFunc }) => {
   let i = current
   const time = setInterval(function () {
     i++

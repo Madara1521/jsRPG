@@ -27,7 +27,8 @@ import {
   SET_TIMER,
   SET_ID_LOCATION,
   SET_GENERATION_RINGS_AMULETS,
-  SET_REGENERATION
+  SET_REGENERATION,
+  RESET_REGENERATION
 } from "./types"
 
 export function incrementStat(statName) {
@@ -78,7 +79,7 @@ export function rankUpdate(rank) {
 }
 
 export function setTottalStat(
-  totalStatName, 
+  totalStatName,
   attributeCurrent,
   bonus) {
   // accepts the name of an attribute and sums the total value of this attribute
@@ -150,7 +151,7 @@ export function pushReceivedItem(nameType, items) {
   }
 }
 
-export function getViewDescription(info,requirements,isActiveItem,id) {
+export function getViewDescription(info, requirements, isActiveItem, id) {
   return {
     type: GET_VIEW_DESCRIPTION,
     info,
@@ -160,7 +161,7 @@ export function getViewDescription(info,requirements,isActiveItem,id) {
   }
 }
 
-export function setItemBonus(typeItem,bonus) {
+export function setItemBonus(typeItem, bonus) {
   return {
     type: SET_ITEM_BONUS,
     typeItem,
@@ -168,7 +169,7 @@ export function setItemBonus(typeItem,bonus) {
   }
 }
 
-export function setDeleteItem(typeArray,id) {
+export function setDeleteItem(typeArray, id) {
   return {
     type: SET_DELETE_ITEM,
     typeArray,
@@ -176,7 +177,7 @@ export function setDeleteItem(typeArray,id) {
   }
 }
 
-export function setPushCloth(typeArray,item) {
+export function setPushCloth(typeArray, item) {
   return {
     type: SET_PUSH_CLOTH,
     typeArray,
@@ -184,7 +185,7 @@ export function setPushCloth(typeArray,item) {
   }
 }
 
-export function setActiveItem(typeItem,bool) {
+export function setActiveItem(typeItem, bool) {
   return {
     type: SET_ACTIVE_ITEM,
     typeItem,
@@ -238,11 +239,19 @@ export function setGenerationRingsAmulets(zoneLevel) {
   }
 }
 
-export function setRegeneration(element,currentAttribute) {
+export function setRegeneration(element, currentAttribute) {
   return {
     type: SET_REGENERATION,
     element,
     currentAttribute
+  }
+}
+
+export function resetRegeneration(element, maxAttribute) {
+  return {
+    type: RESET_REGENERATION,
+    element,
+    maxAttribute
   }
 }
 

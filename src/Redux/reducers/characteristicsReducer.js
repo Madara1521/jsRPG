@@ -1,6 +1,7 @@
 import update from 'immutability-helper'
 
 import {
+  RESET_REGENERATION,
   SET_ATTACK_RATING,
   SET_BLOCKING,
   SET_DEFENSE,
@@ -73,6 +74,10 @@ export const characteristicsReducer = (state = initialState, action) => {
     case SET_REGENERATION:
       return update(state,{
         [action.element]: {$set: action.currentAttribute}
+      })
+    case RESET_REGENERATION:
+      return update(state,{
+        [action.element]: {$set: action.maxAttribute}
       })
     default:
       return state
