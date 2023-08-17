@@ -1,6 +1,7 @@
 import update from 'immutability-helper'
 import _ from 'lodash'
 
+
 import {
   GET_VIEW_DESCRIPTION,
   PUSH_RECEIVED_ITEM,
@@ -62,7 +63,7 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
       })
     case SET_ACTIVE_ITEM:
       return update(state,{
-        [action.typeItem]: {$set: action.bool}
+        [action.typeItem]: {$set: action.bool},
       })
     case SET_PUSH_CLOTH:
       return update(state, {

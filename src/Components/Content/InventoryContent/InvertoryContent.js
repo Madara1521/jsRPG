@@ -50,6 +50,7 @@ const InvertoryContent = (props) => {
   const classes = useStyles()
   const { gold } = props
 
+
   return (
     <div className={classes.content} >
       <div className={classes.invertory}>
@@ -70,4 +71,4 @@ export default connect(store => {
   return {
     gold: store.lootAndDescriptionReducer.gold,
   }
-}, {})(InvertoryContent)
+}, { })(InvertoryContent)

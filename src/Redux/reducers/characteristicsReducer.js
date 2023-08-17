@@ -34,7 +34,7 @@ const initialState = {
 
   maxMana: 30,// this indicator is affected by the energy
   currentMana: 1,
-  manaRegeneration: 0.9
+  manaRegeneration: 0.3
 
 }
 

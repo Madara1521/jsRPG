@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import Header from './Components/Header/Header'
 import ProfileContent from "./Components/Content/ProfileContent/ProfileContent"
 import { Route, Routes } from "react-router-dom"
@@ -11,9 +11,7 @@ import { Paper, AppBar } from '@mui/material'
 import { makeStyles } from "@mui/styles"
 import penta from './Components/Header/penta.png'
 import mainImg from './Components/Content/img/mainBackground.png'
-import { connect } from "react-redux"
-import { regeneration } from "./helpers/profileHelper"
-import { setRegeneration } from './Redux/actions'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -84,56 +82,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const App = (props) => {
+const App = () => {
   const classes = useStyles()
-  const {
-    currentHealth,
-    maxHealth,
-    healthRegeneration,
-    setRegeneration,
-    currentStamina,
-    maxStamina,
-    staminaRegeneration,
-    currentMana,
-    maxMana,
-    manaRegeneration } = props
-
-  const regenProps = {
-    health:{
-      element: 'currentHealth',
-      current: currentHealth,
-      maxCharacteristics: maxHealth,
-      coefficient: healthRegeneration,
-      regenFunc: setRegeneration
-    },
-    stamina:{
-      element: 'currentStamina',
-      current: currentStamina,
-      maxCharacteristics: maxStamina,
-      coefficient: staminaRegeneration,
-      regenFunc: setRegeneration
-    },
-    mana: {
-      element: 'currentMana',
-      current: currentMana,
-      maxCharacteristics: maxMana,
-      coefficient: manaRegeneration,
-      regenFunc: setRegeneration
-    }
-  }
-
-  useEffect(() => {
-    if(currentHealth < maxHealth){
-      regeneration(regenProps.health)
-    }
-    if(currentStamina < maxStamina){
-      regeneration(regenProps.stamina)
-    }
-    if(currentMana < maxMana){
-      regeneration(regenProps.mana)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [maxHealth, maxMana, maxStamina])
 
   return (
     <div className={classes.root}>
@@ -162,16 +112,5 @@ const App = (props) => {
   )
 }
 
-export default connect(store => {
-  return {
-    currentHealth: store.characteristicsReducer.currentHealth,
-    maxHealth: store.characteristicsReducer.maxHealth,
-    healthRegeneration: store.characteristicsReducer.healthRegeneration,
-    currentStamina: store.characteristicsReducer.currentStamina,
-    maxStamina: store.characteristicsReducer.maxStamina,
-    staminaRegeneration: store.characteristicsReducer.staminaRegeneration,
-    currentMana: store.characteristicsReducer.currentMana,
-    maxMana: store.characteristicsReducer.maxMana,
-    manaRegeneration: store.characteristicsReducer.manaRegeneration,
-  }
-}, { setRegeneration })(App)
+
+export default App

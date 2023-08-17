@@ -8,10 +8,12 @@ import {
   SET_ALL_BONUS_STAT,
 } from "../types"
 import { getSummaryParams } from '../../helpers/summaryHelper'
+import uniqid from 'uniqid'
 
 
 
 const initialState = {
+  actionHappened: '',
   allDefenseBonus: 0,
   allAttackRatingBonus: 0,
   allStartPhyBonus: 0,
@@ -252,7 +254,8 @@ export const bonusReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEM_BONUS:
       return update(state, {
-        [action.typeItem]: { $set: action.bonus }
+        [action.typeItem]: { $set: action.bonus },
+        actionHappened: {$set: uniqid()}
       })
     case SET_ALL_DEFENSE:
       return update(state, {
