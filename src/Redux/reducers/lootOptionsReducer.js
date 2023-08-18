@@ -114,7 +114,7 @@ const initialState = {
         strength: 2,
         dexterity: null,
         vitality: 5,
-        energy: null,
+        energy: 400,
       }
     },
     // {

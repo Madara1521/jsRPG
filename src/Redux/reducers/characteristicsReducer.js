@@ -13,6 +13,7 @@ import {
 } from "../types"
 
 
+
 const initialState = {
   totalStrength: 0,
   totalDexterity: 0,
@@ -42,42 +43,42 @@ const initialState = {
 export const characteristicsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TOTAL_STAT:
-      return update(state,{
-        [action.totalStatName]: {$set: action.attributeCurrent + action.bonus}
+      return update(state, {
+        [action.totalStatName]: { $set: action.attributeCurrent + action.bonus }
       })
     case SET_PHYSICAL_DAMAGE:
-      return update(state,{
-        startPhyDamage: {$set: (state.totalStrength * 4) + action.startPhyBonus},
-        finalPhyDamage: {$set: (state.totalStrength * 6) + action.finalPhyBonus}
+      return update(state, {
+        startPhyDamage: { $set: (state.totalStrength * 4) + action.startPhyBonus },
+        finalPhyDamage: { $set: (state.totalStrength * 6) + action.finalPhyBonus }
       })
     case SET_ATTACK_RATING:
-      return update(state,{
-        attackRating: {$set: (state.totalDexterity * 8) + action.attackRatingBonus}
+      return update(state, {
+        attackRating: { $set: (state.totalDexterity * 8) + action.attackRatingBonus }
       })
     case SET_DEFENSE:
-      return update(state,{
-        defense: {$set: (state.totalDexterity * 4) + action.defenseBonus}
+      return update(state, {
+        defense: { $set: (state.totalDexterity * 4) + action.defenseBonus }
       })
     case SET_BLOCKING:
-      return update(state,{
-        blocking: {$set: (state.totalDexterity * 2) + action.blockingBonus}
+      return update(state, {
+        blocking: { $set: (state.totalDexterity * 2) + action.blockingBonus }
       })
     case SET_HEALTH_AND_STAMINA:
-      return update(state,{
-        maxHealth: {$set: (state.totalVitality * 4)},
-        maxStamina: {$set: (state.totalVitality * 4)}
+      return update(state, {
+        maxHealth: { $set: (state.totalVitality * 4) },
+        maxStamina: { $set: (state.totalVitality * 4) }
       })
     case SET_MANA:
-      return update(state,{
-        maxMana: {$set: state.totalEnergy * 6}
+      return update(state, {
+        maxMana: { $set: state.totalEnergy * 6 }
       })
     case SET_REGENERATION:
-      return update(state,{
-        [action.element]: {$set: action.currentAttribute}
+      return update(state, {
+        [action.element]: { $set: action.currentAttribute }
       })
     case RESET_REGENERATION:
-      return update(state,{
-        [action.element]: {$set: action.maxAttribute}
+      return update(state, {
+        [action.element]: { $set: action.maxAttribute }
       })
     default:
       return state

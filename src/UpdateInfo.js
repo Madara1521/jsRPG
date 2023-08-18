@@ -149,21 +149,21 @@ const UpdateInfo = (props) => {
       current: currentHealth,
       maxCharacteristics: maxHealth,
       coefficient: healthRegeneration,
-      regenFunc: setRegeneration
+      regenFunc: setRegeneration,
     },
     stamina: {
       element: 'currentStamina',
       current: currentStamina,
       maxCharacteristics: maxStamina,
       coefficient: staminaRegeneration,
-      regenFunc: setRegeneration
+      regenFunc: setRegeneration,
     },
     mana: {
       element: 'currentMana',
       current: currentMana,
       maxCharacteristics: maxMana,
       coefficient: manaRegeneration,
-      regenFunc: setRegeneration
+      regenFunc: setRegeneration,
     }
   }
   useEffect(() => {

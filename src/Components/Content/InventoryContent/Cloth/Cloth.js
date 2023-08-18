@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import CharacterClothes from "./CharacterClothes/CharacterClothes"
 import PartnerClothes from "./PartnerClothes/PartnerClothes"
-import { getViewDescription, setViewItem } from "../../../../Redux/actions"
+import { getViewDescription, viewItem } from "../../../../Redux/actions"
 import { connect } from "react-redux"
 import { makeStyles } from "@mui/styles"
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const Cloth = ({ getViewDescription, setViewItem }) => {
+const Cloth = ({ getViewDescription, viewItem }) => {
   const classes = useStyles()
   const [activeTab, setActiveTab] = useState('Character')
   const isMobile = useMediaQuery('(max-width:600px)')
@@ -55,7 +55,7 @@ const Cloth = ({ getViewDescription, setViewItem }) => {
 
   useEffect(() => {
     getViewDescription({}, {})
-    setViewItem(null)
+    viewItem(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -94,4 +94,4 @@ const Cloth = ({ getViewDescription, setViewItem }) => {
   )
 }
 
-export default connect(null, { getViewDescription, setViewItem })(Cloth)
+export default connect(null, { getViewDescription, viewItem })(Cloth)

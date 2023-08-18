@@ -5,7 +5,7 @@ import weapon from './weapon.png'
 import shield from './shield.png'
 import ring from './ring.png'
 import book from './book.png'
-import { setViewItem } from "../../../../../Redux/actions"
+import { viewItem } from "../../../../../Redux/actions"
 import { connect } from "react-redux"
 import LootComp from './LootComp'
 import { PropTypes } from 'prop-types'
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 const Loot = (props) => {
   const classes = useStyles()
   const {
-    setViewItem,
+    viewItem,
     selectedLoot,
     helmetGlovesBootsBeltItems,
     armorItems,
@@ -177,12 +177,12 @@ const Loot = (props) => {
     },
   ]
 
-  const viewItem = (idArray, isActiveArray) => {
+  const viewItems = (idArray, isActiveArray) => {
     if (isActiveArray) {
-      setViewItem(null)
+      viewItem(null)
       return setActiveArray(null)
     }
-    setViewItem(idArray)
+    viewItem(idArray)
     return setActiveArray(idArray)
   }
 
@@ -198,7 +198,7 @@ const Loot = (props) => {
             <div
               className={classNames(classes.typesOfLoot, isActiveArray && arrayColor)}
               key={index}
-              onClick={() => viewItem(field.id, isActiveArray)}>
+              onClick={() => viewItems(field.id, isActiveArray)}>
               <img src={field.src} alt={field.alt}/>
             </div>
           )
@@ -250,4 +250,4 @@ export default connect((store, ownProps) => {
     ringsAmuletItems: store.lootAndDescriptionReducer.ringsAmulet,
     otherItems: store.lootAndDescriptionReducer.other,
   }
-}, { setViewItem })(Loot)
+}, { viewItem })(Loot)

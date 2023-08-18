@@ -13,12 +13,12 @@ import {
   SET_BLOCKING,
   SET_HEALTH_AND_STAMINA,
   SET_MANA,
-  SET_VIEW_ITEM,
+  VIEW_ITEM,
   PUSH_RECEIVED_ITEM,
   GET_VIEW_DESCRIPTION,
   SET_ITEM_BONUS,
-  SET_DELETE_ITEM,
-  SET_PUSH_CLOTH,
+  DELETE_ITEM,
+  PUSH_CLOTH,
   SET_ACTIVE_ITEM,
   SET_ALL_DEFENSE,
   SET_ALL_ATTACK_RATING,
@@ -136,9 +136,9 @@ export function setMana() {
   }
 }
 
-export function setViewItem(idArray) {
+export function viewItem(idArray) {
   return {
-    type: SET_VIEW_ITEM,
+    type: VIEW_ITEM,
     idArray
   }
 }
@@ -169,17 +169,17 @@ export function setItemBonus(typeItem, bonus) {
   }
 }
 
-export function setDeleteItem(typeArray, id) {
+export function deleteItem(typeArray, id) {
   return {
-    type: SET_DELETE_ITEM,
+    type: DELETE_ITEM,
     typeArray,
     id
   }
 }
 
-export function setPushCloth(typeArray, item) {
+export function pushCloth(typeArray, item) {
   return {
-    type: SET_PUSH_CLOTH,
+    type: PUSH_CLOTH,
     typeArray,
     item
   }

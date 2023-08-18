@@ -1,9 +1,9 @@
 import {
   getViewDescription,
   setActiveItem,
-  setDeleteItem,
+  deleteItem,
   setItemBonus,
-  setPushCloth
+  pushCloth
 } from "../Redux/actions"
 
 export const itemUpdateHelper = (itemInfo, itemRequirement) => {
@@ -34,7 +34,7 @@ export const addItemToColthHelper = (props) => {
   dispatch(getViewDescription(itemInfo, itemRequirements))
   if (!activeItem && classItem === stingItem) {
     dispatch(setItemBonus(stringBonus, bonus))
-    dispatch(setDeleteItem(arrayType, id))
+    dispatch(deleteItem(arrayType, id))
     dispatch(setActiveItem(strignActiveitem, true))
   }
 }
@@ -50,7 +50,7 @@ export const removeItemHelper = (props) => {
   dispatch(getViewDescription({},{}))
   if (activeItem) {
     dispatch(setItemBonus(stringBonus, nullValue))
-    dispatch(setPushCloth(arrayType, updateItem))
+    dispatch(pushCloth(arrayType, updateItem))
     dispatch(setActiveItem(strignActiveitem, false))
   }
 }

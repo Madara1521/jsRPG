@@ -5,9 +5,9 @@ import _ from 'lodash'
 import {
   GET_VIEW_DESCRIPTION,
   PUSH_RECEIVED_ITEM,
-  SET_VIEW_ITEM,
-  SET_DELETE_ITEM,
-  SET_PUSH_CLOTH,
+  VIEW_ITEM,
+  DELETE_ITEM,
+  PUSH_CLOTH,
   SET_ACTIVE_ITEM
 } from "../types"
 
@@ -42,7 +42,7 @@ const initialState = {
 
 export const lootAndDescriptionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_VIEW_ITEM:
+    case VIEW_ITEM:
       return update(state,{
         idArray: {$set: action.idArray}
       })
@@ -57,7 +57,7 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
         isActiveItem: { $set: action.isActiveItem },
         id: { $set: action.id }
       })
-    case SET_DELETE_ITEM:
+    case DELETE_ITEM:
       return update(state,{
         [action.typeArray]: {$set: _.filter(state[action.typeArray], (item) => item.info.id !== action.id)},
       })
@@ -65,7 +65,7 @@ export const lootAndDescriptionReducer = (state = initialState, action) => {
       return update(state,{
         [action.typeItem]: {$set: action.bool},
       })
-    case SET_PUSH_CLOTH:
+    case PUSH_CLOTH:
       return update(state, {
         [action.typeArray]: {$push: [action.item]},
       })
