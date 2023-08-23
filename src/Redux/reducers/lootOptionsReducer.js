@@ -117,90 +117,90 @@ const initialState = {
         energy: 400,
       }
     },
-    // {
-    //   requirements: {
-    //     requiredLevel: 32,
-    //     requiredStrength: 10,
-    //     requiredDexterity: 15,
-    //     typeHelmet: 'cap',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 4,
-    //     classItem: 'helmet',
-    //     lootName: 'Helmet Cain',
-    //     img: cap,
-    //     defenseBonus: 130,
-    //     strength: 100,
-    //     dexterity: 233,
-    //     vitality: 500,
-    //     energy: 111
-    //   }
-    // },
-    // {
-    //   requirements: {
-    //     requiredLevel: 32,
-    //     requiredStrength: 10,
-    //     requiredDexterity: 15,
-    //     typeGloves: 'chainGloves',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 0,
-    //     classItem: 'gloves',
-    //     lootName: 'Gloves peasant',
-    //     img: chainGloves,
-    //     defenseBonus: 4,
-    //     strength: null,
-    //     dexterity: null,
-    //     vitality: null,
-    //     energy: null,
-    //     attackRatingBonus: 23
-    //   }
-    // },
-    // {
-    //   requirements: {
-    //     requiredLevel: 32,
-    //     requiredStrength: 10,
-    //     requiredDexterity: 15,
-    //     typeBoots: 'lightPlateBoots',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 1,
-    //     classItem: 'boots',
-    //     lootName: 'Boots of satanic',
-    //     img: lightPlateBoots,
-    //     requiredLevel: 23,
-    //     defenseBonus: 55,
-    //     strength: 10,
-    //     dexterity: 5,
-    //     vitality: 60,
-    //     energy: null,
-    //     attackRatingBonus: 80
-    //   }
-    // },
-    // {
-    //   requirements: {
-    //     requiredLevel: 32,
-    //     requiredStrength: 10,
-    //     requiredDexterity: 15,
-    //     typeBelt: 'belt',
-    //   },
-    //   info: {
-    //     id: uniqid(),
-    //     rarity: 3,
-    //     classItem: 'belt',
-    //     lootName: 'Belt hydra',
-    //     img: belt,
-    //     defenseBonus: 101,
-    //     strength: 20,
-    //     dexterity: 25,
-    //     vitality: 40,
-    //     energy: null,
-    //     attackRatingBonus: null
-    //   }
-    // }
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeHelmet: 'cap',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 4,
+        classItem: 'helmet',
+        lootName: 'Helmet Cain',
+        img: cap,
+        defenseBonus: 130,
+        strength: 100,
+        dexterity: 233,
+        vitality: 500,
+        energy: 111
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeGloves: 'chainGloves',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 0,
+        classItem: 'gloves',
+        lootName: 'Gloves peasant',
+        img: chainGloves,
+        defenseBonus: 4,
+        strength: null,
+        dexterity: null,
+        vitality: null,
+        energy: null,
+        attackRatingBonus: 23
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeBoots: 'lightPlateBoots',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 1,
+        classItem: 'boots',
+        lootName: 'Boots of satanic',
+        img: lightPlateBoots,
+        requiredLevel: 23,
+        defenseBonus: 55,
+        strength: 10,
+        dexterity: 5,
+        vitality: 60,
+        energy: null,
+        attackRatingBonus: 80
+      }
+    },
+    {
+      requirements: {
+        requiredLevel: 32,
+        requiredStrength: 10,
+        requiredDexterity: 15,
+        typeBelt: 'belt',
+      },
+      info: {
+        id: uniqid(),
+        rarity: 3,
+        classItem: 'belt',
+        lootName: 'Belt hydra',
+        img: belt,
+        defenseBonus: 101,
+        strength: 20,
+        dexterity: 25,
+        vitality: 40,
+        energy: null,
+        attackRatingBonus: null
+      }
+    }
   ], // helmet,boots,gloves,belt
   armor: [
     // {

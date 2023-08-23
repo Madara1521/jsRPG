@@ -150,6 +150,7 @@ const UpdateInfo = (props) => {
       maxCharacteristics: maxHealth,
       coefficient: healthRegeneration,
       regenFunc: setRegeneration,
+      resetFunc: resetRegeneration
     },
     stamina: {
       element: 'currentStamina',
@@ -157,6 +158,7 @@ const UpdateInfo = (props) => {
       maxCharacteristics: maxStamina,
       coefficient: staminaRegeneration,
       regenFunc: setRegeneration,
+      resetFunc: resetRegeneration
     },
     mana: {
       element: 'currentMana',
@@ -164,30 +166,21 @@ const UpdateInfo = (props) => {
       maxCharacteristics: maxMana,
       coefficient: manaRegeneration,
       regenFunc: setRegeneration,
+      resetFunc: resetRegeneration
     }
   }
   useEffect(() => {
-    if (currentHealth < maxHealth) {
-      regeneration(regenProps.health)
-    }
-    if (currentStamina < maxStamina) {
-      regeneration(regenProps.stamina)
-    }
-    if (currentMana < maxMana) {
-      regeneration(regenProps.mana)
-    }
-
-    if (currentHealth > maxHealth) {
-      resetRegeneration('currentHealth', maxHealth)
-    }
-    if (currentStamina > maxStamina) {
-      resetRegeneration('currentStamina', maxStamina)
-    }
-    if (currentMana > maxMana) {
-      resetRegeneration('currentMana', maxMana)
-    }
+    regeneration(regenProps.health)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [maxHealth, maxMana, maxStamina])
+  }, [currentHealth, maxHealth])
+  useEffect(() => {
+    regeneration(regenProps.stamina)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentStamina, maxStamina])
+  useEffect(() => {
+    regeneration(regenProps.mana)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentMana, maxMana])
   //REGENERATION MANA AND HEALTH
 
   return (
