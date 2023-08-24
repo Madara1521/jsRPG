@@ -234,7 +234,8 @@ UpdateInfo.propTypes = {
   setAttackRating: PropTypes.func.isRequired,
   setDefense: PropTypes.func.isRequired,
   setPhysicalDamage: PropTypes.func.isRequired,
-  setBlocking: PropTypes.func.isRequired
+  setBlocking: PropTypes.func.isRequired,
+  resetRegeneration: PropTypes.func.isRequired
 }
 
 

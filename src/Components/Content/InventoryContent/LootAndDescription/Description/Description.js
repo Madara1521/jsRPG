@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   magicLetters: {
-    color: 'blue !important'
+    color: 'rgba(48, 97, 219) !important'
   },
   imgDescription: {
     display: 'flex',

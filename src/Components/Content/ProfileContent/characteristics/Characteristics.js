@@ -40,22 +40,22 @@ const Characteristics = () => {
 
   const characteristicsFields = [
     {
-      name: 'strength',
+      name: 'Strength',
       totalStatName: 'totalStrength',
       id: uniqid()
     },
     {
-      name: 'dexterity',
+      name: 'Dexterity',
       totalStatName: 'totalDexterity',
       id: uniqid()
     },
     {
-      name: 'vitality',
+      name: 'Vitality',
       totalStatName: 'totalVitality',
       id: uniqid()
     },
     {
-      name: 'energy',
+      name: 'Energy',
       totalStatName: 'totalEnergy',
       id: uniqid()
     },

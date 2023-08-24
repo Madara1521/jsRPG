@@ -9,12 +9,11 @@ const CharacteristicsComp = (props) => {
   } = props
 
   return (
-    <div>{name.charAt(0).toUpperCase() + name.slice(1)}: {totalAttribute}</div>
+    <div>{name}: {totalAttribute}</div>
   )
 }
 
 CharacteristicsComp.propTypes = {
-  totalStatName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   totalAttribute: PropTypes.number.isRequired,
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import PhotoAndLevel from "./PhotoAndLevel"
 import Characteristics from "./characteristics/Characteristics"
-import GeneralInfo from "./GeneralInfo"
+import GeneralInfo from "./generalInfo/GeneralInfo"
 import { makeStyles } from "@mui/styles"
 
 const useStyles = makeStyles((theme) => ({
