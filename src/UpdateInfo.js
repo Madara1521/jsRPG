@@ -260,7 +260,7 @@ export default connect(store => {
 
     startPhyBonus: store.bonusReducer.allStartPhyBonus,
     finalPhyBonus: store.bonusReducer.allFinalPhyBonus,
-    blockingBonus: store.bonusReducer.shieldBonus.info.blockingBonus,
+    blockingBonus: store.bonusReducer.allBlockingBonus,
 
     currentHealth: store.characteristicsReducer.currentHealth,
     maxHealth: store.characteristicsReducer.maxHealth,

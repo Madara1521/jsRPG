@@ -58,83 +58,6 @@ const useStyles = makeStyles({
   },
 })
 
-const nullArmor = {
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    requiredLevel: null,
-    defenseBonus: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null
-  },
-  requirements: {
-    requiredLevel: null,
-    requiredStrength: null,
-    requiredDexterity: null,
-    typeArmor: null
-  }
-}
-
-const nullWeapon = {
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    requiredLevel: null,
-    defenseBonus: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null,
-    startPhysicalDamage: null,
-    finalPhysicalDamage: null,
-    oneHanded: false,
-    twoHanded: false
-  },
-  requirements: {
-    requiredLevel: null,
-    requiredStrength: null,
-    requiredDexterity: null,
-    typeWeapon: null
-  }
-}
-
-const nullShield = {
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    requiredLevel: null,
-    defenseBonus: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null,
-    startPhysicalDamage: null,
-    finalPhysicalDamage: null,
-    blockingBonus: null,
-    oneHanded: false,
-    twoHanded: false
-  },
-  requirements: {
-    requiredLevel: null,
-    requiredStrength: null,
-    requiredDexterity: null,
-    typeShield: null
-  }
-}
 
 const WeaponArmorShield = (props) => {
   const classes = useStyles()
@@ -194,7 +117,6 @@ const WeaponArmorShield = (props) => {
       dispatch,
       activeItem: activeArmor,
       stringBonus: 'armorBonus',
-      nullValue: nullArmor,
       arrayType: 'armor',
       updateItem: itemUpdateHelper(armorInfo, armorRequirements),
       strignActiveitem: 'activeArmor',
@@ -256,7 +178,6 @@ const WeaponArmorShield = (props) => {
       dispatch,
       activeItem: activeSecondWeapon,
       stringBonus: 'secondWeaponBonus',
-      nullValue: nullWeapon,
       arrayType: 'weapon',
       updateItem: itemUpdateHelper(secondWeaponInfo, secondWeaponRequirements),
       strignActiveitem: 'activeSecondWeapon',
@@ -268,7 +189,6 @@ const WeaponArmorShield = (props) => {
       dispatch,
       activeItem: activeShield,
       stringBonus: 'shieldBonus',
-      nullValue: nullShield,
       arrayType: 'shield',
       updateItem: itemUpdateHelper(shieldInfo, shieldRequirements),
       strignActiveitem: 'activeShield',
@@ -325,7 +245,6 @@ const WeaponArmorShield = (props) => {
       dispatch,
       activeItem: activeWeapon,
       stringBonus: 'weaponBonus',
-      nullValue: nullWeapon,
       arrayType: 'weapon',
       updateItem: itemUpdateHelper(weaponInfo, weaponRequirements),
       strignActiveitem: 'activeWeapon',

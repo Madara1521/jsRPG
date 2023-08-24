@@ -15,6 +15,7 @@ import uniqid from 'uniqid'
 const initialState = {
   actionHappened: '',
   allDefenseBonus: 0,
+  allBlockingBonus: 0,
   allAttackRatingBonus: 0,
   allStartPhyBonus: 0,
   allFinalPhyBonus: 0,
@@ -24,213 +25,56 @@ const initialState = {
   allEnergyBonus: 0,
 
   amuletBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-      requiredLevel: null,
-      typeAmulet: null,
-    }
+    info: {},
+    requirements: {}
   },
   secondAmuletBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-      requiredLevel: null,
-      typeAmulet: null,
-    }
+    info: {},
+    requirements: {}
   },
   helmetBonus: {
-    requirements: {
-      requiredLevel: null,
-      requiredStrength: null,
-      requiredDexterity: null,
-      typeHelmet: null,
-    },
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-    }
+    requirements: {},
+    info: {}
   },
   weaponBonus: {
-    info: {
-      id: null,
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      startPhysicalDamage: null,
-      finalPhysicalDamage: null,
-      attackRatingBonus: null,
-      oneHanded: false,
-      twoHanded: false,
-    },
-    requirements: {
-      requiredLevel: null,
-      requiredStrength: null,
-      requiredDexterity: null,
-      typeWeapon: null,
-    }
+    info: {},
+    requirements: {}
   },
   secondWeaponBonus: {
-    info: {
-      id: null,
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      startPhysicalDamage: null,
-      finalPhysicalDamage: null,
-      attackRatingBonus: null,
-      oneHanded: false,
-      twoHanded: false,
-    },
-    requirements: {
-      requiredLevel: null,
-      requiredStrength: null,
-      requiredDexterity: null,
-      typeWeapon: null,
-    }
+    info: {},
+    requirements: {}
   },
   armorBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-      requiredLevel: null,
-      requiredStrength: null,
-      requiredDexterity: null,
-      typeArmor: null,
-    }
+    info: {},
+    requirements: {}
   },
   shieldBonus: {
-    info: {
-      id: null,
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      startPhysicalDamage: null,
-      finalPhysicalDamage: null,
-      blockingBonus: null,
-      defenseBonus: null,
-      attackRatingBonus: null,
-      oneHanded: false,
-      twoHanded: false,
-    },
-    requirements: {
-      requiredLevel: null,
-      requiredStrength: null,
-      requiredDexterity: null,
-      typeShield: null,
-    }
+    info: {},
+    requirements: {}
   },
   ringBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-      requiredLevel: null,
-      typeRing: null,
-    }
+    info: {},
+    requirements: {}
   },
   secondRingBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-      requiredLevel: null,
-      typeRing: null,
-    }
+    info: {},
+    requirements: {}
   },
   beltBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-      requiredLevel: null,
-      requiredStrength: null,
-      requiredDexterity: null,
-      typeBelt: null,
-    }
+    info: {},
+    requirements: {}
   },
   glovesBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-      attackRatingBonus: null,
-    },
-    requirements: {
-      requiredLevel: null,
-      requiredStrength: null,
-      requiredDexterity: null,
-      typeGloves: null,
-    }
+    info: {},
+    requirements: {}
   },
   bootsBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-      attackRatingBonus: null
-    },
-    requirements: {
-      requiredLevel: null,
-      requiredStrength: null,
-      requiredDexterity: null,
-      typeBoots: null,
-    }
+    info: {},
+    requirements: {}
   },
   otherBonus: {
-    info: {
-      strength: null,
-      dexterity: null,
-      vitality: null,
-      energy: null,
-      defenseBonus: null,
-      attackRatingBonus: null
-    },
-    requirements: {
-      requiredLevel: null,
-      typeOther: null,
-    }
+    info: {},
+    requirements: {}
   },
 }
 
@@ -259,7 +103,8 @@ export const bonusReducer = (state = initialState, action) => {
       })
     case SET_ALL_DEFENSE:
       return update(state, {
-        allDefenseBonus: { $set: getSummaryParams(state, bonuses, 'info.defenseBonus') }
+        allDefenseBonus: { $set: getSummaryParams(state, bonuses, 'info.defenseBonus') },
+        allBlockingBonus: { $set: getSummaryParams(state, bonuses, 'info.blockingBonus') },
       })
     case SET_ALL_ATTACK_RATING:
       return update(state, {

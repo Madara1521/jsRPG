@@ -35,50 +35,6 @@ const useStyles = makeStyles({
   }
 })
 
-const nullGloves = {
-  requirements: {
-    requiredLevel: null,
-    requiredStrength: null,
-    requiredDexterity: null,
-    typeGloves: null,
-  },
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    requiredLevel: null,
-    defenseBonus: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null,
-  }
-}
-const nullBoots = {
-  requirements: {
-    requiredLevel: null,
-    requiredStrength: null,
-    requiredDexterity: null,
-    typeBoots: null,
-  },
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    requiredLevel: null,
-    defenseBonus: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null
-  }
-}
 
 const GlovesBoots = (props) => {
   const classes = useStyles()
@@ -118,7 +74,6 @@ const GlovesBoots = (props) => {
       dispatch,
       activeItem: activeGloves,
       stringBonus: 'glovesBonus',
-      nullValue: nullGloves,
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(glovesInfo, glovesRequirements),
       strignActiveitem: 'activeGloves',
@@ -147,7 +102,6 @@ const GlovesBoots = (props) => {
       dispatch,
       activeItem: activeBoots,
       stringBonus: 'bootsBonus',
-      nullValue: nullBoots,
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(bootsInfo, bootsRequirements),
       strignActiveitem: 'activeBoots',

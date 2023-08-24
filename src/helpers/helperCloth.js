@@ -43,11 +43,19 @@ export const removeItemHelper = (props) => {
   const {
     dispatch,
     activeItem,
-    stringBonus, nullValue,
+    stringBonus,
     arrayType, updateItem,
     strignActiveitem,
   } = props
-  dispatch(getViewDescription({},{}))
+
+  const nullValue = {
+    requirements: {
+    },
+    info: {
+    }
+  }
+  
+  dispatch(getViewDescription({}, {}))
   if (activeItem) {
     dispatch(setItemBonus(stringBonus, nullValue))
     dispatch(pushCloth(arrayType, updateItem))

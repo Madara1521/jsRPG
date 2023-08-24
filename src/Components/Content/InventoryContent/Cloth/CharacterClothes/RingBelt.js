@@ -47,47 +47,6 @@ const useStyles = makeStyles({
   }
 })
 
-const nullBelt = {
-  requirements: {
-    requiredLevel: null,
-    requiredStrength: null,
-    requiredDexterity: null,
-    typeBelt: null,
-  },
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    requiredLevel: null,
-    defenseBonus: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null
-  }
-}
-
-const nullRing = {
-  requirements: {
-    requiredLevel: null,
-    typeRing: null,
-  },
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null
-  }
-}
 
 const RingBelt = (props) => {
   const classes = useStyles()
@@ -135,7 +94,6 @@ const RingBelt = (props) => {
       dispatch,
       activeItem: activeBelt,
       stringBonus: 'beltBonus',
-      nullValue: nullBelt,
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(beltInfo, beltRequirements),
       strignActiveitem: 'activeBelt',
@@ -169,7 +127,6 @@ const RingBelt = (props) => {
     {
       dispatch,
       activeItem: activeRing,
-      nullValue: nullRing,
       stringBonus: 'ringBonus',
       arrayType: 'ringsAmulet',
       updateItem: itemUpdateHelper(ringInfo, ringRequirements),
@@ -204,7 +161,6 @@ const RingBelt = (props) => {
     {
       dispatch,
       activeItem: activeSecondRing,
-      nullValue: nullRing,
       stringBonus: 'secondRingBonus',
       arrayType: 'ringsAmulet',
       updateItem: itemUpdateHelper(secondRingInfo, secondRingRequirements),

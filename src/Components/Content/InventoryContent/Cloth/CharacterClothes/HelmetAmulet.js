@@ -55,44 +55,7 @@ const useStyles = makeStyles({
   }
 })
 
-const nullHelmet = {
-  requirements: {
-    requiredLevel: null,
-    requiredStrength: null,
-    requiredDexterity: null,
-    typeHelmet: null,
-  },
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    defenseBonus: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null
-  }
-}
-const nullAmulet = {
-  requirements: {
-    requiredLevel: null,
-    typeAmulet: null,
-  },
-  info: {
-    id: null,
-    rarity: null,
-    classItem: null,
-    lootName: null,
-    img: null,
-    strength: null,
-    dexterity: null,
-    vitality: null,
-    energy: null,
-    attackRatingBonus: null,
-  }
-}
+
 
 const HelmetAmulet = (props) => {
   const classes = useStyles()
@@ -140,7 +103,6 @@ const HelmetAmulet = (props) => {
     {
       dispatch,
       activeItem: activeHelmet,
-      nullValue: nullHelmet,
       stringBonus: 'helmetBonus',
       arrayType: 'helmetGlovesBootsBelt',
       updateItem: itemUpdateHelper(helmetInfo, helmetRequirements),
@@ -175,7 +137,6 @@ const HelmetAmulet = (props) => {
     {
       dispatch,
       activeItem: activeAmulet,
-      nullValue: nullAmulet,
       stringBonus: 'amuletBonus',
       arrayType: 'ringsAmulet',
       updateItem: itemUpdateHelper(amuletInfo, amuletRequirements),
@@ -210,7 +171,6 @@ const HelmetAmulet = (props) => {
     {
       dispatch,
       activeItem: activeSecondAmulet,
-      nullValue: nullAmulet,
       stringBonus: 'secondAmuletBonus',
       arrayType: 'ringsAmulet',
       updateItem: itemUpdateHelper(secondAmuletInfo, secondAmuletRequirements),

@@ -12,8 +12,6 @@ import {
   SET_TOTAL_STAT,
 } from "../types"
 
-
-
 const initialState = {
   totalStrength: 0,
   totalDexterity: 0,
@@ -37,7 +35,6 @@ const initialState = {
   maxMana: 30,// this indicator is affected by the energy
   currentMana: 1,
   manaRegeneration: 0.3
-
 }
 
 export const characteristicsReducer = (state = initialState, action) => {
