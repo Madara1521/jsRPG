@@ -2,7 +2,7 @@
   "name": "rpg",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Madara1521.github.io/jsRPG",
+  "homepage": "https://Madara1521.github.io/",
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@emotion/babel-plugin": "^11.2.0",
