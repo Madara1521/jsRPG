@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { pushReceivedItem, setTimer, setIdLocation, setGenerationRingsAmulets } from "../../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
 import classNames from 'classnames'
+import { PropTypes } from 'prop-types'
 
 export const useStyles = makeStyles(() => ({
   locationComponent: {
@@ -67,21 +68,26 @@ export const useStyles = makeStyles(() => ({
   healthContainer: {
     display: 'flex',
     flex: 1,
-    paddingLeft: '10px',
     background: 'red',
     flexDirection: 'row',
-    border: '1px ridge #a3a3a3',
   },
   manaContainer: {
     display: 'flex',
     flex: 1,
-    paddingLeft: '10px',
     background: 'blue',
     flexDirection: 'row',
-    border: '1px ridge #a3a3a3',
+  },
+  staminaContainer: {
+    display: 'flex',
+    flex: 1,
+    background: 'green',
+    flexDirection: 'row',
   },
   nullContainer: {
     display: 'none',
+  },
+  text: {
+    paddingLeft: '10px',
   }
 }))
 
@@ -106,12 +112,19 @@ const Location = (props) => {
     id,
     setIdLocation,
     activeId,
-    setGenerationRingsAmulets } = props
+    setGenerationRingsAmulets,
+    maxHealth,
+    currentHealth,
+    maxMana,
+    currentMana,
+    maxStamina,
+    currentStamina  } = props
+
 
   useEffect(() => {
     setGenerationRingsAmulets(zoneLevel)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
 
   const pushItems = () => {
@@ -146,6 +159,16 @@ const Location = (props) => {
     return setActiveLocation(id)
   }
 
+  const health = () => {
+    return (currentHealth / maxHealth) * 100
+  }
+  const mana = () => {
+    return (currentMana / maxMana) * 100
+  }
+  const stamina = () => {
+    return (currentStamina / maxStamina) * 100
+  }
+
   return (
     <div
       className={classNames(
@@ -170,11 +193,23 @@ const Location = (props) => {
           <div className={classNames(!isActiveLocation && classes.nullContainer, classes.stopButton)}>stop</div>
         </div>
         <div className={classes.healthManaContainer}>
-          <div className={classNames(!isActiveLocation && classes.nullContainer, classes.healthContainer)}>
-            Health
+          <div
+            className={classNames(!isActiveLocation && classes.nullContainer, classes.healthContainer)}
+            style={{ width: `${health()}%` }}
+          >
+            <div className={classes.text}>Health</div>
           </div>
-          <div className={classNames(!isActiveLocation && classes.nullContainer, classes.manaContainer)}>
-            Mana
+          <div
+            className={classNames(!isActiveLocation && classes.nullContainer, classes.manaContainer)}
+            style={{ width: `${mana()}%` }}
+          >
+            <div className={classes.text}>Mana</div>
+          </div>
+          <div
+            className={classNames(!isActiveLocation && classes.nullContainer, classes.staminaContainer)}
+            style={{ width: `${stamina()}%` }}
+          >
+            <div className={classes.text}>Stamina</div>
           </div>
         </div>
         <div className={classes.skillsContainer}>
@@ -184,17 +219,49 @@ const Location = (props) => {
   )
 }
 
+Location.propTypes = {
+  helmetGlovesBootsBelt: PropTypes.array.isRequired,
+  armors: PropTypes.array.isRequired,
+  weapons: PropTypes.array.isRequired,
+  shields: PropTypes.array.isRequired,
+  ringsAmulets: PropTypes.array.isRequired,
+  others: PropTypes.array.isRequired,
+  timer: PropTypes.number.isRequired,
+  activeId: PropTypes.number.isRequired,
+  maxHealth: PropTypes.number.isRequired,
+  currentHealth: PropTypes.number.isRequired,
+  maxMana: PropTypes.number.isRequired,
+  currentMana: PropTypes.number.isRequired,
+  maxStamina: PropTypes.number.isRequired,
+  currentStamina: PropTypes.number.isRequired,
+
+  pushReceivedItem: PropTypes.func.isRequired,
+  setTimer: PropTypes.func.isRequired,
+  setIdLocation: PropTypes.func.isRequired,
+  setGenerationRingsAmulets: PropTypes.func.isRequired,
+}
+
+
 export default connect(store => {
   return {
-    gold: store.lootAndDescriptionReducer.gold,
     helmetGlovesBootsBelt: store.lootOptionsReducer.helmetGlovesBootsBelt,
     armors: store.lootOptionsReducer.armor,
     weapons: store.lootOptionsReducer.weapon,
     shields: store.lootOptionsReducer.shield,
     ringsAmulets: store.lootOptionsReducer.ringsAmulet,
     others: store.lootOptionsReducer.other,
+
     timer: store.locationsReducer.timer,
     activeId: store.locationsReducer.activeId,
+
+    maxHealth: store.characteristicsReducer.maxHealth,
+    currentHealth: store.characteristicsReducer.currentHealth,
+
+    maxMana: store.characteristicsReducer.maxMana,
+    currentMana: store.characteristicsReducer.currentMana,
+
+    maxStamina: store.characteristicsReducer.maxStamina,
+    currentStamina: store.characteristicsReducer.currentStamina,
   }
 }, {
   pushReceivedItem,

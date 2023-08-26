@@ -5,6 +5,7 @@ import LootAndDescription from "./LootAndDescription/LootAndDescription"
 import { connect } from "react-redux"
 import { makeStyles } from "@mui/styles"
 import divImg from '../img/divBackground.png'
+import { PropTypes } from 'prop-types'
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -65,6 +66,10 @@ const InvertoryContent = (props) => {
       </div>
     </div>
   )
+}
+
+InvertoryContent.propTypes = {
+  gold: PropTypes.number.isRequired,
 }
 
 export default connect(store => {

@@ -30,7 +30,7 @@ const initialState = {
   healthRegeneration: 0.5,
   maxStamina: 20,
   currentStamina: 1,
-  staminaRegeneration: 0.5,
+  staminaRegeneration: 0.8,
 
   maxMana: 30,// this indicator is affected by the energy
   currentMana: 1,
