@@ -99,7 +99,7 @@ const App = () => {
       <main>
         <Paper className={classes.main}>
           <Routes>
-            <Route path="/" element={<ProfileContent />} />
+            <Route path="jsRPG" element={<ProfileContent />} />
             <Route path="invertory" element={<InvertoryContent />} />
             <Route path="attributes" element={<AttributeContent />} />
             <Route path="skills" element={<SkillsContent />} />

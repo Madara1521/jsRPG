@@ -2,7 +2,7 @@
   "name": "rpg",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Madara1521.github.io/",
+  "homepage": "https://madara1521.github.io/jsRPG",
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@emotion/babel-plugin": "^11.2.0",
@@ -34,13 +34,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint -c .eslintrc src"
+    "lint": "eslint -c .eslintrc src",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [

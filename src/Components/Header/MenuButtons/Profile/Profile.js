@@ -7,7 +7,7 @@ const Profile = () => {
   const classes = useStyles()
 
   return (
-    <NavLink to='/'>
+    <NavLink to='jsRPG'>
       <div className={classes.iconStyle}>
         <img src={pentagram} alt='pentagram' />
       </div>
