@@ -28,7 +28,8 @@ import {
   SET_ID_LOCATION,
   SET_GENERATION_RINGS_AMULETS,
   SET_REGENERATION,
-  RESET_REGENERATION
+  RESET_REGENERATION,
+  VIEW_ACT
 } from "./types"
 
 export function incrementStat(statName) {
@@ -251,6 +252,13 @@ export function resetRegeneration(element, maxAttribute) {
     type: RESET_REGENERATION,
     element,
     maxAttribute
+  }
+}
+
+export function viewAct(idAct) {
+  return {
+    type: VIEW_ACT,
+    idAct
   }
 }
 

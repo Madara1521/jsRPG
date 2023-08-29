@@ -1,16 +1,16 @@
 import update from 'immutability-helper'
-import { SET_ID_LOCATION, SET_TIMER } from '../types'
+import { SET_ID_LOCATION, SET_TIMER, VIEW_ACT } from '../types'
 
 
 const initialState = {
   timer: -1,
   activeLocationId: 1,
   activeActId: 1,
-  firstAct: [
+  firstActNormal: [
     {
       id: 1,
       name: 'Blood Moor',
-      zoneLevel: 5,
+      zoneLevel: 1,
       numberOfMonsters: 30,
       locationClearTime: 4,
       monsters: [
@@ -40,7 +40,7 @@ const initialState = {
     {
       id: 2,
       name: 'Den of Evil',
-      zoneLevel: 7,
+      zoneLevel: 1,
       numberOfMonsters: 46,
       locationClearTime: 13,
       monsters: [
@@ -81,7 +81,11 @@ const initialState = {
         }
       ]
     }
-  ]
+  ],
+  secondActNormal: [],
+  thirdActNormal: [],
+  fourthActNormal: [],
+  fifthActNormal: []
 }
 
 export const locationsReducer = (state = initialState, action) => {
@@ -91,9 +95,12 @@ export const locationsReducer = (state = initialState, action) => {
         timer: { $set: action.timer },
       })
     case SET_ID_LOCATION:
-      action.pushItems
       return update(state, {
         activeLocationId: { $set: action.activeLocationId },
+      })
+    case VIEW_ACT:
+      return update(state, {
+        activeActId: { $set: action.idAct }
       })
     default:
       return state

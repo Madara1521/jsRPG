@@ -19,7 +19,6 @@ const initialState = {
   shield: [],
   ringsAmulet: [],
   other: [],
-  selectedLoot: [],
   gold: 4514,
   idArray: '',
 

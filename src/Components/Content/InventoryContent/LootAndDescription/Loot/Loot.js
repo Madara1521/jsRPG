@@ -78,7 +78,6 @@ const Loot = (props) => {
   const classes = useStyles()
   const {
     viewItem,
-    selectedLoot,
     helmetGlovesBootsBeltItems,
     armorItems,
     weaponItems,
@@ -103,7 +102,7 @@ const Loot = (props) => {
       case 6:
         return otherItems
       default:
-        return selectedLoot
+        return []
     }
   }
   const arrayColorHelper = (index) => {
@@ -177,13 +176,13 @@ const Loot = (props) => {
     },
   ]
 
-  const viewItems = (idArray, isActiveArray) => {
-    if (isActiveArray) {
+  const viewArrayItems = (activeIdArray, isActiveArrayId) => {
+    if (isActiveArrayId) {
       viewItem(null)
       return setActiveArray(null)
     }
-    viewItem(idArray)
-    return setActiveArray(idArray)
+    viewItem(activeIdArray)
+    return setActiveArray(activeIdArray)
   }
 
   const lootItems = itemArrayHelper(idArray)
@@ -197,9 +196,10 @@ const Loot = (props) => {
           return (
             <div
               className={classNames(classes.typesOfLoot, isActiveArray && arrayColor)}
-              key={index}
-              onClick={() => viewItems(field.id, isActiveArray)}>
-              <img src={field.src} alt={field.alt}/>
+              key={field.id}
+              onClick={() => viewArrayItems(field.id, isActiveArray)}
+            >
+              <img src={field.src} alt={field.alt} />
             </div>
           )
         })}
@@ -230,7 +230,6 @@ const Loot = (props) => {
 
 
 Loot.propTypes = {
-  selectedLoot: PropTypes.array.isRequired,
   helmetGlovesBootsBeltItems: PropTypes.array.isRequired,
   armorItems: PropTypes.array.isRequired,
   weaponItems: PropTypes.array.isRequired,
@@ -241,7 +240,6 @@ Loot.propTypes = {
 
 export default connect((store, ownProps) => {
   return {
-    selectedLoot: store.lootAndDescriptionReducer.selectedLoot,
     idArray: store.lootAndDescriptionReducer.idArray,
     helmetGlovesBootsBeltItems: store.lootAndDescriptionReducer.helmetGlovesBootsBelt,
     armorItems: store.lootAndDescriptionReducer.armor,
