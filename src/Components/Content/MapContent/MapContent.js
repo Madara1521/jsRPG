@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { makeStyles } from "@mui/styles"
 import Location from "./Locations/Location"
 import { connect } from "react-redux"
+import { PropTypes } from 'prop-types'
 
 export const useStyles = makeStyles(() => ({
   content: {
@@ -26,9 +27,9 @@ export const useStyles = makeStyles(() => ({
 }))
 
 const MapContent = (props) => {
-  const { locations, activeId } = props
+  const { locations, activeLocationId } = props
   const classes = useStyles()
-  const [activeLocation, setActiveLocation] = useState(activeId)
+  const [activeLocation, setActiveLocation] = useState(activeLocationId)
 
   return (
     <div className={classes.content} >
@@ -55,9 +56,14 @@ const MapContent = (props) => {
   )
 }
 
+MapContent.propTypes = {
+  locations: PropTypes.array.isRequired,
+  activeLocationId: PropTypes.number.isRequired,
+}
+
 export default connect(store => {
   return {
-    locations: store.locationsReducer.locations,
-    activeId: store.locationsReducer.activeId,
+    locations: store.locationsReducer.firstAct,
+    activeLocationId: store.locationsReducer.activeLocationId,
   }
 }, { })(MapContent)

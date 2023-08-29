@@ -1,9 +1,10 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { pushReceivedItem, setTimer, setIdLocation, setGenerationRingsAmulets } from "../../../../Redux/actions"
+import { pushReceivedItem, setTimer, setIdLocation, setGenerationRingsAmulets, incrementExperience } from "../../../../Redux/actions"
 import { makeStyles } from "@mui/styles"
 import classNames from 'classnames'
 import { PropTypes } from 'prop-types'
+import HealthManaStamina from "./HealthManaStamina"
 
 export const useStyles = makeStyles(() => ({
   locationComponent: {
@@ -59,36 +60,9 @@ export const useStyles = makeStyles(() => ({
     flexDirection: 'row',
     border: '1px ridge #a3a3a3',
   },
-  healthManaContainer: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    border: '1px ridge #a3a3a3',
-  },
-  healthContainer: {
-    display: 'flex',
-    flex: 1,
-    background: 'red',
-    flexDirection: 'row',
-  },
-  manaContainer: {
-    display: 'flex',
-    flex: 1,
-    background: 'blue',
-    flexDirection: 'row',
-  },
-  staminaContainer: {
-    display: 'flex',
-    flex: 1,
-    background: 'green',
-    flexDirection: 'row',
-  },
   nullContainer: {
     display: 'none',
   },
-  text: {
-    paddingLeft: '10px',
-  }
 }))
 
 const Location = (props) => {
@@ -111,14 +85,9 @@ const Location = (props) => {
     isActiveLocation,
     id,
     setIdLocation,
-    activeId,
+    activeLocationId,
     setGenerationRingsAmulets,
-    maxHealth,
-    currentHealth,
-    maxMana,
-    currentMana,
-    maxStamina,
-    currentStamina  } = props
+    incrementExperience  } = props
 
 
   useEffect(() => {
@@ -145,28 +114,20 @@ const Location = (props) => {
         setTimer(i)
         if (i === -1) {
           clearInterval(time)
-          setTimer(i, pushItems())
+          incrementExperience()
+          pushItems()
+          setTimer(i)
         }
       }, 1000)
     }
   }
   const handleClickLocation = () => {
     if (timer > -1) {
-      return setActiveLocation(activeId)
+      return setActiveLocation(activeLocationId)
     }
     setGenerationRingsAmulets(zoneLevel)
     setIdLocation(id)
     return setActiveLocation(id)
-  }
-
-  const health = () => {
-    return (currentHealth / maxHealth) * 100
-  }
-  const mana = () => {
-    return (currentMana / maxMana) * 100
-  }
-  const stamina = () => {
-    return (currentStamina / maxStamina) * 100
   }
 
   return (
@@ -192,26 +153,7 @@ const Location = (props) => {
           </div>
           <div className={classNames(!isActiveLocation && classes.nullContainer, classes.stopButton)}>stop</div>
         </div>
-        <div className={classes.healthManaContainer}>
-          <div
-            className={classNames(!isActiveLocation && classes.nullContainer, classes.healthContainer)}
-            style={{ width: `${health()}%` }}
-          >
-            <div className={classes.text}>Health</div>
-          </div>
-          <div
-            className={classNames(!isActiveLocation && classes.nullContainer, classes.manaContainer)}
-            style={{ width: `${mana()}%` }}
-          >
-            <div className={classes.text}>Mana</div>
-          </div>
-          <div
-            className={classNames(!isActiveLocation && classes.nullContainer, classes.staminaContainer)}
-            style={{ width: `${stamina()}%` }}
-          >
-            <div className={classes.text}>Stamina</div>
-          </div>
-        </div>
+        <HealthManaStamina isActiveLocation={isActiveLocation}/>
         <div className={classes.skillsContainer}>
         </div>
       </div>
@@ -227,13 +169,7 @@ Location.propTypes = {
   ringsAmulets: PropTypes.array.isRequired,
   others: PropTypes.array.isRequired,
   timer: PropTypes.number.isRequired,
-  activeId: PropTypes.number.isRequired,
-  maxHealth: PropTypes.number.isRequired,
-  currentHealth: PropTypes.number.isRequired,
-  maxMana: PropTypes.number.isRequired,
-  currentMana: PropTypes.number.isRequired,
-  maxStamina: PropTypes.number.isRequired,
-  currentStamina: PropTypes.number.isRequired,
+  activeLocationId: PropTypes.number.isRequired,
 
   pushReceivedItem: PropTypes.func.isRequired,
   setTimer: PropTypes.func.isRequired,
@@ -250,22 +186,13 @@ export default connect(store => {
     shields: store.lootOptionsReducer.shield,
     ringsAmulets: store.lootOptionsReducer.ringsAmulet,
     others: store.lootOptionsReducer.other,
-
     timer: store.locationsReducer.timer,
-    activeId: store.locationsReducer.activeId,
-
-    maxHealth: store.characteristicsReducer.maxHealth,
-    currentHealth: store.characteristicsReducer.currentHealth,
-
-    maxMana: store.characteristicsReducer.maxMana,
-    currentMana: store.characteristicsReducer.currentMana,
-
-    maxStamina: store.characteristicsReducer.maxStamina,
-    currentStamina: store.characteristicsReducer.currentStamina,
+    activeLocationId: store.locationsReducer.activeLocationId,
   }
 }, {
   pushReceivedItem,
   setTimer,
   setIdLocation,
-  setGenerationRingsAmulets
+  setGenerationRingsAmulets,
+  incrementExperience
 })(Location)

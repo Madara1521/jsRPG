@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { incrementExperience, incrementPoints, updateLevel } from "../../../../Redux/actions"
+import { incrementPoints, updateLevel } from "../../../../Redux/actions"
 import PropTypes from 'prop-types'
 import { makeStyles } from "@mui/styles"
 
@@ -51,12 +51,12 @@ const useStyles = makeStyles((theme) => ({
 
 const LeftTable = (props) => {
   const classes = useStyles()
-
-  const { incrementPoints, updateLevel, incrementExperience, level, experience, nextLevel } = props
-
-  const addExperience = () => {
-    incrementExperience()
-  }
+  const {
+    incrementPoints,
+    updateLevel,
+    level,
+    experience,
+    nextLevel } = props
 
   useEffect(() => {
     if (experience >= nextLevel) {
@@ -78,7 +78,6 @@ const LeftTable = (props) => {
         <div className={classes.experienceContainer}>
           <div>Experience</div>
           <div>{experience}</div>
-          <button onClick={addExperience} />
         </div>
       </div>
     </div>
@@ -97,4 +96,4 @@ export default connect(store => {
     experience: store.levelReducer.experience,
     nextLevel: store.levelReducer.nextLevel
   }
-}, { incrementPoints, updateLevel, incrementExperience })(LeftTable)
+}, { incrementPoints, updateLevel })(LeftTable)

@@ -217,18 +217,17 @@ export function setAllBonusStat() {
   }
 }
 
-export function setTimer(timer, pushItems) {
+export function setTimer(timer) {
   return {
     type: SET_TIMER,
-    timer,
-    pushItems
+    timer
   }
 }
 
-export function setIdLocation(activeId) {
+export function setIdLocation(activeLocationId) {
   return {
     type: SET_ID_LOCATION,
-    activeId
+    activeLocationId
   }
 }
 
